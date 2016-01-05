@@ -5,7 +5,7 @@
       <paths name="BACKhuipayWater">
         <serverdata>
           <mappings>
-            <mapping deploy="/huipaywater-server/webapps/huipaywater/" local="$PROJECT_DIR$" web="/huipaywater/app" />
+            <mapping deploy="/huipaywater-server/webapps/huipaywater/" local="$PROJECT_DIR$" web="/huipaywater/" />
           </mappings>
         </serverdata>
       </paths>

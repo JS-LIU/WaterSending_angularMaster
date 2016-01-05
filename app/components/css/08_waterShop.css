@@ -1,0 +1,138 @@
+.L-carousel{
+    height:40%;
+    overflow: hidden;
+}
+.L-header img{
+    width:25px;
+
+}
+.sD-star{
+    top: 9px;
+    right:50px;
+}
+.sD-share{
+    top: 10px;
+    right:15px;
+    width:25px;
+    height:25px;
+    background:url("../images/header-share.png") no-repeat center center;
+    -webkit-background-size: 25px;
+    background-size: 25px;
+}
+.piao,
+.quan,
+.hui{
+    padding:4px 6px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 16px;
+}
+.sD-waterticket,
+.sD-ticket{
+    background: url("../images/arrow-right.png") no-repeat right center;
+    -webkit-background-size: 20px;
+    background-size: 15px;
+}
+.sD-sendTime{
+    background: url("../images/clock.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 25px;
+}
+.sD-sendRange{
+    background: url("../images/trumpet.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 25px;
+}
+.sD-sendAddress{
+    background: url("../images/address-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.sD-phoneNumber{
+    background: url("../images/phone-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.sD-introduce{
+    background:#FFF;
+}
+.sD-introduceDetails{
+    line-height:22px;
+}
+.sD-introduce-title{
+    height:44px;
+    line-height: 44px;
+    border-bottom: 1px solid #E2E2E2;
+}
+.sD-introduce{
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
+.my-address{
+    background: url("../images/address.png") no-repeat 18px center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+}
+.my-tel{
+    background: url("../images/phone-02.png") no-repeat 18px center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+}
+.share-box{
+    position:fixed;
+    bottom:0px;
+    height:80px;
+    line-height:80px;
+    background:#FFF;
+    border-top:1px solid #E2E2E2;
+    z-index: 11;
+}
+.share-box li{
+    width:25%;
+    height:80px;
+    line-height: 80px;
+}
+
+#qzone-icon{
+    padding: 0;
+    margin: 0;
+    height: 70px;
+    width: 100%;
+    background:url("../images/qq.png") no-repeat center center;
+    -webkit-background-size: 40px;
+    background-size: 40px;
+}
+#wb-icon{
+    padding: 0;
+    margin: 0;
+    height: 70px;
+    width: 100%;
+    background:url("../images/wb.png") no-repeat center center;
+    -webkit-background-size: 40px;
+    background-size: 40px;
+}
+#wechat-icon{
+    padding: 0;
+    margin: 0;
+    height: 70px;
+    width: 100%;
+    background:url("../images/wechat.png") no-repeat center center;
+    -webkit-background-size: 40px;
+    background-size: 40px;
+}
+#qq-icon{
+    padding: 0;
+    margin: 0;
+    height: 70px;
+    width: 100%;
+    background:url("../images/tqq.png") no-repeat center center;
+    -webkit-background-size: 40px;
+    background-size: 40px;
+}
+#shade{
+    position:fixed;
+    top:0px;
+    background:#000000;
+    opacity: 0.8;
+    z-index: 10;
+}
