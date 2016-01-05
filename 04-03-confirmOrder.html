@@ -1,0 +1,44 @@
+<div class="L-header w pr blue">
+    <p class="tc L-header-title cfff f16">确认订单</p>
+    <a href="#/goodsCart" class="L-header-back h po"></a>
+</div>
+<div class="L-center">
+    <a href="#/receiverAddress" class="pr fff confirm-address" ng-controller="receiverLocation">
+        <p class="common-list-line-1 pr50 pl15 pt10">
+            <span>{{default_receiverName}}</span>
+            <span class="pl15">{{default_receiverPhone}}</span>
+        </p>
+        <p class="common-list-line-2 pr50 pl15 pb10">
+            <span>地址：{{default_receiverAddress}}</span>
+        </p>
+    </a>
+
+    <ul class="common-list-02 mt10 mb50">
+        <li class="common-singlerow-1 confirmOrder-shop">{{shopName}}</li>
+        <li class="w pr" ng-repeat="goodsInfo in order_goodslist">
+            <div class="common-picproduct-02 pr tc">
+                <img src="{{goodsInfo.big_image}}" class="h" alt=""/>
+            </div>
+            <div class="po common-detailbox-02">
+                <p class="f16 comlist-02-floor-01 mt10">{{goodsInfo.title}}</p>
+                <p class="comlist-02-floor-01 mt10">
+                    <span class="cred f16">{{(goodsInfo.price / 100).toFixed(2)}}</span>
+                    <span>*{{goodsInfo.num}}</span>
+                </p>
+            </div>
+        </li>
+        <li class="common-singlerow-1">
+            <p class="fr mr15">
+                <span>共{{totleNum}}件商品，合计</span>
+                <span class="cred f16">￥{{(totleMoney/100).toFixed(2)}}</span>
+            </p>
+        </li>
+    </ul>
+</div>
+<div class="L-footer-01 cfff w">
+    <div class="fl L-footer-01-l w allCheckbox">
+        <span class="totleMoney pl15">实付款：¥</span>
+        <span>{{(totleMoney / 100).toFixed(2)}}</span>
+    </div>
+    <a class="fr L-footer-01-r red tc cfff" ng-click="confirmOrder()">确认订单</a>
+</div>

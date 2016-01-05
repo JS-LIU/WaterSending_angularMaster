@@ -1,0 +1,284 @@
+.mainf-ds-c{
+    background: url("../images/bottom-icon-1.png") no-repeat center 8px;
+    -webkit-background-size: 15px;
+    background-size: 15px;
+    line-height: 70px;
+}
+.mainf-ds-n{
+    background: url("../images/bottom-icon-1-n.png") no-repeat center 8px;
+    -webkit-background-size: 15px;
+    background-size: 15px;
+    line-height: 70px;
+}
+.mainf-dd-n{
+    background: url("../images/bottom-icon-2-n.png") no-repeat center 8px;
+    -webkit-background-size: 13px;
+    background-size: 13px;
+    line-height: 70px;
+}
+.mainf-dd-c{
+    background: url("../images/bottom-icon-2.png") no-repeat center 8px;
+    -webkit-background-size: 13px;
+    background-size: 13px;
+    line-height: 70px;
+}
+.mainf-wd-c{
+    background: url("../images/bottom-icon-3.png") no-repeat center 8px;
+    -webkit-background-size: 17px;
+    background-size: 17px;
+    line-height: 70px;
+}
+.mainf-wd-n{
+    background: url("../images/bottom-icon-3-n.png") no-repeat center 8px;
+    -webkit-background-size: 17px;
+    background-size: 17px;
+    line-height: 70px;
+}
+.mainf-sp-c{
+    background: url("../images/bottom-icon-4.png") no-repeat center 8px;
+    -webkit-background-size: 13px;
+    background-size: 13px;
+    line-height: 70px;
+}
+.mainf-sp-n{
+    background: url("../images/bottom-icon-4-n.png") no-repeat center 8px;
+    -webkit-background-size: 13px;
+    background-size: 13px;
+    line-height: 70px;
+}
+
+.my-myMoney{
+    height:100px;
+    background:#5e656f;
+}
+.my-myRMB,
+.my-myHB{
+    width: 50%;
+    height:100px;
+    line-height: 140px;
+    overflow: hidden;
+}
+.my-myRMB{
+    background: #5e656f url("../images/payway-01.png") no-repeat center 20px;
+    -webkit-background-size: 35px;
+    background-size: 35px;
+}
+.my-myHB{
+    background: #5e656f url("../images/payway-01.png") no-repeat center 20px;
+    -webkit-background-size: 35px;
+    background-size: 35px;
+}
+.piao,
+.quan,
+.hui{
+    padding:4px 6px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 16px;
+}
+.my-address{
+    background: url("../images/address.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+
+.map-address-3,
+.map-address-2{
+    padding-left:40px;
+    height:44px;
+    background: url("../images/address-03.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 15px;
+    line-height: 44px;
+}
+.map-address-2{
+    background: url("../images/address-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 15px;
+}
+.my-collect{
+    background: url("../images/collect.png") no-repeat 15px center;
+    -webkit-background-size: 23px;
+    background-size: 23px;
+}
+.my-share{
+    background: url("../images/address.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.my-set{
+    background: url("../images/address.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.my-callSeller{
+    height:44px;
+    line-height: 44px;
+    border-top:1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+    background:#FFF;
+}
+.my-callSeller span{
+    padding:5px 0px 5px 25px;
+    background: url("../images/phone-icon.png") no-repeat left center;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+}
+.shopaddress{
+    display:block;
+    top:0px;
+    left:40px;
+    right:80px;
+    height: 17px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.L-carousel{
+}
+.my-cutMap{
+    top:0px;
+    right:15px;
+    width:35px;
+    height: 44px;
+    line-height: 44px;
+    background:url("../images/address-04.png") no-repeat right center;
+    -webkit-background-size: 15px;
+    background-size: 15px;
+}
+#mapContainer{
+    height:100%;
+    overflow: hidden;
+}
+.common-list-09{
+    border-bottom:1px solid #E2E2E2;
+}
+.common-list-09 li{
+    height:44px;
+}
+.order-goods-noPay{
+    height: 60px;
+    background:#FFF url("../images/noPay.png") no-repeat center 15px;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+    line-height: 90px;
+}
+.order-goods-noReciving{
+    height: 60px;
+    background:#FFF url("../images/noReceiving.png") no-repeat center 15px;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+    line-height: 90px;
+}
+.order-goods-noEvaluate{
+    height: 60px;
+    background:#FFF url("../images/noEvaluate.png") no-repeat center 15px;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+    line-height: 90px;
+}
+.order-toPay{
+    height: 22px;
+    width:60px;
+    line-height: 22px;
+    border:2px solid #43b4ef;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.order-shop-icon{
+    background:#FFF url("../images/merchant-icon.png") no-repeat 15px center;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+}
+.order-main-list{
+    margin-bottom: 70px;
+}
+.map-myLocation{
+    height:44px;
+}
+.map-a{
+    top:13px;
+    left:100px;
+}
+.map-shopinfo{
+    height:50px;
+}
+.map-shopname{
+    height:20px;
+    line-height:20px;
+}
+.map-shopLocation{
+    padding-left:40px;
+}
+.map-mapview-orderbtn{
+    position:relative;
+    top:50%
+}
+.map-main-orderbtn{
+    margin:10px 15px 64px;
+}
+#result1 {
+    max-height: 300px;
+}
+.custom-location{
+    height:44px;
+    line-height:44px;
+    padding:0px 15px;
+    border-bottom:1px solid #E2E2E2;
+}
+#point{
+    margin-top: -28px;
+    top: 50%;
+    left: 48%;
+    width: 20px;
+    height: 28px;
+    background: url("../images/address-03.png") no-repeat center center;
+    background-size: 20px;
+    z-index: 100;
+}
+.common-multyrow-1-spe{
+    top: 50%;
+    z-index: 1;
+    background:#FFF;
+    border:1px solid #E2E2E2;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    left: 15px;
+    right: 15px;
+    margin-top: -125px;
+    background: #ffffff;
+}
+html,body{
+    position:static!important;
+}
+.whyCantSlideDown{
+    height:50px;
+}
+.order-common-list-09{
+    height:60px;
+    border-bottom:1px solid #E2E2E2;
+}
+.order-common-list-09 li{
+    height:60px;
+}
+
+.temporary-title{
+    top:54px;
+    z-index: 1;
+}
+.mapBox{
+    top:44px;
+    bottom:110px;
+}
+.common-btn-01-spe{
+    left:15px;
+    right:15px;
+    bottom:56px;
+    height:44px;
+    line-height:44px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}

@@ -1,0 +1,38 @@
+<div class="L-header w pr blue slide-header">
+    <p class="tc L-header-title cfff f16">订单</p>
+</div>
+<div ng-controller="orderListModel">
+    <ul class="common-list-09 fff clearfix order-common-list-09">
+        <li class="fl tc" ng-repeat="tabItem in tab">
+            <p class={{tabItem.icon}} ng-click="orderDetails(tabItem)">{{tabItem.name}}</p>
+        </li>
+    </ul>
+    <div class="order-main-list">
+        <ul class="common-list-10 mt10" style="background:#EEEFF3;">
+            <li ng-repeat="orderItem in orderList" style="background:#FFF">
+                <div class="common-list-10-top pr15 pl50 mt10 order-shop-icon">{{orderItem.merchantName}}</div>
+                <a href="#" class="common-list-02" ng-controller="goodsModel">
+                    <div class="w pr common-list-10-center" ng-repeat="goods in goodsList">
+                        <div class="common-picproduct-02 pr tc">
+                            <img src={{goods.image}} class="h" alt="商品图片"/>
+                        </div>
+                        <div class="po common-detailbox-02 pr15">
+                            <p class="f16 common-detailbox-02-name">{{goods.itemName}}</p>
+                            <p class="common-detailbox-02-pricebox">
+                                <span class="cred f16">{{(goods.itemPrice / 100).toFixed(2)}}</span>
+                                <span>*{{goods.itemNum}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <div class="common-list-10-bottom pl15 pr15">
+                    <span>共{{orderItem.orderItems.length}}件商品</span>
+                    <span>合计：</span>
+                    <span class="cred f16">￥{{(orderItem.total_fee / 100).toFixed(2)}}</span>
+                    <div class="fr mt10 order-toPay tc cblue" ng-click="toGo(orderItem)">{{stateToWord(orderItem.clientOrderState)}}</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
