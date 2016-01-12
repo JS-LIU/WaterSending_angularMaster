@@ -2,8 +2,14 @@
  * Created by 殿麒 on 2015/10/19.
  */
 logIn.service('getAccessInfo',function(){
-    var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
-    var appKey = "cf385992c3fc46cbaebae2c1dae08653";
+    //var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
+    //var appKey = "cf385992c3fc46cbaebae2c1dae08653";
+    //this.accessInfo = {
+    //    app_key:appKey,
+    //    signature:app_secret
+    //}
+    var app_secret = hex_md5("165416");
+    var appKey = "e330ce4aa98546b3b99329d20e17450b";
     this.accessInfo = {
         app_key:appKey,
         signature:app_secret
@@ -25,7 +31,6 @@ logIn.service('getCheckcode',function(getAccessInfo,logService){
         for(var prop in obj){
             data[prop] = obj[prop];
         }
-        console.log(data);
         return logService.postData(data,path);
     }
 });
@@ -80,8 +85,8 @@ logIn.service('getSign',function(){
 
         var signLen = sign.length;
         sign = sign.slice(0,signLen-1);
-        console.log(sign);
-        var appSecret = "5e5cd8e3ccca45c2a5a3b00a5a90cdd5";
+        //var appSecret = "5e5cd8e3ccca45c2a5a3b00a5a90cdd5";
+        var appSecret = "e330ce4aa98546b3b99329d20e17450b";
         var md5_sign = hex_md5(sign+appSecret);
         return md5_sign;
     }

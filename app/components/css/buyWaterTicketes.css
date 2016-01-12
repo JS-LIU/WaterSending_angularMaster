@@ -1,0 +1,14 @@
+.waterTicketes{
+    background:url("../images/waterTicketes.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height:150px;
+}
+.privilege-option{
+    margin-right:4%;
+    width:45%;
+    height:38px;
+    line-height:38px;
+    border:1px solid #E2E2E2;
+    background:#FFF;
+}

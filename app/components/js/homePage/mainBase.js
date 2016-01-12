@@ -156,18 +156,30 @@ main.factory('log',function($cookieStore){
 });
 
 main.service('getAccessInfo',function(log,$cookieStore){
-    var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
-    var appKey = "cf385992c3fc46cbaebae2c1dae08653";
+    //var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
+    //var appKey = "cf385992c3fc46cbaebae2c1dae08653";
+    var app_secret = hex_md5("165416");
+    var appKey = "e330ce4aa98546b3b99329d20e17450b";
     this.accessInfo = {
         app_key:appKey,
         signature:app_secret
     }
+    //this.loginAccessInfo = function(){
+    //    var access_token = $cookieStore.get('access_token').access_token;
+    //    var access_token_secret = $cookieStore.get('access_token').access_token_secret;
+    //    var accessInfo = {
+    //        app_key:appKey,
+    //        signature:hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5" + '&' + access_token_secret),
+    //        access_token:access_token
+    //    }
+    //    return accessInfo;
+    //}
     this.loginAccessInfo = function(){
         var access_token = $cookieStore.get('access_token').access_token;
         var access_token_secret = $cookieStore.get('access_token').access_token_secret;
         var accessInfo = {
             app_key:appKey,
-            signature:hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5" + '&' + access_token_secret),
+            signature:hex_md5("165416" + '&' + access_token_secret),
             access_token:access_token
         }
         return accessInfo;

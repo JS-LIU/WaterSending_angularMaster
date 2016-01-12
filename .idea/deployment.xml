@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="BACKhuipayWater">
+  <component name="PublishConfigData" serverName="TESThuipayWater">
     <serverData>
       <paths name="BACKhuipayWater">
         <serverdata>
           <mappings>
             <mapping deploy="/huipaywater-server/webapps/huipaywater/" local="$PROJECT_DIR$" web="/huipaywater/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="TESThuipayWater">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/huipaywater-server/webapps/huipaywater" local="$PROJECT_DIR$" web="huipaywater/" />
           </mappings>
         </serverdata>
       </paths>

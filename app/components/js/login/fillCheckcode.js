@@ -36,7 +36,6 @@ logIn.controller('fillCheckcode',function($rootScope,$scope,$location,getCheckco
         phone_num:$rootScope.PHONENUM,
         checkCodeType:i
     }).success(function(data){
-        console.log(data);
         $scope.submit_registInfo = function(){
             var passWord = hex_md5($rootScope.PHONENUM+$scope.password+regesteData.md5_key);
             var registerData = {
@@ -47,7 +46,6 @@ logIn.controller('fillCheckcode',function($rootScope,$scope,$location,getCheckco
                 check_code:data.checkCode,
                 password:passWord
             }
-            console.log(registerData);
             var path = url;
             logService.postData(registerData,path).success(function(data){
                 console.log(data);
