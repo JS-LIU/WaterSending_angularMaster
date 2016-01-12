@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,initial-scale=1"/>
@@ -7,12 +7,14 @@
     <link rel="stylesheet" type="text/css" href="components/css/base.css"/>
     <link rel="stylesheet" type="text/css" href="components/css/Lhuipayapp-common.css"/>
     <link rel="stylesheet" type="text/css" href="components/css/buyWaterTicketes.css"/>
+
     <script src="components/js/plugins/angular.min.js"></script>
+    <script src="components/js/plugins/angular-cookies.min.js"></script>
 
     <title>购买水票</title>
 
 </head>
-<body ng-controller="waterTicketesCtrl">
+<body ng-app="buyWaterTicketes" ng-controller="WaterTicketesCtrl">
     <div class="L-header w pr blue">
         <p class="tc L-header-title cfff f16">购买水票</p>
         <a href="#/goodsCart" class="L-header-back h po"></a>
@@ -40,7 +42,7 @@
             买10送2
         </li>
     </ul>
-    <script src="components/js/buyWaterTicketes/buyWaterTicketes.js"></script>
     <script src="components/js/buyWaterTicketes/wtservice.js"></script>
+    <script src="components/js/buyWaterTicketes/buyWaterTicketes.js"></script>
 </body>
 </html>

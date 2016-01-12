@@ -4,8 +4,11 @@
 
 (function(){
     angular.module('buyWaterTicketes')
-        .service('WaterTicketesInfo',WaterTicketesInfo);
-    function WaterTicketesInfo(){
-        return localStorage.cartickets;
+        .factory('WaterTicketes',WaterTicketes);
+    function WaterTicketes($cookieStore){
+        var info = $cookieStore.get('ticketesInfo');
+        return {
+            info: info
+        }
     }
 }())
