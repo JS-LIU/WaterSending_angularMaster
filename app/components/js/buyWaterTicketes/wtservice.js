@@ -7,8 +7,14 @@
         .factory('WaterTicketes',WaterTicketes);
     function WaterTicketes($cookieStore){
         var info = $cookieStore.get('ticketesInfo');
+
+        var totleMoney = function(perPrice,number){
+            return perPrice * number;
+        }
+
         return {
-            info: info
+            info: info,
+            calcTotleMoney:totleMoney
         }
     }
 }())

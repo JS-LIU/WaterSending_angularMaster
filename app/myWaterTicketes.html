@@ -1,0 +1,26 @@
+<div class="L-header w pr blue">
+    <p class="tc L-header-title cfff f16">我的水票</p>
+    <a href="#/goodsCart" class="L-header-back h po"></a>
+</div>
+
+<div class="waterTicketes pl15 mt10 ml15 mr15" ng-repeat="validWaterTicketes in waterTicketesInfo.hascardTicket">
+    <p class="cfff f16 pt20">海豹送水</p>
+    <p class="clearfix pt10 f20 cfff">
+        <span style="color:#FCFBD6">{{validWaterTicketes.productName}}</span>
+        <span class="pl5" style="font-size: 26px;">{{(validWaterTicketes.price/100).toFixed(2)}}</span>
+        <span class="pl5">一桶</span>
+        <span class="pl5">({{validWaterTicketes.totalCount}})</span>
+    </p>
+    <p class="cfff f16 pt20">有效期至{{ticketesInfo.validTime}}</p>
+</div>
+<div class="tc">已过期券</div>
+<div class="unwaterTicketes pl15 mt10 ml15 mr15" ng-repeat="validWaterTicketes in waterTicketesInfo.validCardTicket">
+    <p class="cfff f16 pt20">海豹送水</p>
+    <p class="clearfix pt10 f20 cfff">
+        <span style="color:#FCFBD6">{{validWaterTicketes.productName}}</span>
+        <span class="pl5" style="font-size: 26px;">{{(validWaterTicketes.price/100).toFixed(2)}}</span>
+        <span class="pl5">一桶</span>
+        <span class="pl5">({{validWaterTicketes.totalCount}})</span>
+    </p>
+    <p class="cfff f16 pt20">有效期至{{ticketesInfo.validTime}}</p>
+</div>
