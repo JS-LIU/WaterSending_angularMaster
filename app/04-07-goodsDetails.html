@@ -18,12 +18,16 @@
         <li class="common-list-line-4 cred f16 pl15">{{limitBuy || "不限制购买"}}</li>
         <li class="pl15 common-list-line-3 pl15">
             <span class="cred">￥</span>
-            <span class="f20 cred">{{nowSale}}</span>
-            <del class="pl15">{{originSale}}</del>
+            <span class="f20 cred">{{nowSale.toFixed(2)}}</span>
+            <del class="pl15">{{originSale.toFixed(2)}}</del>
         </li>
         <li class="pl15 common-list-line-5">服务：免运费</li>
         <div class="po goodsCart-btn1" ng-click="addGoodscart()"></div>
     </ul>
+    <div class="pl15 common-list-line-5 mt10 fff" ng-hide="piao" ng-click="buyWaterTicketes()">
+        <span class="piao blue cfff">票</span>
+        <span>{{waterTicketes}}</span>
+    </div>
 </div>
 <ul class="common-list-05 mt10" ng-controller="comment">
     <li class="common-list-05-list-1 pl15">网友点评{{totalCount}}</li>

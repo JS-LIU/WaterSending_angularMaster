@@ -2,6 +2,8 @@
  * Created by 殿麒 on 2015/11/7.
  */
 purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purchasePost,getAccessInfo){
+
+
     //  生成订单
     $scope.confirmOrder = function(){
         var shopId = $cookieStore.get('shopInfo').shopId;
@@ -45,8 +47,7 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purch
     var order_goodslist = $cookieStore.get('order_goodslist');
     var totleNum = 0;
     var totleMoney = 0;
-    $scope.shopName = shopInfo.shopName;
-
+    $scope.shopName = $cookieStore.get('shopInfo').merchantName;
     $scope.order_goodslist = order_goodslist;
     for(var i = 0,len = order_goodslist.length;i < len; i++){
         totleNum += parseInt(order_goodslist[i].num);

@@ -83,6 +83,7 @@ purchase.controller('carousel',function($scope){
     var imgW = document.body.clientWidth + 'px';
     var imgH = document.body.clientWidth * 0.6 + 'px';
     $scope.$watch('imgs',function(){
+        console.log($scope.imgs);
         if($scope.imgs != undefined){
             $scope.imgs.splice(0,0,$scope.imgs[0]);
             var len = $scope.imgs.length;

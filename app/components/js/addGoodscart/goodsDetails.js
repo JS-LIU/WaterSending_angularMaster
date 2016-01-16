@@ -35,7 +35,15 @@ purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieS
         $scope.limitBuy = data.productInfo.subTitle;
         $scope.nowSale = data.productInfo.price;
         $scope.originSale = data.productInfo.marketPrice || $scope.nowSale;
-        console.log(data);
+        $scope.piao = true;
+        if(data.productInfo.cardTicketId!=0){
+            $scope.waterTicketes = '水票';
+            $scope.piao = false;
+        }
+        $scope.buyWaterTicketes = function(){
+            $cookieStore.put('ticketesInfo',{id:data.productInfo.cardTicketId});
+            window.location.href = 'buyWaterTicketes.html';
+        }
         $scope.goodsInfo = data.productInfo;
     });
     //  添加购物车
@@ -47,7 +55,7 @@ purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieS
             //  添加cookie
             goodsCartcookie.add_goodsCart_cookie(goodscart_list,item);
         }else{
-            window.location.href = "../../../07-log.html";
+            window.location.href = "07-log.html";
         }
     }
 });

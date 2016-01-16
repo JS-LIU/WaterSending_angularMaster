@@ -9,5 +9,8 @@ function routeConfig($routeProvider){
     $routeProvider.when('/',{
         templateUrl:'myWaterTicketes.html',
         controller:'WaterTicketesInfoCtrl'
+    }).when('/waterDetails',{
+        templateUrl:'waterDetails.html',
+        controller:'WaterTicketesDetails'
     })
 }

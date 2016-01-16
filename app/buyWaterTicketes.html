@@ -22,13 +22,13 @@
         <a href="#/goodsCart" class="L-header-back h po"></a>
     </div>
     <div class="waterTicketes pl15 mt10 ml15 mr15">
-        <p class="cfff f16 pt20">海豹送水</p>
-        <p class="clearfix pt10 f20 cfff">
+        <p class="cfff f16 pt15">海豹送水</p>
+        <p class="clearfix f20 cfff">
             <span style="color:#FCFBD6">{{ticketesInfo.productName}}</span>
             <span class="pl5" style="font-size: 26px;">{{(ticketesInfo.price/100).toFixed(2)}}</span>
             <span class="pl5">一桶</span>
         </p>
-        <p class="cfff f16 pt20">有效期至{{ticketesInfo.validTime}}</p>
+        <p class="cfff f16 pt5">有效期至{{ticketesInfo.validTime}}</p>
     </div>
     <ul class="clearfix ml15 mt10">
         <li ng-repeat="strategyModel in ticketesInfo.preferentialStrategyModels" ng-click="chooseWaterTicketes(strategyModel)" class="privilege-option fl tc mt10">
@@ -39,7 +39,7 @@
     <a ng-click="createOrder()" class="mt10 tc">购买水票</a>
     <script src="components/js/service/huipayLogIn.js"></script>
     <script src="components/js/service/huipayOrder.js"></script>
-    <script src="components/js/buyWaterTicketes/buyWaterTicketes.js"></script>
+    <script src="components/js/buyWaterTicketes/buyWaterTicketesCtrl.js"></script>
     <script src="components/js/buyWaterTicketes/wtservice.js"></script>
 </body>
 </html>

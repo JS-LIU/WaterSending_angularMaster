@@ -2,6 +2,7 @@
  * Created by LIU on 15/9/27.
  */
 purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore,toPay){
+    $scope.shopName = $cookieStore.get('shopInfo').merchantName;
     //  将购物车中【商品信息】绑定到rootscope中
     $scope.goodscartList = $cookieStore.get('goodscart_list') || [];
     //  是否显示【对话框】

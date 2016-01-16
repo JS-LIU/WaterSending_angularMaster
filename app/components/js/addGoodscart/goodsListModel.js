@@ -51,7 +51,7 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
             //  添加cookie
             goodsCartcookie.add_goodsCart_cookie(goodscart_list,item);
         }else{
-            window.location.href = "../../../07-log.html";
+            window.location.href = "07-log.html";
         }
     }
     //  查看购物车
@@ -59,7 +59,7 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         if(isLogin){
             window.location.href = "#/goodsCart"
         }else{
-            window.location.href = "../../../07-log.html";
+            window.location.href = "07-log.html";
         }
     }
 
@@ -114,11 +114,11 @@ purchase.controller('shopInfo',function($scope,$cookieStore,ramdomStart,getAcces
         purchasePost.postData(data,path).success(function(data){
             $cookieStore.put('shopInfo',data);
             var shopInfo = data;
-            console.log(data);
             setShopInfo(shopInfo);
         });
     }else{
         var shopInfo = $cookieStore.get('shopInfo');
+        console.log(shopInfo);
         setShopInfo(shopInfo);
     }
     function setShopInfo(shopInfo){

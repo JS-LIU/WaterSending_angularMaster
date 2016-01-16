@@ -7,7 +7,9 @@
 
 
     function WaterTicketesCtrl($scope,$cookieStore,WaterTicketes,Login,Order){
-        $scope.ticketesInfo = WaterTicketes.info;
+        WaterTicketes.getInfoDetails.then(function(info){
+            $scope.ticketesInfo = info.cardTicketBasicInfo;
+        })
 
         $scope.isSelected = false;
         var preferentialStrategyId;

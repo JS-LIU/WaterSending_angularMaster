@@ -88,7 +88,7 @@
     background:#fff url("../images/shopIcon.png") no-repeat 15px center;
     -webkit-background-size: 20px;
     background-size: 20px;
-    padding-left:40px;
+    padding-left:40px!important;
 }
 #mapContainer{
     height: 50%!important;
@@ -223,4 +223,10 @@ myList{
 .star{
     width:16px;
     height:16px;
+}
+.piao{
+    padding:4px 6px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
 }

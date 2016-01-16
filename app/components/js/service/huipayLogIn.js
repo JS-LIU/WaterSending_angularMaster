@@ -29,8 +29,12 @@
 
     //  传一个布尔值 取得不同的accessInfo 不传参数自行判断是否登录取相应accessInfo
     Login.prototype.getAccessInfo = function(cookie,isL){
-        //console.log(this.isLogIn());
-        var isLogin = isL || this.isLogIn();
+        var isLogin;
+        if(arguments[1]!=undefined){
+            isLogin = arguments[1];
+        }else{
+            isLogin = this.isLogIn();
+        }
         var defineApp_key = this.appKey;
         var defineApp_secret = this.app_secret;
         var defineApp_md5_app_secret = this.md5_app_secret;

@@ -14,11 +14,11 @@
 <div class="L-header w pr blue">
     <p class="tc L-header-title cfff f16">购物车</p>
     <a href="#/" class="L-header-back h po"></a>
-    <a href="#/register" class="L-header-right h po cfff">编辑</a>
+    <a href="#/register" class="L-header-right h po cfff"></a>
 </div>
 
 <ul class="common-list-13 J-checked">
-    <li class="comlist-13-single pl15">郑州市金水区桶装水超市</li>
+    <li class="comlist-13-single pl15 confirmOrder-shop">{{shopName}}</li>
     <li class="w pr J_goodsItem" ng-repeat="goodsInfo in goodscartList">
         <div class="po goodsCheck" ng-click="checkGoods(goodsInfo)" ng-class="{true: 'checked', false: ''}[goodsInfo.isChecked]"></div>
         <div class="common-picproduct-13 pr tc">
