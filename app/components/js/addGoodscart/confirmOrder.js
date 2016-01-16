@@ -3,7 +3,6 @@
  */
 purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purchasePost,getAccessInfo){
 
-
     //  生成订单
     $scope.confirmOrder = function(){
         var shopId = $cookieStore.get('shopInfo').shopId;
@@ -34,13 +33,7 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purch
         var path = 'order/new';
         purchasePost.postData(data,path).success(function(data){
             $cookieStore.put('orderId',data);
-            var host = window.location.host;
-            var contextPath = document.location.pathname;
-            var index = contextPath.substr(1).indexOf("/");
-            contextPath = contextPath.substr(0, index + 1);
-
-            var url = "http://" + host + contextPath;
-            window.location.href = url + "/app/09-payPage.html";
+            window.location.href = "09-payPage.html";
         });
     }
     var shopInfo = $cookieStore.get('shopInfo');

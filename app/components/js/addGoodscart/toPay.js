@@ -128,7 +128,7 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
         var path = 'order/new';
         purchasePost.postData(data,path).success(function(data){
             $cookieStore.put('orderId',data);
-            window.location.href = "../../../09-payPage.html";
+            window.location.href = "09-payPage.html";
 
         });
     }

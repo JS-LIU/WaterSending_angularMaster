@@ -12,7 +12,9 @@
     <file url="file://$PROJECT_DIR$/app/components/js/homePage/homePageService/SaveCookie.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/components/js/homePage/resourse/postWaterTicketes.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/components/js/homePage/waterTicktesCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/components/js/service/Address.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/components/js/service/huipayOrder.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/components/js/service/huipayUtility/GetQueryString.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/components/js/service/resource/userWaterTicketes.js" charset="UTF-8" />
   </component>
 </project>
