@@ -4,13 +4,18 @@
 </div>
 <div class="L-center">
     <a href="#/receiverAddress" class="pr fff confirm-address" ng-controller="receiverLocation">
-        <p class="common-list-line-1 pr50 pl15 pt10">
-            <span>{{default_receiverName}}</span>
-            <span class="pl15">{{default_receiverPhone}}</span>
-        </p>
-        <p class="common-list-line-2 pr50 pl15 pb10">
-            <span>地址：{{default_receiverAddress}}</span>
-        </p>
+        <div ng-show="show_address">
+            <p class="common-list-line-1 pr50 pl15 pt10">
+                <span>{{RECIEVENAME}}</span>
+                <span class="pl15">{{RECEIVERPHONE}}</span>
+            </p>
+            <p class="common-list-line-2 pr50 pl15 pb10">
+                <span>地址：{{RECEIVERADDRESS}}</span>
+            </p>
+        </div>
+        <div style="line-height: 65px;" ng-hide="show_address">
+            点击请填写收货信息
+        </div>
     </a>
 
     <ul class="common-list-02 mt10 mb50">

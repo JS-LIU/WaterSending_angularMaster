@@ -19,7 +19,7 @@
         }
 
         return {
-            createOrder:createOrder,
+            createOrder: createOrder,
             saveCookies: saveCookies
         }
     }

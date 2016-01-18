@@ -16,5 +16,6 @@
     <file url="file://$PROJECT_DIR$/app/components/js/service/huipayOrder.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/components/js/service/huipayUtility/GetQueryString.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/components/js/service/resource/userWaterTicketes.js" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

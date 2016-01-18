@@ -79,6 +79,7 @@
     background:#fff url("../images/address.png") no-repeat 15px center;
     -webkit-background-size: 18px;
     background-size: 18px;
+    min-height:65px;
 }
 .common-list-02 .common-singlerow-1{
     height:44px;
