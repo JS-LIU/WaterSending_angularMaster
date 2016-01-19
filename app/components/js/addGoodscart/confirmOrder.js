@@ -20,14 +20,14 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purch
             orderItem.push(item);
         }
         var data = {
-            shopId:shopId,
-            total_fee:$scope.totleMoney,
-            description:'',
-            comment:'',
-            addressId:$rootScope.SELECTADDRESS.addressId,
-            orderItems:orderItem,
             accessInfo:getAccessInfo.loginAccessInfo(),
-            sign:'sign'
+            shopId:shopId,
+            addressId:$rootScope.DEFAULTADDRESS.addressId,
+            total_fee:$scope.totleMoney,
+            orderItems:orderItem,
+            sign:'sign',
+            description:'',
+            comment:''
         }
 
         var path = 'order/new';
@@ -38,6 +38,8 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purch
     }
     var shopInfo = $cookieStore.get('shopInfo');
     var order_goodslist = $cookieStore.get('order_goodslist');
+
+
     var totleNum = 0;
     var totleMoney = 0;
     $scope.shopName = $cookieStore.get('shopInfo').merchantName;

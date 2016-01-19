@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/10/11.
  */
-purchase.controller('receiverLocation',function($scope,$rootScope,$resource,$q,$location,$cookieStore,$swipe,Address,Login){
+purchase.controller('receiverLocation',function($scope,$rootScope,$resource,$q,$cookieStore,$swipe,Address,Login){
     //  是否为修改地址
     var isFixed = Address.isFixedAddress(); //  修改地址返回true 新增返回false；
 
@@ -20,21 +20,14 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$resource,$q,$
         $scope.show_address = Address.hasDefaultAddress(data);
         var defaultAddress = Address.defaultAddress(data);
 
-
-        $rootScope.RECIEVENAME = defaultAddress.recieve_name;
-        $rootScope.RECEIVERPHONE = defaultAddress.phone_num;
-        $rootScope.RECEIVERADDRESS = defaultAddress.fullAddress;
+        $rootScope.DEFAULTADDRESS = defaultAddress;
     });
 
-
-    $scope.modiAddress = function(){
-        return false;
-    }
-
     //  删除地址
-    $scope.delAddress = function(item,e){
-        Address.deleteAddress(item,e);
-    }
+    //$scope.delAddress = function(item,e){
+    //    Address.deleteAddress(item,e);
+    //}
+
     //  选择地址
     $scope.selAddress = function(item){
         Address.selectAddress($rootScope,item);

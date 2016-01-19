@@ -25,9 +25,15 @@
             position_y:lnglatXY.position_y || '0'
         }
         var defer = $q.defer();
-        var MyAddress = $resource("http://114.251.53.22/huipaywater/delieveryAddress/:ctrl",{ctrl:'@ctrl'});
 
-        MyAddress.save({ctrl:'show'},{
+        var MyAddress = $resource("http://114.251.53.22/huipaywater/delieveryAddress/show",{},{
+            save:{
+                method:'POST',
+                isArray:true
+            }
+        });
+
+        MyAddress.save({},{
             accessInfo:Login.getAccessInfo($cookieStore,true),
             positionInfo:positionInfo,
             sign:'sign'
@@ -74,11 +80,10 @@
             }
         }
     }
+
     //  选择地址
     Address.prototype.selectAddress = function($rootScope,item){
-        $rootScope.RECIEVENAME = item.recieve_name;
-        $rootScope.RECEIVERPHONE = item.phone_num;
-        $rootScope.RECEIVERADDRESS = item.fullAddress;
+        $rootScope.DEFAULTADDRESS = item;
 
         if(this.isFixedAddress()){
             window.location.href="#/modiAddress";

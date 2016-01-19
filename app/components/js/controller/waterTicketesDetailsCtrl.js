@@ -9,7 +9,6 @@
         $scope.waterTicketesDetails = JSON.parse(sessionStorage.waterTicketesDetails);
         $scope.buyWaterTicketes = function(item){
             $cookieStore.put('ticketesInfo',item);
-            console.log($cookieStore.get('ticketesInfo'));
             window.location.href = 'buyWaterTicketes.html';
         }
     }

@@ -6,11 +6,11 @@
     <a href="#/receiverAddress" class="pr fff confirm-address" ng-controller="receiverLocation">
         <div ng-show="show_address">
             <p class="common-list-line-1 pr50 pl15 pt10">
-                <span>{{RECIEVENAME}}</span>
-                <span class="pl15">{{RECEIVERPHONE}}</span>
+                <span>{{DEFAULTADDRESS.recieve_name}}</span>
+                <span class="pl15">{{DEFAULTADDRESS.phone_num}}</span>
             </p>
             <p class="common-list-line-2 pr50 pl15 pb10">
-                <span>地址：{{RECEIVERADDRESS}}</span>
+                <span>地址：{{DEFAULTADDRESS.fullAddress}}</span>
             </p>
         </div>
         <div style="line-height: 65px;" ng-hide="show_address">

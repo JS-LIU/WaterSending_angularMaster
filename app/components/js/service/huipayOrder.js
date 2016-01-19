@@ -18,9 +18,20 @@
             $cookieStore.put('orderId',data)
         }
 
+        var orderGoodsList = function($cookieStore){
+            return $cookieStore.get('order_goodslist');
+        }
+
+
+        var showOrderGoodsList = function(waterTicketesList,orderGoodsList){
+
+        }
+
+
         return {
             createOrder: createOrder,
-            saveCookies: saveCookies
+            saveCookies: saveCookies,
+            getOrderGoodsList:orderGoodsList
         }
     }
 }())

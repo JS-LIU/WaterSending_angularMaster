@@ -15,7 +15,6 @@
                 addressInfo: "北京市东城区东华门街道公安部",
                 districtId: "850019"
             }
-            //  这个接口后台写的不好
             var waterTicketesList = $resource('http://114.251.53.22/huipaywater/cardticket/list',{});
 
             waterTicketesList.save({},{

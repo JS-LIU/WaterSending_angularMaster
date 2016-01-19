@@ -7,6 +7,7 @@
 
 
     function WaterTicketesCtrl($scope,$cookieStore,WaterTicketes,Login,Order){
+        //  水票信息
         WaterTicketes.getInfoDetails.then(function(info){
             $scope.ticketesInfo = info.cardTicketBasicInfo;
         })
@@ -18,7 +19,7 @@
             var perPrice = WaterTicketes.info.price;
             var ticketesNumber = item.requireCount;
 
-            //  计算总价
+            //  水票总价
             $scope.totalMoney = WaterTicketes.calcTotleMoney(perPrice,ticketesNumber);
             preferentialStrategyId = item.id
         }
@@ -29,11 +30,11 @@
 
                 var data = {
                     accessInfo:Login.getAccessInfo($cookieStore),
-                    sign:'sign',
                     preferentialStrategyId:preferentialStrategyId,
                     cardTicketId:WaterTicketes.info.id,
                     shopId:WaterTicketes.info.shopId,
                     total_fee:$scope.totalMoney * 100,
+                    sign:'sign',
                     description:'',
                     comment:''
                 }
