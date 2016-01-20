@@ -1,7 +1,18 @@
 /**
  * Created by 殿麒 on 2015/9/21.
  */
-var purchase = angular.module('purchase', ['ngRoute','ngCookies','ngTouch','ngResource','huipayAddress','huipayLogIn']);
+var purchase = angular.module(
+    'purchase',
+    [
+        'ngRoute',
+        'ngCookies',
+        'ngTouch',
+        'ngResource',
+        'huipayAddress',
+        'huipayLogIn',
+        'huipayOrder'
+    ]
+);
 
 purchase.config(['$routeProvider',function($routeProvider) {
     $routeProvider.when('/',{

@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/11/7.
  */
-purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purchasePost,getAccessInfo){
+purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$resource,$q,purchasePost,Login,Order){
 
     //  生成订单
     $scope.confirmOrder = function(){
@@ -20,7 +20,7 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purch
             orderItem.push(item);
         }
         var data = {
-            accessInfo:getAccessInfo.loginAccessInfo(),
+            accessInfo:Login.getAccessInfo($cookieStore,true),
             shopId:shopId,
             addressId:$rootScope.DEFAULTADDRESS.addressId,
             total_fee:$scope.totleMoney,
@@ -39,11 +39,14 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purch
     var shopInfo = $cookieStore.get('shopInfo');
     var order_goodslist = $cookieStore.get('order_goodslist');
 
+    $scope.order_goodslist = Order.showOrderGoodsList($resource,$q,$cookieStore,Login);
 
     var totleNum = 0;
     var totleMoney = 0;
     $scope.shopName = $cookieStore.get('shopInfo').merchantName;
-    $scope.order_goodslist = order_goodslist;
+
+
+
     for(var i = 0,len = order_goodslist.length;i < len; i++){
         totleNum += parseInt(order_goodslist[i].num);
         totleMoney += parseInt(order_goodslist[i].num * order_goodslist[i].price);
