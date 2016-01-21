@@ -37,20 +37,20 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
         });
     }
     var shopInfo = $cookieStore.get('shopInfo');
-    var order_goodslist = $cookieStore.get('order_goodslist');
+    //var order_goodslist = $cookieStore.get('order_goodslist');
 
     //  水票列表
     Order.showOrderGoodsList($resource,$q,$cookieStore,Login).then(function(data){
-        console.log(data);
         $scope.order_goodslist = data;
+        //  总价
+        $scope.orderTotleMoney = Order.OrderTotle.getMoney(data);
+
     });
-    //console.log();
+    //  商店名字
+    $scope.shopName = $cookieStore.get('shopInfo').merchantName;
 
     var totleNum = 0;
     var totleMoney = 0;
-    $scope.shopName = $cookieStore.get('shopInfo').merchantName;
-
-
 
     for(var i = 0,len = order_goodslist.length;i < len; i++){
         totleNum += parseInt(order_goodslist[i].num);

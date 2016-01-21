@@ -109,7 +109,8 @@ body{
 .common-list-16,
 .common-list-17,
 .common-list-18,
-.common-list-19{
+.common-list-19,
+.common-list-20{
     background:#FFF;
 }
 .common-list-17{
@@ -159,6 +160,9 @@ body{
 .common-list-10-center,
 .common-list-13 li{
     height:105px;
+    border-bottom: 1px solid #E2E2E2;
+}
+.common-list-20 li{
     border-bottom: 1px solid #E2E2E2;
 }
 .common-list-14 li{
@@ -421,6 +425,9 @@ body{
 .evaluate{
     position:absolute;
     bottom:0px;
+}
+.common-list-20-box1{
+    height:107px;
 }
 .common-picproduct-02{
     top:15px;

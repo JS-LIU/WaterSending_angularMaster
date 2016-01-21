@@ -18,33 +18,35 @@
         </div>
     </a>
 
-    <ul class="common-list-02 mt10 mb50">
+    <ul class="common-list-20 mt10 mb50">
         <li class="common-singlerow-1 confirmOrder-shop">{{shopName}}</li>
-        <li class="w pr" ng-repeat="goodsInfo in order_goodslist">
-            <div class="common-picproduct-02 pr tc">
-                <img src="{{goodsInfo.big_image}}" class="h" alt=""/>
+        <li class="w pr mt10" ng-repeat="goodsInfo in order_goodslist">
+            <div class="common-list-20-box1">
+                <div class="common-picproduct-02 pr tc">
+                    <img src="{{goodsInfo.big_image}}" class="h" alt=""/>
+                </div>
+                <div class="po common-detailbox-02">
+                    <p class="f16 comlist-02-floor-01 mt10">{{goodsInfo.title}}</p>
+                    <p class="comlist-02-floor-01 mt10">
+                        <span class="cred f16">{{(goodsInfo.price / 100).toFixed(2)}}</span>
+                        <span>*{{goodsInfo.num}}</span>
+                    </p>
+                </div>
             </div>
-            <div class="po common-detailbox-02">
-                <p class="f16 comlist-02-floor-01 mt10">{{goodsInfo.title}}</p>
-                <p class="comlist-02-floor-01 mt10">
-                    <span class="cred f16">{{(goodsInfo.price / 100).toFixed(2)}}</span>
-                    <span>*{{goodsInfo.num}}</span>
-                </p>
-            </div>
-            <p class="clearfix">
+            <p class="useWaterTicketes clearfix f14">
                 <span class="fl ml15">水票</span>
-                <span class="fr mr5">-{{(goodsInfo.price / 100).toFixed(2)}}元</span>
-                <span class="fr mr15">({{goodsInfo.waterTicketesNum}}张)</span>
+                <span class="fr mr15">-{{(goodsInfo.waterTicketesNum*goodsInfo.price / 100).toFixed(2)}}元({{goodsInfo.waterTicketesNum}}张)</span>
+                <!--<span class="fr mr15"></span>-->
             </p>
-            <p>
-                <span>共{{totleNum}}件商品</span>
-                <span class="cred f16">￥{{(totleMoney/100).toFixed(2)}}</span>
-            <p/>
+            <!--<p>-->
+                <!--<span>共{{totleNum}}件商品</span>-->
+                <!--<span class="cred f16">￥{{(totleMoney/100).toFixed(2)}}</span>-->
+            <!--<p/>-->
         </li>
-        <li class="common-singlerow-1">
+        <li class="common-singlerow-1 mt10">
             <p class="fr mr15">
                 <span>共{{totleNum}}件商品，合计</span>
-                <span class="cred f16">￥{{(totleMoney/100).toFixed(2)}}</span>
+                <span class="cred f16">￥{{(totleMoney / 100).toFixed(2)}}</span>
             </p>
         </li>
     </ul>
