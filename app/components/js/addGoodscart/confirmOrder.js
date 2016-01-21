@@ -39,7 +39,12 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
     var shopInfo = $cookieStore.get('shopInfo');
     var order_goodslist = $cookieStore.get('order_goodslist');
 
-    $scope.order_goodslist = Order.showOrderGoodsList($resource,$q,$cookieStore,Login);
+    //  水票列表
+    Order.showOrderGoodsList($resource,$q,$cookieStore,Login).then(function(data){
+        console.log(data);
+        $scope.order_goodslist = data;
+    });
+    //console.log();
 
     var totleNum = 0;
     var totleMoney = 0;

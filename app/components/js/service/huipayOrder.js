@@ -45,16 +45,14 @@
                 for(var i = 0,waterTicketesLen = canUseWaterTicketesData.length; i < waterTicketesLen;i++){
                     for(var j = 0, productLen = goodsList.length; j < productLen;j++ ){
                         if(canUseWaterTicketesData[i].cardTicketId == goodsList[j].id){
-                            goodsList[j].waterTicketes = canUseWaterTicketesData[i];
+
                             var waterTicketesNum = canUseWaterTicketesData[i].totalCount;
                             var dif = waterTicketesNum - canUseWaterTicketesData[i].num;
-                            var waterTicketesMoney = canUseWaterTicketesData[i]
                             if(dif > 0){
                                 goodsList[j].waterTicketesNum = canUseWaterTicketesData[i].num;
                             }else{
                                 goodsList[j].waterTicketesNum = waterTicketesNum
                             }
-
                         }
                     }
                 }
