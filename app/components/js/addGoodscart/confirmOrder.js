@@ -23,7 +23,7 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
             accessInfo:Login.getAccessInfo($cookieStore,true),
             shopId:shopId,
             addressId:$rootScope.DEFAULTADDRESS.addressId,
-            total_fee:$scope.totleMoney,
+            total_fee:$scope.orderTotleMoney,
             orderItems:orderItem,
             sign:'sign',
             description:'',
@@ -37,25 +37,17 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
         });
     }
     var shopInfo = $cookieStore.get('shopInfo');
-    //var order_goodslist = $cookieStore.get('order_goodslist');
 
     //  水票列表
     Order.showOrderGoodsList($resource,$q,$cookieStore,Login).then(function(data){
         $scope.order_goodslist = data;
         //  总价
-        $scope.orderTotleMoney = Order.OrderTotle.getMoney(data);
+        $scope.orderTotleMoney = Order.orderTotle(data).getPracticalMoney;
+        // 总数
+        $scope.orderTotleNum = Order.orderTotle(data).getNum;
 
     });
     //  商店名字
     $scope.shopName = $cookieStore.get('shopInfo').merchantName;
 
-    var totleNum = 0;
-    var totleMoney = 0;
-
-    for(var i = 0,len = order_goodslist.length;i < len; i++){
-        totleNum += parseInt(order_goodslist[i].num);
-        totleMoney += parseInt(order_goodslist[i].num * order_goodslist[i].price);
-    }
-    $scope.totleNum = totleNum;
-    $scope.totleMoney = totleMoney;
 });

@@ -18,6 +18,21 @@
         </div>
     </a>
 
+    <ul class="common-list-21 mt10">
+        <li>
+            <span class="ml15 fl">预约配送时间</span>
+            <span class="input-box mr15 fr f14">
+                <input type="text" class="pl5">
+                <span class="ml15 mr15">-</span>
+                <input type="text" class="pl5">
+            </span>
+        </li>
+        <li>
+            <span class="ml15 fl">选择付款方式</span>
+            <span class="mr15 fr">在线支付</span>
+        </li>
+    </ul>
+
     <ul class="common-list-20 mt10 mb50">
         <li class="common-singlerow-1 confirmOrder-shop">{{shopName}}</li>
         <li class="w pr mt10" ng-repeat="goodsInfo in order_goodslist">
@@ -33,20 +48,15 @@
                     </p>
                 </div>
             </div>
-            <p class="useWaterTicketes clearfix f14">
+            <p class="useWaterTicketes clearfix f14" ng-show="goodsInfo.waterTicketesNum">
                 <span class="fl ml15">水票</span>
                 <span class="fr mr15">-{{(goodsInfo.waterTicketesNum*goodsInfo.price / 100).toFixed(2)}}元({{goodsInfo.waterTicketesNum}}张)</span>
-                <!--<span class="fr mr15"></span>-->
             </p>
-            <!--<p>-->
-                <!--<span>共{{totleNum}}件商品</span>-->
-                <!--<span class="cred f16">￥{{(totleMoney/100).toFixed(2)}}</span>-->
-            <!--<p/>-->
         </li>
         <li class="common-singlerow-1 mt10">
             <p class="fr mr15">
-                <span>共{{totleNum}}件商品，合计</span>
-                <span class="cred f16">￥{{(totleMoney / 100).toFixed(2)}}</span>
+                <span>共{{orderTotleNum}}件商品，合计</span>
+                <span class="cred f16">￥{{(orderTotleMoney / 100).toFixed(2)}}</span>
             </p>
         </li>
     </ul>
@@ -54,7 +64,7 @@
 <div class="L-footer-01 cfff w">
     <div class="fl L-footer-01-l w allCheckbox">
         <span class="totleMoney pl15">实付款：¥</span>
-        <span>{{(totleMoney / 100).toFixed(2)}}</span>
+        <span>{{(orderTotleMoney / 100).toFixed(2)}}</span>
     </div>
     <a class="fr L-footer-01-r red tc cfff" ng-click="confirmOrder()">确认订单</a>
 </div>

@@ -110,7 +110,7 @@ body{
 .common-list-17,
 .common-list-18,
 .common-list-19,
-.common-list-20{
+.common-list-21{
     background:#FFF;
 }
 .common-list-17{
@@ -163,6 +163,8 @@ body{
     border-bottom: 1px solid #E2E2E2;
 }
 .common-list-20 li{
+    background: #FFF;
+    border-top: 1px solid #E2E2E2;
     border-bottom: 1px solid #E2E2E2;
 }
 .common-list-14 li{
@@ -322,7 +324,17 @@ body{
     border-radius: 5px;
     z-index: 1;
 }
-
+.common-list-21 li{
+    height:44px;
+    line-height:44px;
+    border-bottom:1px solid #E2E2E2;
+}
+.common-list-21 .input-box input{
+    border:none;
+    height:44px;
+    line-height: 44px;
+    width:40px;
+}
 .common-multyrow-1 li{
     height:44px;
     overflow: hidden;

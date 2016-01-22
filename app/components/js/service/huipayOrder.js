@@ -44,7 +44,7 @@
                 var goodsList = orderGoodsList($cookieStore);
                 for(var i = 0,waterTicketesLen = canUseWaterTicketesData.length; i < waterTicketesLen;i++){
                     for(var j = 0, productLen = goodsList.length; j < productLen;j++ ){
-                        if(canUseWaterTicketesData[i].cardTicketId == goodsList[j].id){
+                        if(canUseWaterTicketesData[i].id == goodsList[j].cardTicketId){
                             var waterTicketesNum = canUseWaterTicketesData[i].totalCount;
                             var dif = waterTicketesNum - goodsList[j].num;
                             if(dif > 0){
@@ -62,18 +62,15 @@
 
         var OrderTotle = function(data){
 
-            var totleMoney = 0,reduceMoney;
+            var totleMoney = 0,reduceMoney = 0,totleNum = 0;
             for(var i = 0,len = data.length; i < len;i++){
                 totleMoney += (data[i].num * data[i].price);
-                reduceMoney += (data[i])
+                reduceMoney += (data[i].waterTicketesNum||0 * data[i].price);
+                totleNum += data[i].num
             }
             return {
-                getMoney:function(totleMoney,reduceMoney){
-                    return totleMoney - reduceMoney;
-                },
-                getNum:function(){
-
-                }
+                getPracticalMoney:totleMoney - reduceMoney,
+                getNum:totleNum
             }
         }
 
@@ -81,7 +78,8 @@
             createOrder: createOrder,
             saveCookies: saveCookies,
             getOrderGoodsList: orderGoodsList,
-            showOrderGoodsList: showOrderGoodsList
+            showOrderGoodsList: showOrderGoodsList,
+            orderTotle: OrderTotle
         }
     }
 }())

@@ -85,11 +85,11 @@
     height:44px;
     line-height: 44px;
 }
-.confirmOrder-shop{
+.common-list-20 .confirmOrder-shop{
     background:#fff url("../images/shopIcon.png") no-repeat 15px center;
     -webkit-background-size: 20px;
     background-size: 20px;
-    padding-left:40px!important;
+    padding-left:40px;
 }
 #mapContainer{
     height: 50%!important;
