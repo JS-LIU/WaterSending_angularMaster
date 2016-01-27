@@ -21,9 +21,21 @@
         <li>
             <span class="ml15 fl">预约配送时间</span>
             <span class="input-box mr15 fr f14">
-                <input type="text" class="pl5">
+                <select name="select-time">
+                    <option ng-repeat="hour in initHours">{{hour.opt}}</option>
+                </select>
+                <span>:</span>
+                <select name="select-time">
+                    <option ng-repeat="min in initMins">{{min.opt}}</option>
+                </select>
                 <span class="ml15 mr15">-</span>
-                <input type="text" class="pl5">
+                <select name="select-time">
+                    <option ng-repeat="hour in endHours">{{hour.opt}}</option>
+                </select>
+                <span>:</span>
+                <select name="select-time">
+                    <option ng-repeat="min in endMins">{{min.opt}}</option>
+                </select>
             </span>
         </li>
         <li>

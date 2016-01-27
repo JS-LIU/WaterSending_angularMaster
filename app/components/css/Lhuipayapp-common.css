@@ -329,11 +329,13 @@ body{
     line-height:44px;
     border-bottom:1px solid #E2E2E2;
 }
-.common-list-21 .input-box input{
+.common-list-21 .input-box select{
     border:none;
     height:44px;
     line-height: 44px;
-    width:40px;
+    width:18px;
+    -webkit-appearance: none;
+    overflow-y: auto;
 }
 .common-multyrow-1 li{
     height:44px;

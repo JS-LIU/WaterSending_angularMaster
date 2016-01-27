@@ -10,7 +10,7 @@ var purchase = angular.module(
         'ngResource',
         'huipayAddress',
         'huipayLogIn',
-        'huipayOrder'
+        'huipayOrder',
     ]
 );
 

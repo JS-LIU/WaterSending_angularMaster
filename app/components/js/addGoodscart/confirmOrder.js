@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/11/7.
  */
-purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$resource,$q,purchasePost,Login,Order){
+purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$resource,$q,purchasePost,Login,Order,TimePayWay){
 
     //  生成订单
     $scope.confirmOrder = function(){
@@ -50,4 +50,18 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
     //  商店名字
     $scope.shopName = $cookieStore.get('shopInfo').merchantName;
 
+    var date = new Date();
+    var initHoursArr = TimePayWay.setTimeArr(date.getHours(),23),
+        initMinsArr = TimePayWay.setTimeArr(date.getMinutes(),59),
+        endHoursArr = TimePayWay.setTimeArr(0,23),
+        endMinsArr = TimePayWay.setTimeArr(0,59);
+
+
+    //  选择配送时间
+    $scope.initHours = TimePayWay.option(initHoursArr);
+    //  选择配送分
+    $scope.initMins = TimePayWay.option(initMinsArr);
+    $scope.endHours = TimePayWay.option(endHoursArr);
+    $scope.endMins = TimePayWay.option(endHoursArr);
+    $scope.endMins = TimePayWay.option(endMinsArr);
 });
