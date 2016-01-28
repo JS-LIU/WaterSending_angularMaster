@@ -57,6 +57,8 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
         endMinsArr = TimePayWay.setTimeArr(0,59);
 
 
+
+
     //  选择配送时间
     $scope.initHours = TimePayWay.option(initHoursArr);
     //  选择配送分
@@ -64,4 +66,7 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
     $scope.endHours = TimePayWay.option(endHoursArr);
     $scope.endMins = TimePayWay.option(endHoursArr);
     $scope.endMins = TimePayWay.option(endMinsArr);
+
+    var paywayArr = ['在线付款','货到付款'];
+    $scope.payWays = TimePayWay.option(paywayArr);
 });

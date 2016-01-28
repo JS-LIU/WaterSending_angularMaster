@@ -236,3 +236,20 @@ myList{
     -moz-border-radius: 16px;
     border-radius: 16px;
 }
+.hasWaterTicketes{
+    padding-left:20px;
+    background:url("../images/hasWaterTicketes.png") no-repeat left center;
+    -webkit-background-size:15px;
+    background-size: 15px;
+}
+.HBIcon{
+    padding-left:20px;
+    background:url("../images/HBIcon.png") no-repeat left center;
+    -webkit-background-size:15px;
+    background-size:15px;
+}
+.shopPhone{
+    background:url("../images/phone-02.png") no-repeat left center;
+    -webkit-background-size:15px;
+    background-size:15px;
+}

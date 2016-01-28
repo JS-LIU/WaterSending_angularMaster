@@ -40,7 +40,11 @@
         </li>
         <li>
             <span class="ml15 fl">选择付款方式</span>
-            <span class="mr15 fr">在线支付</span>
+            <span class="mr15 fr input-box">
+                <select name="select-pay">
+                    <option ng-repeat="payWay in payWays">{{payWay.opt}}</option>
+                </select>
+            </span>
         </li>
     </ul>
 

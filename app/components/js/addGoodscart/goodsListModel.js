@@ -1,7 +1,8 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay,refreshData,getSelfUrl){
+purchase.controller('goodsListModel',goodsListModel);
+function goodsListModel($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay,refreshData,getSelfUrl,ramdomStart,getAccessInfo){
 
     //  获取当前URL
     var myUrl = getSelfUrl.myUrl;
@@ -92,15 +93,8 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         var goodsCart_list = $cookieStore.get('goodscart_list') || [];
         toPay.pay(goodsCart_list);
     }
-});
-function GetQueryString(name)
-{
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if(r!=null)return  unescape(r[2]); return null;
-}
-//  商店信息
-purchase.controller('shopInfo',function($scope,$cookieStore,ramdomStart,getAccessInfo,purchasePost){
+
+    //  商店信息
     var self_url = GetQueryString("shopId");
     if(self_url != undefined){
         var shopId = self_url;
@@ -127,9 +121,16 @@ purchase.controller('shopInfo',function($scope,$cookieStore,ramdomStart,getAcces
         $scope.shopAddress = shopInfo["address"];
         $scope.shopDistance = shopInfo["distance"];
         $scope.sellCount = shopInfo["monthSailCount"];
+        $scope.telphone = shopInfo["telphone"];
         ramdomStart.getStar($scope,shopInfo.score,$cookieStore.put('shopInfo',shopInfo));
     }
-});
+};
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
 
 //  请求（筛选）【商品】post的数据
 purchase.service('postclassify',function($cookieStore,purchasePost,getAccessInfo){

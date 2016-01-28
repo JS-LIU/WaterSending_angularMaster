@@ -1,11 +1,9 @@
 <div class="L-header w pr blue">
     <a class="L-header-back h po" href="06-main.html"></a>
-    <div class="L-header-searchbox pr ml50 mr20 pl30">
-        <input class="w h" type="text" placeholder="搜索店内商品"/>
-    </div>
+    <p class="tc L-header-title cfff f16">{{merchantName}}</p>
 </div>
 <div class="L-center">
-    <ul class="common-list-01" ng-controller="shopInfo">
+    <ul class="common-list-01">
         <li class="w">
             <a href="08-waterShop.html#/" class="pr">
                 <div class="common-picproduct-01 pr tc">
@@ -13,16 +11,21 @@
                 </div>
                 <div class="po common-detailbox-01">
                     <p class="f16 common-detailbox-01-name">{{merchantName}}</p>
-                    <p class="address address-05 pl15">
-                        <span class="pr50">{{shopAddress}}</span>
-                        <span class="distance">{{shopDistance.toFixed(0)}}米</span>
-                    </p>
-                    <p class="evaluate clearfix">
+                    <p class="mt10 clearfix">
                         <img ng-repeat="start in startArr" src={{start.src}} class="fl mr5 star"/>
                         <span>月售{{sellCount}}</span>
                     </p>
+                    <div class="mt10">
+                        <span class="pr15 hasWaterTicketes">海豹水票</span>
+                        <span class="HBIcon">汇币</span>
+                    </div>
                 </div>
             </a>
+        </li>
+    </ul>
+    <ul class="common-list-03">
+        <li>
+            <span class="common-list-04-title pl15 shopPhone">{{telphone}}</span>
         </li>
     </ul>
     <div class="common-list-06 clearfix mt10">
@@ -51,7 +54,7 @@
                     <span class="cred f16">￥{{(goodsInfo.price / 100).toFixed(2)}}</span>
                 </p>
                 <p class="comlist-02-floor-01 pt10 gL-goodsList">
-                    <span>{{goodsInfo.summary}}</span>
+                    <span>{{goodsInfo.summary||'该商品暂无描述'}}</span>
                     <span class="po" style="bottom:0px;right:-35px;">已售{{goodsInfo.salesCnt}}</span>
                 </p>
             </a>
@@ -66,7 +69,7 @@
             <div class="goodsCart-btn po" ng-click="addGoodscart(goodsInfo)"></div>
             <a href="#" class="pl15 pb15">
                 <p class="f16 c000">{{goodsInfo.title}}</p>
-                <p> {{goodsInfo.summary}} </p>
+                <p> {{goodsInfo.summary||'该商品暂无描述'}} </p>
                 <p>
                     <span class="cred f16">￥{{goodsInfo.price}}</span>
                     <span>已售{{goodsInfo.salesCnt}}</span>

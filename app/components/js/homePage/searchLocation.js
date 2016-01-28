@@ -84,12 +84,11 @@ main.controller('getLocation',function($rootScope,$scope,searchLocation,get_loca
                 positionInfo:$rootScope.LNGLAT,
                 requestPageInfo: requestPageInfo,
                 x_dpi:'640',
-                sign :'meng wei'
+                sign :'sign'
             }
 
             mainPost.postData(data,path).success(function(data){
                 var shopList = data['shopList'];
-
                 //  在地图中标记出来商店位置
                 for(var i = 0,len = shopList.length; i < len ; i++){
                     shopList[i].distance = parseInt(shopList[i].distance);
