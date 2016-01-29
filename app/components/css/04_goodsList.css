@@ -249,7 +249,19 @@ myList{
     background-size:15px;
 }
 .shopPhone{
+    padding-left: 20px;
     background:url("../images/phone-02.png") no-repeat left center;
     -webkit-background-size:15px;
     background-size:15px;
+}
+
+.quickPay{
+    padding: 0px 20px;
+    height: 34px;
+    line-height: 34px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background:#FF6634;
+    color: #fff;
 }

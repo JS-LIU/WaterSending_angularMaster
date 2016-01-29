@@ -2,7 +2,7 @@
  * Created by LIU on 15/9/27.
  */
 purchase.controller('goodsListModel',goodsListModel);
-function goodsListModel($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay,refreshData,getSelfUrl,ramdomStart,getAccessInfo){
+function goodsListModel($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay,refreshData,getSelfUrl,ramdomStart,getAccessInfo,Order){
 
     //  获取当前URL
     var myUrl = getSelfUrl.myUrl;
@@ -105,24 +105,37 @@ function goodsListModel($rootScope,$scope,$cookieStore,goodsCartcookie,purchaseP
             x_dpi:640
         }
         var path = 'shop/getshopById';
-        purchasePost.postData(data,path).success(function(data){
-            $cookieStore.put('shopInfo',data);
-            var shopInfo = data;
-            setShopInfo(shopInfo);
+        purchasePost.postData(data,path).success(function(shopInfo){
+            var shopInfo = $cookieStore.put('shopInfo',shopInfo);
+            shopInfo.score = ramdomStart.getStar(shopInfo.score);
+            $scope.shopInfo = shopInfo;
         });
     }else{
         var shopInfo = $cookieStore.get('shopInfo');
         console.log(shopInfo);
-        setShopInfo(shopInfo);
+        shopInfo.score = ramdomStart.getStar(shopInfo.score);
+        $scope.shopInfo = shopInfo;
     }
-    function setShopInfo(shopInfo){
-        $scope.shopImg = shopInfo["imageList"][0].url;
-        $scope.merchantName = shopInfo["merchantName"];
-        $scope.shopAddress = shopInfo["address"];
-        $scope.shopDistance = shopInfo["distance"];
-        $scope.sellCount = shopInfo["monthSailCount"];
-        $scope.telphone = shopInfo["telphone"];
-        ramdomStart.getStar($scope,shopInfo.score,$cookieStore.put('shopInfo',shopInfo));
+
+    //  对话框
+    $scope.dialogShow = false;
+    //  点击【快捷支付按钮】
+    $scope.showDialog = function(){
+        $scope.dialogShow = true;
+    }
+    //  点击对话框【取消】按钮
+    $scope.notPay = function(){
+        $scope.dialogShow = false;
+    }
+    //  点击对话框【好】按钮
+    $scope.quickPay = function(){
+        var data = {
+            shopInfo:shopInfo.shopId,
+
+        }
+        Order.createOrder(data,'order').then(function(data){
+            console.log(data);
+        })
     }
 };
 function GetQueryString(name)
@@ -166,11 +179,10 @@ purchase.factory('ramdomStart',function(){
         var num = parseInt(Math.random()*5) + 1;
         return num;
     }
-    function paintStar($scope,score,saveInfo){
+    function paintStar(score){
         console.log(score);
         if(score == 0){
             var newscore = calcStar();
-            saveInfo;
         }else{
             var newscore = parseInt(score / 2);
         }
@@ -187,7 +199,7 @@ purchase.factory('ramdomStart',function(){
             }
             startArr.push(obj);
         }
-        $scope.startArr = startArr;
+        return startArr;
     }
 
     return {

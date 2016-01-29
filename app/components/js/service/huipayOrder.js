@@ -6,10 +6,10 @@
         .factory('Order',Order)
 
     function Order($resource,$q,$cookieStore){
-        var createOrder = function(obj){
+        var createOrder = function(obj,url){
             var defer = $q.defer();
-            var waterTicketesOrder = $resource('http://114.251.53.22/huipaywater/ticketorder/new',{});
-            waterTicketesOrder.save({},obj,function(data){
+            var order = $resource('http://114.251.53.22/huipaywater/' + url + '/:orderCtrl',{orderCtrl:'@ctrl'});
+            order.save({ctrl:'new'},obj,function(data){
                 defer.resolve(data);
             });
             return defer.promise;

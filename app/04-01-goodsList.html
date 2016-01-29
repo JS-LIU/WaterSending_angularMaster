@@ -1,19 +1,31 @@
+<div style="z-index: 22" ng-show="dialogShow">
+    <div id="shade-1"></div>
+    <dialoger class="dialog">
+        <div class="dialog-center tc">
+            <input class="dialog-line2 pt5" ng-model="payMoney">
+        </div>
+        <div class="dialog-bottom clearfix f16">
+            <a href="javascript:void(0)" class="fl tc dialog-bottom-btn cipblue" ng-click="notPay()">取消</a>
+            <a href="javascript:void(0)" class="fl tc dialog-bottom-btn2 cipblue" ng-click="quickPay()">好</a>
+        </div>
+    </dialoger>
+</div>
 <div class="L-header w pr blue">
     <a class="L-header-back h po" href="06-main.html"></a>
-    <p class="tc L-header-title cfff f16">{{merchantName}}</p>
+    <p class="tc L-header-title cfff f16">{{shopInfo.merchantName}}</p>
 </div>
 <div class="L-center">
     <ul class="common-list-01">
         <li class="w">
             <a href="08-waterShop.html#/" class="pr">
                 <div class="common-picproduct-01 pr tc">
-                    <img src="{{shopImg}}" class="h" alt="汇贝送水"/>
+                    <img src="{{shopInfo.imageList[0].url}}" class="h" alt="汇贝送水"/>
                 </div>
                 <div class="po common-detailbox-01">
-                    <p class="f16 common-detailbox-01-name">{{merchantName}}</p>
+                    <p class="f16 common-detailbox-01-name">{{shopInfo.merchantName}}</p>
                     <p class="mt10 clearfix">
-                        <img ng-repeat="start in startArr" src={{start.src}} class="fl mr5 star"/>
-                        <span>月售{{sellCount}}</span>
+                        <img ng-repeat="score in shopInfo.score" src={{score.src}} class="fl mr5 star"/>
+                        <span>月售{{shopInfo.monthSailCount}}</span>
                     </p>
                     <div class="mt10">
                         <span class="pr15 hasWaterTicketes">海豹水票</span>
@@ -25,9 +37,17 @@
     </ul>
     <ul class="common-list-03">
         <li>
-            <span class="common-list-04-title pl15 shopPhone">{{telphone}}</span>
+            <span class="common-list-04-title pl15 shopPhone">{{shopInfo.telphone}}</span>
         </li>
     </ul>
+
+    <ul class="common-list-03 mt10">
+        <li>
+            <span class="common-list-03-title pl15">货到付款，方便快捷</span>
+            <span class="fr pr15 common-list-03-content quickPay mr15 tc mt5" ng-click="showDialog()">快捷付款</span>
+        </li>
+    </ul>
+
     <div class="common-list-06 clearfix mt10">
         <div class="common-list-06-con1 clearfix w">
             <div ng-repeat="names in classifyClick" class="fl pr common-list-06-con50 pr" ng-click="showClassify(names)">

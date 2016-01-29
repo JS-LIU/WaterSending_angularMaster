@@ -38,7 +38,7 @@
                     description:'',
                     comment:''
                 }
-                Order.createOrder(data).then(function(data){
+                Order.createOrder(data,'ticketorder').then(function(data){
                     Order.saveCookies(data);
                     window.location.href = '09-payPage.html'
                 })

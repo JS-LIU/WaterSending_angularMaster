@@ -1,12 +1,12 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore,toPay){
+purchase.controller('goodsCart',function($scope,$cookieStore,toPay){
     $scope.shopName = $cookieStore.get('shopInfo').merchantName;
     //  将购物车中【商品信息】绑定到rootscope中
     $scope.goodscartList = $cookieStore.get('goodscart_list') || [];
     //  是否显示【对话框】
-    $rootScope.DIALOG_SHOW = false;
+    $scope.dialog_show = false;
     //  总价
     $scope.totleMoney = 0;
     //  默认下面的【全选按钮】为【选中】状态
@@ -47,14 +47,14 @@ purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore,toPay){
     $scope.subtract = function(goodsInfo){
         if(goodsInfo.num == 1){
             //  弹出对话框
-            $rootScope.DIALOG_SHOW = true;
+            $scope.dialog_show = true;
             //  点击取消隐藏对话框
-            $rootScope.NOTREMOVE_GOODS = function(){
-                $rootScope.DIALOG_SHOW = false;
+            $scope.notremove_goods = function(){
+                $scope.dialog_show = false;
             }
             //  点击确认删除当前商品
-            $rootScope.REMOVE_GOODS = function(){
-                $rootScope.DIALOG_SHOW = false;
+            $scope.remove_goods = function(){
+                $scope.dialog_show = false;
                 //  remove
                 $scope.goodscartList.splice($.inArray(goodsInfo,$scope.goodscartList),1);
                 $cookieStore.put('goodscart_list',$scope.goodscartList );
