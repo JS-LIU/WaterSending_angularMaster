@@ -8,8 +8,8 @@
     function Order($resource,$q,$cookieStore){
         var createOrder = function(obj,url){
             var defer = $q.defer();
-            var order = $resource('http://114.251.53.22/huipaywater/' + url + '/:orderCtrl',{orderCtrl:'@ctrl'});
-            order.save({ctrl:'new'},obj,function(data){
+            var order = $resource('http://114.251.53.22/huipaywater/' + url + '/new');
+            order.save({},obj,function(data){
                 defer.resolve(data);
             });
             return defer.promise;

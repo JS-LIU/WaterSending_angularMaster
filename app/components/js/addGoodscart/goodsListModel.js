@@ -2,7 +2,7 @@
  * Created by LIU on 15/9/27.
  */
 purchase.controller('goodsListModel',goodsListModel);
-function goodsListModel($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay,refreshData,getSelfUrl,ramdomStart,getAccessInfo,Order){
+function goodsListModel($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,postclassify,toPay,refreshData,getSelfUrl,ramdomStart,Login,Order){
 
     //  获取当前URL
     var myUrl = getSelfUrl.myUrl;
@@ -41,7 +41,7 @@ function goodsListModel($rootScope,$scope,$cookieStore,goodsCartcookie,purchaseP
         }
     }
 
-    var isLogin = log.login();
+    var isLogin = Login.isLogIn();
 
     //  添加购物车
     $scope.addGoodscart = function(item){
@@ -93,14 +93,12 @@ function goodsListModel($rootScope,$scope,$cookieStore,goodsCartcookie,purchaseP
         var goodsCart_list = $cookieStore.get('goodscart_list') || [];
         toPay.pay(goodsCart_list);
     }
-
     //  商店信息
     var self_url = GetQueryString("shopId");
     if(self_url != undefined){
         var shopId = self_url;
         var data = {
-            accessInfo:getAccessInfo.accessInfo,
-            sign:'',
+            accessInfo:Login.getAccessInfo($cookieStore,false),
             shopId:shopId,
             x_dpi:640
         }
@@ -129,12 +127,28 @@ function goodsListModel($rootScope,$scope,$cookieStore,goodsCartcookie,purchaseP
     }
     //  点击对话框【好】按钮
     $scope.quickPay = function(){
-        var data = {
-            shopInfo:shopInfo.shopId,
 
+        var total_fee = document.getElementById('J_payMoney').value * 100;
+        if(isLogin){
+            var data = {
+                shopId:shopInfo.shopId,
+                total_fee:total_fee,
+                description:'',
+                comment:'',
+                addressId:'',
+                orderType:'6',
+                isCod:'0',
+                homeTime:'0:00~0:00',
+                accessInfo:Login.getAccessInfo($cookieStore,true),
+                sign:'sign'
+            }
+        }else{
+            window.location.href = "07-log.html";
         }
+
         Order.createOrder(data,'order').then(function(data){
-            console.log(data);
+            Order.saveCookies(data);
+            window.location.href = "09-payPage.html";
         })
     }
 };
@@ -146,7 +160,7 @@ function GetQueryString(name)
 }
 
 //  请求（筛选）【商品】post的数据
-purchase.service('postclassify',function($cookieStore,purchasePost,getAccessInfo){
+purchase.service('postclassify',function($cookieStore,purchasePost,Login){
     this.data = function(pageNo,obj){
         //  请求商品信息数据
         var self_url = GetQueryString("shopId");
@@ -160,7 +174,7 @@ purchase.service('postclassify',function($cookieStore,purchasePost,getAccessInfo
             pageSize: 6,
             pageNo: pageNo
         }
-        var accessInfo = getAccessInfo.accessInfo;
+        var accessInfo = Login.getAccessInfo($cookieStore,false);
         var postData = {
             requestPageInfo:requestPageInfo,
             accessInfo:accessInfo,

@@ -6,47 +6,52 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
     //  生成订单
     $scope.confirmOrder = function(){
         var shopId = $cookieStore.get('shopInfo').shopId;
-        var order_list = $cookieStore.get('order_goodslist');
         var orderItem = [];
 
-        for(var i = 0,len  = order_list.length; i < len;i++){
-            var item = {
-                productId:order_list[i].productId,
-                productType:1,
-                itemNum:order_list[i].num,
-                itemPrice:order_list[i].price,
-                itemInfo:''
-            };
-            orderItem.push(item);
-        }
-        var data = {
-            accessInfo:Login.getAccessInfo($cookieStore,true),
-            shopId:shopId,
-            addressId:$rootScope.DEFAULTADDRESS.addressId,
-            total_fee:$scope.orderTotleMoney,
-            orderItems:orderItem,
-            sign:'sign',
-            description:'',
-            comment:''
-        }
+        //for(var i = 0,len  = order_list.length; i < len;i++){
+        //    var item = {
+        //        productId:order_list[i].productId,
+        //        productType:1,
+        //        itemNum:order_list[i].num,
+        //        itemPrice:order_list[i].price,
+        //        itemInfo:'',
+        //
+        //    };
+        //    orderItem.push(item);
+        //}
+        //var data = {
+        //    accessInfo:Login.getAccessInfo($cookieStore,true),
+        //    shopId:shopId,
+        //    addressId:$rootScope.DEFAULTADDRESS.addressId,
+        //    total_fee:$scope.orderTotleMoney,
+        //    orderItems:orderItem,
+        //    sign:'sign',
+        //    description:'',
+        //    comment:'',
+        //    isCod:'',
+        //    homeTime:'',
+        //    orderType:'7',
+        //}
 
-        var path = 'order/new';
-        purchasePost.postData(data,path).success(function(data){
-            $cookieStore.put('orderId',data);
-            window.location.href = "09-payPage.html";
-        });
+        Order.createOrder(data,'order').then(function(data){
+            console.log(data);
+            //Order.saveCookies('orderId',data);
+            //window.location.href = "09-payPage.html";
+        })
     }
+
     var shopInfo = $cookieStore.get('shopInfo');
 
-    //  水票列表
+    //  购买列表
     Order.showOrderGoodsList($resource,$q,$cookieStore,Login).then(function(data){
         $scope.order_goodslist = data;
         //  总价
         $scope.orderTotleMoney = Order.orderTotle(data).getPracticalMoney;
         // 总数
         $scope.orderTotleNum = Order.orderTotle(data).getNum;
-
     });
+
+
     //  商店名字
     $scope.shopName = $cookieStore.get('shopInfo').merchantName;
 
@@ -55,8 +60,6 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
         initMinsArr = TimePayWay.setTimeArr(date.getMinutes(),59),
         endHoursArr = TimePayWay.setTimeArr(0,23),
         endMinsArr = TimePayWay.setTimeArr(0,59);
-
-
 
 
     //  选择配送时间

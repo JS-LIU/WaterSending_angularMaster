@@ -567,7 +567,9 @@ body{
     line-height:30px;
 }
 .dialog-line2{
-    line-height:20px;
+    outline:none;
+    text-align: right;
+    line-height:45px;
 }
 .dialog-bottom a{
     margin-left:-1px;
