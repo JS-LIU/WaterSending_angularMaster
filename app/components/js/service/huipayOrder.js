@@ -42,20 +42,37 @@
             var getWaterTicketes = GetWaterTicketesInfo($resource,$q,$cookieStore,Login).then(function(data){
                 var canUseWaterTicketesData = data.hascardTicket;
                 var goodsList = orderGoodsList($cookieStore);
-                for(var i = 0,waterTicketesLen = canUseWaterTicketesData.length; i < waterTicketesLen;i++){
-                    for(var j = 0, productLen = goodsList.length; j < productLen;j++ ){
-                        if(canUseWaterTicketesData[i].id == goodsList[j].cardTicketId){
-                            var waterTicketesNum = canUseWaterTicketesData[i].totalCount;
-                            var dif = waterTicketesNum - goodsList[j].num;
+                var orderItems = [];
+                for(var i = 0,productLen = goodsList.length ; i < productLen ;i++){
+                    console.log(goodsList[i]);
+                    var obj = {
+
+                        productId:goodsList[i].productId,
+                        productType:'1',
+                        itemNum:goodsList[i].num,
+                        itemPrice:goodsList[i].price,
+                        itemInfo:goodsList[i].title,
+                        big_image:goodsList[i].big_image
+                    }
+                    orderItems.push(obj);
+                    for(var j = 0, waterTicketesLen = canUseWaterTicketesData.length; j < waterTicketesLen;j++ ){
+                        if(goodsList[i].cardTicketId == canUseWaterTicketesData[j].id){
+                            var waterTicketesNum = canUseWaterTicketesData[j].totalCount;
+                            var dif = waterTicketesNum - goodsList[i].num;
                             if(dif > 0){
-                                goodsList[j].waterTicketesNum = goodsList[j].num;
+                                var amount = goodsList[i].num;
                             }else{
-                                goodsList[j].waterTicketesNum = waterTicketesNum;
+                                var amount = waterTicketesNum;
+                            }
+                            orderItems[i].serviceItem = {
+                                service_type:'19',
+                                amount:amount,
+                                service_id:canUseWaterTicketesData[j].id
                             }
                         }
                     }
                 }
-                return goodsList;
+                return orderItems;
             });
             return getWaterTicketes;
         }
@@ -65,7 +82,9 @@
             var totleMoney = 0,reduceMoney = 0,totleNum = 0;
             for(var i = 0,len = data.length; i < len;i++){
                 totleMoney += (data[i].num * data[i].price);
-                reduceMoney += (data[i].waterTicketesNum||0 * data[i].price);
+                if(data[i].serviceItem){
+                    reduceMoney += (data[i].serviceItem.amount * data[i].price);
+                }
                 totleNum += data[i].num
             }
             return {

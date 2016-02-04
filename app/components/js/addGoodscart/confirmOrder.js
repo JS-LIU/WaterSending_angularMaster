@@ -1,49 +1,41 @@
 /**
  * Created by 殿麒 on 2015/11/7.
  */
-purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$resource,$q,purchasePost,Login,Order,TimePayWay){
+purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$resource,$q,Login,Order,TimePayWay){
 
     //  生成订单
     $scope.confirmOrder = function(){
         var shopId = $cookieStore.get('shopInfo').shopId;
-        var orderItem = [];
 
-        //for(var i = 0,len  = order_list.length; i < len;i++){
-        //    var item = {
-        //        productId:order_list[i].productId,
-        //        productType:1,
-        //        itemNum:order_list[i].num,
-        //        itemPrice:order_list[i].price,
-        //        itemInfo:'',
-        //
-        //    };
-        //    orderItem.push(item);
-        //}
-        //var data = {
-        //    accessInfo:Login.getAccessInfo($cookieStore,true),
-        //    shopId:shopId,
-        //    addressId:$rootScope.DEFAULTADDRESS.addressId,
-        //    total_fee:$scope.orderTotleMoney,
-        //    orderItems:orderItem,
-        //    sign:'sign',
-        //    description:'',
-        //    comment:'',
-        //    isCod:'',
-        //    homeTime:'',
-        //    orderType:'7',
-        //}
+        var orderItems = $scope.order_goodslist;
+        var data = {
+            accessInfo:Login.getAccessInfo($cookieStore,true),
+            shopId:shopId,
+            addressId:$rootScope.DEFAULTADDRESS.addressId,
+            total_fee:$scope.orderTotleMoney,
+            sign:'sign',
+            description:'',
+            comment:'',
+            isCod:'',
+            homeTime:'',
+            orderType:'7',
+            orderItems:orderItems,
+        }
+        console.log(data);
 
-        Order.createOrder(data,'order').then(function(data){
-            console.log(data);
-            //Order.saveCookies('orderId',data);
-            //window.location.href = "09-payPage.html";
-        })
+
+        //Order.createOrder(data,'order').then(function(data){
+        //    console.log(data);
+        //    Order.saveCookies('orderId',data);
+        //    window.location.href = "09-payPage.html";
+        //})
     }
 
     var shopInfo = $cookieStore.get('shopInfo');
 
     //  购买列表
     Order.showOrderGoodsList($resource,$q,$cookieStore,Login).then(function(data){
+        console.log(data);
         $scope.order_goodslist = data;
         //  总价
         $scope.orderTotleMoney = Order.orderTotle(data).getPracticalMoney;
