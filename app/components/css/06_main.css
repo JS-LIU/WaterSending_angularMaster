@@ -251,7 +251,7 @@
     background: #ffffff;
 }
 html,body{
-    position:static!important;
+    position:relative;
 }
 .whyCantSlideDown{
     height:50px;

@@ -17,7 +17,7 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
             description:'',
             comment:'',
             isCod:'',
-            homeTime:'',
+            homeTime:$scope.initH.opt+':'+$scope.initM.opt+'~'+$scope.endH.opt+':'+$scope.endM.opt,
             orderType:'7',
             orderItems:orderItems,
         }
@@ -56,11 +56,13 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
 
     //  选择配送时间
     $scope.initHours = TimePayWay.option(initHoursArr);
-    //  选择配送分
+    $scope.initH = $scope.initHours[0];
     $scope.initMins = TimePayWay.option(initMinsArr);
+    $scope.initM = $scope.initMins[0];
     $scope.endHours = TimePayWay.option(endHoursArr);
-    $scope.endMins = TimePayWay.option(endHoursArr);
+    $scope.endH = $scope.endHours[0];
     $scope.endMins = TimePayWay.option(endMinsArr);
+    $scope.endM = $scope.endMins[0];
 
     var paywayArr = ['在线付款','货到付款'];
     $scope.payWays = TimePayWay.option(paywayArr);

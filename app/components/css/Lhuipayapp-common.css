@@ -518,6 +518,7 @@ body{
 .slide-mfooter{
     position:fixed;
     width: 100%;
+    max-width:640px;
     bottom: 0px;
     background: #f4f5f7;
 }
