@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/app/06-06-waterTicktes.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/css/buyWaterTicketes.css" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/css/myWater.css" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/buyWaterTicketes/buyWaterTicketesCtrl.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/buyWaterTicketes/wtservice.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/config/myWaterTicketesConfig.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/controller/waterTickeetesInfoCtrl.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/controller/waterTicketesDetailsCtrl.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/homePage/homePageService/SaveCookie.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/homePage/resourse/postWaterTicketes.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/homePage/waterTicktesCtrl.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/service/Address.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/service/huipayOrder.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/service/huipayUtility/GetQueryString.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/components/js/service/resource/userWaterTicketes.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/06-06-waterTicktes.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/css/buyWaterTicketes.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/css/myWater.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/buyWaterTicketes/buyWaterTicketesCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/buyWaterTicketes/wtservice.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/config/myWaterTicketesConfig.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/controller/waterTickeetesInfoCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/controller/waterTicketesDetailsCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/homePage/homePageService/SaveCookie.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/homePage/resourse/postWaterTicketes.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/homePage/waterTicktesCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/service/Address.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/service/huipayOrder.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/service/huipayUtility/GetQueryString.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/service/resource/userWaterTicketes.js" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
