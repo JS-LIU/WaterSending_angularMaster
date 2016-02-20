@@ -82,10 +82,12 @@
             var totleMoney = 0,reduceMoney = 0,totleNum = 0;
             for(var i = 0,len = data.length; i < len;i++){
                 totleMoney += (data[i].itemNum * data[i].itemPrice);
+
+                //  是否有水票
                 if(data[i].serviceItem){
-                    reduceMoney += (data[i].serviceItem.amount * data[i].price);
+                    reduceMoney += (data[i].serviceItem.amount * data[i].itemPrice);
                 }
-                totleNum += data[i].itemNum
+                totleNum += data[i].itemNum;
             }
             return {
                 getPracticalMoney:totleMoney - reduceMoney,

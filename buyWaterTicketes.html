@@ -31,12 +31,12 @@
         <p class="cfff f16 pt5">有效期至{{ticketesInfo.validTime}}</p>
     </div>
     <ul class="clearfix ml15 mt10">
-        <li ng-repeat="strategyModel in ticketesInfo.preferentialStrategyModels" ng-click="chooseWaterTicketes(strategyModel)" class="privilege-option fl tc mt10">
+        <li ng-repeat="strategyModel in ticketesInfo.preferentialStrategyModels" ng-click="chooseWaterTicketes(strategyModel,ticketesInfo.preferentialStrategyModels)" ng-class="{'selectStrate':strategyModel.isSelect}" class="privilege-option fl tc mt10">
             满{{strategyModel.requireCount}}送{{strategyModel.giveCount}}
         </li>
     </ul>
     <div class="mt30 tc fb" style="font-size: 28px;">￥{{((totalMoney || 0) / 100).toFixed(2)}}元</div>
-    <a ng-click="createOrder()" class="mt10 tc">购买水票</a>
+    <a ng-click="createOrder()" class="tc common-btn-01 f14 cfff blue" style="margin-top: 10px;">购买水票</a>
     <script src="components/js/service/huipayLogIn.js"></script>
     <script src="components/js/service/huipayOrder.js"></script>
     <script src="components/js/buyWaterTicketes/buyWaterTicketesCtrl.js"></script>

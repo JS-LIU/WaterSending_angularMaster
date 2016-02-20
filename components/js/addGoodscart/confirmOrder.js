@@ -6,7 +6,6 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
     //  生成订单
     $scope.confirmOrder = function(){
         var shopId = $cookieStore.get('shopInfo').shopId;
-
         var orderItems = $scope.order_goodslist;
         var data = {
             accessInfo:Login.getAccessInfo($cookieStore,true),
@@ -21,18 +20,16 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
             orderType:'7',
             orderItems:orderItems,
         }
-
+        console.log(data);
         if($scope.initPayWay.id == 0){
 
             Order.createOrder(data,'order').then(function(data){
-
                 Order.saveCookies(data);
-                //window.location.href = "09-payPage.html";
+                window.location.href = "09-payPage.html";
             })
         }else{
             Order.createOrder(data,'order').then(function(data){
                 Order.saveCookies(data);
-
                 window.location.href = "10-cashOnDelivery.html";
             })
         }
@@ -42,7 +39,6 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,$reso
 
     //  购买列表
     Order.showOrderGoodsList($resource,$q,$cookieStore,Login).then(function(data){
-        console.log(data);
         $scope.order_goodslist = data;
         //  总价
         $scope.orderTotleMoney = Order.orderTotle(data).getPracticalMoney;

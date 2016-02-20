@@ -8,11 +8,7 @@
         <link rel="stylesheet" type="text/css" href="components/css/base.css"/>
         <link rel="stylesheet" type="text/css" href="components/css/Lhuipayapp-common.css"/>
         <link rel="stylesheet" type="text/css" href="components/css/09_payPage.css"/>
-
         <script src="components/js/plugins/angular.min.js"></script>
-        <script src="components/js/plugins/angular-route.min.js"></script>
-        <script src="components/js/plugins/jquery-1.11.3.min.js"></script>
-        <script src="components/js/plugins/angular-touch.min.js"></script>
         <script src="components/js/plugins/angular-cookies.min.js"></script>
         <script src="components/js/plugins/md5.js"></script>
     </head>
@@ -38,7 +34,8 @@
                 <div class="po checkPay"></div>
             </li>
         </ul>
-        <div class="common-btn-01 mt10 tc cfff blue f14" style="margin-top:10px;" ng-click="toPay()">立即支付</div>
+        <div class="common-btn-01 tc cfff blue f14" style="margin-top:10px;" ng-click="toPay()">立即支付</div>
+        <script src="components/js/service/huipayLogIn.js"></script>
         <script src="components/js/pay/weChatPay.js"></script>
     </body>
 </html>
