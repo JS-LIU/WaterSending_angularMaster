@@ -2,7 +2,7 @@
  * Created by 殿麒 on 2015/8/23.
  */
 
-var main = angular.module('myApp', ['ngRoute','ngTouch','ngCookies','ngResource']);
+var main = angular.module('myApp', ['ngRoute','ngTouch','ngCookies','ngResource','huipayLogIn']);
 
 main.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/',{

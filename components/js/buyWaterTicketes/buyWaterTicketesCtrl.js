@@ -29,7 +29,6 @@
                 items[i].isSelect = false;
             }
             item.isSelect = true;
-
         }
 
         //  确认支付

@@ -1,7 +1,23 @@
 /**
  * Created by 殿麒 on 2015/9/29.
  */
-main.factory("get_location",function($rootScope){
+main.factory("get_location",function($rootScope,$cookies,$http,Login){
+
+    function getCitiesId(func){
+        var data = {
+            sign:'sign',
+            accessInfo:Login.getAccessInfo($cookies,false)
+        }
+        $http({
+            method:'POST',
+            url: 'cities',
+            data: data,
+            headers:{'Content-Type':'application/json'},
+        }).success(function(data){
+            func(data);
+        });
+    }
+
     var geolocation,lnglatXY;
     function paintMap(){
         /*
@@ -62,14 +78,26 @@ main.factory("get_location",function($rootScope){
     function geocoder_CallBack(data,lnglatXY) {
         //返回地址描述
         $rootScope.ADDRESS = data.regeocode.formattedAddress;
-        $rootScope.LNGLAT = {
-            position_x:lnglatXY[0] + '',
-            position_y:lnglatXY[1] + '',
-            addressInfo:$rootScope.ADDRESS,
-            districtId:data.regeocode.addressComponent.citycode
-        };
-        $rootScope.$apply();
+        var province = data.regeocode.addressComponent.province.slice(0,2);
+        var districtId;
+        getCitiesId(function(cities){
+            for(var i = 0;i < cities.cities.length;i++ ){
+                if(cities.cities[i].label.slice(0,2) == province){
+                    districtId =cities.cities[i].id;
+                    break;
+                }
+            }
+
+            $rootScope.LNGLAT = {
+                position_x:lnglatXY[0] + '',
+                position_y:lnglatXY[1] + '',
+                addressInfo:$rootScope.ADDRESS,
+                districtId:districtId
+            };
+        });
     }
+
+
     /*
      *  代码来源：http://lbs.amap.com/api/javascript-api/example/e/0506-2/
      *  作用：添加商店标记
