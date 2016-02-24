@@ -1,7 +1,7 @@
 ﻿/**
  * Created by 殿麒 on 2015/10/27.
  */
-main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccessInfo,log,getSelfUrl){
+main.controller('orderListModel',function($scope,$cookieStore,mainPost,Login,getSelfUrl){
 
     var myUrl = getSelfUrl.myUrl;
     $cookieStore.put('myUrl',myUrl);
@@ -21,8 +21,8 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
         clientOrderState:3
     }];
 
-    if(log.login()){
-        var accessInfo = getAccessInfo.loginAccessInfo();
+    if(Login.isLogIn()){
+        var accessInfo = Login.getAccessInfo($cookieStore,true);
         var requestPageInfo = {
             pageSize:5,
             pageNo:1
@@ -52,13 +52,7 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
             $scope.orderList = data["orderList"];
         });
     }else{
-        var host = window.location.host;
-        var contextPath = document.location.pathname;
-        var index = contextPath.substr(1).indexOf("/");
-        contextPath = contextPath.substr(0, index + 1);
-
-        var url = "http://" + host + contextPath + "/";
-        window.location.href = url+"app/07-log.html#/";
+        window.location.href = "07-log.html#/";
     }
 
     var clientOrderState = [1,2,3];
@@ -74,7 +68,7 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
         var data = {
             orderId:orderId,
             sign:'sign',
-            accessInfo:getAccessInfo.loginAccessInfo()
+            accessInfo:Login.getAccessInfo($cookieStore,true)
         }
         mainPost.postData(data,path).success(function(){
             $scope.orderList.splice($.inArray(item,$scope.orderList),1);
@@ -82,14 +76,8 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
             console.log(errorData);
         })
     }
-    var host = window.location.host;
-    var contextPath = document.location.pathname;
-    var index = contextPath.substr(1).indexOf("/");
-    contextPath = contextPath.substr(0, index + 1);
-
-    var url = "http://" + host + contextPath;
     var actionsArr = [{
-        url: url + "/app/09-payPage.html",
+        url:"09-payPage.html",
         action: topay
     },{
         action:confirmOrder

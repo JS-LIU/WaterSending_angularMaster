@@ -1,6 +1,11 @@
 <div class="L-header w pr blue slide-header" ng-controller="cutView">
     <p class="tc L-header-title cfff f16">海豹送水</p>
     <div class="po my-cutMap" ng-click="toggleView()"></div>
+    <div class="w" ng-show="downLoad" style="position:fixed;top:0px;height:60px;opacity: 0.8;z-index:1;background: #000;max-width: 640px;">
+        <div class="po f14 cfff" style="left: 15px;top: 10px;">立即下载海豹送水APP</div>
+        <div class="po f14 cfff" style="left: 70px;top:35px;">更快更省更全</div>
+        <a class="po tc cfff red" style="top: 10px;right: 15px;width: 90px;height: 40px;line-height: 40px;" href="https://appsto.re/cn/iuPd9.i">立即下载</a>
+    </div>
 </div>
 <div class="L-slide-center" ng-controller="mapView">
     <!--轮播页面-->

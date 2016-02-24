@@ -75,13 +75,13 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
     }
 }])
 
-main.controller("carousel",function($scope,mainPost,getAccessInfo){
+main.controller("carousel",function($scope,$cookieStore,mainPost,Login){
     //  第一张的和最后一张可以用程序推入 待优化
     var screenW = document.body.clientWidth;
     var imgW = screenW + 'px';
     var imgH = screenW * 17 / 18 + 'px';
     var path = 'act/actList';
-    var accessInfo = getAccessInfo.accessInfo;
+    var accessInfo = Login.getAccessInfo($cookieStore,false);
     var x_dpi = screenW;
     var cityId = '010';
     var data = {

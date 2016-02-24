@@ -18,9 +18,10 @@ pay.controller('orderModel',function($scope,$cookieStore,payPost,queryOrderData)
     contextPath = contextPath.substr(0, index + 1);
 
     var url = "http://" + host + contextPath;
+
     var code = GetQueryString('code');
     if(!code){
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdab7bbbbcba36617&redirect_uri="+url+"/app/09-payPage.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdab7bbbbcba36617&redirect_uri="+url+"/09-payPage.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
     }else{
         $scope.code = GetQueryString('code');
         $scope.toPay = function(){
@@ -43,7 +44,7 @@ pay.controller('orderModel',function($scope,$cookieStore,payPost,queryOrderData)
 
                                 payPost.postData(queryOrderData.getData(),path).success(function(data){
                                     var data = JSON.stringify(data);
-                                    window.location.href= "06-main.html#/order";
+                                    window.location.href= "06-main.html";
                                 }).error(function(errData){
                                     var errData = JSON.stringify(errData);
                                 });

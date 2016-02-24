@@ -1,7 +1,7 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$location,purchasePost,log,getAccessInfo){
+purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$location,purchasePost,Login){
     var path = "#/confirmOrder";
     var url = "07-log.html";
     var old_goodscart_list = $cookieStore.get('goodscart_list');
@@ -70,7 +70,7 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
     }
     //  去付款
     function topay(goodscartList){
-        if(log.login()){
+        if(Login.isLogIn()){
             //  保存cookie 这里必须保存 付款后从这里可以正确读数据
             cookieCheckedgoods(goodscartList);
             window.location.href = path;
@@ -122,7 +122,7 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
             comment:'',
             addressId:$rootScope.SELECTADDRESS.addressId,
             orderItems:orderItem,
-            accessInfo:getAccessInfo.loginAccessInfo(),
+            accessInfo:Login.getAccessInfo($cookieStore,true),
             sign:'sign'
         }
         var path = 'order/new';

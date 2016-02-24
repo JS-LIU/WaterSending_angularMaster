@@ -7,7 +7,7 @@ function GetQueryString(name)
     var r = window.location.search.substr(1).match(reg);
     if(r!=null)return  unescape(r[2]); return null;
 }
-purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieStore,goodsCartcookie,purchasePost,getAccessInfo,log){
+purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieStore,goodsCartcookie,purchasePost,Login){
     var self_url = GetQueryString("productId");
 
     if(self_url!= undefined){
@@ -18,7 +18,7 @@ purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieS
     var data = {
         productId:productId,
         sign:'sign',
-        accessInfo:getAccessInfo.accessInfo
+        accessInfo:Login.getAccessInfo($cookieStore,false)
     }
     var path = 'product/detail';
     purchasePost.postData(data,path).success(function(data){
@@ -48,7 +48,7 @@ purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieS
     });
     //  添加购物车
     $scope.addGoodscart = function(item){
-        if(log.isLog()){
+        if(Login.isLogIn()){
             var goodscart_list = $cookieStore.get('goodscart_list');
             $scope.goodscart_num += 1;
             $scope.goodscart_money += item.price;

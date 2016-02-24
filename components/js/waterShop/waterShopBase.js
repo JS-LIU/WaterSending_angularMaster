@@ -1,5 +1,5 @@
 /**
- * Created by µî÷è on 2015/10/19.
+ * Created by LIU on 2015/10/19.
  */
 waterShop.factory('shopDetailsPost',function($http){
     var host = window.location.host;
@@ -40,7 +40,7 @@ waterShop.service('getAccessInfo',function($cookieStore){
         return accessInfo;
     }
 });
-//  ÅÐ¶ÏÊÇ·ñµÇÂ¼
+
 waterShop.factory('log',function($cookieStore){
     var isLogin = function(){
         if($cookieStore.get('logMsg') != undefined){

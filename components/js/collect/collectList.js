@@ -1,9 +1,9 @@
 /**
  * Created by liu on 2015/11/13.
  */
-var collect = angular.module('collect', ['ngRoute','ngCookies']);
+var collect = angular.module('collect', ['ngRoute','ngCookies','huipayLogIn']);
 
-collect.controller('collection',function($scope,$cookieStore,collectPost,getAccessInfo,refreshData){
+collect.controller('collection',function($scope,$cookieStore,collectPost,Login,refreshData){
     function postShopList(){
         var lnglatXY = $cookieStore.get('lnglatXY');
         var requestPageInfo={
@@ -12,7 +12,7 @@ collect.controller('collection',function($scope,$cookieStore,collectPost,getAcce
         }
         var merchantData = {
             positionInfo:lnglatXY,
-            accessInfo:getAccessInfo.loginAccessInfo(),
+            accessInfo:Login.getAccessInfo($cookieStore,true),
             sign: 'sign',
             userId:0,
             xAxis:lnglatXY.position_x,
@@ -69,40 +69,6 @@ collect.factory('collectPost',function($http){
         postData: function(data,path){
             return postData(data,path,'postData');
         }
-    }
-});
-collect.service('getAccessInfo',function($cookieStore){
-    //var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
-    //var appKey = "cf385992c3fc46cbaebae2c1dae08653";
-    //this.accessInfo = {
-    //    app_key:appKey,
-    //    signature:app_secret
-    //}
-    var app_secret = hex_md5("165416");
-    var appKey = "e330ce4aa98546b3b99329d20e17450b";
-    this.accessInfo = {
-        app_key:appKey,
-        signature:app_secret
-    }
-    //this.loginAccessInfo = function(){
-    //    var access_token = $cookieStore.get('access_token').access_token;
-    //    var access_token_secret = $cookieStore.get('access_token').access_token_secret;
-    //    var accessInfo = {
-    //        app_key:appKey,
-    //        signature:hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5" + '&' + access_token_secret),
-    //        access_token:access_token
-    //    }
-    //    return accessInfo;
-    //}
-    this.loginAccessInfo = function(){
-        var access_token = $cookieStore.get('access_token').access_token;
-        var access_token_secret = $cookieStore.get('access_token').access_token_secret;
-        var accessInfo = {
-            app_key:appKey,
-            signature:hex_md5("165416" + '&' + access_token_secret),
-            access_token:access_token
-        }
-        return accessInfo;
     }
 });
 collect.service('refreshData',function(collectPost){

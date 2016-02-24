@@ -7,9 +7,13 @@ main.controller("cutView",function($scope,$rootScope){
     $scope.toggleView = function(){
         $rootScope.SHOWMAP = !$rootScope.SHOWMAP;
     }
+    $scope.downLoad = true;
+    setTimeout(function(){
+        $scope.downLoad = false;
+    },1000);
 });
 
-main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_location,mainPost,getAccessInfo){
+main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_location,mainPost,Login){
     $cookieStore.remove('lnglatXY');
     $cookieStore.remove('shopInfo');
 
@@ -57,7 +61,7 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
         }
         //  发送data
         var data = {
-            accessInfo:getAccessInfo.accessInfo,
+            accessInfo:Login.getAccessInfo($cookieStore,false),
             positionInfo:$rootScope.LNGLAT,
             requestPageInfo: requestPageInfo,
             x_dpi:'640',

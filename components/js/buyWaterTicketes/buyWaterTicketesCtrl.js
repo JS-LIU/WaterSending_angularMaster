@@ -33,14 +33,14 @@
 
         //  确认支付
         $scope.createOrder = function(){
-            if(Login.isLogIn){
-
+            if(Login.isLogIn()){
+                console.log($scope.totalMoney);
                 var data = {
                     accessInfo:Login.getAccessInfo($cookieStore,true),
                     preferentialStrategyId:preferentialStrategyId,
                     cardTicketId:WaterTicketes.info.id,
                     shopId:WaterTicketes.info.shopId,
-                    total_fee:$scope.totalMoney * 100,
+                    total_fee:$scope.totalMoney,
                     sign:'sign',
                     description:'',
                     comment:'',

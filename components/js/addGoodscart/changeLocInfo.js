@@ -138,7 +138,7 @@ purchase.controller('changeLocInfo',function($rootScope,$scope,$cookieStore,get_
     }
 });
 
-purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,purchasePost,fixedAddress){
+purchase.controller('new_receiveInfo',function($rootScope,$scope,$cookieStore,Login,purchasePost,fixedAddress){
     //  地址信息
     var MYADDRESSINFO = $rootScope.MYADDRESSINFO;
     function setaddress(){
@@ -195,7 +195,7 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
         var dataObj = fixedAddress.saveData(addressItem,addressId);
         var data = {
             addressItem:dataObj.data,
-            accessInfo:getAccessInfo.loginAccessInfo(),
+            accessInfo:Login.getAccessInfo($cookieStore,true),
             sign:'sign'
         }
         var path = dataObj.fixedUrl;

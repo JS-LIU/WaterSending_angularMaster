@@ -1,10 +1,10 @@
 /**
- * Created by µочи on 2015/11/12.
+ * Created by пїЅпїЅпїЅпїЅ on 2015/11/12.
  */
-main.controller('myCtrl',function($scope,$cookieStore,log,getSelfUrl){
+main.controller('myCtrl',function($scope,$cookieStore,Login,getSelfUrl){
     var myUrl = getSelfUrl.myUrl;
     $cookieStore.put('myUrl',myUrl);
-    if(log.login()){
+    if(Login.isLogIn()){
         $scope.isLog = false;
     }else{
         $scope.isLog = true;

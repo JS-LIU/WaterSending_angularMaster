@@ -138,11 +138,11 @@
 }
 .my-cutMap{
     top:0px;
-    right:15px;
-    width:35px;
+    right: 0px;
+    width: 45px;
     height: 44px;
     line-height: 44px;
-    background:url("../images/address-04.png") no-repeat right center;
+    background: url("../images/address-04.png") no-repeat center center;
     -webkit-background-size: 15px;
     background-size: 15px;
 }

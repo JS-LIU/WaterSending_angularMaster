@@ -8,7 +8,6 @@
             var saveCookies = function(item){
                 $cookieStore.put('ticketesInfo',item);
             }
-
             return {
                 saveCookies: saveCookies
             }

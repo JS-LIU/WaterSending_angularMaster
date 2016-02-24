@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="55377cbc-a42f-44f8-97b9-7ed6387020ae" name="TESThuipayWater (project level)" url="http://114.251.53.22">
-        <fileTransfer host="114.251.53.22" port="55002" rootFolder="/home/huipay/" accessType="SFTP" password="dfc1dffedfe0dfeadfe1dfefdfc7dfc5dfcddf80dfe7df9ddf9ddf8cdf9ddfd8" username="huipay">
+      <webServer id="f39de27f-672c-4b16-a73b-91463af20b9d" name="MASTERhuipayWater" url="http://www.huipay.com">
+        <fileTransfer host="123.57.8.133" port="22" rootFolder="/home/huipay" accessType="SFTP" password="dfefdf87dfd0dffbdfe4df85dffadfd7dfe9dfefdf9adffddf8ddfffdfe0dfc7dffddf96df9bdfeadf97dfe1df86dff2df92dff9dfe4dfcadf80dfcedf8cdf9a" username="huipay">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

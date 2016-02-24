@@ -49,7 +49,7 @@ main.factory('searchLocation',function($rootScope){
 });
 
 
-main.controller('getLocation',function($rootScope,$scope,searchLocation,get_location,mainPost,getAccessInfo){
+main.controller('getLocation',function($rootScope,$scope,$cookieStore,searchLocation,Login,get_location,mainPost){
 
     $rootScope.GETVALUE = function(e){
         var keywords = $(e.target).val();
@@ -80,7 +80,7 @@ main.controller('getLocation',function($rootScope,$scope,searchLocation,get_loca
                 districtId:citycode
             }
             var data = {
-                accessInfo:getAccessInfo.accessInfo,
+                accessInfo:Login.getAccessInfo($cookieStore,false),
                 positionInfo:$rootScope.LNGLAT,
                 requestPageInfo: requestPageInfo,
                 x_dpi:'640',

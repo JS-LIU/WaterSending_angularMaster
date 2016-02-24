@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/9/28.
  */
-main.controller('showListModel',function($scope,$rootScope,refreshData,mainPost,getAccessInfo){
+main.controller('showListModel',function($scope,$rootScope,$cookieStore,refreshData,mainPost,Login){
     $rootScope.NAVBOT = false;
     $scope.getShopInfo = function(shopList){
         $rootScope.NEARLIST_SHOP = shopList;
@@ -16,7 +16,7 @@ main.controller('showListModel',function($scope,$rootScope,refreshData,mainPost,
             pageNo:pageNo
         }
         var dataObj = {
-            accessInfo:getAccessInfo.accessInfo,
+            accessInfo:Login.getAccessInfo($cookieStore,false),
             positionInfo:$rootScope.LNGLAT,
             requestPageInfo: requestPageInfo,
             x_dpi:'640',

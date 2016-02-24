@@ -16,5 +16,5 @@ purchase.controller('headerModel',function($rootScope,$scope,getSelfUrl){
     contextPath = contextPath.substr(0, index + 1);
 
     var url = "http://" + host + contextPath;
-    $scope.lastUrl = lastUrl || url + '/app/06-main.html';
+    $scope.lastUrl = lastUrl || url + '06-main.html';
 })

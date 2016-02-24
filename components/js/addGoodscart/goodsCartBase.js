@@ -128,12 +128,12 @@ purchase.service('getAccessInfo',function(log,$cookieStore){
 });
 
 
-purchase.service('toPay',function($cookieStore,log){
+purchase.service('toPay',function($cookieStore,Login){
     var path = "#/confirmOrder";
     var url = "07-log.html";
     //  去付款
     this.pay = function(goodscartList){
-        if(log.login()){
+        if(Login.isLogIn()){
             //  保存cookie 这里必须保存 付款后从这里可以正确读数据
             cookieCheckedgoods(goodscartList);
             window.location.href = path;
