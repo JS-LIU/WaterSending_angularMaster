@@ -1,0 +1,8 @@
+<ul class="clearfix slide-mfooter">
+    <li class="fl tc"  ng-repeat="tag in tags" ng-style="tag.tagsStyle">
+        <a ng-href="{{tag.url}}">
+            <img src={{tag.pic}} alt="">
+            {{tag.title}}
+        </a>
+    </li>
+</ul>

@@ -23,29 +23,30 @@
     line-height: 70px;
 }
 .mainf-wd-c{
-    background: url("../images/bottom-icon-3.png") no-repeat center 8px;
+    background: url("../images/bottom-icon-4.png") no-repeat center 8px;
     -webkit-background-size: 17px;
     background-size: 17px;
     line-height: 70px;
 }
 .mainf-wd-n{
-    background: url("../images/bottom-icon-3-n.png") no-repeat center 8px;
+    background: url("../images/bottom-icon-4-n.png") no-repeat center 8px;
     -webkit-background-size: 17px;
     background-size: 17px;
     line-height: 70px;
 }
 .mainf-sp-c{
-    background: url("../images/bottom-icon-4.png") no-repeat center 8px;
+    background: url("../images/bottom-icon-3.png") no-repeat center 8px;
     -webkit-background-size: 13px;
     background-size: 13px;
     line-height: 70px;
 }
 .mainf-sp-n{
-    background: url("../images/bottom-icon-4-n.png") no-repeat center 8px;
+    background: url("../images/bottom-icon-3-n.png") no-repeat center 8px;
     -webkit-background-size: 13px;
     background-size: 13px;
     line-height: 70px;
 }
+
 
 .my-myMoney{
     height:100px;
@@ -281,4 +282,15 @@ html,body{
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+}
+
+
+.slide-mfooter li{
+    height:49px;
+}
+.slide-mfooter img{
+    display:block;
+    margin:0px auto;
+    height:20px;
+    padding-top:8px;
 }
