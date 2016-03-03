@@ -297,22 +297,22 @@ html,body{
 
 
 
-.carousel-img{
+.carousel-img {
     width:100%;
+    margin-left:0%;
 }
-.swap-animation .ng-enter,
-.swap-animation .ng-leave {
-    transition:2s linear all;
+.swap-animation.ng-enter, .swap-animation.ng-leave {
+    transition:0.5s linear all;
 }
-.swap-animation .ng-enter {
+.swap-animation.ng-enter {
     margin-left:100%;
 }
-.swap-animation .ng-enter-active {
+.swap-animation.ng-enter-active {
     margin-left:0%;
 }
-.swap-animation .ng-leave {
+.swap-animation.ng-leave {
     margin-left:0%;
 }
-.swap-animation .ng-leave-active {
+.swap-animation.ng-leave-active {
     margin-left:-100%;
 }

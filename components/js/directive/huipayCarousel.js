@@ -16,7 +16,8 @@
                 //var screenW = document.body.clientWidth;
                 GetMainCarouselImgs.then(function(data){
 
-                    var addsImgs = data.activitys,    //    活动图片
+                    var addsImgs = [{image:'components/images/wb.png',title:'fuckyou'}],
+                        //addsImgs = data.activitys,    //    活动图片
                         //  默认图片
                         definedImg = {
                             image:'components/images/xuanchuan.png',
@@ -33,7 +34,8 @@
                     }, 3000);
                     scope.adsImgs = addsImgs;
                     scope.carouselStyle = {
-                        height:document.body.clientWidth * 17 / 18 + 'px'
+                        height:document.body.clientWidth * 17 / 18 + 'px',
+                        overflow:'hidden'
                     }
                 });
             }
