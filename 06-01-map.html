@@ -4,11 +4,8 @@
 </div>
 <div class="L-slide-center">
     <!--轮播页面-->
-    <!--<div class="container">-->
-        <!--<div ng-animate-swap="number" class="cell swap-animation">-->
-            <!--{{ number }}-->
-        <!--</div>-->
-    <!--</div>-->
-    <huipay-carousel></huipay-carousel>
+    <huipay-carousel ng-show="showCarousel"></huipay-carousel>
+    <!--地图页面-->
+    <div id="container" ng-show="showMap"></div>
 </div>
 <huipay-main-footer></huipay-main-footer>

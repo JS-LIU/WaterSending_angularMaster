@@ -31,7 +31,7 @@
                         if(scope.num == addsImgs.length){
                             scope.num = 0;
                         }
-                    }, 3000);
+                    }, 7000);
                     scope.adsImgs = addsImgs;
                     scope.carouselStyle = {
                         height:document.body.clientWidth * 17 / 18 + 'px',

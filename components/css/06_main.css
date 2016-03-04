@@ -298,21 +298,20 @@ html,body{
 
 
 .carousel-img {
-    width:100%;
-    margin-left:0%;
+    left:0%;
 }
 .swap-animation.ng-enter, .swap-animation.ng-leave {
-    transition:0.5s linear all;
+    transition:0.3s linear all;
 }
 .swap-animation.ng-enter {
-    margin-left:100%;
+    left:100%;
 }
 .swap-animation.ng-enter-active {
-    margin-left:0%;
+    left:0%;
 }
 .swap-animation.ng-leave {
-    margin-left:0%;
+    left:0%;
 }
 .swap-animation.ng-leave-active {
-    margin-left:-100%;
+    left:-100%;
 }
