@@ -4,7 +4,16 @@
 
 
 (function(){
-    angular.module('myApp', ['ngRoute','ngTouch','ngCookies','ngResource','huipayLogIn','huipayUI'])
+    angular.module('myApp',
+        [
+            'ngRoute',
+            'ngTouch',
+            'ngCookies',
+            'ngResource',
+            'huipayLogIn',
+            'huipayUI',
+            'huipayMap_Autonavi'
+        ])
         .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/',{
             templateUrl:'06-01-map.html',

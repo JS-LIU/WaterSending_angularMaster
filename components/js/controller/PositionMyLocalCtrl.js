@@ -5,9 +5,12 @@
     //  首页【定位】
     angular.module('myApp')
         .controller('PositionMyLocalCtrl',PositionMyLocalCtrl);
-    function PositionMyLocalCtrl($scope){
+    function PositionMyLocalCtrl($scope,AutonaviMap){
         $scope.showMap = true;
         $scope.showCarousel = !$scope.showMap;
 
+        //  地图
+        AutonaviMap.map;
+        AutonaviMap.browserLocation();
     }
 }());
