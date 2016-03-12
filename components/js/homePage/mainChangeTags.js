@@ -12,7 +12,7 @@
             'ngResource',
             'huipayLogIn',
             'huipayUI',
-            'huipayMap_Autonavi'
+            'huipayMap'
         ])
         .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/',{
