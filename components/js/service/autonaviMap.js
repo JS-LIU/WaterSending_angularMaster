@@ -98,4 +98,26 @@
 
         map.clearMap();
     }
+
+    /*
+    *   逆向地理编码（坐标-地址）
+    *   代码来源：http://lbs.amap.com/api/javascript-api/example/geocoder/regeocoding/
+    * */
+    AutonaviMap.prototype.regeocoder = function($q){
+        var geocoder = new AMap.Geocoder({
+            radius: 1000,
+            extensions: "all"
+        });
+        return function(lnglatXY){
+            var defer = $q.defer();
+            geocoder.getAddress(lnglatXY, function(status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+                    var locationName = result.regeocode.formattedAddress; //返回地址描述
+                    defer.resolve(locationName);
+                }
+            });
+            return defer.promise;
+        }
+    }
+
 }());

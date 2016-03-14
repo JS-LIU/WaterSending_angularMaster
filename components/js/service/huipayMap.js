@@ -5,11 +5,13 @@
     angular.module('huipayMap',[])
         .service('Map',Map);
 
+    //  地图适配器
     function Map(AutonaviMap,$q){
         var map = arguments[0];
-        this.show = map.style();
-        this.browserLocation = map.browserLocation($q);
-
-        this.moveendLocation = map.mapmove();
+        var self = this;
+        self.show = map.style();
+        self.browserLocation = map.browserLocation($q);
+        self.moveendLocation = map.mapmove();
+        self.getLocationName = map.regeocoder($q);
     }
 }());
