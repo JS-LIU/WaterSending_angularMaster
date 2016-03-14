@@ -3,13 +3,13 @@
  */
 (function(){
     angular.module('huipayMap',[])
-        .service('HuipayMap',HuipayMap);
+        .service('Map',Map);
 
-    function HuipayMap(map){
-        if(map instanceof Function){
-            this.map = new map();
-            return this.map;
-        }
+    function Map(AutonaviMap,$q){
+        var map = arguments[0];
+        this.show = map.style();
+        this.browserLocation = map.browserLocation($q);
+
+        this.moveendLocation = map.mapmove();
     }
-
 }());

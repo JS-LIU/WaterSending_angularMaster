@@ -10,9 +10,10 @@
             'ngTouch',
             'ngCookies',
             'ngResource',
-            'huipayLogIn',
+            'ngAnimate',
             'huipayUI',
-            'huipayMap'
+            'huipayMap',
+            'huipayLogIn'
         ])
         .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/',{

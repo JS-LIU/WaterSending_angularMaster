@@ -63,15 +63,19 @@
      *   地图中心经纬度           map.getCenter()
      * */
 
-    AutonaviMap.prototype.getCurrentLocation = function(func){
+    AutonaviMap.prototype.mapmove = function(){
         var map = this.map;
 
-        map.on('moveend',function(){
-            //  解析定位结果（地图中心经纬度）
-            var center = [map.getCenter().lat,map.getCenter().lng];
-            func(center);
-        });
+        return function(func){
+            map.on('moveend',function(){
+
+                //  解析定位结果（地图中心经纬度）
+                var center = [map.getCenter().lat,map.getCenter().lng];
+                func(center);
+            });
+        }
     }
+
 
     /*
      *   点标记
