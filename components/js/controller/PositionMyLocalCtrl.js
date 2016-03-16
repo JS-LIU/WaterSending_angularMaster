@@ -18,27 +18,22 @@
         Map.browserLocation.then(function(lnglatObj){
             //  显示正在定位对话框
 
-
             var lnglatXY = [lnglatObj.position.lng,lnglatObj.position.lat];     //  当前经纬度
-
             //  获得当前地址名字
             Map.getLocationName(lnglatXY).then(function(locationName){
-
                 $scope.locationName = locationName;
             });
 
             //  获取附近商店位置
 
-        })
+        });
 
 
         //  获取移动后位置
         Map.moveendLocation(function(lnglatXY){
-            console.log(lnglatXY);
             //  获得当前地址名字
-            Map.getLocationName(lnglatXY).then(function(locationName){
-                console.log(locationName);
-                $scope.locationName = locationName;
+            Map.getLocationName(lnglatXY).then(function(data){
+                $scope.locationName = data;
             });
             //  获取附近商店的位置
         });

@@ -70,7 +70,7 @@
             map.on('moveend',function(){
 
                 //  解析定位结果（地图中心经纬度）
-                var center = [map.getCenter().lat,map.getCenter().lng];
+                var center = [map.getCenter().lng,map.getCenter().lat];
                 func(center);
             });
         }
@@ -133,7 +133,8 @@
         var auto = new AMap.Autocomplete(autoOptions);
         var placeSearch = new AMap.PlaceSearch({
             map: map
-        });  //构造地点查询类
+        });
+        //  构造地点查询类
         function select(e) {
             placeSearch.setCity(e.poi.adcode);
             placeSearch.search(e.poi.name);  //关键字查询查询
