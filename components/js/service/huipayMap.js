@@ -9,9 +9,11 @@
     function Map(AutonaviMap,$q){
         var map = arguments[0];
         var self = this;
+        self.newMap = arguments[0];
         self.show = map.style();
         self.browserLocation = map.browserLocation($q);
         self.moveendLocation = map.mapmove();
         self.getLocationName = map.regeocoder($q);
+        self.searchAfterEnterPrompt = map.searchAfterEnterPrompt();
     }
 }());

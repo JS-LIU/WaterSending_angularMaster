@@ -120,4 +120,28 @@
         }
     }
 
+    /*
+    *   输入后提示查询
+    *   代码来源：http://lbs.amap.com/api/javascript-api/example/poi-search/search-after-enter-prompt/
+    * */
+
+    AutonaviMap.prototype.searchAfterEnterPrompt = function(){
+        var map = this.map;
+        var autoOptions = {
+            input: "tipinput"
+        };
+        var auto = new AMap.Autocomplete(autoOptions);
+        var placeSearch = new AMap.PlaceSearch({
+            map: map
+        });  //构造地点查询类
+        function select(e) {
+            placeSearch.setCity(e.poi.adcode);
+            placeSearch.search(e.poi.name);  //关键字查询查询
+        }
+
+        return function(){
+            AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
+        }
+    }
+
 }());

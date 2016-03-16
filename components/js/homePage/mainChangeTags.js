@@ -19,6 +19,9 @@
         $routeProvider.when('/',{
             templateUrl:'06-01-map.html',
             controller:'PositionMyLocalCtrl',
+        }).when('/inputLocation',{
+            templateUrl:'06-02-location.html',
+            controller:'SearchLocation'
         })
     }]);
 }());

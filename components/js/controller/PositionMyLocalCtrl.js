@@ -12,6 +12,8 @@
         //  地图样式
         $scope.mapStyle = Map.show;
 
+        //  请求【默认位置】
+
         //  浏览器定位
         Map.browserLocation.then(function(lnglatObj){
             //  显示正在定位对话框
@@ -22,7 +24,7 @@
             //  获得当前地址名字
             Map.getLocationName(lnglatXY).then(function(locationName){
 
-
+                $scope.locationName = locationName;
             });
 
             //  获取附近商店位置
@@ -33,6 +35,11 @@
         //  获取移动后位置
         Map.moveendLocation(function(lnglatXY){
             console.log(lnglatXY);
+            //  获得当前地址名字
+            Map.getLocationName(lnglatXY).then(function(locationName){
+                console.log(locationName);
+                $scope.locationName = locationName;
+            });
             //  获取附近商店的位置
         });
 
