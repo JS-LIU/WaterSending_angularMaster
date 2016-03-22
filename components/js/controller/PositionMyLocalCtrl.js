@@ -5,38 +5,38 @@
     //  首页【定位】
     angular.module('myApp')
         .controller('PositionMyLocalCtrl',PositionMyLocalCtrl);
-    function PositionMyLocalCtrl($scope,Map){
+    function PositionMyLocalCtrl($scope,$q,Map){
         $scope.showMap = true;
         $scope.showCarousel = !$scope.showMap;
 
-        //  地图样式
-        $scope.mapStyle = Map.show;
+        Map.show();
 
+        //  地图样式
+        $scope.mapStyle = Map.setStyle();
         //  请求【默认位置】
 
         //  浏览器定位
-        Map.browserLocation.then(function(lnglatObj){
+        Map.browserLocation($q).then(function(lnglatObj){
             //  显示正在定位对话框
 
             var lnglatXY = [lnglatObj.position.lng,lnglatObj.position.lat];     //  当前经纬度
             //  获得当前地址名字
-            Map.getLocationName(lnglatXY).then(function(locationName){
+            Map.getLocationName($q,lnglatXY).then(function(locationName){
                 $scope.locationName = locationName;
             });
 
             //  获取附近商店位置
 
         });
-
-
         //  获取移动后位置
         Map.moveendLocation(function(lnglatXY){
             //  获得当前地址名字
-            Map.getLocationName(lnglatXY).then(function(data){
+            Map.getLocationName($q,lnglatXY).then(function(data){
                 $scope.locationName = data;
             });
             //  获取附近商店的位置
         });
+
 
 
         //  地图中心的标记

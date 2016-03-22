@@ -16,12 +16,15 @@
             'huipayLogIn'
         ])
         .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/',{
-            templateUrl:'06-01-map.html',
-            controller:'PositionMyLocalCtrl',
-        }).when('/inputLocation',{
-            templateUrl:'06-02-location.html',
-            controller:'SearchLocation'
-        })
-    }]);
+            $routeProvider.when('/',{
+                templateUrl:'06-01-map.html',
+                controller:'PositionMyLocalCtrl',
+            }).when('/inputLocation',{
+                templateUrl:'06-02-location.html',
+                controller:'SearchLocationCtrl'
+            })
+        }])
+        .config(function(MapProvider){
+            MapProvider.setMap(AutonaviMap);
+        });
 }());
