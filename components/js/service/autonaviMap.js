@@ -130,6 +130,8 @@ AutonaviMap.prototype.searchAfterEnterPrompt = function(){
     //  构造地点查询类
     function select(e) {
         placeSearch.setCity(e.poi.adcode);
+        console.log(e.poi);
+        console.log(e.poi.name);
         placeSearch.search(e.poi.name);  //关键字查询查询
     }
 
