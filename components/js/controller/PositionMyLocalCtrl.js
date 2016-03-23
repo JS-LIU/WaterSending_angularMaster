@@ -38,7 +38,6 @@
         });
 
 
-
         //  地图中心的标记
         $scope.mapCenterMarker = {
             bottom:parseFloat($scope.mapStyle.height) / 2 + 18 + 'px'

@@ -7,6 +7,6 @@
         .controller('SearchLocationCtrl',SearchLocationCtrl);
 
     function SearchLocationCtrl($scope,Map){
-
+        Map.searchAfterEnterPrompt();
     }
 }());
