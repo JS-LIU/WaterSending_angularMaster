@@ -48,24 +48,24 @@
                 }
             };
             huipayMapApi.setStyle = function(){
-                huipayMapSingle()
+                //huipayMapSingle()
                 return defMap.style();
             };
             huipayMapApi.browserLocation = function($q){
-                huipayMapSingle()
+                //huipayMapSingle()
                 return defMap.browserLocation($q);
             }
             huipayMapApi.getLocationName = function($q,lnglatXY){
-                huipayMapSingle()
+                //huipayMapSingle()
                 return defMap.regeocoder($q,lnglatXY);
             }
             huipayMapApi.moveendLocation = function(func){
-                huipayMapSingle()
+                //huipayMapSingle()
                 return defMap.mapmove(func);
             }
-            huipayMapApi.searchAfterEnterPrompt = function(){
+            huipayMapApi.searchAfterEnterPrompt = function($q,keywords){
                 huipayMapSingle();
-                defMap.searchAfterEnterPrompt();
+                defMap.searchAfterEnterPrompt($q,keywords);
             }
             return huipayMapApi;
         };

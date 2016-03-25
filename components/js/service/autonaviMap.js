@@ -118,24 +118,22 @@ AutonaviMap.prototype.regeocoder = function($q,lnglatXY){
 *   代码来源：http://lbs.amap.com/api/javascript-api/example/poi-search/search-after-enter-prompt/
 * */
 
-AutonaviMap.prototype.searchAfterEnterPrompt = function(){
-    var map = this.map;
-    var autoOptions = {
-        input: "tipinput"
-    };
-    var auto = new AMap.Autocomplete(autoOptions);
-    var placeSearch = new AMap.PlaceSearch({
-        map: map
+AutonaviMap.prototype.searchAfterEnterPrompt = function($q,keywords){
+    var defer = $q.defer();
+    AMap.service(["AMap.Autocomplete"], function() {
+        var autoOptions = {
+            city: "" //城市，默认全国
+        };
+        var auto = new AMap.Autocomplete(autoOptions);
+        //查询成功时返回查询结果
+        if (keywords.length > 0) {
+            auto.search(keywords, function(status, result) {
+                if(status == "complete" && result.info === 'OK'){
+                    var locationInfoArr = result.tips;
+                    defer.resolve(locationInfoArr);
+                }
+            });
+        }
     });
-    //  构造地点查询类
-    function select(e) {
-        placeSearch.setCity(e.poi.adcode);
-        console.log(e.poi);
-        console.log(e.poi.name);
-        placeSearch.search(e.poi.name);  //关键字查询查询
-    }
-
-    return function(){
-        AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
-    }
+    return defer.promise;
 }
