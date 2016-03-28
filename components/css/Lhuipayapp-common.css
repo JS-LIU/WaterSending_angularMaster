@@ -66,9 +66,8 @@ body{
     overflow: hidden;
 }
 .L-header-searchbox-01{
-    top:7px;
+    margin-top:7px;
     height:30px;
-    margin-right:60px;
     border-radius: 4px;
     background:#FFF url("../images/search-icon.png") no-repeat 5px center;
     background-size:20px;
@@ -110,8 +109,17 @@ body{
 .common-list-17,
 .common-list-18,
 .common-list-19,
-.common-list-21{
+.common-list-21,
+.common-list-22{
     background:#FFF;
+}
+.common-list-22 li{
+    width:50%;
+    height:58px;
+    line-height:58px;
+    margin-left:-1px;
+    border-left:1px solid #E2E2E2;
+    border-bottom:1px solid #E2E2E2;
 }
 .common-list-17{
     border-top:1px solid #E2E2E2;

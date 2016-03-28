@@ -2,11 +2,8 @@
  * Created by 殿麒 on 2016/3/4.
  */
 (function(){
-    angular.module('huipayMap',[])
+    angular.module('huipayMap',['ngResource'])
         .provider('Map',Map);
-
-
-
 
     //  地图适配器
     function Map(){
@@ -19,7 +16,7 @@
         //self.getLocationName = map.regeocoder($q);
         //self.searchAfterEnterPrompt = map.searchAfterEnterPrompt();
         var defMap;
-
+        //  对外接口
         var huipayMapApi = {
             show:{},                    //  展示地图
             style:{},                   //  设置地图样式
@@ -32,7 +29,7 @@
         this.setMap = function(map){
             defMap = map;
         };
-        this.$get = function(){
+        this.$get = function($resource,$q){
 
             function huipayMapSingle(){
                 if(typeof defMap != 'object'){
@@ -65,7 +62,7 @@
             }
             huipayMapApi.searchAfterEnterPrompt = function($q,keywords){
                 huipayMapSingle();
-                defMap.searchAfterEnterPrompt($q,keywords);
+                return defMap.searchAfterEnterPrompt($q,keywords);
             }
             return huipayMapApi;
         };

@@ -6,10 +6,12 @@
     angular.module('myApp')
         .controller('SearchLocationCtrl',SearchLocationCtrl);
 
-    function SearchLocationCtrl($scope,Map){
+    function SearchLocationCtrl($scope,$q,Map){
         $scope.keywords = "";
         $scope.$watch("keywords",function(){
-            Map.searchAfterEnterPrompt($scope.keywords);
-        })
+            Map.searchAfterEnterPrompt($q,$scope.keywords).then(function(locationInfoArr){
+                $scope.locationInfoArr = locationInfoArr;
+            });
+        });
     }
 }());

@@ -5,9 +5,15 @@
     //  首页【定位】
     angular.module('myApp')
         .controller('PositionMyLocalCtrl',PositionMyLocalCtrl);
-    function PositionMyLocalCtrl($scope,$q,Map){
+    function PositionMyLocalCtrl($scope,$q,Map,GetAllCities){
         $scope.showMap = true;
         $scope.showCarousel = !$scope.showMap;
+
+        //  获取城市列表
+        GetAllCities.then(function(data){
+            console.log(data);
+        })
+
 
         Map.show();
 
@@ -36,7 +42,6 @@
             });
             //  获取附近商店的位置
         });
-
 
         //  地图中心的标记
         $scope.mapCenterMarker = {

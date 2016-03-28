@@ -270,6 +270,12 @@ html,body{
     top:44px;
     bottom:110px;
 }
+.L-header-cancelBtn{
+    top:0px;
+    right:0px;
+    line-height:44px;
+    padding-right:10px;
+}
 .common-btn-01-spe{
     left:15px;
     right:15px;
@@ -280,8 +286,21 @@ html,body{
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
-
-
+.homeaddress{
+    padding-left:20px;
+    background:url("../images/icon_company-address@2x.png") no-repeat left center;
+    -webkit-background-size:16px;
+    background-size:16px;
+}
+.companyaddress{
+    padding-left:20px;
+    background:url("../images/icon_company-address@2x.png") no-repeat left center;
+    -webkit-background-size:16px;
+    background-size:16px;
+}
+.addressselectbox{
+    margin-top:7px;
+}
 .slide-mfooter li{
     height:49px;
 }
