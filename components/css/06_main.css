@@ -144,6 +144,15 @@
     -webkit-background-size: 15px;
     background-size: 15px;
 }
+.my-city{
+    padding-right:25px;
+    top:0px;
+    left:0px;
+    line-height:44px;
+    background:url("../images/btn_dropdown@2x.png") no-repeat right center;
+    -webkit-background-size: 15px;
+    background-size: 15px;
+}
 #mapContainer{
     height:100%;
     overflow: hidden;

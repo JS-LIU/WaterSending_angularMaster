@@ -22,6 +22,9 @@
             }).when('/inputLocation',{
                 templateUrl:'06-02-location.html',
                 controller:'SearchLocationCtrl'
+            }).when('/addressList',{
+                templateUrl:'06-03-addressList.html',
+                controller:'AddressList'
             })
         }])
         .config(function(MapProvider){

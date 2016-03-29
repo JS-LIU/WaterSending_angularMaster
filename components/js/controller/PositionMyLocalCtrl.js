@@ -5,15 +5,9 @@
     //  首页【定位】
     angular.module('myApp')
         .controller('PositionMyLocalCtrl',PositionMyLocalCtrl);
-    function PositionMyLocalCtrl($scope,$q,Map,GetAllCities){
+    function PositionMyLocalCtrl($scope,$q,Map,GetAllCities,AddressListener){
         $scope.showMap = true;
         $scope.showCarousel = !$scope.showMap;
-
-        //  获取城市列表
-        GetAllCities.then(function(data){
-            console.log(data);
-        })
-
 
         Map.show();
 
@@ -27,8 +21,14 @@
 
             var lnglatXY = [lnglatObj.position.lng,lnglatObj.position.lat];     //  当前经纬度
             //  获得当前地址名字
-            Map.getLocationName($q,lnglatXY).then(function(locationName){
-                $scope.locationName = locationName;
+            Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
+                $scope.locationName = locationNameObj.locationName;
+
+                //  获取城市列表
+                GetAllCities.setAllCities().then(function(data){
+                    var cities = data.cities;
+                    $scope.huipayCity = GetAllCities.setThisCity(cities,locationNameObj.city);
+                });
             });
 
             //  获取附近商店位置
@@ -37,8 +37,8 @@
         //  获取移动后位置
         Map.moveendLocation(function(lnglatXY){
             //  获得当前地址名字
-            Map.getLocationName($q,lnglatXY).then(function(data){
-                $scope.locationName = data;
+            Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
+                $scope.locationName = locationNameObj.locationName;
             });
             //  获取附近商店的位置
         });
