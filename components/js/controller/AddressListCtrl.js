@@ -4,7 +4,7 @@
 (function(){
     angular.module('myApp')
         .controller('AddressList',AddressList);
-    function AddressList($scope,GetAllCities){
-        $scope.addressList = GetAllCities.getAllCities().cities;
+    function AddressList($scope,ChangeLocation){
+        $scope.addressList = ChangeLocation.getAllCities().cities;
     }
 }());

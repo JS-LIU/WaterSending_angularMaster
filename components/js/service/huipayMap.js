@@ -24,12 +24,13 @@
             getLocationName:{},         //  地理位置反编译（坐标-地址）
             moveendLocation:{},         //  地图移动后获取坐标
             searchAfterEnterPrompt:{},  //
+            setMapCenter:{}             //  设置地图中心点
         };
 
         this.setMap = function(map){
             defMap = map;
         };
-        this.$get = function($resource,$q){
+        this.$get = function(){
 
             function huipayMapSingle(){
                 if(typeof defMap != 'object'){
@@ -45,7 +46,6 @@
                 }
             };
             huipayMapApi.setStyle = function(){
-                //huipayMapSingle()
                 return defMap.style();
             };
             huipayMapApi.browserLocation = function($q){
@@ -63,6 +63,9 @@
             huipayMapApi.searchAfterEnterPrompt = function($q,keywords){
                 huipayMapSingle();
                 return defMap.searchAfterEnterPrompt($q,keywords);
+            }
+            huipayMapApi.setMapCenter = function(lnglatXY){
+                return defMap.setCenter(lnglatXY);
             }
             return huipayMapApi;
         };

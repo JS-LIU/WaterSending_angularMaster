@@ -137,6 +137,7 @@ AutonaviMap.prototype.searchAfterEnterPrompt = function($q,keywords){
         if (keywords.length > 0) {
             auto.search(keywords, function(status, result) {
                 if(status == "complete" && result.info === 'OK'){
+                    console.log(result);
                     var locationInfoArr = result.tips;
                     defer.resolve(locationInfoArr);
                 }
@@ -144,4 +145,9 @@ AutonaviMap.prototype.searchAfterEnterPrompt = function($q,keywords){
         }
     });
     return defer.promise;
+}
+//  设置地图中心点
+AutonaviMap.prototype.setCenter = function(lnglatXY){
+    var map = this.map;
+    map.setCenter(lnglatXY);
 }

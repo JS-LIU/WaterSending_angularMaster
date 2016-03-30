@@ -4,13 +4,15 @@
 (function(){
     angular.module('myApp')
         .factory('AddressListener',function($rootScope){
+
             var addressListener = {
                 updataAddress:{},
-                nowAddress:""
+                nowAddress:[]
             };
 
+
             addressListener.updataAddress = function(value){
-                addressListener.nowAddress = value;
+                addressListener.nowAddress = angular.copy(value);
                 $rootScope.$broadcast("AddressUpdated");
             }
             return addressListener;

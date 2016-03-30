@@ -17,8 +17,10 @@
         </li>
     </ul>
     <ul class="common-list-03" style="margin-top:-1px;">
-        <li ng-repeat="location in locationInfoArr">
-            <span class="common-list-03-title pl15">{{location.name}}</span>
+        <li ng-repeat="location in locationInfoArr" ng-click="setNewLnglat(location)">
+            <a href="#/">
+                <span class="common-list-03-title pl15">{{location.name}}</span>
+            </a>
         </li>
     </ul>
 </div>
