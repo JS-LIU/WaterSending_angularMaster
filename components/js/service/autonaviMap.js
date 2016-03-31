@@ -14,11 +14,11 @@ function AutonaviMap(){
 }
 
 //  地图样式
-AutonaviMap.prototype.style = function(){
-    return {
-        height:document.body.clientWidth * 17 / 18 + 'px',
-    }
-}
+//AutonaviMap.prototype.style = function(){
+//    return {
+//        height:document.body.clientWidth * 17 / 18 + 'px'
+//    }
+//}
 /*
  *   浏览器定位
  *   代码来源：http://lbs.amap.com/api/javascript-api/example/location/browser-location/

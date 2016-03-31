@@ -9,9 +9,6 @@
         $scope.showMap = true;
         $scope.showCarousel = !$scope.showMap;
 
-        Map.show();
-
-
         $scope.addressInfo = $localStorage.addressInfo;
 
         //  监听定位是否发生变化
@@ -19,14 +16,18 @@
             AddressListener.updataLocation($scope.addressInfo);
         });
 
+        Map.show();
+
         //  拿到当前地址经纬度
         //  地图样式
-        $scope.mapStyle = Map.setStyle();
+        $scope.mapStyle = {
+            height:document.body.clientWidth * 17 / 18 + 'px',
+        }
         //  请求【默认位置】
 
 
-        if($scope.addressInfo.lnglatXY){
-            Map.setCenter($scope.addressInfo.lnglatXY);
+        if($scope.addressInfo){
+            Map.setMapCenter($scope.addressInfo.lnglatXY);
         }else{
             //  浏览器定位
             Map.browserLocation($q).then(function(lnglatObj){

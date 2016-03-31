@@ -153,10 +153,6 @@
     -webkit-background-size: 15px;
     background-size: 15px;
 }
-#mapContainer{
-    height:100%;
-    overflow: hidden;
-}
 .common-list-09{
     border-bottom:1px solid #E2E2E2;
 }
@@ -339,4 +335,7 @@ html,body{
 }
 .swap-animation.ng-leave-active {
     left:-100%;
+}
+#container{
+    position:static;
 }
