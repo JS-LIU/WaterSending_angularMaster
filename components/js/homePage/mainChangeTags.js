@@ -7,6 +7,7 @@
     angular.module('myApp',
         [
             'ngRoute',
+            'ngStorage',
             'ngTouch',
             'ngCookies',
             'ngResource',

@@ -3,18 +3,14 @@
  */
 (function(){
     angular.module('myApp')
-        .factory('AddressListener',function($rootScope){
-
-            var addressListener = {
-                updataAddress:{},
-                nowAddress:[]
-            };
-
-
-            addressListener.updataAddress = function(value){
-                addressListener.nowAddress = angular.copy(value);
-                $rootScope.$broadcast("AddressUpdated");
+        .factory('AddressListener',function($localStorage){
+            var locationListener = {
+                updataLocation:{}
             }
-            return addressListener;
+
+            locationListener.updataLocation = function(data){
+                $localStorage.addressInfo = data;
+            }
+            return locationListener;
         });
 }());
