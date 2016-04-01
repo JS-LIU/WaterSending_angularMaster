@@ -7,7 +7,9 @@
     <!--轮播页面-->
     <huipay-carousel ng-show="showCarousel"></huipay-carousel>
     <!--地图页面-->
-    <div id="container" ng-style="mapStyle" ng-show="showMap"></div>
+    <div class="huipayMap" ng-style="mapStyle" ng-show="showMap">
+        <div id="container"></div>
+    </div>
     <div class="mapCenter-marker pr" ng-style="mapCenterMarker"></div>
     <a class="comlist-13-single w" href="#/inputLocation">当前位置：{{locationName}}</a>
 </div>

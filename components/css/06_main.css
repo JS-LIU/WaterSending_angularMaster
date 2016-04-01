@@ -336,6 +336,3 @@ html,body{
 .swap-animation.ng-leave-active {
     left:-100%;
 }
-#container{
-    position:static;
-}

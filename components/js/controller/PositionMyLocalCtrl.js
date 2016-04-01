@@ -15,14 +15,15 @@
         $scope.$watch('addressInfo',function(){
             AddressListener.updataLocation($scope.addressInfo);
         });
-
+        $scope.mapStyle = {
+            position:"relative",
+            height:document.body.clientWidth * 17 / 18 + 'px'
+        }
         Map.show();
 
         //  拿到当前地址经纬度
         //  地图样式
-        $scope.mapStyle = {
-            height:document.body.clientWidth * 17 / 18 + 'px',
-        }
+
         //  请求【默认位置】
 
 

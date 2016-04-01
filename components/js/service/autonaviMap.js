@@ -13,7 +13,7 @@ function AutonaviMap(){
     });
 }
 
-//  地图样式
+////  地图样式
 //AutonaviMap.prototype.style = function(){
 //    return {
 //        height:document.body.clientWidth * 17 / 18 + 'px'
