@@ -1,5 +1,5 @@
 /**
- * Created by ���� on 2015/11/12.
+ * Created by 殿麒 on 2015/8/23.
  */
 main.controller('myCtrl',function($scope,$cookieStore,Login,getSelfUrl){
     var myUrl = getSelfUrl.myUrl;

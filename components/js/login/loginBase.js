@@ -2,18 +2,18 @@
  * Created by 殿麒 on 2015/10/19.
  */
 logIn.service('getAccessInfo',function(){
-    var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
-    var appKey = "cf385992c3fc46cbaebae2c1dae08653";
-    this.accessInfo = {
-        app_key:appKey,
-        signature:app_secret
-    }
-    //var app_secret = hex_md5("165416");
-    //var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    //var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
+    //var appKey = "cf385992c3fc46cbaebae2c1dae08653";
     //this.accessInfo = {
     //    app_key:appKey,
     //    signature:app_secret
     //}
+    var app_secret = hex_md5("165416");
+    var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    this.accessInfo = {
+        app_key:appKey,
+        signature:app_secret
+    }
 });
 //  生成md5key
 logIn.service('regesteData',function(){

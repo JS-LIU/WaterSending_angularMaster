@@ -5,11 +5,28 @@
     //  首页【定位】
     angular.module('myApp')
         .controller('PositionMyLocalCtrl',PositionMyLocalCtrl);
-    function PositionMyLocalCtrl($scope,$q,Map,$localStorage,ChangeLocation,AddressListener){
+    function PositionMyLocalCtrl($scope,
+                                 $q,
+                                 $localStorage,
+                                 Map,
+                                 $cookieStore,
+                                 Login,
+                                 ChangeLocation,
+                                 AddressListener,
+                                 DelieveryAddress){
         $scope.showMap = true;
         $scope.showCarousel = !$scope.showMap;
-
         $scope.addressInfo = $localStorage.addressInfo;
+
+        //  请求默认地址
+        var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
+        accessInfo.phone_num = "";
+        var postdefnAddressData = {
+            sign:"",
+            accessInfo:accessInfo
+        }
+        DelieveryAddress.save({operate:'showDefaultAddress'},postdefnAddressData);
+
 
         //  监听定位是否发生变化
         $scope.$watch('addressInfo',function(){
