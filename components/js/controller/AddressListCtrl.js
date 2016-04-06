@@ -6,5 +6,7 @@
         .controller('AddressList',AddressList);
     function AddressList($scope,ChangeLocation){
         $scope.addressList = ChangeLocation.getAllCities().cities;
+
+
     }
 }());

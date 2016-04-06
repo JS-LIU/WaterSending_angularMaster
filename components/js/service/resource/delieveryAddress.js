@@ -3,8 +3,19 @@
  */
 (function(){
     angular.module('delieveryAddress',['ngResource'])
-        .factory('DelieveryAddress',DelieveryAddress);
-    function DelieveryAddress($resource){
+        .service('DelieveryAddressResource',DelieveryAddressResource)
+        .service('DelieveryAddressService',DelieveryAddressService);
+
+    function DelieveryAddressResource($resource){
         return $resource('delieveryAddress/:operate',{operate:'@operate'});
+    }
+
+    function DelieveryAddressService(DelieveryAddressResource){
+        this.getDefnAddress = function(obj){
+            return DelieveryAddressResource.save(
+                {operate:'showDefaultAddress'},
+                obj
+            ).$promise;
+        }
     }
 }());

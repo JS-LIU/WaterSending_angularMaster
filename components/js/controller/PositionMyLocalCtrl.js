@@ -13,65 +13,68 @@
                                  Login,
                                  ChangeLocation,
                                  AddressListener,
-                                 DelieveryAddress){
-        $scope.showMap = true;
-        $scope.showCarousel = !$scope.showMap;
-        $scope.addressInfo = $localStorage.addressInfo;
-
-        //  请求默认地址
-        var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
-        accessInfo.phone_num = "";
-        var postdefnAddressData = {
-            sign:"",
-            accessInfo:accessInfo
-        }
-        DelieveryAddress.save({operate:'showDefaultAddress'},postdefnAddressData);
-
-
-        //  监听定位是否发生变化
-        $scope.$watch('addressInfo',function(){
-            AddressListener.updataLocation($scope.addressInfo);
-        });
-        $scope.mapStyle = {
+                                 DelieveryAddressService){
+        $scope.showMap = true;                              //  是否显示地图
+        $scope.showCarousel = !$scope.showMap;              //  是否显示轮播图
+        $scope.mapStyle = {                                 //  地图大小
             position:"relative",
             height:document.body.clientWidth * 17 / 18 + 'px'
         }
+        $scope.addressInfo = $localStorage.addressInfo;     //  是否重新选择过地址
+
+        //  监听【重新选择】地址
+        $scope.$watch('addressInfo',function(){
+            AddressListener.updataLocation($scope.addressInfo);
+        });
+
+        //  展示地图
         Map.show();
 
-        //  拿到当前地址经纬度
-        //  地图样式
+        //  监听定位是否发生变化
+        if(false){                                          //  重新选择地址
+            Map.setMapCenter($scope.addressInfo.lnglatXY);  //  在地图中标记出重新选择的位置
+            //  请求附近商铺
 
-        //  请求【默认位置】
-
-
-        if($scope.addressInfo){
-            Map.setMapCenter($scope.addressInfo.lnglatXY);
         }else{
-            //  浏览器定位
-            Map.browserLocation($q).then(function(lnglatObj){
+            //  请求默认地址
+            var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
+            accessInfo.phone_num = "";
+            var postdefnAddressData = {
+                sign:"",
+                accessInfo:accessInfo
+            }
+            DelieveryAddressService.getDefnAddress(postdefnAddressData)
+                .then(function success(data){
+                    //  是否有默认地址
+                    if(data.isDefault){
+                        //  显示默认地址
+                        //  城市
+                    }else{
+                        //  浏览器定位
+                        return Map.browserLocation($q);
+                    }
+                },function error(error){
+                    //  未登录
+                    Map.browserLocation($q);
+                    console.error(error);
+                }).then(function(lnglatObj){
                 //  显示正在定位对话框
 
-                var lnglatXY = [lnglatObj.position.lng,lnglatObj.position.lat];     //  当前经纬度
+                var lnglatXY = [lnglatObj.position.lng,lnglatObj.position.lat];
 
-
+                $scope.addressInfo.lnglatXY = lnglatXY;
                 //  获得当前地址名字
-                Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
-                    $scope.locationName = locationNameObj.locationName;
-
-                    $scope.addressInfo = {
-                        lnglatXY:lnglatXY,
-                        name:locationNameObj.locationName
-                    }
-
-                    //  获取城市列表
-                    ChangeLocation.setAllCities().then(function(data){
-                        var cities = data.cities;
-                        $scope.huipayCity = ChangeLocation.getThisCity(cities,locationNameObj.city);
-                    });
-                });
+                return  Map.getLocationName($q,lnglatXY);
                 //  获取附近商店位置
-
-
+            }).then(function(locationNameObj){
+                $scope.locationName = locationNameObj.locationName;
+                $scope.addressInfo.name = locationNameObj.locationName;
+                $scope.addressInfo.city = locationNameObj.city;
+                //  获取城市列表
+                return  ChangeLocation.setAllCities();
+            }).then(function(data){
+                var cities = data.cities;
+                $scope.huipayCity = ChangeLocation.getThisCity(cities,$scope.addressInfo.city);
             });
         }
 
