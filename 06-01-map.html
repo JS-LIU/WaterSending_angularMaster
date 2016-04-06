@@ -1,5 +1,5 @@
 <div class="L-header w pr blue slide-header">
-    <a href="#/addressList" class="cfff po my-city pl15">{{huipayCity.label||'城市'}}</a>
+    <a href="#/addressList" class="cfff po my-city pl15">{{addressInfo.city||'城市'}}</a>
     <p class="tc L-header-title cfff f16">海豹送水</p>
     <div class="po my-cutMap"></div>
 </div>
@@ -11,6 +11,6 @@
         <div id="container"></div>
     </div>
     <div class="mapCenter-marker pr" ng-style="mapCenterMarker"></div>
-    <a class="comlist-13-single w" href="#/inputLocation">当前位置：{{locationName}}</a>
+    <a class="comlist-13-single w" href="#/inputLocation">当前位置：{{addressInfo.name}}</a>
 </div>
 <huipay-main-footer></huipay-main-footer>

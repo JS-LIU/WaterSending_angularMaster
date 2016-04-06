@@ -54,9 +54,9 @@
                         return Map.browserLocation($q);
                     }
                 },function error(error){
-                    //  未登录
-                    Map.browserLocation($q);
                     console.error(error);
+                    //  未登录
+                    return Map.browserLocation($q);
                 }).then(function(lnglatObj){
                 //  显示正在定位对话框
 
@@ -67,14 +67,16 @@
                 return  Map.getLocationName($q,lnglatXY);
                 //  获取附近商店位置
             }).then(function(locationNameObj){
-                $scope.locationName = locationNameObj.locationName;
                 $scope.addressInfo.name = locationNameObj.locationName;
                 $scope.addressInfo.city = locationNameObj.city;
                 //  获取城市列表
                 return  ChangeLocation.setAllCities();
             }).then(function(data){
                 var cities = data.cities;
-                $scope.huipayCity = ChangeLocation.getThisCity(cities,$scope.addressInfo.city);
+                var city = ChangeLocation.getThisCity(cities,$scope.addressInfo.city);
+                console.log(city);
+                $scope.addressInfo.city = city.label;
+                $scope.addressInfo.cityId = city.id;
             });
         }
 

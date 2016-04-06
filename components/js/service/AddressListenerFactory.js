@@ -8,8 +8,12 @@
                 updataLocation:{}
             }
 
+            $localStorage.addressInfo = {};
             locationListener.updataLocation = function(data){
-                $localStorage.addressInfo = data;
+                for(var prop in data){
+                    $localStorage.addressInfo[prop] = data[prop];
+                }
+
             }
             return locationListener;
         });
