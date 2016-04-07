@@ -13,7 +13,8 @@
                                  Login,
                                  ChangeLocation,
                                  AddressListener,
-                                 DelieveryAddressService){
+                                 DelieveryAddressService,
+                                 GetNearShopService){
         $scope.showMap = true;                              //  是否显示地图
         $scope.showCarousel = !$scope.showMap;              //  是否显示轮播图
         $scope.mapStyle = {                                 //  地图大小
@@ -22,19 +23,20 @@
         }
         $scope.addressInfo = $localStorage.addressInfo;     //  是否重新选择过地址
 
-        //  监听【重新选择】地址
+        //  监听【重新选择/移动】地址
         $scope.$watch('addressInfo',function(){
             AddressListener.updataLocation($scope.addressInfo);
+            $scope.addressInfo = $localStorage.addressInfo;
         });
-
+        console.log($scope.addressInfo);
         //  展示地图
         Map.show();
 
         //  监听定位是否发生变化
-        if(false){                                          //  重新选择地址
-            Map.setMapCenter($scope.addressInfo.lnglatXY);  //  在地图中标记出重新选择的位置
+        if($scope.addressInfo.city){                                          //  重新选择地址
+            var mapCenter = $scope.addressInfo.lnglatXY||$scope.addressInfo.city;
+            Map.setMapCenter(mapCenter);  //  在地图中标记出重新选择的位置
             //  请求附近商铺
-
         }else{
             //  请求默认地址
             var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
@@ -65,7 +67,6 @@
                 $scope.addressInfo.lnglatXY = lnglatXY;
                 //  获得当前地址名字
                 return  Map.getLocationName($q,lnglatXY);
-                //  获取附近商店位置
             }).then(function(locationNameObj){
                 $scope.addressInfo.name = locationNameObj.locationName;
                 $scope.addressInfo.city = locationNameObj.city;
@@ -74,9 +75,11 @@
             }).then(function(data){
                 var cities = data.cities;
                 var city = ChangeLocation.getThisCity(cities,$scope.addressInfo.city);
-                console.log(city);
                 $scope.addressInfo.city = city.label;
                 $scope.addressInfo.cityId = city.id;
+                return GetNearShopService();
+            }).then(function(data){
+                console.log(data);
             });
         }
 

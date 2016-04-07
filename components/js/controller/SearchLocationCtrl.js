@@ -6,12 +6,18 @@
     angular.module('myApp')
         .controller('SearchLocationCtrl',SearchLocationCtrl);
 
-    function SearchLocationCtrl($scope,$q,Map,AddressListener){
+    function SearchLocationCtrl($scope,
+                                $q,
+                                $localStorage,
+                                Map,
+                                AddressListener){
         $scope.keywords = "";
+        var city = $localStorage.addressInfo.city;
         $scope.$watch("keywords",function(){
-            Map.searchAfterEnterPrompt($q,$scope.keywords).then(function(locationInfoArr){
-                $scope.locationInfoArr = locationInfoArr;
-            });
+            Map.searchAfterEnterPrompt($q,city,$scope.keywords)
+                .then(function(locationInfoArr){
+                    $scope.locationInfoArr = locationInfoArr;
+                });
         });
 
 

@@ -52,12 +52,17 @@
                 //huipayMapSingle()
                 return defMap.mapmove(func);
             }
-            huipayMapApi.searchAfterEnterPrompt = function($q,keywords){
+            huipayMapApi.searchAfterEnterPrompt = function($q,city,keywords){
                 huipayMapSingle();
-                return defMap.searchAfterEnterPrompt($q,keywords);
+                return defMap.searchAfterEnterPrompt($q,city,keywords);
             }
-            huipayMapApi.setMapCenter = function(lnglatXY){
-                return defMap.setCenter(lnglatXY);
+            huipayMapApi.setMapCenter = function(av){
+                if(Object.prototype.toString.call(av) === '[object Array]'){
+                    return defMap.setCenter(av);
+                }else{
+                    return defMap.setCity(av);
+                }
+
             }
             return huipayMapApi;
         };

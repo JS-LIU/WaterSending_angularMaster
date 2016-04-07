@@ -10,7 +10,9 @@
         $scope.changeCity = function(address){
             var city = {
                 city:address.label,
-                cityId:address.id
+                cityId:address.id,
+                lnglatXY:"",
+                name: address.label
             }
             AddressListener.updataLocation(city);
         }

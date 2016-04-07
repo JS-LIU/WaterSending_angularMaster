@@ -126,11 +126,11 @@ AutonaviMap.prototype.regeocoder = function($q,lnglatXY){
 *   代码来源：http://lbs.amap.com/api/javascript-api/example/poi-search/search-after-enter-prompt/
 * */
 
-AutonaviMap.prototype.searchAfterEnterPrompt = function($q,keywords){
+AutonaviMap.prototype.searchAfterEnterPrompt = function($q,city,keywords){
     var defer = $q.defer();
     AMap.service(["AMap.Autocomplete"], function() {
         var autoOptions = {
-            city: ""                                                     //  城市，默认全国
+            city: city||""                                                     //  城市，默认全国
         };
         var auto = new AMap.Autocomplete(autoOptions);
         //  查询成功时返回查询结果
@@ -150,4 +150,13 @@ AutonaviMap.prototype.searchAfterEnterPrompt = function($q,keywords){
 AutonaviMap.prototype.setCenter = function(lnglatXY){
     var map = this.map;
     map.setCenter(lnglatXY);
+}
+/**
+ *  根据城市设置中心点
+ *  代码来源：http://lbs.amap.com/api/javascript-api/example/map/map-show/
+ */
+
+AutonaviMap.prototype.setCity = function(city){
+    var map = this.map;
+    map.setCity(city);
 }
