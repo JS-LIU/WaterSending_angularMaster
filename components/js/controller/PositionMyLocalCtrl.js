@@ -1,4 +1,7 @@
 /**
+ * Created by liudq on 16/4/7.
+ */
+/**
  * Created by 殿麒 on 2016/3/3.
  */
 (function(){
@@ -77,7 +80,7 @@
                 var city = ChangeLocation.getThisCity(cities,$scope.addressInfo.city);
                 $scope.addressInfo.city = city.label;
                 $scope.addressInfo.cityId = city.id;
-                return GetNearShopService();
+                return GetNearShopService.shopList();
             }).then(function(data){
                 console.log(data);
             });
