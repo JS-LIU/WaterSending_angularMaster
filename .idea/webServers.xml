@@ -7,15 +7,13 @@
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
-          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
-      <webServer id="e826f20c-a96c-4029-b32e-415da9647fc8" name="TESThuipayWater" url="http://114.251.53.22">
+      <webServer id="e826f20c-a96c-4029-b32e-415da9647fc8" name="TESThuipayWater (project level)" url="http://114.251.53.22">
         <fileTransfer host="114.251.53.22" port="55002" rootFolder="/home/huipay" accessType="SFTP" password="dfc1dffedfe0dfeadfe1dfefdfc7dfc5dfcddf80dfe7df9ddf9ddf8cdf9ddfd8" username="huipay">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
-          <option name="port" value="55002" />
         </fileTransfer>
       </webServer>
     </option>

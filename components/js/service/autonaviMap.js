@@ -81,7 +81,7 @@ AutonaviMap.prototype.addMarker = function(marker,po){
     var marker = new AMap.Marker({
         icon: marker,
         position: po
-    });
+    }),map = this.map;
     marker.setMap(map);
 }
 

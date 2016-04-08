@@ -62,8 +62,14 @@
                 }else{
                     return defMap.setCity(av);
                 }
-
             }
+            huipayMapApi.addMarker = function(marker,po){
+                return defMap.addMarker(marker,po);
+            }
+            huipayMapApi.clearMaker = function(){
+                return defMap.clearMarker();
+            }
+
             return huipayMapApi;
         };
 

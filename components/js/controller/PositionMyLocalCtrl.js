@@ -40,6 +40,14 @@
             var mapCenter = $scope.addressInfo.lnglatXY||$scope.addressInfo.city;
             Map.setMapCenter(mapCenter);  //  在地图中标记出重新选择的位置
             //  请求附近商铺
+            GetNearShopService.getShopList()
+                .then(function(data){
+                    console.log(data);
+                });
+                //.then(function(data){
+                //    GetNearShopService.showShopInMap(data.shopList,
+                //        "../images/icon_location@2x.png");
+                //});
         }else{
             //  请求默认地址
             var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
@@ -80,9 +88,13 @@
                 var city = ChangeLocation.getThisCity(cities,$scope.addressInfo.city);
                 $scope.addressInfo.city = city.label;
                 $scope.addressInfo.cityId = city.id;
-                return GetNearShopService.shopList();
+                return GetNearShopService.getShopList();
             }).then(function(data){
                 console.log(data);
+                console.log(data.requestPageInfo);
+                console.log(data.shopList);
+                //GetNearShopService.showShopInMap(data.shopList,
+                //    "../images/icon_location@2x.png");
             });
         }
 
