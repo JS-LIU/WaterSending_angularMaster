@@ -6,7 +6,6 @@
         .factory('GetNearShopService',GetNearShopService);
     function GetNearShopService($resource,
                                 $q,
-                                $localStorage,
                                 $cookieStore,
                                 Login,
                                 Map){
@@ -19,7 +18,7 @@
         }
 
         //  获取店铺列表
-        nearShop.getShopList = function(){
+        nearShop.getShopList = function(addressInfo){
 
             getNearShop.save({
                 accessInfo:Login.getAccessInfo($cookieStore,false),
@@ -29,12 +28,7 @@
                 },
                 sign:'',
                 x_dpi:'640',
-                positionInfo:{
-                    position_x:$localStorage.addressInfo.lnglatXY[0],
-                    position_y:$localStorage.addressInfo.lnglatXY[1],
-                    districtId:$localStorage.addressInfo.cityId,
-                    addressInfo:$localStorage.addressInfo.name
-                }
+                positionInfo:addressInfo
             },function(data){
                 defer.resolve(data);
             });
@@ -44,13 +38,13 @@
 
         //  附近店铺展示到地图
         nearShop.showShopInMap = function(arr,icon){
-            Map.clearMaker();
+            Map.clearMarker();
             for(var i = 0;i < arr.length;i++){
                 var poArr = [arr[i].xAxis,arr[i].yAxis];
+                console.log(poArr);
                 Map.addMarker(icon,poArr);
             }
         }
-        //
 
         return nearShop;
     }

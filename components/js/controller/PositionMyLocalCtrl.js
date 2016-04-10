@@ -30,25 +30,35 @@
         //  监听【重新选择/移动】地址
         $scope.$watch('addressInfo',function(){
             AddressListener.updataLocation($scope.addressInfo);
-            $scope.addressInfo = $localStorage.addressInfo;
-        });
-        console.log($scope.addressInfo);
+            console.log($scope.addressInfo);
+            //  减少请求发起次数
+            if($scope.addressInfo.city){
+                var positionInfo = {
+                    position_x:$scope.addressInfo.lnglatXY[0],
+                    position_y:$scope.addressInfo.lnglatXY[1],
+                    districtId:$scope.addressInfo.cityId,
+                    addressInfo:$scope.addressInfo.name
+                }
+                //  获取附近店铺位置
+                GetNearShopService.getShopList(positionInfo)
+                    .then(function(data){
+                        //  绘制附近店铺位置
+                        GetNearShopService.showShopInMap(data.shopList,
+                            "components/images/icon_location_blue@2x.png");
+                    });
+            }
+        },true);
         //  展示地图
         Map.show();
 
-        //  监听定位是否发生变化
-        if($scope.addressInfo.city){                                          //  重新选择地址
-            var mapCenter = $scope.addressInfo.lnglatXY||$scope.addressInfo.city;
-            Map.setMapCenter(mapCenter);  //  在地图中标记出重新选择的位置
-            //  请求附近商铺
-            GetNearShopService.getShopList()
-                .then(function(data){
-                    console.log(data);
-                });
-                //.then(function(data){
-                //    GetNearShopService.showShopInMap(data.shopList,
-                //        "../images/icon_location@2x.png");
-                //});
+        /**
+         *  由于程序bug 如果没有当前城市则认为刚打开APP
+         *  应该判断$scope.addressInfo是否为空对象
+         *  是否是首次进入APP
+         *
+          */
+        if($scope.addressInfo.city){
+            Map.setMapCenter($scope.addressInfo.lnglatXY);  //  在地图中标记出重新选择的位置
         }else{
             //  请求默认地址
             var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
@@ -81,22 +91,14 @@
                 return  Map.getLocationName($q,lnglatXY);
             }).then(function(locationNameObj){
                 $scope.addressInfo.name = locationNameObj.locationName;
-                $scope.addressInfo.city = locationNameObj.city;
+                $scope.city = locationNameObj.city;
                 //  获取城市列表
                 return  ChangeLocation.setAllCities();
             }).then(function(data){
                 var cities = data.cities;
-                var city = ChangeLocation.getThisCity(cities,$scope.addressInfo.city);
+                var city = ChangeLocation.getThisCity(cities,$scope.city);
                 $scope.addressInfo.city = city.label;
                 $scope.addressInfo.cityId = city.id;
-
-                //  获取附近店铺位置
-                return GetNearShopService.getShopList();
-            }).then(function(data){
-
-                //  获取附近店铺位置
-                GetNearShopService.showShopInMap(data.shopList,
-                    "components/images/icon_location_blue@2x.png");
             });
         }
 
@@ -106,12 +108,9 @@
             Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
                 $scope.locationName = locationNameObj.locationName;
 
-                $scope.addressInfo = {
-                    lnglatXY:lnglatXY,
-                    name:locationNameObj.locationName
-                }
+                $scope.addressInfo.lnglatXY = lnglatXY;
+                $scope.addressInfo.name = locationNameObj.locationName
             });
-            //  获取附近商店的位置
         });
 
         //  地图中心的标记(地图高度 = 地图距离底部160px + 头部44px)

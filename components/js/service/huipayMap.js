@@ -14,8 +14,11 @@
             style:{},                   //  设置地图样式
             browserLocation:{},         //  使用浏览器定位
             getLocationName:{},         //  地理位置反编译（坐标-地址）
+            getLocationLnglatXY:{},     //  地理正编译（地址-坐标）
             moveendLocation:{},         //  地图移动后获取坐标
-            searchAfterEnterPrompt:{},  //
+            addMarker:{},               //  添加标记
+            clearMarker:{},              //  清楚标记
+            searchAfterEnterPrompt:{},  //  输入搜索
             setMapCenter:{}             //  设置地图中心点
         };
 
@@ -48,6 +51,9 @@
                 //huipayMapSingle()
                 return defMap.regeocoder($q,lnglatXY);
             }
+            huipayMapApi.getLocationLnglatXY = function($q,addressName){
+                return defMap.geocoder($q,addressName);
+            }
             huipayMapApi.moveendLocation = function(func){
                 //huipayMapSingle()
                 return defMap.mapmove(func);
@@ -66,7 +72,7 @@
             huipayMapApi.addMarker = function(marker,po){
                 return defMap.addMarker(marker,po);
             }
-            huipayMapApi.clearMaker = function(){
+            huipayMapApi.clearMarker = function(){
                 return defMap.clearMarker();
             }
 

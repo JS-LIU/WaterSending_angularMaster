@@ -87,12 +87,9 @@
     margin:0 auto;
     width:30px;
     height:30px;
-    background:#fff url("../images/myLocation-marker.png") no-repeat center;
+    background:url("../images/myLocation-marker.png") no-repeat center;
     background-size: contain;
 }
-
-
-
 
 .my-collect{
     background: url("../images/collect.png") no-repeat 15px center;
@@ -345,6 +342,6 @@ html,body{
     bottom:116px;
     height:44px;
     line-height:44px;
-    background:url('../images/myLocation-marker.png') no-repeat 15px center;
+    background:#FFF url('../images/myLocation-marker.png') no-repeat 15px center;
     background-size: 17px;
 }

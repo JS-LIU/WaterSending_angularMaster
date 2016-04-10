@@ -13,7 +13,6 @@
                 for(var prop in data){
                     $localStorage.addressInfo[prop] = data[prop];
                 }
-
             }
             return locationListener;
         });

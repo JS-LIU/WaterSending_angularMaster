@@ -4,17 +4,26 @@
 (function(){
     angular.module('myApp')
         .controller('AddressList',AddressList);
-    function AddressList($scope,ChangeLocation,AddressListener){
+    function AddressList($scope,
+                         $q,
+                         ChangeLocation,
+                         AddressListener,
+                         Map){
         $scope.addressList = ChangeLocation.getAllCities().cities;
 
+        //  点击城市
         $scope.changeCity = function(address){
-            var city = {
-                city:address.label,
-                cityId:address.id,
-                lnglatXY:"",
-                name: address.label
-            }
-            AddressListener.updataLocation(city);
+            //  得到该城市的经纬度
+            Map.getLocationLnglatXY($q,address).then(function(lnglatXY){
+                var city = {
+                    city:address.label,
+                    cityId:address.id,
+                    lnglatXY:lnglatXY,
+                    name: address.label
+                }
+                AddressListener.updataLocation(city);
+            });
+
         }
     }
 }());

@@ -9,7 +9,8 @@
  * */
 function AutonaviMap(){
     this.map = new AMap.Map('container', {
-        resizeEnable: true
+        resizeEnable: true,
+        zoom: 14
     });
 }
 
@@ -86,7 +87,6 @@ AutonaviMap.prototype.addMarker = function(marker,po){
         width:'100%'
     }),map = this.map;
     marker.setMap(map);
-    map.setFitView();
 }
 
 /*
@@ -120,6 +120,27 @@ AutonaviMap.prototype.regeocoder = function($q,lnglatXY){
                 city:city                                               //  返回城市
             }
             defer.resolve(locationNameObj);
+        }
+    });
+    return defer.promise;
+}
+
+/*
+ *   正向地理编码（地址-坐标）
+ *   代码来源：http://lbs.amap.com/api/javascript-api/example/geocoder/geocoding/
+ * */
+AutonaviMap.prototype.geocoder = function($q,addressName){
+    var geocoder = new AMap.Geocoder({
+        radius: 1000,
+        extensions: "all"
+    });
+    var defer = $q.defer();
+    //地理编码,返回地理编码结果
+    geocoder.getLocation(addressName, function(status, result) {
+        if (status === 'complete' && result.info === 'OK'){
+            var lnglatXY = [result.geocodes.location.lng,
+                result.geocodes.location.lat];
+            defer.resolve(lnglatXY);
         }
     });
     return defer.promise;
