@@ -7,10 +7,10 @@
     <!--轮播页面-->
     <huipay-carousel ng-show="showCarousel"></huipay-carousel>
     <!--地图页面-->
-    <div class="huipayMap" ng-style="mapStyle" ng-show="showMap">
+    <div class="huipayMap w" ng-style="mapStyle" ng-show="showMap">
         <div id="container"></div>
     </div>
     <div class="mapCenter-marker pr" ng-style="mapCenterMarker"></div>
-    <a class="comlist-13-single w" href="#/inputLocation">当前位置：{{addressInfo.name}}</a>
+    <a class="comlist-13-single po nowLocation w fff" href="#/inputLocation">当前位置：{{addressInfo.name||"正在定位..."}}</a>
 </div>
 <huipay-main-footer></huipay-main-footer>

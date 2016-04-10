@@ -14,14 +14,14 @@
         var getNearShop = $resource('shopList/shop');
 
         var nearShop = {
-            getShopList:defer.promise,
+            getShopList:{},
             showShopInMap:{}
         }
 
         //  获取店铺列表
-            nearShop.getShopList = function(){
+        nearShop.getShopList = function(){
 
-            return getNearShop.save({
+            getNearShop.save({
                 accessInfo:Login.getAccessInfo($cookieStore,false),
                 requestPageInfo: {
                     pageSize:5,
@@ -38,13 +38,13 @@
             },function(data){
                 defer.resolve(data);
             });
-            //  获取附近商店
+            return defer.promise;
+
         }
 
         //  附近店铺展示到地图
         nearShop.showShopInMap = function(arr,icon){
             Map.clearMaker();
-            console.log(arr);
             for(var i = 0;i < arr.length;i++){
                 var poArr = [arr[i].xAxis,arr[i].yAxis];
                 Map.addMarker(icon,poArr);

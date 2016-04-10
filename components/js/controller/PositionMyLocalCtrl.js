@@ -21,8 +21,9 @@
         $scope.showMap = true;                              //  是否显示地图
         $scope.showCarousel = !$scope.showMap;              //  是否显示轮播图
         $scope.mapStyle = {                                 //  地图大小
-            position:"relative",
-            height:document.body.clientWidth * 17 / 18 + 'px'
+            position:"absolute",
+            top:'44px',
+            bottom:'160px'
         }
         $scope.addressInfo = $localStorage.addressInfo;     //  是否重新选择过地址
 
@@ -88,13 +89,14 @@
                 var city = ChangeLocation.getThisCity(cities,$scope.addressInfo.city);
                 $scope.addressInfo.city = city.label;
                 $scope.addressInfo.cityId = city.id;
+
+                //  获取附近店铺位置
                 return GetNearShopService.getShopList();
             }).then(function(data){
-                console.log(data);
-                console.log(data.requestPageInfo);
-                console.log(data.shopList);
-                //GetNearShopService.showShopInMap(data.shopList,
-                //    "../images/icon_location@2x.png");
+
+                //  获取附近店铺位置
+                GetNearShopService.showShopInMap(data.shopList,
+                    "components/images/icon_location_blue@2x.png");
             });
         }
 
@@ -112,9 +114,9 @@
             //  获取附近商店的位置
         });
 
-        //  地图中心的标记
+        //  地图中心的标记(地图高度 = 地图距离底部160px + 头部44px)
         $scope.mapCenterMarker = {
-            bottom:parseFloat($scope.mapStyle.height) / 2 + 18 + 'px'
+            top:parseFloat(document.body.clientHeight - 204) / 2 - 30 + 'px'
         }
     }
 }());

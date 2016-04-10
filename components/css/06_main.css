@@ -85,8 +85,8 @@
 
 .mapCenter-marker{
     margin:0 auto;
-    width:13px;
-    height:18px;
+    width:30px;
+    height:30px;
     background:url("../images/myLocation-marker.png") no-repeat center;
     background-size: contain;
 }
@@ -335,4 +335,16 @@ html,body{
 }
 .swap-animation.ng-leave-active {
     left:-100%;
+}
+
+.amap-icon img{
+    width:100%;
+}
+.nowLocation{
+    padding-left:40px;
+    bottom:116px;
+    height:44px;
+    line-height:44px;
+    background:url('../images/myLocation-marker.png') no-repeat 15px center;
+    background-size: 17px;
 }

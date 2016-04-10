@@ -9,17 +9,10 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="TESThuipayWater">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/huipaywater-server/webapps/huipaywater" local="$PROJECT_DIR$" web="huipaywater/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="TESThuipayWater (project level)">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/huipaywater-server/webapps/huipaywater" local="$PROJECT_DIR$" web="huipaywater/" />
           </mappings>
         </serverdata>
       </paths>
