@@ -23,7 +23,6 @@
                 }
                 AddressListener.updataLocation(city);
             });
-
         }
     }
 }());

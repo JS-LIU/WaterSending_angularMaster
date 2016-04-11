@@ -30,7 +30,10 @@
         //  监听【重新选择/移动】地址
         $scope.$watch('addressInfo',function(){
             AddressListener.updataLocation($scope.addressInfo);
+
+            //  控制台 打印当前地址
             console.log($scope.addressInfo);
+
             //  减少请求发起次数
             if($scope.addressInfo.city){
                 var positionInfo = {
@@ -40,12 +43,12 @@
                     addressInfo:$scope.addressInfo.name
                 }
                 //  获取附近店铺位置
-                GetNearShopService.getShopList(positionInfo)
-                    .then(function(data){
-                        //  绘制附近店铺位置
-                        GetNearShopService.showShopInMap(data.shopList,
-                            "components/images/icon_location_blue@2x.png");
-                    });
+                GetNearShopService.getShopList(positionInfo,function(data){
+                    var shopList = data.shopList;
+                    //  绘制附近店铺位置
+                    GetNearShopService.showShopInMap(shopList,
+                        "components/images/icon_location_blue@2x.png");
+                });
             }
         },true);
         //  展示地图
@@ -69,6 +72,7 @@
             }
             DelieveryAddressService.getDefnAddress(postdefnAddressData)
                 .then(function success(data){
+                    console.log(data);
                     //  是否有默认地址
                     if(data.isDefault){
                         //  显示默认地址

@@ -9,11 +9,15 @@
         <input class="w h" ng-model="keywords" type="text" placeholder="输入您所在的地区"/>
     </div>
     <ul class="common-list-22 clearfix addressselectbox">
-        <li class="fl tc">
-            <span class="homeaddress">家庭地址</span>
+        <li class="fl tc" ng-click="selectAddress(1)">
+            <a ng-href={{addedAddress}}>
+                <span class="homeaddress">家庭地址</span>
+            </a>
         </li>
-        <li class="fl tc">
-            <span class="companyaddress">公司地址</span>
+        <li class="fl tc" ng-click="selectAddress(2)">
+            <a ng-href={{addedAddress}}>
+                <span class="companyaddress">公司地址</span>
+            </a>
         </li>
     </ul>
     <ul class="common-list-03" style="margin-top:-1px;">

@@ -5,11 +5,9 @@
     angular.module('myApp')
         .factory('GetNearShopService',GetNearShopService);
     function GetNearShopService($resource,
-                                $q,
                                 $cookieStore,
                                 Login,
                                 Map){
-        var defer = $q.defer();
         var getNearShop = $resource('shopList/shop');
 
         var nearShop = {
@@ -18,9 +16,8 @@
         }
 
         //  获取店铺列表
-        nearShop.getShopList = function(addressInfo){
-
-            getNearShop.save({
+        nearShop.getShopList = function(addressInfo,func){
+            return getNearShop.save({
                 accessInfo:Login.getAccessInfo($cookieStore,false),
                 requestPageInfo: {
                     pageSize:5,
@@ -30,9 +27,9 @@
                 x_dpi:'640',
                 positionInfo:addressInfo
             },function(data){
-                defer.resolve(data);
+                func(data);
             });
-            return defer.promise;
+
 
         }
 
@@ -41,7 +38,6 @@
             Map.clearMarker();
             for(var i = 0;i < arr.length;i++){
                 var poArr = [arr[i].xAxis,arr[i].yAxis];
-                console.log(poArr);
                 Map.addMarker(icon,poArr);
             }
         }
