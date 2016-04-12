@@ -13,6 +13,15 @@
     }
 
     function DelieveryAddressService(DelieveryAddressResource){
+
+        //  【提前拟定】地址
+        this.speAddressArr = function(arr){
+            var speAddress = [{name:'家庭地址'},{name:'公司地址'}];
+        }
+
+
+
+        //  获取默认地址
         this.getDefnAddress = function(obj){
             return DelieveryAddressResource.save(
                 {operate:'showDefaultAddress'},
@@ -20,6 +29,7 @@
             ).$promise;
         }
 
+        //  获取收获地址列表
         this.getAddressList = function(obj){
             return DelieveryAddressResource.post(
                 {operate:'show'},
@@ -27,12 +37,11 @@
             ).$promise;
         }
 
+        //  得到【家庭地址/公司地址】
         this.getSpeAddress = function(arr,condition){
             var speAddress;
             for(var i = arr.length - 1 ; i >= 0 ;i--){
                 if(arr[i].addressType == condition){
-                    speAddress = arr[i];
-                }else if(arr[i].addressType == condition && arr[i].isDefault == 1){
                     speAddress = arr[i];
                     return speAddress;
                 }

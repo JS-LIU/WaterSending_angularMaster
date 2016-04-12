@@ -33,10 +33,14 @@
             AddressListener.updataLocation(nowLocation);
         }
 
-        //  判断是否登录
-        var isLogin = Login.isLogIn();
+        //  拟定的地址
+        $scope.speAddressArr = DelieveryAddressService.speAddressArr;
+
+
+        //  为选择【家庭地址/公司地址】绑定方法
+        var isLogin = Login.isLogIn();              //  登陆判断
         if(isLogin){                                //  登录
-            //  选择家庭地址||公司地址
+
             //  请求地址列表参数
             var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
             accessInfo.phone_num = "";
@@ -60,29 +64,9 @@
                     var companyAddress = DelieveryAddressService
                         .getSpeAddress(data,2);
 
-                    $scope.selectAddress = function(addressType){
-                        var defnAddress;
-                        if(addressType == 1 && homeAddress){
-                            defnAddress = homeAddress;
-                            var nowLocation = {
-                                lnglatXY:[defnAddress.position_x,defnAddress.position_y],
-                                name:defnAddress.fullAddress
-                            }
-                            AddressListener.updataLocation(nowLocation);
-                        }else if(addressType == 2 && companyAddress){
-                            defnAddress = companyAddress
-                            var nowLocation = {
-                                lnglatXY:[defnAddress.position_x,defnAddress.position_y],
-                                name:defnAddress.fullAddress
-                            }
-                            AddressListener.updataLocation(nowLocation);
-                        }else{
-                            if(addressType == 1){
 
-                            }else if(addressType == 2){
+                    $scope.selectAddress = function(speAddress){
 
-                            }
-                        }
                     }
                 });
         }else{                                      //  未登录

@@ -9,14 +9,9 @@
         <input class="w h" ng-model="keywords" type="text" placeholder="输入您所在的地区"/>
     </div>
     <ul class="common-list-22 clearfix addressselectbox">
-        <li class="fl tc" ng-click="selectAddress(1)">
+        <li class="fl tc" ng-repeat="speAddress in speAddressArr" ng-click="selectAddress()">
             <a ng-href={{addedAddress}}>
-                <span class="homeaddress">家庭地址</span>
-            </a>
-        </li>
-        <li class="fl tc" ng-click="selectAddress(2)">
-            <a ng-href={{addedAddress}}>
-                <span class="companyaddress">公司地址</span>
+                <span class="homeaddress">{{speAddress.name}}</span>
             </a>
         </li>
     </ul>
@@ -29,3 +24,5 @@
     </ul>
 </div>
 <huipay-main-footer></huipay-main-footer>
+
+<div ng-view></div>

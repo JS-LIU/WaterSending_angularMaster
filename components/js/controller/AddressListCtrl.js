@@ -3,7 +3,7 @@
  */
 (function(){
     angular.module('myApp')
-        .controller('AddressList',AddressList);
+        .controller('AddressListCtrl',AddressList);
     function AddressList($scope,
                          $q,
                          ChangeLocation,
