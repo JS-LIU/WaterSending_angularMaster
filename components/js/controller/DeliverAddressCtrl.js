@@ -5,7 +5,7 @@
     angular.module('myApp')
         .controller('DeliverAddressCtrl',DeliverAddressCtrl);
 
-    function DeliverAddressCtrl($scope){
-
+    function DeliverAddressCtrl($scope,OperateAddressService){
+        $scope.title = OperateAddressService.creatPage;
     }
 }())

@@ -30,7 +30,7 @@
             }).when('/my',{
                 templateUrl:'06-04-my.html',
                 controller:'MyCtrl'
-            }).when('/address',{
+            }).when('/editAddress',{
                 templateUrl:'06-02-deliverAddress.html',
                 controller:'DeliverAddressCtrl'
             })

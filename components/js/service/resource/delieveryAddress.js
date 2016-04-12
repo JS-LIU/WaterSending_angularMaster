@@ -15,9 +15,8 @@
     function DelieveryAddressService(DelieveryAddressResource){
 
         //  【提前拟定】地址
-        this.speAddressArr = function(arr){
-            var speAddress = [{name:'家庭地址'},{name:'公司地址'}];
-        }
+        this.speAddressArr = [{name:'家庭地址',addressType:1},
+            {name:'公司地址',addressType:2}];
 
 
 
