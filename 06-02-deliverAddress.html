@@ -1,7 +1,22 @@
 <div class="L-header w pr blue">
     <div class="L-header w pr slide-header">
         <a href="#/" class="L-header-back h po"></a>
-        <p class="tc L-header-title cfff f16">{{title.operate}}{{title.addressType}}地址</p>
-        <a href="#/" class="po L-header-cancelBtn pr10 cfff">保存</a>
+        <p class="tc L-header-title cfff f16">{{operateAddress.operate}}{{operateAddress.addressType}}</p>
+        <a href="" class="po L-header-cancelBtn pr10 cfff">保存</a>
     </div>
 </div>
+<div class="L-center">
+    <ul class="common-list-15" >
+        <li class="clearfix pr" ng-repeat="addressTitle in operateAddress.addressListTitles">
+            <p class="fl pl15">{{addressTitle.titles}}</p>
+            <P class="po common-list-input-1">
+                <input type="text" class="w h" placeholder="" />
+            </P>
+        </li>
+        <div class="common-list-15">
+            <p class="fl pl15">设为默认地址</p>
+            <on-off></on-off>
+        </div>
+    </ul>
+</div>
+

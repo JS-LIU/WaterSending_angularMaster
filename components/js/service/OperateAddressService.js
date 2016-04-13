@@ -9,16 +9,21 @@
         var operateAddress = {
             creatPage:{}
         }
+        var titleMsg = {
+            operate:"",
+            addressType:"",
+            addressInfo:{},
+            addressListTitles:[
+                {titles:"收货人："},
+                {titles:"联系方式："},
+                {titles:"所在地区："},
+                {titles:"详细地址："}]
+        };
         var addressTypeArr = [{name:'普通地址',addressType:0},
             {name:'家庭地址',addressType:1},
             {name:'公司地址',addressType:2}];
-
         operateAddress.creatPage = function(addressType,addressInfo){
-            var titleMsg = {
-                operate:"",
-                addressType:"",
-                addressInfo:{}
-            };
+
             for(var i = 0; i < addressTypeArr.length;i++){
                 if(addressTypeArr[i].addressType == addressType){
                     titleMsg.addressType = addressTypeArr[i].name;
@@ -33,6 +38,15 @@
             }
             return titleMsg;
         }
-        return operateAddress;
+        return {
+            operateAddress:operateAddress,
+            getOperateAddress:function(){
+                return titleMsg;
+            },
+            setOperateAddress:function(obj){
+                titleMsg = obj;
+            }
+
+        };
     }
 }());

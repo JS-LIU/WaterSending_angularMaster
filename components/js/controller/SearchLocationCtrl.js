@@ -79,8 +79,11 @@
                         }
                         AddressListener.updataLocation(nowLocation);
                     }else{
-                        OperateAddressService.creatPage(addressType);
-                        window.location.href = "/editAddress";
+                        //  保存修改信息
+                        var title = OperateAddressService.operateAddress
+                            .creatPage(addressType);
+                        OperateAddressService.setOperateAddress(title);
+                        window.location.href = "#/editAddress";
                     }
                 }
             },function error(error){
