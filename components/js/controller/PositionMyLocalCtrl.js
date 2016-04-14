@@ -72,11 +72,20 @@
             }
             DelieveryAddressService.getDefnAddress(postdefnAddressData)
                 .then(function success(data){
-                    console.log(data);
                     //  是否有默认地址
                     if(data.isDefault){
                         //  显示默认地址
-                        //  城市
+                        var lnglatXY = [data.postionX,data.postionY];
+                        $scope.addressInfo.lnglatXY = lnglatXY;
+                        $scope.addressInfo.name = data.fullAddress;
+                        $scope.addressInfo.cityId = data.cityId;
+                        //  当前地址名字
+                        Map.getLocationName($q,lnglatXY).then(function(data){
+                            $scope.addressInfo.city = data.city;
+                            //  获取城市列表
+                            ChangeLocation.setAllCities();
+                        });
+
                     }else{
                         //  浏览器定位
                         return Map.browserLocation($q);
@@ -89,7 +98,6 @@
                 //  显示正在定位对话框
 
                 var lnglatXY = [lnglatObj.position.lng,lnglatObj.position.lat];
-
                 $scope.addressInfo.lnglatXY = lnglatXY;
                 //  获得当前地址名字
                 return  Map.getLocationName($q,lnglatXY);

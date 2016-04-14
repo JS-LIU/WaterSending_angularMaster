@@ -12,12 +12,17 @@
         var titleMsg = {
             operate:"",
             addressType:"",
-            addressInfo:{},
-            addressListTitles:[
-                {titles:"收货人："},
-                {titles:"联系方式："},
-                {titles:"所在地区："},
-                {titles:"详细地址："}]
+            addressInfo:{
+                userName:"",
+                mobile:"",
+                provinceId:"",
+                cityId:"",
+                address:"",
+                fullAddress:"",
+                postionX:"",
+                postionY:"",
+                isDefault:""
+            }
         };
         var addressTypeArr = [{name:'普通地址',addressType:0},
             {name:'家庭地址',addressType:1},
