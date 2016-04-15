@@ -33,6 +33,9 @@
             }).when('/editAddress',{
                 templateUrl:'06-02-deliverAddress.html',
                 controller:'DeliverAddressCtrl'
+            }).when('/deliverMap',{
+                templateUrl:'06-02-01-mapDeliverAddress.html',
+                controller:'DeliverMapCtrl'
             })
         }])
         .config(function(MapProvider){

@@ -12,17 +12,7 @@
         var titleMsg = {
             operate:"",
             addressType:"",
-            addressInfo:{
-                userName:"",
-                mobile:"",
-                provinceId:"",
-                cityId:"",
-                address:"",
-                fullAddress:"",
-                postionX:"",
-                postionY:"",
-                isDefault:""
-            }
+            addressInfo:{}
         };
         var addressTypeArr = [{name:'普通地址',addressType:0},
             {name:'家庭地址',addressType:1},

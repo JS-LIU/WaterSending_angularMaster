@@ -1,0 +1,28 @@
+<div class="L-header w pr blue">
+    <div class="L-header w pr slide-header">
+        <p class="tc L-header-title cfff f16">地址选择</p>
+        <a href="#/editAddress" class="po L-header-cancelBtn pr10 cfff">取消</a>
+    </div>
+</div>
+<div class="L-center">
+    <div class="huipayMap w" ng-style="mapStyle" ng-show="showMap">
+        <div id="container"></div>
+    </div>
+    <div class="L-header-searchbox-01 mr15 ml15 pl30" >
+        <input class="w h" ng-model="keywords" type="text" placeholder="输入您所在的地区"/>
+    </div>
+    <ul class="common-list-22 clearfix addressselectbox">
+        <li class="fl tc" ng-repeat="speAddress in speAddressArr" ng-click="selectAddress(speAddress.addressType)">
+            <a ng-href="{{addedAddress}}">
+                <span class="homeaddress">{{speAddress.name}}</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="common-list-03" style="margin-top:-1px;">
+        <li ng-repeat="location in locationInfoArr" ng-click="setNewLnglat(location)">
+            <a href="#/">
+                <span class="common-list-03-title pl15">{{location.name}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
