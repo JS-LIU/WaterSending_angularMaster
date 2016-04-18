@@ -16,6 +16,7 @@
 
 
         var deliverInfo = $scope.operateAddress.addressInfo;
+
         $scope.userName = deliverInfo.userName||"";
         $scope.mobile = deliverInfo.mobile||"";
         $scope.addressName = deliverInfo.name||"";
@@ -50,7 +51,6 @@
             }
 
 
-            //  更新本地存储
         }
 
 

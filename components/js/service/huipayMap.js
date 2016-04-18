@@ -17,7 +17,7 @@
             getLocationLnglatXY:{},     //  地理正编译（地址-坐标）
             moveendLocation:{},         //  地图移动后获取坐标
             addMarker:{},               //  添加标记
-            clearMarker:{},              //  清楚标记
+            clearMarker:{},             //  清楚标记
             searchAfterEnterPrompt:{},  //  输入搜索
             setMapCenter:{}             //  设置地图中心点
         };

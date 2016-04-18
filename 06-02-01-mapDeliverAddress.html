@@ -5,22 +5,16 @@
     </div>
 </div>
 <div class="L-center">
-    <div class="huipayMap w" ng-style="mapStyle" ng-show="showMap">
+    <div class="huipayMap w" ng-style="mapStyle">
         <div id="container"></div>
     </div>
-    <div class="L-header-searchbox-01 mr15 ml15 pl30" >
+    <div class="L-header-searchbox-01 pl30 po" >
         <input class="w h" ng-model="keywords" type="text" placeholder="输入您所在的地区"/>
     </div>
-    <ul class="common-list-22 clearfix addressselectbox">
-        <li class="fl tc" ng-repeat="speAddress in speAddressArr" ng-click="selectAddress(speAddress.addressType)">
-            <a ng-href="{{addedAddress}}">
-                <span class="homeaddress">{{speAddress.name}}</span>
-            </a>
-        </li>
-    </ul>
-    <ul class="common-list-03" style="margin-top:-1px;">
+    <div class="mapCenter-marker pr" ng-style="mapCenterMarker"></div>
+    <ul class="common-list-03 w"ng-style="searchAddressList">
         <li ng-repeat="location in locationInfoArr" ng-click="setNewLnglat(location)">
-            <a href="#/">
+            <a href="#/editAddress">
                 <span class="common-list-03-title pl15">{{location.name}}</span>
             </a>
         </li>
