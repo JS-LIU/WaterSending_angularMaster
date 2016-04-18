@@ -10,7 +10,7 @@
             creatPage:{}
         }
         var titleMsg = {
-            operate:"",
+            operate:{state:"",title:""},
             addressType:"",
             addressInfo:{}
         };
@@ -25,9 +25,15 @@
                 }
             }
             if(arguments[1] == undefined){
-                titleMsg.operate = "新建";
+                titleMsg.operate = {
+                    state:'0',
+                    title:'新建'
+                };
             }else{
-                titleMsg.operate = "编辑";
+                titleMsg.operate = {
+                    state:'1',
+                    title:'编辑'
+                };
                 //  存储编辑地址信息
                 titleMsg.addressInfo = addressInfo;
             }
@@ -39,9 +45,11 @@
                 return titleMsg;
             },
             setOperateAddress:function(obj){
-                titleMsg = obj;
+                for(var prop in obj){
+                    titleMsg[prop] = obj[prop];
+                }
+                console.log(titleMsg);
             }
-
         };
     }
 }());

@@ -44,6 +44,14 @@
             ).$promise;
         }
 
+        //  编辑收货地址
+        this.editAddress = function(obj){
+            return DelieveryAddressResource.post(
+                {operate:'edit'},
+                obj
+            ).$promise;
+        }
+
         //  得到【家庭地址/公司地址】
         this.getSpeAddress = function(arr,condition){
             var speAddress;

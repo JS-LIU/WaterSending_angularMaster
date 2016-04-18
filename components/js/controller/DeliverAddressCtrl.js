@@ -13,18 +13,14 @@
 
         //  本页数据
         $scope.operateAddress = OperateAddressService.getOperateAddress();
-
-
         var deliverInfo = $scope.operateAddress.addressInfo;
 
         $scope.userName = deliverInfo.userName||"";
         $scope.mobile = deliverInfo.mobile||"";
-        $scope.addressName = deliverInfo.name||"";
         $scope.fullAddress = deliverInfo.fullAddress||"";
-        $scope.position_x = deliverInfo.position_x||"";
-        $scope.position_y = deliverInfo.position_y||"";
-        $scope.cityId = deliverInfo.cityId;
         $scope.isDefault = deliverInfo.isDefault||0;
+        $scope.addressName = deliverInfo.name||"";
+
 
         //  监听【被保存】地址变化
         $scope.saveAddress = function(){
@@ -32,39 +28,36 @@
             var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
             accessInfo.phone_num = "";
             var addressItem = {
-                addressId:"",
+                addressId:deliverInfo.addressId||"10",
                 phone_num:$scope.mobile,
-                recieve_name: $scope.userName ,
+                recieve_name: $scope.userName,
                 position_x: $scope.position_x,
                 position_y: $scope.position_y,
-                provinceId: $scope.cityId,
-                cityId: $scope.cityId,
+                provinceId: "1000",
+                cityId: "1000",
                 fullAddress: $scope.fullAddress,
                 addressType: 0,
                 isDefault: 0
             };
-            console.log(addressItem);
             var postNewAddressData = {
                 sign:"",
                 accessInfo:accessInfo,
                 addressItem:addressItem
             }
 
+            //  新增还是编辑
+            if($scope.operateAddress.state == 0){
+                DelieveryAddressService.newAddress(postNewAddressData)
+                    .then(function(data){
+                        //  dosth
+                    });
+            }else{
+                DelieveryAddressService.editAddress(postNewAddressData)
+                    .then(function(data){
+                        //  dosth
+                    });
+            }
 
         }
-
-
-        //
-        //var addressItem = {
-        //    addressId:"",
-        //    phone_num:"",
-        //    recieve_name:" "
-        //}
-
-
-        //DelieveryAddressService.newAddress(postNewAddressData)
-        //    .then(function(data){
-        //
-        //});
     }
 }());

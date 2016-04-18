@@ -8,8 +8,7 @@
     function DeliverMapCtrl($scope,
                             $q,
                             Map,
-                            OperateAddressService,
-                            ChangeLocation){
+                            OperateAddressService){
 
         //  地图样式
         $scope.mapStyle = {
@@ -38,48 +37,42 @@
                 return Map.getLocationName($q,lnglatXY);
             }).then(function(locationNameObj){
                 $scope.keywords = locationNameObj.locationName;
-                $scope.city = locationNameObj.city;
-                //  获取城市列表
-                return  ChangeLocation.setAllCities();
-            }).then(function(data){
-                var cities = data.cities;
-                var city = ChangeLocation.getThisCity(cities,$scope.city);
-                $scope.city = city.label;
-                $scope.cityId = city.id;
-            });
+            })
         }
 
-        //  获取移动后位置
-        Map.moveendLocation(function(lnglatXY){
-            //  获得当前地址名字
-            Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
-                $scope.locationName = locationNameObj.locationName;
-                console.log(locationNameObj);
-                //  在列表中显示
-
-                // $scope.addressInfo.lnglatXY = lnglatXY;
-                // $scope.addressInfo.name = locationNameObj.locationName
-            });
-        });
-
+        //  获取移动后位置(高德地图bug暂时不用了)
+        //Map.moveendLocation(function(lnglatXY){
+        //
+        //    //  获得当前地址名字
+        //    Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
+        //        $scope.keywords = locationNameObj.locationName;
+        //    });
+        //});
 
         //  输入框中输入新的地址
         $scope.$watch("keywords",function(){
             Map.searchAfterEnterPrompt($q,"",$scope.keywords)
                 .then(function(locationInfoArr){
                     $scope.locationInfoArr = locationInfoArr;
+                    var lnglatXY = [locationInfoArr[0].location.lng,
+                        locationInfoArr[0].location.lat];
+                    Map.setMapCenter(lnglatXY);
                 });
         });
 
 
         //  列表中 选择新的地址
         $scope.setNewLnglat = function(location){
+
             var nowLocation = {
-                lnglatXY:[location.location.lng,location.location.lat],
-                name:location.name
+                addressInfo:{
+                    position_x:location.location.lng,
+                    position_y:location.location.lat,
+                    name:location.name,
+                }
             }
             //  保存选择的地址信息
-
+            OperateAddressService.setOperateAddress(nowLocation);
         }
 
 
