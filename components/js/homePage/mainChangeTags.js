@@ -15,8 +15,7 @@
             'huipayUI',
             'huipayMap',
             'huipayLogIn',
-            'delieveryAddress',
-            'huipayUtil'
+            'delieveryAddress'
         ])
         .config(['$routeProvider', function($routeProvider) {
             $routeProvider.when('/',{
@@ -37,7 +36,10 @@
             }).when('/deliverMap',{
                 templateUrl:'06-02-01-mapDeliverAddress.html',
                 controller:'DeliverMapCtrl'
-            })
+            }).when('/deliverAddressList',{
+                templateUrl:'06-02-02-deliverAddressList.html',
+                controller:'DeliverAddressListCtrl'
+            });
         }])
         .config(function(MapProvider){
             MapProvider.setMap(AutonaviMap);

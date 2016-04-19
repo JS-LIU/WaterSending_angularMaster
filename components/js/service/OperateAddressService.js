@@ -9,9 +9,10 @@
         var operateAddress = {
             creatPage:{}
         }
+
         var titleMsg = {
             operate:{state:"",title:""},
-            addressType:"",
+            addressType:{},
             addressInfo:{}
         };
         var addressTypeArr = [{name:'普通地址',addressType:0},
@@ -21,7 +22,7 @@
 
             for(var i = 0; i < addressTypeArr.length;i++){
                 if(addressTypeArr[i].addressType == addressType){
-                    titleMsg.addressType = addressTypeArr[i].name;
+                    titleMsg.addressType = addressTypeArr[i];
                 }
             }
             if(arguments[1] == undefined){
@@ -39,6 +40,8 @@
             }
             return titleMsg;
         }
+
+
         return {
             operateAddress:operateAddress,
             getOperateAddress:function(){
@@ -48,7 +51,18 @@
                 for(var prop in obj){
                     titleMsg[prop] = obj[prop];
                 }
-                console.log(titleMsg);
+            },
+            getFullAddress:function(str1,str2){
+                var j = 0;
+                for(var i = 0;i < str1.length;i++){
+                    if(str1[i] == str2[i]){
+                        j++;
+                    }else{
+                        break;
+                    }
+                }
+                var str = str2.substring(j);
+                return str1+str;
             }
         };
     }

@@ -20,8 +20,12 @@
         //  展示地图
         Map.show();
         $scope.keywords = "";
+
+
+        var titleMsg = OperateAddressService.getOperateAddress();
         //  地址信息
-        var addressInfo = OperateAddressService.getOperateAddress().addressInfo;
+        var addressInfo = titleMsg.addressInfo;
+
 
         //  是否存在地址信息（如果有信息则为修改地址）
         if(addressInfo.name){                //  修改地址
@@ -64,12 +68,11 @@
         //  列表中 选择新的地址
         $scope.setNewLnglat = function(location){
 
+            addressInfo.position_x = location.location.lng;
+            addressInfo.position_y = location.location.lat;
+            addressInfo.name = location.name;
             var nowLocation = {
-                addressInfo:{
-                    position_x:location.location.lng,
-                    position_y:location.location.lat,
-                    name:location.name,
-                }
+                addressInfo:addressInfo
             }
             //  保存选择的地址信息
             OperateAddressService.setOperateAddress(nowLocation);

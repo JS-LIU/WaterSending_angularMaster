@@ -16,6 +16,9 @@
                                 AddressListener,
                                 OperateAddressService){
         $scope.keywords = "";
+        //  【家庭地址/公司地址】地址样子
+        $scope.speAddressArr = DelieveryAddressService.speAddressArr;
+
         var city = $localStorage.addressInfo.city;
         $scope.$watch("keywords",function(){
             Map.searchAfterEnterPrompt($q,city,$scope.keywords)
@@ -24,7 +27,7 @@
                 });
         });
 
-
+        //  选择地址
         $scope.setNewLnglat = function(location){
 
             var nowLocation = {
@@ -33,10 +36,6 @@
             }
             AddressListener.updataLocation(nowLocation);
         }
-
-        //  拟定的地址
-        $scope.speAddressArr = DelieveryAddressService.speAddressArr;
-
 
         //  为选择【家庭地址/公司地址】绑定方法
 
@@ -58,8 +57,11 @@
         //  请求地址列表
         DelieveryAddressService.getAddressList(postAddressListData)
             .then(function success(data){
+                //  获取家庭地址
                 var homeAddress = DelieveryAddressService
                     .getSpeAddress(data,1);
+
+                //  获取公司地址
                 var companyAddress = DelieveryAddressService
                     .getSpeAddress(data,2);
 
@@ -68,16 +70,18 @@
                         var nowLocation = {
                             lnglatXY:[homeAddress.position_x,
                                 homeAddress.position_y],
-                            name:homeAddress.name
+                            name:homeAddress.fullAddress
                         }
                         AddressListener.updataLocation(nowLocation);
+                        window.location.href = "#/"
                     }else if(addressType == 2 && companyAddress){
                         var nowLocation = {
                             lnglatXY:[companyAddress.position_x,
                                 companyAddress.position_y],
-                            name:companyAddress.name
+                            name:companyAddress.fullAddress
                         }
                         AddressListener.updataLocation(nowLocation);
+                        window.location.href = "#/"
                     }else{
                         //  保存修改信息
                         var title = OperateAddressService.operateAddress

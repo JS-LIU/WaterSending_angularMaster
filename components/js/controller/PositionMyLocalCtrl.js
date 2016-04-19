@@ -75,7 +75,7 @@
                     //  是否有默认地址
                     if(data.isDefault){
                         //  显示默认地址
-                        var lnglatXY = [data.postionX,data.postionY];
+                        var lnglatXY = [data.position_x,data.position_y];
                         $scope.addressInfo.lnglatXY = lnglatXY;
                         $scope.addressInfo.name = data.fullAddress;
                         $scope.addressInfo.cityId = data.cityId;
@@ -95,15 +95,18 @@
                     //  未登录
                     return Map.browserLocation($q);
                 }).then(function(lnglatObj){
-                //  显示正在定位对话框
-
-                var lnglatXY = [lnglatObj.position.lng,lnglatObj.position.lat];
-                $scope.addressInfo.lnglatXY = lnglatXY;
+                if(lnglatObj){
+                    //  显示正在定位对话框
+                    var lnglatXY = [lnglatObj.position.lng,lnglatObj.position.lat];
+                    $scope.addressInfo.lnglatXY = lnglatXY;
+                }
                 //  获得当前地址名字
                 return  Map.getLocationName($q,lnglatXY);
             }).then(function(locationNameObj){
-                $scope.addressInfo.name = locationNameObj.locationName;
-                $scope.city = locationNameObj.city;
+                if(locationNameObj){
+                    $scope.addressInfo.name = locationNameObj.locationName;
+                    $scope.city = locationNameObj.city;
+                }
                 //  获取城市列表
                 return  ChangeLocation.setAllCities();
             }).then(function(data){

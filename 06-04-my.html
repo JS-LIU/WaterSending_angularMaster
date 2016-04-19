@@ -5,17 +5,22 @@
     <ul class="common-list-02">
         <li class="w pr">
             <a class="h" ng-href={{nextPage}}>
-                <div>
-                    <div class="common-picproduct-02 pr tc">
-                        <img ng-src={{myHeader}} class="h" alt="头像"/>
-                    </div>
-                    <div class="po common-detailbox-02">
-                        <p class="f16 mt10 common-detailbox-02-name">{{myName||"请登录"}}</p>
-                        <p class="common-detailbox-02-pricebox mt20">
-                            <span class="f14">海报队员编号：{{myCode||"尚未登录"}}</span>
-                        </p>
-                    </div>
+                <div class="common-picproduct-02 pr tc">
+                    <img ng-src={{myHeader}} class="h" alt="头像"/>
                 </div>
+                <div class="po common-detailbox-02">
+                    <p class="f16 mt10 common-detailbox-02-name">{{myName||"请登录"}}</p>
+                    <p class="common-detailbox-02-pricebox mt20">
+                        <span class="f14">海报队员编号：{{myCode||"尚未登录"}}</span>
+                    </p>
+                </div>
+            </a>
+        </li>
+    </ul>
+    <ul class="common-list-03">
+        <li>
+            <a href="#/deliverAddressList">
+                <span class="common-list-03-title pl15">收货地址</span>
             </a>
         </li>
     </ul>
