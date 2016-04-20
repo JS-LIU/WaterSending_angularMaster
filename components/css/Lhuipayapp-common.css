@@ -112,9 +112,11 @@ body{
 .common-list-18,
 .common-list-19,
 .common-list-21,
-.common-list-22{
+.common-list-22,
+.common-list-23{
     background:#FFF;
 }
+
 .common-list-22 li{
     width:50%;
     height:58px;

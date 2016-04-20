@@ -138,8 +138,8 @@ AutonaviMap.prototype.geocoder = function($q,addressName){
     //地理编码,返回地理编码结果
     geocoder.getLocation(addressName, function(status, result) {
         if (status === 'complete' && result.info === 'OK'){
-            var lnglatXY = [result.geocodes.location.lng,
-                result.geocodes.location.lat];
+            var lnglatXY = [result.geocodes[0].location.lng,
+                result.geocodes[0].location.lat];
             defer.resolve(lnglatXY);
         }
     });
@@ -162,7 +162,6 @@ AutonaviMap.prototype.searchAfterEnterPrompt = function($q,city,keywords){
         if (keywords.length > 0) {
             auto.search(keywords, function(status, result) {
                 if(status == "complete" && result.info === 'OK'){
-                    console.log(result);
                     var locationInfoArr = result.tips;
                     defer.resolve(locationInfoArr);
                 }

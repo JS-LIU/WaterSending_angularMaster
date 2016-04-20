@@ -61,8 +61,10 @@
          *
           */
         if($scope.addressInfo.city){
+            console.log(1);
             Map.setMapCenter($scope.addressInfo.lnglatXY);  //  在地图中标记出重新选择的位置
         }else{
+            console.log(2);
             //  请求默认地址
             var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
             accessInfo.phone_num = "";

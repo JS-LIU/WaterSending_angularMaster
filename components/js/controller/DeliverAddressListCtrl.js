@@ -24,17 +24,10 @@
             }
         }
 
-
+        //  【家庭地址/公司地址】名字
         DelieveryAddressService.getAddressList(postAddressListData)
             .then(function success(data){
-                //  获取家庭地址
-                var homeAddress = DelieveryAddressService
-                    .getSpeAddress(data,1);
-
-                //  获取公司地址
-                var companyAddress = DelieveryAddressService
-                    .getSpeAddress(data,2);
-
+                $scope.addressList = DelieveryAddressService.trimAddressList(data);
             });
 
     }

@@ -1,0 +1,20 @@
+<div class="L-header w pr blue">
+    <div class="L-header w pr slide-header">
+        <a href="#/" class="L-header-back h po"></a>
+        <p class="tc L-header-title cfff f16">我的收货地址</p>
+        <a href="#/" class="po L-header-cancelBtn pr10 cfff">+新增</a>
+    </div>
+</div>
+
+<ul class="common-list-23">
+    <li ng-repeat="addressInfo in addressList">
+        <div class="common-list-23-title" ng-class="{'homeAddress':isHome,'companyAddress':isCompany,'commonAddress':isCommon}">{{addressInfo.name}}</div>
+        <div class="common-list-23-center">
+            <p class="mt5">
+                <span>{{}}</span>
+            </p>
+        </div>
+        <div class="common-list-23-footer"></div>
+    </li>
+</ul>
+

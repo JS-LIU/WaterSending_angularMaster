@@ -6,6 +6,7 @@
         .controller('AddressListCtrl',AddressList);
     function AddressList($scope,
                          $q,
+                         $localStorage,
                          ChangeLocation,
                          AddressListener,
                          Map){
@@ -14,7 +15,7 @@
         //  点击城市
         $scope.changeCity = function(address){
             //  得到该城市的经纬度
-            Map.getLocationLnglatXY($q,address).then(function(lnglatXY){
+            Map.getLocationLnglatXY($q,address.label).then(function(lnglatXY){
                 var city = {
                     city:address.label,
                     cityId:address.id,
@@ -22,6 +23,7 @@
                     name: address.label
                 }
                 AddressListener.updataLocation(city);
+                window.location.href = "#/";
             });
         }
     }
