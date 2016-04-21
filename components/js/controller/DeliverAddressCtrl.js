@@ -17,16 +17,17 @@
         var deliverInfo = $scope.operateAddress.addressInfo;
 
         $scope.userName = deliverInfo.userName||"";
-        $scope.mobile = deliverInfo.mobile||"";
-        $scope.fullAddress = deliverInfo.fullAddress||"";
+        $scope.phone_num = deliverInfo.phone_num||"";
+        $scope.address = deliverInfo.address||"";
         $scope.isDefault = deliverInfo.isDefault||0;
-        $scope.addressName = deliverInfo.name||deliverInfo.fullAddress||"";
+        $scope.districtAddress = deliverInfo.districtAddress;
 
         //  存储临时数据
         $scope.saveAddressInfo = function(){
             deliverInfo.userName = $scope.userName;
-            deliverInfo.mobile = $scope.mobile;
-            deliverInfo.fullAddress = $scope.fullAddress;
+            deliverInfo.phone_num = $scope.phone_num;
+            deliverInfo.address = $scope.address;
+            deliverInfo.districtAddress = $scope.districtAddress;
             deliverInfo.isDefault =  $scope.isDefault;
             var obj = {
                 addressInfo:deliverInfo
@@ -37,21 +38,22 @@
         //  监听【被保存】地址变化
         $scope.saveAddress = function(){
 
-            var fullAddress = OperateAddressService
-                .getFullAddress(deliverInfo.name,$scope.fullAddress);
+            //var fullAddress = OperateAddressService
+            //    .getFullAddress(deliverInfo.name,$scope.fullAddress);
 
             //  创建家庭地址
             var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
             accessInfo.phone_num = "";
             var addressItem = {
                 addressId:deliverInfo.addressId||"10",
-                phone_num:$scope.mobile,
+                phone_num:$scope.phone_num,
                 recieve_name: $scope.userName,
                 position_x: deliverInfo.position_x,
                 position_y: deliverInfo.position_y,
                 provinceId: "1000",
                 cityId: "1000",
-                fullAddress:fullAddress,
+                districtAddress:deliverInfo.districtAddress,
+                address:$scope.address,
                 addressType: $scope.operateAddress.addressType.addressType,
                 isDefault: deliverInfo.isDefault
             };

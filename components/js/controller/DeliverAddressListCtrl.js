@@ -8,7 +8,8 @@
                                     $cookieStore,
                                     $localStorage,
                                     Login,
-                                    DelieveryAddressService){
+                                    DelieveryAddressService,
+                                    OperateAddressService){
         //  请求地址列表参数
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
@@ -30,5 +31,24 @@
                 $scope.addressList = DelieveryAddressService.trimAddressList(data);
             });
 
+        //  【编辑/新增】按钮
+        $scope.edit = function(addressInfo){
+            if(addressInfo && addressInfo.addressId){
+                //  保存修改信息
+                var title = OperateAddressService.operateAddress
+                    .creatPage(addressInfo.addressType,addressInfo);
+                console.log(title);
+                OperateAddressService.setOperateAddress(title);
+                window.location.href = "#/editAddress";
+            }else{
+                //  保存修改信息
+                var title = OperateAddressService.operateAddress
+                    .creatPage(addressInfo.addressType);
+                console.log(title);
+                OperateAddressService.setOperateAddress(title);
+
+                window.location.href = "#/editAddress";
+            }
+        }
     }
 }());

@@ -28,11 +28,9 @@
 
 
         //  是否存在地址信息（如果有信息则为修改地址）
-        if(addressInfo.name){                //  修改地址
+        if(addressInfo.districtAddress){                //  修改地址
             //  搜索当前名字所在地点并给出提示（跳转到searchAfterEnterPrompt方法）
-            $scope.keywords = addressInfo.name;
-
-
+            $scope.keywords = addressInfo.districtAddress;
         }else{                          //  新建地址
             //  当前位置（浏览器定位）
             Map.browserLocation($q).then(function(lnglatObj){
@@ -67,10 +65,9 @@
 
         //  列表中 选择新的地址
         $scope.setNewLnglat = function(location){
-
             addressInfo.position_x = location.location.lng;
             addressInfo.position_y = location.location.lat;
-            addressInfo.name = location.name;
+            addressInfo.districtAddress = location.district + location.name;
             var nowLocation = {
                 addressInfo:addressInfo
             }

@@ -41,31 +41,11 @@
 
                 var speAddress = [
                     {
-                        addressId:"",
-                        phone_num:"",
-                        recieve_name:"",
-                        position_x:"",
-                        position_y:"",
-                        provinceId:"",
-                        cityId:"",
-                        fullAddress:"",
-                        canDeliever:"",
-                        addressType:"1",
-                        isDefault:0,
+                        addressType:1,
                         isHome:true,
                         title:"家庭地址"
                     },{
-                        addressId:"",
-                        phone_num:"",
-                        recieve_name:"",
-                        position_x:"",
-                        position_y:"",
-                        provinceId:"",
-                        cityId:"",
-                        fullAddress:"",
-                        canDeliever:"",
-                        addressType:"2",
-                        isDefault:0,
+                        addressType:2,
                         isCompany:true,
                         title:"公司地址"
                     }];
@@ -73,9 +53,11 @@
                 //  家庭地址使用家庭地址图标 并显示家庭地址文字
                 if(data[i].addressType == 1){
                     data[i].isHome = true;
+                    data[i].title = "家庭地址";
                     speAddress[0] = data[i];
                 }else if(data[i].addressType == 2){
                     data[i].isCompany = true;
+                    data[i].title = "公司地址";
                     speAddress[1] = data[i];
                 }else{
                     data[i].isCommon = true;

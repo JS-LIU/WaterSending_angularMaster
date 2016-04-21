@@ -300,6 +300,9 @@ html,body{
     -webkit-background-size:16px;
     background-size:16px;
 }
+.commonaddress{
+    display:none;
+}
 .addressselectbox{
     margin-top:7px;
 }
@@ -344,4 +347,7 @@ html,body{
     line-height:44px;
     background:#FFF url('../images/myLocation-marker.png') no-repeat 15px center;
     background-size: 17px;
+}
+.addressListInfo{
+    line-height:20px;
 }

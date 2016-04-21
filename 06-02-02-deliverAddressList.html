@@ -1,20 +1,26 @@
 <div class="L-header w pr blue">
     <div class="L-header w pr slide-header">
-        <a href="#/" class="L-header-back h po"></a>
+        <a href="#/my" class="L-header-back h po"></a>
         <p class="tc L-header-title cfff f16">我的收货地址</p>
-        <a href="#/" class="po L-header-cancelBtn pr10 cfff">+新增</a>
+        <a class="po L-header-cancelBtn pr10 cfff" ng-click="edit()">+新增</a>
     </div>
 </div>
 
 <ul class="common-list-23">
-    <li ng-repeat="addressInfo in addressList">
-        <div class="common-list-23-title" ng-class="{'homeAddress':isHome,'companyAddress':isCompany,'commonAddress':isCommon}">{{addressInfo.name}}</div>
+    <li class="mt10" ng-repeat="addressInfo in addressList">
+        <div class="common-list-23-title ml15" ng-class="{'homeaddress':addressInfo.isHome,'companyaddress':addressInfo.isCompany,'commonaddress':addressInfo.isCommon}">{{addressInfo.title}}</div>
         <div class="common-list-23-center">
-            <p class="mt5">
-                <span>{{}}</span>
+            <p class="mt5 pl15 addressListInfo">
+                <span>{{addressInfo.recieve_name || "姓名"}}</span>
+                <span class="ml15">{{addressInfo.phone_num || "手机号"}}</span>
             </p>
+            <p class="pl15 addressListInfo">{{addressInfo.fullAddress||"收货地址"}}</p>
         </div>
-        <div class="common-list-23-footer"></div>
+        <div class="common-list-23-footer">
+            <span class="fl pl15" ng-class="{true: 'defnAddress', false: 'unDefnAddress'}[addressInfo.isDefault]">设为默认</span>
+            <span ng-click="edit(addressInfo)">编辑</span>
+            <span>删除</span>
+        </div>
     </li>
 </ul>
 

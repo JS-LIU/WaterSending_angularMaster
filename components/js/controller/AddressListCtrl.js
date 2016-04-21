@@ -6,7 +6,6 @@
         .controller('AddressListCtrl',AddressList);
     function AddressList($scope,
                          $q,
-                         $localStorage,
                          ChangeLocation,
                          AddressListener,
                          Map){
