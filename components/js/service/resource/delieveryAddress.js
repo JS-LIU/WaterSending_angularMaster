@@ -37,18 +37,17 @@
         }
         //  整理收货地址列表为可用数据
         this.trimAddressList = function(data){
+            var speAddress = [
+                {
+                    addressType:1,
+                    isHome:true,
+                    title:"家庭地址"
+                },{
+                    addressType:2,
+                    isCompany:true,
+                    title:"公司地址"
+                }];
             for(var i = 0,len = data.length;i < len; i++){
-
-                var speAddress = [
-                    {
-                        addressType:1,
-                        isHome:true,
-                        title:"家庭地址"
-                    },{
-                        addressType:2,
-                        isCompany:true,
-                        title:"公司地址"
-                    }];
                 var commonAddress = [];
                 //  家庭地址使用家庭地址图标 并显示家庭地址文字
                 if(data[i].addressType == 1){

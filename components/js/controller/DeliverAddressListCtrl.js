@@ -28,7 +28,9 @@
         //  【家庭地址/公司地址】名字
         DelieveryAddressService.getAddressList(postAddressListData)
             .then(function success(data){
+                console.log(data);
                 $scope.addressList = DelieveryAddressService.trimAddressList(data);
+                console.log($scope.addressList);
             });
 
         //  【编辑/新增】按钮
@@ -37,14 +39,12 @@
                 //  保存修改信息
                 var title = OperateAddressService.operateAddress
                     .creatPage(addressInfo.addressType,addressInfo);
-                console.log(title);
                 OperateAddressService.setOperateAddress(title);
                 window.location.href = "#/editAddress";
             }else{
                 //  保存修改信息
                 var title = OperateAddressService.operateAddress
                     .creatPage(addressInfo.addressType);
-                console.log(title);
                 OperateAddressService.setOperateAddress(title);
 
                 window.location.href = "#/editAddress";

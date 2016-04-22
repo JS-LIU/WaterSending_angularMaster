@@ -300,6 +300,18 @@ html,body{
     -webkit-background-size:16px;
     background-size:16px;
 }
+.common-list-23 .homeaddress{
+    padding-left:35px;
+    background:url("../images/icon_home-address@2x.png") no-repeat 15px center;
+    -webkit-background-size:16px;
+    background-size:16px;
+}
+.common-list-23 .companyaddress{
+    padding-left:35px;
+    background:url("../images/icon_company-address@2x.png") no-repeat 15px center;
+    -webkit-background-size:16px;
+    background-size:16px;
+}
 .commonaddress{
     display:none;
 }
