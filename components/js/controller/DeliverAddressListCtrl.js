@@ -35,16 +35,16 @@
 
         //  【编辑/新增】按钮
         $scope.edit = function(addressInfo){
-            if(addressInfo && addressInfo.addressId){
+            if(addressInfo && addressInfo.addressId){       //  【编辑/新增】家庭地址/公司地址 编辑【普通地址】
                 //  保存修改信息
                 var title = OperateAddressService.operateAddress
                     .creatPage(addressInfo.addressType,addressInfo);
                 OperateAddressService.setOperateAddress(title);
                 window.location.href = "#/editAddress";
-            }else{
+            }else{                                          //  【新增】普通地址
                 //  保存修改信息
                 var title = OperateAddressService.operateAddress
-                    .creatPage(addressInfo.addressType);
+                    .creatPage(0);
                 OperateAddressService.setOperateAddress(title);
 
                 window.location.href = "#/editAddress";

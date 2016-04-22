@@ -39,6 +39,8 @@
             }).when('/deliverAddressList',{
                 templateUrl:'06-02-02-deliverAddressList.html',
                 controller:'DeliverAddressListCtrl'
+            }).when('/',{
+
             });
         }])
         .config(function(MapProvider){
