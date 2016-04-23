@@ -39,8 +39,9 @@
             }).when('/deliverAddressList',{
                 templateUrl:'06-02-02-deliverAddressList.html',
                 controller:'DeliverAddressListCtrl'
-            }).when('/',{
-
+            }).when('/goodsList',{
+                templateUrl:'06-05-goodsList.html',
+                controller:'GoodsListCtrl'
             });
         }])
         .config(function(MapProvider){

@@ -12,7 +12,8 @@
 
         var nearShop = {
             getShopList:{},
-            showShopInMap:{}
+            showShopInMap:{},
+            nearestShop:{}
         }
 
         //  获取店铺列表
@@ -29,8 +30,6 @@
             },function(data){
                 func(data);
             });
-
-
         }
 
         //  附近店铺展示到地图
@@ -41,6 +40,32 @@
                 Map.addMarker(icon,poArr);
             }
         }
+
+        var nearestShop = $resource('shop/orderwater');
+        //  最近的店铺
+        nearShop.nearestShop = function(){
+            return nearestShop.save({
+                accessInfo:Login.getAccessInfo($cookieStore,false),
+                positionInfo: {
+                    districtId: "",
+                    position_x: 123,
+                    position_y: 234,
+                    addressInfo: "begjing and anshan street",
+                    phoneCode: "",
+                    addressType: ""
+                },
+                requestPageInfo: {
+                    pageSize:1,
+                    pageNo:1
+                },
+                sign:'',
+                x_dpi:'640',
+                positionInfo:addressInfo
+            },function(data){
+                func(data);
+            });
+        }
+
 
         return nearShop;
     }
