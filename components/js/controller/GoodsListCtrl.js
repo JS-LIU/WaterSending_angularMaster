@@ -5,7 +5,12 @@
     angular.module('myApp')
         .controller('GoodsListCtrl',GoodsListCtrl);
 
-    function GoodsListCtrl($scope,$cookieStore){
+    function GoodsListCtrl($scope,
+                           $cookieStore,
+                           $localStorage,
+                           DelieveryAddressService){
 
+        var addressInfo = $localStorage.addressInfo;
+        console.log(addressInfo);
     }
 }());

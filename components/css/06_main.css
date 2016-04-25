@@ -363,3 +363,14 @@ html,body{
 .addressListInfo{
     line-height:20px;
 }
+
+.orderwater-btn{
+    bottom:60px;
+    left:15px;
+    right:15px;
+    height:44px;
+    line-height:44px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius:3px;
+}

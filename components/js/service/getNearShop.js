@@ -43,27 +43,8 @@
 
         var nearestShop = $resource('shop/orderwater');
         //  最近的店铺
-        nearShop.nearestShop = function(){
-            return nearestShop.save({
-                accessInfo:Login.getAccessInfo($cookieStore,false),
-                positionInfo: {
-                    districtId: "",
-                    position_x: 123,
-                    position_y: 234,
-                    addressInfo: "begjing and anshan street",
-                    phoneCode: "",
-                    addressType: ""
-                },
-                requestPageInfo: {
-                    pageSize:1,
-                    pageNo:1
-                },
-                sign:'',
-                x_dpi:'640',
-                positionInfo:addressInfo
-            },function(data){
-                func(data);
-            });
+        nearShop.nearestShop = function(obj){
+            return nearestShop.save({},obj).$promise;
         }
 
 

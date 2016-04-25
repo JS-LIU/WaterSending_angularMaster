@@ -11,8 +11,8 @@
     function PositionMyLocalCtrl($scope,
                                  $q,
                                  $localStorage,
-                                 Map,
                                  $cookieStore,
+                                 Map,
                                  Login,
                                  ChangeLocation,
                                  AddressListener,
@@ -28,7 +28,7 @@
         $scope.addressInfo = $localStorage.addressInfo;     //  是否重新选择过地址
 
         //  监听【重新选择/移动】地址
-        $scope.$watch('addressInfo',function(){
+        $scope.$watch('addressInfo',function(newValue,oldValue){
             AddressListener.updataLocation($scope.addressInfo);
 
             //  控制台 打印当前地址
@@ -61,10 +61,8 @@
          *
           */
         if($scope.addressInfo.city){
-            console.log(1);
             Map.setMapCenter($scope.addressInfo.lnglatXY);  //  在地图中标记出重新选择的位置
         }else{
-            console.log(2);
             //  请求默认地址
             var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
             accessInfo.phone_num = "";
@@ -87,7 +85,6 @@
                             //  获取城市列表
                             ChangeLocation.setAllCities();
                         });
-
                     }else{
                         //  浏览器定位
                         return Map.browserLocation($q);
