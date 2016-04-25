@@ -20,7 +20,7 @@
             return getNearShop.save({
                 accessInfo:Login.getAccessInfo($cookieStore,false),
                 requestPageInfo: {
-                    pageSize:5,
+                    pageSize:10,
                     pageNo:1
                 },
                 sign:'',

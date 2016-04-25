@@ -8,8 +8,8 @@
 </div>
 <div class="L-center">
     <ul class="common-list-01">
-        <li class="w" ng-repeat="shopListItem in shopList">
-            <a href="javascript:void(0)" class="pr">
+        <li class="w" ng-repeat="shopListItem in shopList" ng-click="changeSpeShop(shopListItem)">
+            <a href="#/goodsList" class="pr">
                 <div class="common-picproduct-01 pr tc">
                     <img src="{{shopListItem.imageList[0].url}}" class="h"/>
                 </div>
@@ -21,7 +21,7 @@
                     </p>
                     <p class="evaluate">
                         <img src="" alt=""/>
-                        <span>月售12520</span>
+                        <span>月售{{shopListItem.monthSailCount}}</span>
                     </p>
                 </div>
             </a>

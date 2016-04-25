@@ -14,9 +14,10 @@
     function ShopInfoService(ShopInfoResource){
         var shopInfo = {
             nearestShopInfo:{},
+            setSpeShopInfo:{},
+            getSpeShopInfo:{},
             shopDetail:{}
         }
-
         //  最近一家商店信息
         shopInfo.nearestShopInfo = function(obj){
             return ShopInfoResource.save(
@@ -25,6 +26,17 @@
             ).$promise
         }
 
+        var speShopInfo = {
+
+        }
+
+        shopInfo.setSpeShopInfo = function(obj){
+            speShopInfo = obj;
+        }
+
+        shopInfo.getSpeShopInfo = function(){
+            return speShopInfo;
+        }
         return shopInfo;
     }
 
