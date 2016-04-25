@@ -1,0 +1,30 @@
+<div class="L-header w pr blue">
+    <a class="L-header-back h po" href="#/goodsList"></a>
+    <p class="tc L-header-title cfff f16" ng-show="isSearch">附近水站</p>
+    <div class="L-header-searchbox pr ml50 mr50 pl30" ng-show="!isSearch">
+        <input class="w h" type="text" placeholder="搜您想要的水站"/>
+    </div>
+    <div class="po L-header-searchbox-01-btn cfff" ng-click="searchNearShopBtn()">{{rightText}}</div>
+</div>
+<div class="L-center">
+    <ul class="common-list-01">
+        <li class="w" ng-repeat="shopListItem in shopList">
+            <a href="javascript:void(0)" class="pr">
+                <div class="common-picproduct-01 pr tc">
+                    <img src="{{shopListItem.imageList[0].url}}" class="h"/>
+                </div>
+                <div class="po common-detailbox-01">
+                    <p class="f16 common-detailbox-01-name">{{shopListItem.merchantName}}</p>
+                    <p class="address">
+                        <span>{{shopListItem.address}}</span>
+                        <span class="fr pr15">{{(shopListItem.distance).toFixed(0)}}米</span>
+                    </p>
+                    <p class="evaluate">
+                        <img src="" alt=""/>
+                        <span>月售12520</span>
+                    </p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>

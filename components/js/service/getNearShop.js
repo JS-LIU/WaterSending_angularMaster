@@ -12,8 +12,7 @@
 
         var nearShop = {
             getShopList:{},
-            showShopInMap:{},
-            nearestShop:{}
+            showShopInMap:{}
         }
 
         //  获取店铺列表
@@ -40,13 +39,6 @@
                 Map.addMarker(icon,poArr);
             }
         }
-
-        var nearestShop = $resource('shop/orderwater');
-        //  最近的店铺
-        nearShop.nearestShop = function(obj){
-            return nearestShop.save({},obj).$promise;
-        }
-
 
         return nearShop;
     }

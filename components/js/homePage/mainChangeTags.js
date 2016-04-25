@@ -42,6 +42,9 @@
             }).when('/goodsList',{
                 templateUrl:'06-05-goodsList.html',
                 controller:'GoodsListCtrl'
+            }).when('/shopList',{
+                templateUrl:'06-06-shopList.html',
+                controller:'ShopListCtrl'
             });
         }])
         .config(function(MapProvider){

@@ -1,28 +1,38 @@
 <div class="L-header w pr blue">
     <a class="L-header-back h po" href="#/"></a>
-    <p class="tc L-header-title cfff f16">aa</p>
+    <p class="tc L-header-title cfff f16">{{shopInfo.merchantName}}</p>
+    <a href="#/shopList" class="po L-header-right cfff">附近水站</a>
 </div>
-<!--<div class="L-center">-->
-    <!--<ul class="common-list-01">-->
-        <!--<li class="w">-->
-            <!--<a href="08-waterShop.html#/" class="pr">-->
-                <!--<div class="common-picproduct-01 pr tc">-->
-                    <!--<img src="{{shopInfo.imageList[0].url}}" class="h" alt="汇贝送水"/>-->
-                <!--</div>-->
-                <!--<div class="po common-detailbox-01">-->
-                    <!--<p class="f16 common-detailbox-01-name">{{shopInfo.merchantName}}</p>-->
-                    <!--<p class="mt10 clearfix">-->
-                        <!--<img ng-repeat="score in shopInfo.score" src={{score.src}} class="fl mr5 star"/>-->
-                        <!--<span>月售{{shopInfo.monthSailCount}}</span>-->
-                    <!--</p>-->
-                    <!--<div class="mt10">-->
-                        <!--<span class="pr15 hasWaterTicketes">海豹水票</span>-->
-                        <!--<span class="HBIcon">汇币</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</a>-->
-        <!--</li>-->
-    <!--</ul>-->
+<div class="L-center">
+    <ul class="common-list-01">
+        <li class="w">
+            <a href="08-waterShop.html#/" class="pr">
+                <div class="common-picproduct-01 pr tc">
+                    <img src="{{shopInfo.imageList[0].url}}" class="h" alt="汇贝送水"/>
+                </div>
+                <div class="po common-detailbox-01">
+                    <p class="f16 common-detailbox-01-name">{{shopInfo.merchantName}}</p>
+                    <p class="mt10 clearfix">
+                        <img ng-repeat="score in shopInfo.score" src={{score.src}} class="fl mr5 star"/>
+                        <span>月售{{shopInfo.monthSailCount}}</span>
+                    </p>
+                    <div class="mt10">
+                        <span class="pr15">水票</span>
+                        <span class="pr15">代金券</span>
+                        <span>促销</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    <div class="voucher-box mt10 pr" ng-show="hasVoucher">
+        <img src="components/images/voucher-background.png" class="voucher-background pr" alt="代金券">
+    </div>
+
+
+
+
     <!--<ul class="common-list-03">-->
         <!--<li>-->
             <!--<div class="shopPhone common-list-04-title pl15 ml15">{{shopInfo.telphone}}</div>-->
@@ -85,7 +95,7 @@
             <!--</a>-->
         <!--</li>-->
     <!--</ul>-->
-<!--</div>-->
+</div>
 
 <!--<div class="L-footer-01 cfff w">-->
     <!--<a ng-click="toGoodsCart()" class="po L-footer-01-btn1">-->
