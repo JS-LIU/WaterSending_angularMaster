@@ -7,7 +7,7 @@
     <div class="po L-header-searchbox-01-btn cfff" ng-click="searchNearShopBtn()">{{rightText}}</div>
 </div>
 <div class="L-center">
-    <ul class="common-list-01">
+    <ul huipay-whenscrolled="loadMore()" class="common-list-01">
         <li class="w" ng-repeat="shopListItem in shopList" ng-click="changeSpeShop(shopListItem)">
             <a href="#/goodsList" class="pr">
                 <div class="common-picproduct-01 pr tc">

@@ -5,8 +5,6 @@
     angular.module('myApp')
         .factory('GetNearShopService',GetNearShopService);
     function GetNearShopService($resource,
-                                $cookieStore,
-                                Login,
                                 Map){
         var getNearShop = $resource('shopList/shop');
 
@@ -16,19 +14,8 @@
         }
 
         //  获取店铺列表
-        nearShop.getShopList = function(addressInfo,func){
-            return getNearShop.save({
-                accessInfo:Login.getAccessInfo($cookieStore,false),
-                requestPageInfo: {
-                    pageSize:10,
-                    pageNo:1
-                },
-                sign:'',
-                x_dpi:'640',
-                positionInfo:addressInfo
-            },function(data){
-                func(data);
-            });
+        nearShop.getShopList = function(obj){
+            return getNearShop.save({},obj).$promise;
         }
 
         //  附近店铺展示到地图

@@ -26,7 +26,8 @@
             bottom:'160px'
         }
         $scope.addressInfo = $localStorage.addressInfo;     //  是否重新选择过地址
-
+        var accessInfo = Login.getAccessInfo($cookieStore,false);
+        accessInfo.phone_num = "";
         //  监听【重新选择/移动】地址
         $scope.$watch('addressInfo',function(newValue,oldValue){
             AddressListener.updataLocation($scope.addressInfo);
@@ -42,12 +43,23 @@
                     districtId:$scope.addressInfo.cityId,
                     addressInfo:$scope.addressInfo.name
                 }
+                var postshopList = {
+                    accessInfo:accessInfo,
+                    requestPageInfo: {
+                        pageSize:10,
+                        pageNo:1
+                    },
+                    sign:'',
+                    x_dpi:'640',
+                    positionInfo:positionInfo
+                }
                 //  获取附近店铺位置
-                GetNearShopService.getShopList(positionInfo,function(data){
-                    var shopList = data.shopList;
-                    //  绘制附近店铺位置
-                    GetNearShopService.showShopInMap(shopList,
-                        "components/images/icon_location_blue@2x.png");
+                GetNearShopService.getShopList(postshopList)
+                    .then(function(data){
+                        var shopList = data.shopList;
+                        //  绘制附近店铺位置
+                        GetNearShopService.showShopInMap(shopList,
+                            "components/images/icon_location_blue@2x.png");
                 });
             }
         },true);
