@@ -18,6 +18,12 @@
 
         if(ShopInfo.shopId){
             $scope.shopInfo = ShopInfo;
+            var shopId = ShopInfo.shopId;
+            VouchermarketingResource.getVoucherMarket(shopId)
+                .then(function(data){
+                    $scope.hasVoucher = !!data;
+                });
+
         }else{
             var accessInfo = Login.getAccessInfo($cookieStore,false);
             accessInfo.phone_num = "";
@@ -49,6 +55,7 @@
                 //  代金券
                 return VouchermarketingResource.getVoucherMarket(shopId);
             }).then(function(data){
+                console.log(data);
                 $scope.hasVoucher = !!data;
             });
         }
