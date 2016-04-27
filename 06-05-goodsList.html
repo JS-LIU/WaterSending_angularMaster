@@ -26,11 +26,12 @@
         </li>
     </ul>
 
-    <div class="voucher-box mt10 pr" ng-show="hasVoucher">
+    <div class="voucher-box mt10 pr" ng-repeat="voucher in voucherList">
         <img src="components/images/voucher-background.png" class="voucher-background pr" alt="代金券">
+
     </div>
 
-
+    <huipay-classify></huipay-classify>
 
     <!--<div class="common-list-06 clearfix mt10">-->
         <!--<div class="common-list-06-con1 clearfix w">-->
@@ -45,26 +46,26 @@
             <!--<li ng-repeat="classify in classifyList" ng-click="select(classify)">{{classify.name}}</li>-->
         <!--</ul>-->
     <!--</div>-->
-    <!--<ul class="common-list-02" ng-show="showWay1" style="margin-bottom: 60px;">-->
-        <!--<li class="w pr" ng-repeat="goodsInfo in goodsList">-->
-            <!--<a class="common-picproduct-02 pr tc" ng-click="getGoodsInfo(goodsInfo)">-->
-                <!--<img src="{{goodsInfo.big_image}}" class="h" alt="商品图片"/>-->
-            <!--</a>-->
-            <!--<a class="po common-detailbox-02">-->
-                <!--<p class="f16 comlist-02-floor-01 gL-goodsList" ng-click="getGoodsInfo(goodsInfo)">-->
-                    <!--<span>{{goodsInfo.title}}</span>-->
-                <!--</p>-->
-                <!--<p class="comlist-02-floor-01 pt5 gL-goodsList">-->
-                    <!--<span class="cred f16">￥{{(goodsInfo.price / 100).toFixed(2)}}</span>-->
-                <!--</p>-->
-                <!--<p class="comlist-02-floor-01 pt10 gL-goodsList">-->
-                    <!--<span>{{goodsInfo.summary||'该商品暂无描述'}}</span>-->
-                    <!--<span class="po" style="bottom:0px;right:-35px;">已售{{goodsInfo.salesCnt}}</span>-->
-                <!--</p>-->
-            <!--</a>-->
-            <!--<div class="po goodsCart-btn1" ng-click="addGoodscart(goodsInfo)"></div>-->
-        <!--</li>-->
-    <!--</ul>-->
+    <ul huipay-whenscrolled="loadMore()" class="common-list-02" ng-show="showWay1" style="margin-bottom: 60px;">
+        <li class="w pr" ng-repeat="goodsInfo in goodsList">
+            <a class="common-picproduct-02 pr tc" ng-click="getGoodsInfo(goodsInfo)">
+                <img src="{{goodsInfo.big_image}}" class="h" alt="商品图片"/>
+            </a>
+            <a class="po common-detailbox-02">
+                <p class="f16 comlist-02-floor-01 gL-goodsList" ng-click="getGoodsInfo(goodsInfo)">
+                    <span>{{goodsInfo.title}}</span>
+                </p>
+                <p class="comlist-02-floor-01 pt5 gL-goodsList">
+                    <span class="cred f16">￥{{(goodsInfo.price / 100).toFixed(2)}}</span>
+                </p>
+                <p class="comlist-02-floor-01 pt10 gL-goodsList">
+                    <span>{{goodsInfo.summary||'该商品暂无描述'}}</span>
+                    <span class="po" style="bottom:0px;right:-35px;">已售{{goodsInfo.salesCnt}}</span>
+                </p>
+            </a>
+            <div class="po goodsCart-btn1" ng-click="addGoodscart(goodsInfo)"></div>
+        </li>
+    </ul>
     <!--<ul class="common-list-07 clearfix" ng-show="showWay2" style="margin-bottom: 60px;">-->
         <!--<li class="fl pr" ng-repeat="goodsInfo in goodsList">-->
             <!--<div class="common-list-07-pic tc m15">-->

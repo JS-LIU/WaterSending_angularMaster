@@ -15,15 +15,18 @@
         var addressInfo = $localStorage.addressInfo;
 
         var ShopInfo = ShopInfoService.getSpeShopInfo();
+        $scope.$watch('shopId',function(){
+            //  代金券
+            VouchermarketingResource.getVoucherMarket($scope.shopId)
+                .then(function(data){
+                    $scope.voucherList = data.voucherMarketingInfoList;
+                });
+        });
+
 
         if(ShopInfo.shopId){
             $scope.shopInfo = ShopInfo;
-            var shopId = ShopInfo.shopId;
-            VouchermarketingResource.getVoucherMarket(shopId)
-                .then(function(data){
-                    $scope.hasVoucher = !!data;
-                });
-
+            $scope.shopId = ShopInfo.shopId;
         }else{
             var accessInfo = Login.getAccessInfo($cookieStore,false);
             accessInfo.phone_num = "";
@@ -50,13 +53,7 @@
                 productId:""
             }).then(function(data){
                 $scope.shopInfo = data;
-                var shopId = $scope.shopInfo.shopId;
-
-                //  代金券
-                return VouchermarketingResource.getVoucherMarket(shopId);
-            }).then(function(data){
-                console.log(data);
-                $scope.hasVoucher = !!data;
+                $scope.shopId = data.shopId
             });
         }
 

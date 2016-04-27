@@ -247,6 +247,10 @@ body{
     border-bottom: 1px solid #E2E2E2;
     border-top: 1px solid #E2E2E2;
 }
+.common-list-06 li{
+    margin-left:-1px;
+    border-right:1px solid #E2E2E2;
+}
 .common-list-06-con50{
     margin-left:-23px;
     width:50%;

@@ -11,7 +11,7 @@
         this.getVoucherMarket = function(shopId){
             var accessInfo = Login.getAccessInfo($cookieStore,false);
             accessInfo.phone_num = "";
-            voucher.save({},{
+            return voucher.save({},{
                 sign:"",
                 accessInfo:accessInfo,
                 requestPageInfo:{

@@ -13,11 +13,12 @@
                 link:listbox
             }
             function listbox(scope,ele,attr){
-                ele.bind('scroll',function(){
-                    if(ele.offsetHeight + ele.scrollTop >= ele.scrollHeight){
+                window.onscroll = function(){
+                    var body = document.body;
+                    if(body.offsetHeight + body.scrollTop >= body.scrollHeight){
                         scope.$apply(attr.huipayWhenscrolled);
                     }
-                });
+                }
             }
 
             return scrolled;
