@@ -44,7 +44,6 @@
         //  获取附近店铺位置
         GetNearShopService.getShopList(postshopList)
             .then(function(data){
-                console.log(data);
                 $scope.shopList = data.shopList;
 
                 $scope.changeSpeShop = function(shopListItem){

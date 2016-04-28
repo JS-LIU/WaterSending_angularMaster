@@ -13,13 +13,19 @@
                            VouchermarketingResource){
 
         var addressInfo = $localStorage.addressInfo;
-
+        var accessInfo = Login.getAccessInfo($cookieStore,false);
+        accessInfo.phone_num = "";
         var ShopInfo = ShopInfoService.getSpeShopInfo();
         $scope.$watch('shopId',function(){
             //  代金券
             VouchermarketingResource.getVoucherMarket($scope.shopId)
                 .then(function(data){
                     $scope.voucherList = data.voucherMarketingInfoList;
+
+                    return ShopInfoService.productList({
+                        accessInfo:accessInfo,
+
+                    })
                 });
         });
 
@@ -28,8 +34,6 @@
             $scope.shopInfo = ShopInfo;
             $scope.shopId = ShopInfo.shopId;
         }else{
-            var accessInfo = Login.getAccessInfo($cookieStore,false);
-            accessInfo.phone_num = "";
             var positionInfo = {
                 districtId:addressInfo.cityId,
                 position_x:addressInfo.lnglatXY[0],

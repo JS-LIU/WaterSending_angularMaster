@@ -16,18 +16,16 @@
             nearestShopInfo:{},
             setSpeShopInfo:{},
             getSpeShopInfo:{},
-            shopDetail:{}
+            shopDetail:{},
+            productList:{}
         }
+        var speShopInfo = {}
         //  最近一家商店信息
         shopInfo.nearestShopInfo = function(obj){
             return ShopInfoResource.save(
                 {operate:'orderwater'},
                 obj
             ).$promise
-        }
-
-        var speShopInfo = {
-
         }
 
         shopInfo.setSpeShopInfo = function(obj){
@@ -37,6 +35,14 @@
         shopInfo.getSpeShopInfo = function(){
             return speShopInfo;
         }
+
+        shopInfo.productList = function(obj){
+            return ShopInfoResource.save(
+                {operate:'productList'},
+                obj
+            ).$promise
+        }
+
         return shopInfo;
     }
 
