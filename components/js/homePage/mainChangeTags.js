@@ -15,7 +15,8 @@
             'huipayUI',
             'huipayMap',
             'huipayLogIn',
-            'delieveryAddress'
+            'delieveryAddress',
+            'shoppingCartModule'
         ])
         .config(['$routeProvider', function($routeProvider) {
             $routeProvider.when('/',{

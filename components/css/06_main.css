@@ -384,3 +384,16 @@ html,body{
 .L-header-right-search{
 
 }
+
+.goodsCart-btn,.goodsCart-btn1{
+    bottom: 0px;
+    width: 40px;
+    right: 10px;
+    background: url("../images/goodscart.png") no-repeat left 40px;
+    -webkit-background-size: 25px;
+    background-size: 25px;
+}
+.goodsCart-btn1{
+    right: 0px;
+    top: 0px;
+}
