@@ -12,7 +12,7 @@
                 link:classifybox
             }
 
-            function classifybox(scope,ele,attr){
+            function classifybox(scope){
                 var width = document.body.clientWidth - 44;
                 var title = [
                     {name:'推荐'},
@@ -26,7 +26,7 @@
                     width:width / len + 'px'
                 }
 
-                scope.tags = title;
+                scope.names = title;
             }
             return classify;
         });

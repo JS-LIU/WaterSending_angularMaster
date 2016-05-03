@@ -554,6 +554,17 @@ body{
     bottom: 0px;
     background: #f4f5f7;
 }
+.shopping-mfooter{
+    position:fixed;
+    width: 100%;
+    max-width:640px;
+    bottom: 0px;
+    background: #000;
+    color:#fff;
+}
+.shopping-mfooter li{
+    height:49px;
+}
 .rightArrow{
     background: url("../images/arrow-right.png") no-repeat right center;
     -webkit-background-size: 20px;

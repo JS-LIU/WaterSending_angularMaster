@@ -1,0 +1,8 @@
+<ul class="clearfix shopping-mfooter">
+    <li class="fl tc"  ng-repeat="tag in tags" ng-style="tag.tagsStyle">
+        <a class="cfff" ng-href="{{tag.url}}">
+            <img src={{tag.pic}} ng-show="tag.isPic" alt="">
+            <span>{{tag.title}}</span>
+        </a>
+    </li>
+</ul>

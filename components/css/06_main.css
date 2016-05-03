@@ -321,7 +321,8 @@ html,body{
 .slide-mfooter li{
     height:49px;
 }
-.slide-mfooter img{
+.slide-mfooter img,
+.shopping-mfooter img{
     display:block;
     margin:0px auto;
     height:20px;
