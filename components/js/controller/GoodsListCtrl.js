@@ -7,89 +7,77 @@
 
     function GoodsListCtrl($scope,
                            $cookieStore,
-                           $localStorage,
                            Login,
                            ShopInfoService,
                            VouchermarketingResource,
                            ShoppingCartService){
 
-        var addressInfo = $localStorage.addressInfo;
         var accessInfo = Login.getAccessInfo($cookieStore,false);
+        var loginAccessInfo = Login.getAccessInfo($cookieStore,true);
         accessInfo.phone_num = "";
-        var ShopInfo = ShopInfoService.getSpeShopInfo();
-        $scope.$watch('shopId',function(){
-            //  获取代金券代金券
-            VouchermarketingResource.getVoucherMarket($scope.shopId)
-                .then(function(data){
-                    $scope.voucherList = data.voucherMarketingInfoList;
-                });
+        loginAccessInfo.phone_num = "";
 
-            //  获取商品列表
-            ShopInfoService.productList({
-                accessInfo:accessInfo,
-                requestPageInfo:{
-                    pageSize: 1,
-                    pageNo: 1
-                },
-                sign:"",
-                shopId:$scope.shopId
-            }).then(function(data){
-                $scope.goodsInfo = data;
-            });
-        });
+        //  获取shopInfo;
+        $scope.shopInfo = ShopInfoService.getSpeShopInfo();
 
-        //  加入购物车
-        $scope.putInShoppingCart = function(){
-            ShoppingCartService.putInShoppingCart({
-                accessInfo:accessInfo,
-                sign:"",
-                item: {
-                    "itemId": 203,
-                    "productId": 100,
-                    "shopId": 1111,
-                    "productName": "求求",
-                    "price": 10,
-                    "num": 2,
-                    "productType": 11,
-                    "preferentialId": 2
-                }
-
-            }).then(function error(data){
+        //  获取代金券代金券
+        VouchermarketingResource.getVoucherMarket($scope.shopInfo.shopId)
+            .then(function(data){
                 console.log(data);
+                $scope.voucherList = data.voucherMarketingInfoList;
             });
 
+        var postGoodsList = {
+            accessInfo:accessInfo,
+            requestPageInfo:{
+                pageSize: 10,
+                pageNo: 1
+            },
+            sign:"",
+            shopId:$scope.shopInfo.shopId
         }
 
-
-        if(ShopInfo.shopId){
-            $scope.shopInfo = ShopInfo;
-            $scope.shopId = ShopInfo.shopId;
-        }else{
-            var positionInfo = {
-                districtId:addressInfo.cityId,
-                position_x:addressInfo.lnglatXY[0],
-                position_y:addressInfo.lnglatXY[1],
-                addressInfo:addressInfo.name,
-                phoneCode:'010',
-                addressType:""
-            };
-
-            //  最近的一家商店信息
-            ShopInfoService.nearestShopInfo({
+        //  获取商品列表
+        ShopInfoService.productList(postGoodsList).then(function(data){
+            $scope.goodsInfo = data;
+            $scope.totalCount = data.responsePageInfo.totalCount;
+            $scope.pageSize = data.responsePageInfo.pageSize;
+            $scope.currentPage = data.responsePageInfo.pageNo;
+        });
+        //  下拉加载
+        $scope.loadMore = function(){
+            var currentSize = $scope.pageSize * $scope.currentPage;
+            var nextPage = ++$scope.currentPage;
+            if( currentSize < $scope.totalCount){
+                postGoodsList.requestPageInfo = {
+                    pageSize:10,
+                    pageNo:nextPage
+                }
+                ShopInfoService.productList(postGoodsList)
+                    .then(function(data){
+                        console.log(data);
+                        $scope.goodsInfo.productList = $scope.goodsInfo.productList.concat(data.productList);
+                    });
+            }
+        };
+        //  加入购物车
+        $scope.putInShoppingCart = function(goodsItem){
+            ShoppingCartService.putInShoppingCart({
+                accessInfo:loginAccessInfo,
                 sign:"",
-                accessInfo:accessInfo,
-                positionInfo:positionInfo,
-                requestPageInfo:{
-                    pageSize: 1,
-                    pageNo: 1
-                },
-                keyWord:"",
-                x_dpi:"",
-                productId:""
-            }).then(function(data){
-                $scope.shopInfo = data;
-                $scope.shopId = data.shopId
+                item: {
+                    itemId: "",
+                    productId: goodsItem.productId,
+                    shopId: $scope.shopInfo.shopId,
+                    productName: goodsItem.title,
+                    price: goodsItem.price,
+                    num: 1,
+                    productType: 7,
+                    preferentialId: ""
+                }
+
             });
+
         }
 
     }

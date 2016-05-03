@@ -33,7 +33,7 @@
 
     <huipay-classify></huipay-classify>
 
-    <ul huipay-whenscrolled="loadMore()" class="common-list-02" style="margin-bottom: 60px;">
+    <ul huipay-whenscrolled="loadMore()" class="common-list-02">
         <li class="w pr" ng-repeat="goodsItem in goodsInfo.productList">
             <a class="common-picproduct-02 pr tc">
                 <img src="{{goodsItem.big_image}}" class="h" alt="商品图片"/>
@@ -70,7 +70,7 @@
         <!--</li>-->
     <!--</ul>-->
 </div>
-
+<huipay-footer-shopping></huipay-footer-shopping>
 <!--<div class="L-footer-01 cfff w">-->
     <!--<a ng-click="toGoodsCart()" class="po L-footer-01-btn1">-->
         <!--<div class="po L-footer-01-btn-label cfff red">{{goodscart_num || 0}}</div>-->

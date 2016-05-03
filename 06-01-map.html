@@ -13,6 +13,6 @@
     <div class="mapCenter-marker pr" ng-style="mapCenterMarker"></div>
     <a class="comlist-13-single po nowLocation w" href="#/inputLocation">当前位置：{{addressInfo.name||"正在定位..."}}</a>
 
-    <a class="orderwater-btn po blue tc cfff f16" href="#/goodsList">我要订水</a>
+    <div class="orderwater-btn po blue tc cfff f16" ng-click="getNearestShopInfo()">我要订水</div>
 </div>
 <huipay-main-footer></huipay-main-footer>
