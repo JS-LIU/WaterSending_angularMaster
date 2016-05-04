@@ -398,8 +398,9 @@ html,body{
     right: 0px;
     top: 0px;
 }
-.goodsCheck,
-.btmgoodsCheck{
+.goods-unchecked,
+.btmgoodsCheck,
+.shop-unchecked{
     top:40px;
     left:15px;
     width:18px;
@@ -408,4 +409,24 @@ html,body{
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+}
+.shop-unchecked{
+    top:13px;
+}
+.goodsCtrl{
+    right:15px;
+    top: 40px;
+    width:79px;
+    height:20px;
+    line-height: 20px;
+    border:1px solid #E2E2E2;
+}
+.subtract,
+.add{
+    width:19px;
+}
+.goodsNum{
+    width:38px;
+    border-left:1px solid #E2E2E2;
+    border-right: 1px solid #E2E2E2;
 }

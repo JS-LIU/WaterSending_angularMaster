@@ -3,9 +3,12 @@
     <p class="tc L-header-title cfff f16">购物车</p>
 </div>
 <ul class="common-list-13 mt10" ng-repeat="shopInfo in goodsList">
-    <li class="comlist-13-single pl15 confirmOrder-shop">{{shopInfo.shopName || "一家没有起名字的水站"}}</li>
+    <li class="comlist-13-single pr pl15 confirmOrder-shop">
+        <div class="po shop-goodscheck" ng-click="goodsChecked(shopInfo)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[isChecked]"></div>
+        <span class="pl30">{{shopInfo.shopName || "一家没有起名字的水站"}}</span>
+    </li>
     <li class="w pr" ng-repeat="goodsInfo in shopInfo.itemList">
-        <div class="po goodsCheck"></div>
+        <div class="po" ng-click="goodsChecked(shopInfo.itemList,goodsInfo)" ng-class="{true:'goods-checked',false:'goods-unchecked'}[isChecked]"></div>
         <div class="common-picproduct-13 pr tc">
             <img src={{goodsInfo.imageUrl}} class="h" alt=""/>
         </div>
@@ -19,10 +22,15 @@
                 <span>*{{goodsInfo.num}}</span>
             </p>
         </div>
-        <!--<div class="po clearfix goodsCtrl">-->
-            <!--<div class="fl subtract tc" ng-click="subtract(goodsInfo)">-</div>-->
-            <!--<div class="fl goodsNum tc">{{goodsInfo.num}}</div>-->
-            <!--<div class="fl add tc" ng-click="addGoods(goodsInfo)">+</div>-->
-        <!--</div>-->
+        <div class="po clearfix goodsCtrl">
+            <div class="fl subtract tc">-</div>
+            <div class="fl goodsNum tc"></div>
+            <div class="fl add tc">+</div>
+        </div>
     </li>
 </ul>
+
+<!--<div class="comlist-13-single pr pl15">-->
+    <!--<div class="pr fl shop-goodscheck" ng-class="{true:'shop-checked',false:'shop-unchecked'}[shopisChecked]"></div>-->
+    <!---->
+<!--</div>-->
