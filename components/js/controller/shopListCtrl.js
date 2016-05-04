@@ -52,23 +52,23 @@
                 $scope.totalCount = data.responsePageInfo.totalCount;
                 $scope.pageSize = data.responsePageInfo.pageSize;
                 $scope.currentPage = data.responsePageInfo.pageNo;
-
-                $scope.loadMore = function(){
-                    var currentSize = $scope.pageSize * $scope.currentPage;
-                    var nextPage = ++$scope.currentPage;
-                    if( currentSize < $scope.totalCount){
-                        postshopList.requestPageInfo = {
-                            pageSize:10,
-                            pageNo:nextPage
-                        }
-                        GetNearShopService.getShopList(postshopList)
-                            .then(function(data){
-                                $scope.shopList = $scope.shopList.concat(data.shopList);
-                            });
-                    }
-
-                }
         });
+        //  下啦加载
+        $scope.loadMore = function(){
+            var currentSize = $scope.pageSize * $scope.currentPage;
+            var nextPage = ++$scope.currentPage;
+            if( currentSize < $scope.totalCount){
+                postshopList.requestPageInfo = {
+                    pageSize:10,
+                    pageNo:nextPage
+                }
+                GetNearShopService.getShopList(postshopList)
+                    .then(function(data){
+                        $scope.shopList = $scope.shopList.concat(data.shopList);
+                    });
+            }
+
+        }
 
 
 

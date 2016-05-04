@@ -23,7 +23,7 @@
             .then(function(data){
                 //  array
                 $scope.goodsList = data.cartInfos;
-
+                console.log(data.cartInfos);
 
             })
     }

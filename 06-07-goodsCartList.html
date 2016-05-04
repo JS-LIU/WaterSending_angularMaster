@@ -2,27 +2,27 @@
     <a class="L-header-back h po" href="#/goodsList"></a>
     <p class="tc L-header-title cfff f16">购物车</p>
 </div>
-<ul class="common-list-13">
-    <!--<li class="comlist-13-single pl15 confirmOrder-shop">{{shopName}}</li>-->
-    <!--<li class="w pr" ng-repeat="goodsInfo in goodscartList">-->
-        <!--<div class="po goodsCheck" ng-click="checkGoods(goodsInfo)" ng-class="{true: 'checked', false: ''}[goodsInfo.isChecked]"></div>-->
-        <!--<div class="common-picproduct-13 pr tc">-->
-            <!--<img src={{goodsInfo.big_image}} class="h" alt=""/>-->
-        <!--</div>-->
-        <!--<div class="po common-detailbox-13">-->
-            <!--<p class="f16 comlist-02-floor-01 gL-goodsList">-->
-                <!--<span>{{goodsInfo.title}}</span>-->
-            <!--</p>-->
-            <!--<p class="comlist-02-floor-01 pt5 gL-goodsList">-->
-                <!--<span>￥</span>-->
-                <!--<span class="cred f16">{{(goodsInfo.price / 100).toFixed(2)}}</span>-->
-                <!--<span>*{{goodsInfo.num}}</span>-->
-            <!--</p>-->
-        <!--</div>-->
+<ul class="common-list-13 mt10" ng-repeat="shopInfo in goodsList">
+    <li class="comlist-13-single pl15 confirmOrder-shop">{{shopInfo.shopName || "一家没有起名字的水站"}}</li>
+    <li class="w pr" ng-repeat="goodsInfo in shopInfo.itemList">
+        <div class="po goodsCheck"></div>
+        <div class="common-picproduct-13 pr tc">
+            <img src={{goodsInfo.imageUrl}} class="h" alt=""/>
+        </div>
+        <div class="po common-detailbox-13">
+            <p class="f16 comlist-02-floor-01 gL-goodsList">
+                <span>{{goodsInfo.productName}}</span>
+            </p>
+            <p class="comlist-02-floor-01 pt5 gL-goodsList">
+                <span>￥</span>
+                <span class="cred f16">{{(goodsInfo.price / 100).toFixed(2)}}</span>
+                <span>*{{goodsInfo.num}}</span>
+            </p>
+        </div>
         <!--<div class="po clearfix goodsCtrl">-->
             <!--<div class="fl subtract tc" ng-click="subtract(goodsInfo)">-</div>-->
             <!--<div class="fl goodsNum tc">{{goodsInfo.num}}</div>-->
             <!--<div class="fl add tc" ng-click="addGoods(goodsInfo)">+</div>-->
         <!--</div>-->
-    <!--</li>-->
+    </li>
 </ul>
