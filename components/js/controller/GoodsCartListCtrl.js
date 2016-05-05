@@ -22,8 +22,27 @@
         ShoppingCartService.showShoppingCartList(postGoodsCart)
             .then(function(data){
                 //  array
-                $scope.goodsList = data.cartInfos;
-                console.log(data.cartInfos);
-            })
+                var goodsListObj = ShoppingCartService.fixedGoodsList(data.cartInfos);
+                console.log(goodsListObj);
+                $scope.goodsListObj = goodsListObj;
+            });
+
+        $scope.goodsChecked = function(parentObj,selfObj){
+            var parentObj = parentObj;
+            var selfObj = selfObj;
+            var childName = "itemList";
+            selfObj = ShoppingCartService.checked.selfChecked(selfObj);
+            ShoppingCartService.checked.childrenChecked(selfObj,childName);
+            ShoppingCartService.checked.parentChecked(parentObj,childName);
+
+            //  是否全选
+            ShoppingCartService.checked.parentChecked($scope.goodsListObj,childName);
+        }
+
+        //  底部样式
+        $scope.shoppingCartfooter = {
+            height:'49px',
+            background:'#4a5156',
+        }
     }
 }());

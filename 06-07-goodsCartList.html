@@ -2,13 +2,13 @@
     <a class="L-header-back h po" href="#/goodsList"></a>
     <p class="tc L-header-title cfff f16">购物车</p>
 </div>
-<ul class="common-list-13 mt10" ng-repeat="shopInfo in goodsList">
+<ul class="common-list-13 mt10" ng-repeat="shopInfo in goodsListObj.itemList">
     <li class="comlist-13-single pr pl15 confirmOrder-shop">
-        <div class="po shop-goodscheck" ng-click="goodsChecked(shopInfo)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[isChecked]"></div>
+        <div class="po shop-goodscheck" ng-click="goodsChecked(goodsListObj,shopInfo)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[shopInfo.isChecked]"></div>
         <span class="pl30">{{shopInfo.shopName || "一家没有起名字的水站"}}</span>
     </li>
     <li class="w pr" ng-repeat="goodsInfo in shopInfo.itemList">
-        <div class="po" ng-click="goodsChecked(shopInfo.itemList,goodsInfo)" ng-class="{true:'goods-checked',false:'goods-unchecked'}[isChecked]"></div>
+        <div class="po" ng-click="goodsChecked(shopInfo,goodsInfo)" ng-class="{true:'goods-checked',false:'goods-unchecked'}[goodsInfo.isChecked]"></div>
         <div class="common-picproduct-13 pr tc">
             <img src={{goodsInfo.imageUrl}} class="h" alt=""/>
         </div>
@@ -24,13 +24,13 @@
         </div>
         <div class="po clearfix goodsCtrl">
             <div class="fl subtract tc">-</div>
-            <div class="fl goodsNum tc"></div>
+            <div class="fl goodsNum tc">{{goodsInfo.num}}</div>
             <div class="fl add tc">+</div>
         </div>
     </li>
 </ul>
+<div style="height:50px;"></div>
 
-<!--<div class="comlist-13-single pr pl15">-->
-    <!--<div class="pr fl shop-goodscheck" ng-class="{true:'shop-checked',false:'shop-unchecked'}[shopisChecked]"></div>-->
-    <!---->
-<!--</div>-->
+<div class="comlist-13-single pr slide-mfooter" ng-style="shoppingCartfooter">
+    <div class="pr fl shop-goodscheck" ng-click="goodsChecked({},goodsListObj)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[goodsListObj.isChecked]"></div>
+</div>

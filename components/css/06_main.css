@@ -400,7 +400,9 @@ html,body{
 }
 .goods-unchecked,
 .btmgoodsCheck,
-.shop-unchecked{
+.shop-unchecked,
+.goods-checked,
+.shop-checked{
     top:40px;
     left:15px;
     width:18px;
@@ -410,8 +412,15 @@ html,body{
     -moz-border-radius: 10px;
     border-radius: 10px;
 }
-.shop-unchecked{
+.shop-unchecked,
+.shop-checked{
     top:13px;
+}
+.goods-checked,
+.shop-checked{
+    background:url("../images/checked.png") no-repeat center center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
 }
 .goodsCtrl{
     right:15px;
