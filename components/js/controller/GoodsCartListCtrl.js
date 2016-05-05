@@ -39,6 +39,10 @@
             ShoppingCartService.checked.parentChecked($scope.goodsListObj,childName);
         }
 
+        $scope.changeNum = function(goodsInfo){
+
+        }
+
         //  底部样式
         $scope.shoppingCartfooter = {
             height:'49px',
