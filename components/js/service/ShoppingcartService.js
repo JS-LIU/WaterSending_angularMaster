@@ -21,7 +21,10 @@
                 selfChecked:{},
                 childrenChecked:{},
                 parentChecked:{}
-            }
+            },
+            increaseNum:{},
+            decreaseNum:{},
+            countMoney:{}
         }
 
         shoppingCart.showShoppingCartList = function(obj){
@@ -64,7 +67,6 @@
                 for(var i = 0,len = obj[childName].length;i < len;i++){
                     obj[childName][i].isChecked = obj.isChecked;
                     if(obj[childName][i][childName]){
-                        console.log(obj[childName][i][childName]);
                         arguments.callee(obj[childName][i],childName);
                     }
                 }
@@ -88,6 +90,23 @@
                 }
             }
         }
+
+
+        //  增加
+        shoppingCart.increaseNum = function(obj,key){
+            obj[key]++;
+            return obj;
+        }
+
+        //  减少
+        shoppingCart.decreaseNum = function(obj,key){
+            if(obj[key] > 1){
+                obj[key]--;
+            }
+            return obj;
+        }
+
+
 
         return shoppingCart;
     }

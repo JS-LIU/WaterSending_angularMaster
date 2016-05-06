@@ -39,10 +39,12 @@
             ShoppingCartService.checked.parentChecked($scope.goodsListObj,childName);
         }
 
-        $scope.changeNum = function(goodsInfo){
-
+        $scope.increaseNum = function(goodsInfo){
+            ShoppingCartService.increaseNum(goodsInfo,'num');
         }
-
+        $scope.decreaseNum = function(goodsInfo){
+            ShoppingCartService.decreaseNum(goodsInfo,'num');
+        }
         //  底部样式
         $scope.shoppingCartfooter = {
             height:'49px',
