@@ -49,6 +49,9 @@
             }).when('/goodsCartList',{
                 templateUrl:'06-07-goodsCartList.html',
                 controller:'GoodsCartListCtrl'
+            }).when('/waterTickets',{
+                templateUrl:'06-03-waterTickets.html',
+                controller:'WaterTicketsCtrl'
             });
         }])
         .config(function(MapProvider){

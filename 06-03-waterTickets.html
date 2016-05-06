@@ -1,0 +1,35 @@
+<div class="L-header w pr blue slide-header">
+    <a href="#/addressList" class="cfff po my-city pl15">{{addressInfo.city||'城市'}}</a>
+    <p class="tc L-header-title cfff f16">海豹送水</p>
+</div>
+<ul class="common-list-19 clearfix">
+    <li class="fl tc">综合</li>
+    <li class="fl tc">销量</li>
+    <li class="fl tc">价格</li>
+</ul>
+
+<ul huipay-whenscrolled="loadMore()" class="common-list-02 mt10" style="margin-bottom: 60px;">
+    <!--<li class="w pr" ng-repeat="waterTickte in waterTicketesInfo">-->
+        <!--<a ng-click="saveCookies(waterTickte)">-->
+            <!--<div class="common-picproduct-02 pr tc">-->
+                <!--<img src="components/images/Temp-water.png" class="h" alt="商品图片"/>-->
+            <!--</div>-->
+            <!--<div class="po common-detailbox-02">-->
+                <!--<p class="f16 comlist-02-floor-01 gL-goodsList" >-->
+                    <!--<span>{{waterTickte.title}}</span>-->
+                <!--</p>-->
+                <!--<p class="comlist-02-floor-01 pt5 gL-goodsList">-->
+                    <!--<span class="cred f16">{{(waterTickte.price/100).toFixed(2)}}</span>-->
+                    <!--<span class="f16">/张</span>-->
+                <!--</p>-->
+                <!--<p class="comlist-02-floor-01 gL-goodsList">-->
+                <!--<span>-->
+                    <!--{{waterTickte.preferentialStrategyStr}}-->
+                <!--</span>-->
+                    <!--<span class="po" style="bottom:0px;right:-35px;">已售{{waterTickte.saleCount}}</span>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</a>-->
+    <!--</li>-->
+</ul>
+<huipay-main-footer></huipay-main-footer>

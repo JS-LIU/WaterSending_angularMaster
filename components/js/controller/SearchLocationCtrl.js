@@ -15,9 +15,12 @@
                                 DelieveryAddressService,
                                 AddressListener,
                                 OperateAddressService){
-        $scope.keywords = "";
+
         //  【家庭地址/公司地址】地址样子
         $scope.speAddressArr = DelieveryAddressService.speAddressArr;
+        $scope.addressInfo = $localStorage.addressInfo;
+        $scope.keywords = $localStorage.addressInfo.name;
+
 
         var city = $localStorage.addressInfo.city;
         $scope.$watch("keywords",function(){
@@ -29,12 +32,23 @@
 
         //  选择地址
         $scope.setNewLnglat = function(location){
-
-            var nowLocation = {
-                lnglatXY:[location.location.lng,location.location.lat],
-                name:location.name
+            var nowLocation = {};
+            if(location.location.lng){
+                nowLocation = {
+                    lnglatXY:[location.location.lng,location.location.lat],
+                    name:location.name
+                }
+                AddressListener.updataLocation(nowLocation);
+            }else{
+                var name = location.name;
+                Map.getLocationLnglatXY($q,location.name).then(function(lnglatXY){
+                    nowLocation = {
+                        lnglatXY:lnglatXY,
+                        name:name
+                    }
+                    AddressListener.updataLocation(nowLocation);
+                });
             }
-            AddressListener.updataLocation(nowLocation);
         }
 
         //  为选择【家庭地址/公司地址】绑定方法

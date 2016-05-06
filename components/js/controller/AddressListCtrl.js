@@ -22,7 +22,7 @@
                     name: address.label
                 }
                 AddressListener.updataLocation(city);
-                window.location.href = "#/";
+                window.location.href = "javascript:history.go(-1);";
             });
         }
     }

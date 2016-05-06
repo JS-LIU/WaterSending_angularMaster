@@ -1,13 +1,11 @@
 <div class="L-header w pr blue">
-    <div class="L-header w pr slide-header">
-        <p class="tc L-header-title cfff f16">海豹送水</p>
-        <a href="#/" class="po L-header-cancelBtn pr10 cfff">取消</a>
-    </div>
-</div>
-<div class="L-center">
-    <div class="L-header-searchbox-01 mr15 ml15 pl30" >
+    <a href="#/addressList" class="cfff po my-city pl15">{{addressInfo.city||'城市'}}</a>
+    <div class="L-header-searchbox pr ml100 mr50 pl30" >
         <input class="w h" ng-model="keywords" type="text" placeholder="输入您所在的地区"/>
     </div>
+    <a href="#/" class="po L-header-cancelBtn pr10 cfff">取消</a>
+</div>
+<div class="L-center">
     <ul class="common-list-22 clearfix addressselectbox">
         <li class="fl tc" ng-repeat="speAddress in speAddressArr" ng-click="selectAddress(speAddress.addressType)">
             <a ng-href="{{addedAddress}}">
