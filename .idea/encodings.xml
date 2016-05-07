@@ -15,7 +15,7 @@
     <file url="file://$PROJECT_DIR$/components/js/service/Address.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/components/js/service/huipayOrder.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/components/js/service/huipayUtilService.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/components/js/service/resource/userWaterTicketes.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/components/js/service/resource/WaterTicketesResource.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/components/js/waterShop/waterShopBase.js" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
