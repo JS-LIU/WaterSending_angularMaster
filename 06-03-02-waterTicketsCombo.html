@@ -3,6 +3,9 @@
     <p class="tc L-header-title cfff f16">选择套餐</p>
 </div>
 
-<div class="clearfix change-discount-way">
-    <p ng-repeat="discountWay in waterTicketDetail.preferentialStrategyModels" class="fl m15">买{{discountWay.requireCount}}送{{discountWay.giveCount}}</p>
-</div>
+<ul class="clearfix change-discount-way">
+    <li class="change-discount-way-box fl" ng-repeat="discountWay in waterTicketDetail.preferentialStrategyModels" ng-click="selectDiscontWay(discountWay)">
+        <p class="ml15 mr15 mt10 tc" ng-class="{true: 'choose-discount', false: 'nochoose-discount'}[discountWay.isChoose]">买{{discountWay.requireCount}}送{{discountWay.giveCount}}</p>
+    </li>
+</ul>
+<a href="#/waterTicketsDetails" class="orderwater-btn m15 blue tc cfff f16" ng-click="choosediscountWay()">确认</a>

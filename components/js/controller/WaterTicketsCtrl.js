@@ -36,8 +36,8 @@
 
 
         $scope.setTicketInfo = function(waterticket){
+            WaterTicketsService.fixedWaterTicketsDiscountWay(waterticket.preferentialStrategyModels);
             WaterTicketsService.setWaterTicketInfo(waterticket);
         };
-
     }
 }());

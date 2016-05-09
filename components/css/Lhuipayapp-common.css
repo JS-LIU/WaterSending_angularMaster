@@ -53,11 +53,10 @@ body{
 }
 .L-header-back{
     top:0px;
-    line-height: 44px;
     width:35px;
-    background: url("../images/header-back.png") no-repeat 15px center;
+    height: 44px;
+    background: url("../images/header-back.png") no-repeat center center;
     background-size: 18px;
-    padding-left: 35px;
 }
 .L-header-searchbox{
     top:7px;
@@ -561,7 +560,6 @@ body{
     width: 100%;
     max-width:640px;
     bottom: 0px;
-    background: #000;
     color:#fff;
 }
 .shopping-mfooter li{

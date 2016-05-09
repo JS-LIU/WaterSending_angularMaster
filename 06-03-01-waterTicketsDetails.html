@@ -11,7 +11,6 @@
     <p class="cfff f14 fr pr15 watertickets-bg-bottom">有效期至{{waterTicketDetail.validTime}}</p>
 </div>
 
-
 <div class="watertickets-detailstext pl15">
     <p class="watertickets-detailstext-title pt5 f20">海豹水票</p>
     <p class="watertickets-detailstext-center ">
@@ -30,7 +29,14 @@
     <span class="mr10">已售：{{waterTicketDetail.saleCount}}</span>
 </div>
 
-<a href="#/" class="watertickets-setcombo mt10 clearfix pl15">
-    <span>选择套餐：</span>
-    <span class="mr5 watertickets-setcombo-text" ng-repeat="discountWay in waterTicketDetail.preferentialStrategyModels">买{{discountWay.requireCount}}送{{discountWay.giveCount}}</span>
+<a href="#/waterTicketsCombo" class="watertickets-setcombo mt10 clearfix pl15">
+    <span ng-show="ischooseDiscountWay">选择套餐：</span>
+    <span ng-show="ischooseDiscountWay" class="mr5 watertickets-setcombo-text" ng-repeat="discountWay in waterTicketDetail.preferentialStrategyModels">买{{discountWay.requireCount}}送{{discountWay.giveCount}}</span>
+    <span class="cblue f16" ng-show="!ischooseDiscountWay">您选定套餐为：买{{whichDiscountWay.requireCount}}送{{whichDiscountWay.giveCount}}</span>
 </a>
+
+<div class="comlist-13-single pr slide-mfooter watertickets-footer">
+
+
+</div>
+

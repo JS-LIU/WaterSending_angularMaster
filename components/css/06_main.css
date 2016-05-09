@@ -514,9 +514,24 @@ html,body{
     padding:2px 5px;
     border:1px solid #E2E2E2;
 }
-.change-discount-way p{
-    height:33px;
-    line-height:33px;
+.change-discount-way-box{
+    width:50%;
+}
+.nochoose-discount{
+    height:44px;
+    line-height:44px;
     border:1px solid #E2E2E2;
     background:#FFF;
+}
+.choose-discount{
+    height:44px;
+    line-height:44px;
+    border:1px solid #9cd3fc;
+    background:#FFF url("../images/iconfont-duihaoxi@2x.png") no-repeat right bottom;
+    -webkit-background-size:15px;
+    background-size:15px;
+}
+.watertickets-footer{
+    height:49px;
+    background:#4a5156;
 }

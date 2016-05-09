@@ -58,7 +58,7 @@
                 controller:'WaterTicketsDetailsCtrl'
             }).when('/waterTicketsCombo',{
                 templateUrl:'06-03-02-waterTicketsCombo.html',
-                controller:'WaterTicketsDetailsCtrl'
+                controller:'WaterTicketsDisCountWay'
             });
         }])
         .config(function(MapProvider){

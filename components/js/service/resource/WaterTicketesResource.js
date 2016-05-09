@@ -33,7 +33,9 @@
             waterTicketsDetail:{},
             myWaterTicketsList:{},
             setWaterTicketInfo:{},
-            getWaterTicketInfo:{}
+            getWaterTicketInfo:{},
+            fixedWaterTicketsDiscountWay:{},
+            getSpeDiscontWay:{}
         };
 
 
@@ -62,9 +64,32 @@
         waterTickets.setWaterTicketInfo = function(data){
             waterTicketInfo = data;
         };
+
         waterTickets.getWaterTicketInfo = function(){
             return waterTicketInfo;
         };
+
+        waterTickets.fixedWaterTicketsDiscountWay = function(arr){
+            for(var i = 0,len = arr.length;i < len;i++){
+                arr[i].isChoose = false;
+            }
+            return arr;
+        }
+
+        waterTickets.chooseDiscountWay = function(arr,selfdiscountWay){
+            for(var i = 0,len  = arr.length;i < len;i++){
+                arr[i].isChoose = false;
+            }
+            selfdiscountWay.isChoose = true;
+        }
+        waterTickets.getSpeDiscontWay = function(arr){
+            for(var i = 0,len = arr.length;i < len;i++){
+                if(arr[i].isChoose){
+                    return arr[i];
+                }
+            }
+        }
+
         return waterTickets;
     };
 }());
