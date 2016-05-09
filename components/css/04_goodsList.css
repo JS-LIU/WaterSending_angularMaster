@@ -19,6 +19,13 @@
     line-height:24px;
     overflow: hidden;
 }
+.gL-goodsList span{
+    padding:2px 5px;
+    border:1px solid #E2E2E2;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+}
 .allCheckbox img{
     position:relative;
     top:4px;

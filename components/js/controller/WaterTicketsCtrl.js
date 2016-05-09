@@ -9,6 +9,8 @@
                               $localStorage,
                               Login,
                               WaterTicketsService){
+        $scope.addressInfo = $localStorage.addressInfo;
+
 
         var accessInfo = Login.getAccessInfo($cookieStore,false);
         var requestPageInfo = {
@@ -16,19 +18,26 @@
             pageNo: 1
         };
         var positionInfo = {
-            position_x:$localStorage.addressInfo.lnglatXY[0],
-            position_y:$localStorage.addressInfo.lnglatXY[1],
-            districtId:$localStorage.addressInfo.cityId,
+            position_x:$scope.addressInfo.lnglatXY[0],
+            position_y:$scope.addressInfo.lnglatXY[1],
+            districtId:$scope.addressInfo.cityId,
             phoneCode:""
         }
 
         WaterTicketsService.waterTicketsList({
             accessInfo:accessInfo,
             requestPageInfo:requestPageInfo,
-            positionInfo:positionInfo
+            positionInfo:positionInfo,
+            sign:''
         }).then(function(data){
             console.log(data);
+            $scope.waterTicketesInfo = data.cardtickets;
         });
+
+
+        $scope.setTicketInfo = function(waterticket){
+            WaterTicketsService.setWaterTicketInfo(waterticket);
+        };
 
     }
 }());

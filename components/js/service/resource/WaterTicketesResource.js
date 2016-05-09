@@ -31,19 +31,21 @@
         var waterTickets = {
             waterTicketsList:{},
             waterTicketsDetail:{},
-            myWaterTicketsList:{}
+            myWaterTicketsList:{},
+            setWaterTicketInfo:{},
+            getWaterTicketInfo:{}
         };
 
 
         waterTickets.waterTicketsList = function(obj){
-            return WaterTicketsResource.locationWaterTickets.save(
+            return WaterTicketsResource.locationWaterTickets().save(
                 {operate:'list'},
                 obj
             ).$promise;
         };
 
         waterTickets.waterTicketsDetail = function(obj){
-            return WaterTicketsResource.locationWaterTickets.save(
+            return WaterTicketsResource.locationWaterTickets().save(
                 {operate:'detail'},
                 obj
             ).$promise;
@@ -53,7 +55,16 @@
                 {operate:'list'},
                 obj
             ).$promise;
-        }
+        };
+        var waterTicketInfo = {};
+
+
+        waterTickets.setWaterTicketInfo = function(data){
+            waterTicketInfo = data;
+        };
+        waterTickets.getWaterTicketInfo = function(){
+            return waterTicketInfo;
+        };
         return waterTickets;
     };
 }());
