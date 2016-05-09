@@ -1,0 +1,8 @@
+<div class="L-header w pr blue slide-header">
+    <a href="#/waterTicketsDetails" class="cfff po L-header-back"></a>
+    <p class="tc L-header-title cfff f16">选择套餐</p>
+</div>
+
+<div class="clearfix change-discount-way">
+    <p ng-repeat="discountWay in waterTicketDetail.preferentialStrategyModels" class="fl m15">买{{discountWay.requireCount}}送{{discountWay.giveCount}}</p>
+</div>

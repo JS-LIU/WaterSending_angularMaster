@@ -1,0 +1,36 @@
+<div class="L-header w pr blue slide-header">
+    <a href="#/waterTickets" class="cfff po L-header-back"></a>
+    <p class="tc L-header-title cfff f16">水票</p>
+</div>
+<div class="watertickets-bg pl15 mt10">
+    <p class="watertickets-bg-title clearfix">
+        <span class="fl cfff f16">{{waterTicketDetail.productName}}</span>
+        <span class="fr cfff f14 pr15">每张水票可购一桶</span>
+    </p>
+    <p class="tc watertickets-bg-name">海豹水票</p>
+    <p class="cfff f14 fr pr15 watertickets-bg-bottom">有效期至{{waterTicketDetail.validTime}}</p>
+</div>
+
+
+<div class="watertickets-detailstext pl15">
+    <p class="watertickets-detailstext-title pt5 f20">海豹水票</p>
+    <p class="watertickets-detailstext-center ">
+        <span class="watertickets-detailstext-center-onsale cred">促销</span>
+        <span class="f14">{{waterTicketDetail.productName}}</span>
+    </p>
+    <p class="clearfix f14">
+        <span>￥</span>
+        <span class="cred">{{(waterTicketDetail.totalCount / 100).toFixed(2)}}</span>
+        <span class="fr pr15">库存：{{waterTicketDetail.inventoryCount}}</span>
+    </p>
+</div>
+<div class="watertickets-useInfo pl15">
+    <span class="mr10">水票：全市通用</span>
+    <span class="mr10">快递：0.00</span>
+    <span class="mr10">已售：{{waterTicketDetail.saleCount}}</span>
+</div>
+
+<a href="#/" class="watertickets-setcombo mt10 clearfix pl15">
+    <span>选择套餐：</span>
+    <span class="mr5 watertickets-setcombo-text" ng-repeat="discountWay in waterTicketDetail.preferentialStrategyModels">买{{discountWay.requireCount}}送{{discountWay.giveCount}}</span>
+</a>

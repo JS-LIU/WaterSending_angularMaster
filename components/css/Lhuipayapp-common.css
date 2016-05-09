@@ -53,9 +53,11 @@ body{
 }
 .L-header-back{
     top:0px;
+    line-height: 44px;
     width:35px;
-    background: url("../images/header-back.png") no-repeat center center;
+    background: url("../images/header-back.png") no-repeat 15px center;
     background-size: 18px;
+    padding-left: 35px;
 }
 .L-header-searchbox{
     top:7px;

@@ -53,6 +53,12 @@
             }).when('/waterTickets',{
                 templateUrl:'06-03-waterTickets.html',
                 controller:'WaterTicketsCtrl'
+            }).when('/waterTicketsDetails',{
+                templateUrl:'06-03-01-waterTicketsDetails.html',
+                controller:'WaterTicketsDetailsCtrl'
+            }).when('/waterTicketsCombo',{
+                templateUrl:'06-03-02-waterTicketsCombo.html',
+                controller:'WaterTicketsDetailsCtrl'
             });
         }])
         .config(function(MapProvider){

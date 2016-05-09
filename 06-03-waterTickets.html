@@ -10,7 +10,7 @@
 
 <ul huipay-whenscrolled="loadMore()" class="common-list-02 mt10" style="margin-bottom: 60px;">
     <li class="w pr" ng-repeat="waterticket in waterTicketesInfo">
-        <a href="#/" ng-click="setTicketInfo(waterticket)">
+        <a href="#/waterTicketsDetails" ng-click="setTicketInfo(waterticket)">
             <div class="common-picproduct-02 pr tc">
                 <img src="components/images/Temp-water.png" class="h" alt="商品图片"/>
             </div>
@@ -23,7 +23,7 @@
                 </p>
                 <p class="comlist-02-floor-01 watertickets-3box">
                     <span class="cred f16">¥{{(waterticket.price/100).toFixed(2)}}</span>
-                    <span class="watertickets-strategybox ml5" ng-repeat="discountWay in waterticket.preferentialStrategyModels">
+                    <span class="watertickets-strategybox" ng-repeat="discountWay in waterticket.preferentialStrategyModels">
                         {{discountWay.description}}
                     </span>
                 </p>
