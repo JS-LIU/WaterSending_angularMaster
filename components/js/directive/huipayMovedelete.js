@@ -3,7 +3,7 @@
  */
 (function(){
     angular.module('huipayUI')
-        .directive('huipayMovedelete',function($swipe,ShoppingCartService){
+        .directive('huipayMovedelete',function($swipe){
             var x,x1,x2;
 
             function deleteBox(scope,ele){
@@ -49,31 +49,13 @@
                         });
                     }
                 });
-
-                scope.goodsChecked = function(parentObj,selfObj){
-                    var parentObj = parentObj;
-                    var selfObj = selfObj;
-                    var childName = "itemList";
-                    selfObj = ShoppingCartService.checked.selfChecked(selfObj);
-                    ShoppingCartService.checked.childrenChecked(selfObj,childName);
-                    ShoppingCartService.checked.parentChecked(parentObj,childName);
-
-                    //  是否全选
-                    ShoppingCartService.checked.parentChecked(scope.goodsListObj,childName);
-                }
-
-                scope.increaseNum = function(goodsInfo){
-                    ShoppingCartService.increaseNum(goodsInfo,'num');
-                }
-                scope.decreaseNum = function(goodsInfo){
-                    ShoppingCartService.decreaseNum(goodsInfo,'num');
-                }
             }
 
             return{
                 restrict:'EA',
-                templateUrl:'appTemplate/movedelete.html',
+                template:'<li class="pr" ng-style="moveStyle" ng-transclude></li>',
                 priority:1000,
+                transclude:true,
                 replace:true,
                 link:deleteBox
             }
