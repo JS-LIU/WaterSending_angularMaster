@@ -8,7 +8,6 @@
         [
             'ngRoute',
             'ngStorage',
-            'ngTouch',
             'ngCookies',
             'ngResource',
             'ngAnimate',

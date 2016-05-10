@@ -535,3 +535,18 @@ html,body{
     height:49px;
     background:#4a5156;
 }
+.watertickets-footer a{
+    width:25%;
+}
+.watertickets-footer .addtogoodscart{
+    background:#f12f2f;
+    line-height:49px;
+}
+.delBtn{
+    right:0px;
+    top:0px;
+    width: 55px;
+    height:105px;
+    line-height:105px;
+    background:#f12f2f;
+}

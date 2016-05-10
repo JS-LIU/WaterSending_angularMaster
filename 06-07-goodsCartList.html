@@ -8,27 +8,31 @@
         <span class="pl30">{{shopInfo.shopName || "一家没有起名字的水站"}}</span>
         <span></span>
     </li>
-    <li class="w pr" ng-repeat="goodsInfo in shopInfo.itemList">
-        <div class="po" ng-click="goodsChecked(shopInfo,goodsInfo)" ng-class="{true:'goods-checked',false:'goods-unchecked'}[goodsInfo.isChecked]"></div>
-        <div class="common-picproduct-13 pr tc">
-            <img src={{goodsInfo.imageUrl}} class="h" alt=""/>
-        </div>
-        <div class="po common-detailbox-13">
-            <p class="f16 comlist-02-floor-01 gL-goodsList">
-                <span>{{goodsInfo.productName}}</span>
-            </p>
-            <p class="comlist-02-floor-01 pt5 gL-goodsList">
-                <span>￥</span>
-                <span class="cred f16">{{(goodsInfo.price / 100).toFixed(2)}}</span>
-                <span>*{{goodsInfo.num}}</span>
-            </p>
-        </div>
-        <div class="po clearfix goodsCtrl">
-            <div class="fl subtract tc" ng-click="decreaseNum(goodsInfo)">-</div>
-            <div class="fl goodsNum tc">{{goodsInfo.num}}</div>
-            <div class="fl add tc"ng-click="increaseNum(goodsInfo)">+</div>
-        </div>
+    <li ng-repeat="goodsInfo in shopInfo.itemList" class="pr w">
+        <huipay-movedelete>
+            <!--<div class="po" ng-click="goodsChecked(shopInfo,goodsInfo)" ng-class="{true:'goods-checked',false:'goods-unchecked'}[goodsInfo.isChecked]"></div>-->
+            <!--<div class="common-picproduct-13 pr tc">-->
+                <!--<img src={{goodsInfo.imageUrl}} class="h" alt=""/>-->
+            <!--</div>-->
+            <!--<div class="po common-detailbox-13">-->
+                <!--<p class="f16 comlist-02-floor-01 gL-goodsList">-->
+                    <!--<span>{{goodsInfo.productName}}</span>-->
+                <!--</p>-->
+                <!--<p class="comlist-02-floor-01 pt5 gL-goodsList">-->
+                    <!--<span>￥</span>-->
+                    <!--<span class="cred f16">{{(goodsInfo.price / 100).toFixed(2)}}</span>-->
+                    <!--<span>*{{goodsInfo.num}}</span>-->
+                <!--</p>-->
+            <!--</div>-->
+            <!--<div class="po clearfix goodsCtrl">-->
+                <!--<div class="fl subtract tc" ng-click="decreaseNum(goodsInfo)">-</div>-->
+                <!--<div class="fl goodsNum tc">{{goodsInfo.num}}</div>-->
+                <!--<div class="fl add tc"ng-click="increaseNum(goodsInfo)">+</div>-->
+            <!--</div>-->
+        </huipay-movedelete>
+        <div class="delBtn po tc cfff">删除</div>
     </li>
+
 </ul>
 <div style="height:50px;"></div>
 

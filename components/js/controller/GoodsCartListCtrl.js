@@ -23,10 +23,8 @@
             .then(function(data){
                 //  array
                 var goodsListObj = ShoppingCartService.fixedGoodsList(data.cartInfos);
-                console.log(goodsListObj);
                 $scope.goodsListObj = goodsListObj;
             });
-
         $scope.goodsChecked = function(parentObj,selfObj){
             var parentObj = parentObj;
             var selfObj = selfObj;
@@ -37,13 +35,6 @@
 
             //  是否全选
             ShoppingCartService.checked.parentChecked($scope.goodsListObj,childName);
-        }
-
-        $scope.increaseNum = function(goodsInfo){
-            ShoppingCartService.increaseNum(goodsInfo,'num');
-        }
-        $scope.decreaseNum = function(goodsInfo){
-            ShoppingCartService.decreaseNum(goodsInfo,'num');
         }
         //  底部样式
         $scope.shoppingCartfooter = {

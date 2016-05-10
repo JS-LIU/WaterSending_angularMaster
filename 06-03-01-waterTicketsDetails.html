@@ -35,8 +35,21 @@
     <span class="cblue f16" ng-show="!ischooseDiscountWay">您选定套餐为：买{{whichDiscountWay.requireCount}}送{{whichDiscountWay.giveCount}}</span>
 </a>
 
-<div class="comlist-13-single pr slide-mfooter watertickets-footer">
-
-
+<div class="comlist-13-single pr slide-mfooter watertickets-footer clearfix">
+    <a href="" class="fl tc">
+        <img src="components/images/icon_call@2x.png" alt="">
+        <span>客服</span>
+    </a>
+    <a href="" class="fl tc">
+        <img src="components/images/btn_collect@2x.png" alt="">
+        <span>收藏</span>
+    </a>
+    <a href="#/goodsCartList" class="fl tc">
+        <img src="components/images/tab_icon_gouwuche_nor@2x.png" alt="">
+        <span>购物车</span>
+    </a>
+    <a href="javascript:void(0)" class="addtogoodscart h tc f16 fl cfff" ng-click="putInShoppingCart(waterTicketDetail,whichDiscountWay)">
+        <span>加入购物车</span>
+    </a>
 </div>
 
