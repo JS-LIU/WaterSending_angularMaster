@@ -23,6 +23,7 @@
             .then(function(data){
                 //  array
                 var goodsListObj = ShoppingCartService.fixedGoodsList(data.cartInfos);
+                console.log(goodsListObj);
                 $scope.goodsListObj = goodsListObj;
             });
         $scope.goodsChecked = function(parentObj,selfObj){
@@ -32,9 +33,13 @@
             selfObj = ShoppingCartService.checked.selfChecked(selfObj);
             ShoppingCartService.checked.childrenChecked(selfObj,childName);
             ShoppingCartService.checked.parentChecked(parentObj,childName);
-
             //  是否全选
             ShoppingCartService.checked.parentChecked($scope.goodsListObj,childName);
+
+
+            ShoppingCartService.calcMoney();
+
+
         }
         $scope.increaseNum = function(goodsInfo){
             ShoppingCartService.increaseNum(goodsInfo,'num');
@@ -42,6 +47,24 @@
         $scope.decreaseNum = function(goodsInfo){
             ShoppingCartService.decreaseNum(goodsInfo,'num');
         }
+
+        //  删除
+        $scope.deleteGoods = function(shopInfo,goodsInfoSiblings,goodsInfo){
+            ShoppingCartService.deleteGoods.topost({
+                accessInfo:accessInfo,
+                sign:'',
+                deleteModels:[
+                    {
+                        shoppingCartId:shopInfo.shoppingCartId,
+                        itemIds:[goodsInfo.itemId]
+                    }
+                ]
+            });
+            ShoppingCartService.deleteGoods.toshow(shopInfo,goodsInfoSiblings,goodsInfo);
+        };
+
+
+
         //  底部样式
         $scope.shoppingCartfooter = {
             height:'49px',

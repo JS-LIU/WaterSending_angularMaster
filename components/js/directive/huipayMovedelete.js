@@ -11,8 +11,7 @@
                     left:'0px'
                 }
                 $swipe.bind(ele, {
-                    'start': function(coords,e) {
-                        e = e || window.event;
+                    'start': function(coords) {
                         x = 0;
                         scope.moveStyle = {
                             left:'0px',

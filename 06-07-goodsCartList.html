@@ -2,13 +2,13 @@
     <a class="L-header-back h po" href="javascript:history.go(-1);"></a>
     <p class="tc L-header-title cfff f16">购物车</p>
 </div>
-<ul class="common-list-13 mt10" ng-repeat="shopInfo in goodsListObj.itemList">
+<ul class="common-list-13 mt10" ng-repeat="shopInfo in goodsListObj.itemList" ng-hide="shopInfo.isDeleted">
     <li class="comlist-13-single pr pl15 confirmOrder-shop">
         <div class="po shop-goodscheck" ng-click="goodsChecked(goodsListObj,shopInfo)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[shopInfo.isChecked]"></div>
         <span class="pl30">{{shopInfo.shopName || "一家没有起名字的水站"}}</span>
-        <span></span>
+        <span class="cred">小计￥{{shopInfo.money}}</span>
     </li>
-    <li ng-repeat="goodsInfo in shopInfo.itemList" class="pr w">
+    <li ng-repeat="goodsInfo in shopInfo.itemList" class="pr w" ng-hide="goodsInfo.isDeleted">
         <huipay-movedelete class="w h pr fff huipay-movedelete">
             <div class="po" ng-click="goodsChecked(shopInfo,goodsInfo)" ng-class="{true:'goods-checked',false:'goods-unchecked'}[goodsInfo.isChecked]"></div>
             <div class="common-picproduct-13 pr tc">
@@ -30,7 +30,7 @@
                 <div class="fl add tc"ng-click="increaseNum(goodsInfo)">+</div>
             </div>
         </huipay-movedelete>
-        <div class="delBtn po tc cfff">删除</div>
+        <div class="delBtn po tc cfff" ng-click="deleteGoods(shopInfo,shopInfo.itemList,goodsInfo)">删除</div>
     </li>
 
 </ul>

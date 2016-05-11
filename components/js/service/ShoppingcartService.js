@@ -16,6 +16,10 @@
         var shoppingCart = {
             putInShoppingCart:{},
             showShoppingCartList:{},
+            deleteGoods:{
+                topost:{},
+                toshow:{}
+            },
             fixedGoodsList:{},
             checked:{
                 selfChecked:{},
@@ -24,7 +28,7 @@
             },
             increaseNum:{},
             decreaseNum:{},
-            countMoney:{}
+            calcMoney:{}
         }
 
         shoppingCart.showShoppingCartList = function(obj){
@@ -40,6 +44,25 @@
             ).$promise;
         }
 
+        shoppingCart.deleteGoods.topost = function(obj){
+            return ShoppingCartResource.save(
+                {operate:'delete'},
+                obj
+            ).$promise;
+            shoppingCart.deleteGoods.toshow()
+        }
+        shoppingCart.deleteGoods.toshow = function(parent,selfSiblings,self){
+            self.isDeleted = true;
+            for(var i = 0,len =selfSiblings.length;i < len; i++){
+                if(parent.itemList[i].isDeleted){
+                    if(i == len - 1){
+                        parent.isDeleted = true;
+                    }
+                }
+            }
+        }
+
+
         //  整理数组
         shoppingCart.fixedGoodsList = function(arr){
             var obj = {
@@ -49,6 +72,8 @@
 
             for(var i = 0,len = arr.length;i < len;i++){
                 arr[i].isChecked = false;
+                arr[i].isDeleted = false;
+                arr[i].price = arr[i].price || 0;
                 if(arr[i].itemList){
                     arguments.callee(arr[i].itemList);
                 }
@@ -105,7 +130,27 @@
             }
             return obj;
         }
-
+        //  计算
+        shoppingCart.calcMoney.sub = function(a,b){
+            return a - b;
+        };
+        shoppingCart.calcMoney.add = function(a,b){
+            return a + b;
+        };
+        shoppingCart.calcMoney.totleMoney = function(obj,key){
+            var totleMoney = 0;
+            for(var i = 0,len = obj.itemList.length;i < len;i++){
+                totleMoney += (obj.itemList[i][key]*obj.itemList[i].num||1);
+            }
+            return totleMoney;
+        }
+        shoppingCart.calcMoney = function(parentObj,selfObj){
+            if(selfObj.isChecked){
+                shoppingCart.calcMoney.add();
+            }else{
+                shoppingCart.calcMoney.sub();
+            }
+        }
 
 
         return shoppingCart;
