@@ -6,7 +6,7 @@
     <li class="comlist-13-single pr pl15 confirmOrder-shop">
         <div class="po shop-goodscheck" ng-click="goodsChecked(goodsListObj,shopInfo)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[shopInfo.isChecked]"></div>
         <span class="pl30">{{shopInfo.shopName || "一家没有起名字的水站"}}</span>
-        <span class="cred">小计￥{{shopInfo.money}}</span>
+        <span class="cred fr pr15">小计￥{{(shopInfo.price / 100).toFixed(2)}}</span>
     </li>
     <li ng-repeat="goodsInfo in shopInfo.itemList" class="pr w" ng-hide="goodsInfo.isDeleted">
         <huipay-movedelete class="w h pr fff huipay-movedelete">
@@ -38,4 +38,6 @@
 
 <div class="comlist-13-single pr slide-mfooter" ng-style="shoppingCartfooter">
     <div class="pr fl shop-goodscheck" ng-click="goodsChecked({},goodsListObj)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[goodsListObj.isChecked]"></div>
+    <span class="cfff pl30 f14">合计：￥</span>
+    <span class="f16 cfff">{{(goodsListObj.price / 100).toFixed(2)}}</span>
 </div>

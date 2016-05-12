@@ -23,9 +23,9 @@
             .then(function(data){
                 //  array
                 var goodsListObj = ShoppingCartService.fixedGoodsList(data.cartInfos);
-                console.log(goodsListObj);
                 $scope.goodsListObj = goodsListObj;
             });
+
         $scope.goodsChecked = function(parentObj,selfObj){
             var parentObj = parentObj;
             var selfObj = selfObj;
@@ -36,11 +36,12 @@
             //  是否全选
             ShoppingCartService.checked.parentChecked($scope.goodsListObj,childName);
 
-
-            ShoppingCartService.calcMoney();
-
-
+            //  计算钱
+            ShoppingCartService.money.calc(parentObj,selfObj,childName,$scope.goodsListObj);
+            //  总价
+            ShoppingCartService.money.totleMoney($scope.goodsListObj,childName);
         }
+
         $scope.increaseNum = function(goodsInfo){
             ShoppingCartService.increaseNum(goodsInfo,'num');
         }
@@ -68,6 +69,7 @@
         //  底部样式
         $scope.shoppingCartfooter = {
             height:'49px',
+            lineHeight:'49px',
             background:'#4a5156',
         }
     }

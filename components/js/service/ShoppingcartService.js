@@ -28,7 +28,7 @@
             },
             increaseNum:{},
             decreaseNum:{},
-            calcMoney:{}
+            money:{}
         }
 
         shoppingCart.showShoppingCartList = function(obj){
@@ -67,7 +67,8 @@
         shoppingCart.fixedGoodsList = function(arr){
             var obj = {
                 itemList:arr,
-                isChecked:false
+                isChecked:false,
+                price:0
             }
 
             for(var i = 0,len = arr.length;i < len;i++){
@@ -130,26 +131,41 @@
             }
             return obj;
         }
+
+
         //  计算
-        shoppingCart.calcMoney.sub = function(a,b){
-            return a - b;
-        };
-        shoppingCart.calcMoney.add = function(a,b){
-            return a + b;
-        };
-        shoppingCart.calcMoney.totleMoney = function(obj,key){
-            var totleMoney = 0;
-            for(var i = 0,len = obj.itemList.length;i < len;i++){
-                totleMoney += (obj.itemList[i][key]*obj.itemList[i].num||1);
+        shoppingCart.money.calc = function(parentObj,selfObj,childName){
+            var ctrl = 1;
+            if(!selfObj.isChecked){
+                ctrl = -1;
             }
-            return totleMoney;
-        }
-        shoppingCart.calcMoney = function(parentObj,selfObj){
-            if(selfObj.isChecked){
-                shoppingCart.calcMoney.add();
+            if(selfObj[childName]){
+                var child = selfObj[childName];
+                if(!selfObj.isChecked){
+                    ctrl = 0;
+                }
+                //  价格
+                selfObj.price = 0;
+                for(var i = 0,len = child.length;i < len;i++){
+                    var childM = child[i].price * child[i].num||1;
+                    selfObj.price += (ctrl * childM);
+                }
             }else{
-                shoppingCart.calcMoney.sub();
+                var childM = selfObj.price * selfObj.num||1;
+                parentObj.price += (ctrl * childM);
+                //  总价
             }
+        }
+
+        shoppingCart.money.totleMoney = function(obj,childName){
+            var totleMoney = 0;
+            for(var i = 0,len = obj[childName].length;i < len;i++){
+                totleMoney += (obj[childName][i].price);
+
+                // TODO:递归一下反正是0；
+                return
+            }
+            obj.price = totleMoney;
         }
 
 
