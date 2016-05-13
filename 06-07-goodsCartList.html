@@ -25,9 +25,9 @@
                 </p>
             </div>
             <div class="po clearfix goodsCtrl">
-                <div class="fl subtract tc" ng-click="decreaseNum(goodsInfo)">-</div>
+                <div class="fl subtract tc" ng-click="decreaseNum(goodsListObj,shopInfo,goodsInfo)">-</div>
                 <div class="fl goodsNum tc">{{goodsInfo.num}}</div>
-                <div class="fl add tc"ng-click="increaseNum(goodsInfo)">+</div>
+                <div class="fl add tc"ng-click="increaseNum(goodsListObj,shopInfo,goodsInfo)">+</div>
             </div>
         </huipay-movedelete>
         <div class="delBtn po tc cfff" ng-click="deleteGoods(shopInfo,shopInfo.itemList,goodsInfo)">删除</div>

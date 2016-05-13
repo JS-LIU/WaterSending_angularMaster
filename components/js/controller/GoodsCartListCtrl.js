@@ -37,17 +37,20 @@
             ShoppingCartService.checked.parentChecked($scope.goodsListObj,childName);
 
             //  计算钱
-            ShoppingCartService.money.calc(parentObj,selfObj,childName,$scope.goodsListObj);
+            ShoppingCartService.money.calc(parentObj,selfObj,childName);
+
             //  总价
             ShoppingCartService.money.totleMoney($scope.goodsListObj,childName);
         }
 
-        $scope.increaseNum = function(goodsInfo){
-            ShoppingCartService.increaseNum(goodsInfo,'num');
+        //  增加
+        $scope.increaseNum = function(goodsListObj,parentObj,selfObj){
+            ShoppingCartService.increaseNum(goodsListObj,parentObj,selfObj,'num');
         }
-        $scope.decreaseNum = function(goodsInfo){
-            ShoppingCartService.decreaseNum(goodsInfo,'num');
-        }
+        //  减少
+        $scope.decreaseNum = function(goodsListObj,parentObj,selfObj){
+            ShoppingCartService.decreaseNum(goodsListObj,parentObj,selfObj,'num');
+        };
 
         //  删除
         $scope.deleteGoods = function(shopInfo,goodsInfoSiblings,goodsInfo){
@@ -62,8 +65,9 @@
                 ]
             });
             ShoppingCartService.deleteGoods.toshow(shopInfo,goodsInfoSiblings,goodsInfo);
-        };
 
+
+        };
 
 
         //  底部样式
