@@ -28,7 +28,8 @@
             },
             increaseNum:{},
             decreaseNum:{},
-            money:{}
+            money:{},
+            item:{}
         }
 
         shoppingCart.showShoppingCartList = function(obj){
@@ -49,18 +50,6 @@
                 {operate:'delete'},
                 obj
             ).$promise;
-        }
-        shoppingCart.deleteGoods.toshow = function(parent,selfSiblings,self){
-            self.isDeleted = true;
-
-            for(var i = 0,len =selfSiblings.length;i < len; i++){
-
-                if(parent.itemList[i].isDeleted){
-                    if(i == len - 1){
-                        parent.isDeleted = true;
-                    }
-                }
-            }
         }
 
 
@@ -104,10 +93,12 @@
         shoppingCart.checked.parentChecked = function(parentObj,childName){
 
             var arr = parentObj[childName];
+
             if(arr){
-                for(var i = 0,len = arr.length;i < len;i++){
-                    if(arr[i].isChecked){
-                        if(i == len - 1){
+                var newArr = getNoDeletedArr(arr);
+                for(var j = 0,nlen = newArr.length;j < nlen;j++){
+                    if(newArr[j].isChecked){
+                        if(j == (nlen - 1)){
                             parentObj.isChecked = true;
                         }
                     }else{
@@ -117,7 +108,15 @@
                 }
             }
         }
-
+        function getNoDeletedArr(arr){
+            var newArr = [];
+            for(var i = 0,len = arr.length;i < len;i++){
+                if(!arr[i].isDeleted){
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
         //  增加
         shoppingCart.increaseNum = function(parentsObj,parentObj,selfObj,key){
             selfObj[key]++;
@@ -134,8 +133,8 @@
             if(selfObj[key] > 1){
                 selfObj[key]--;
                 if(selfObj.isChecked){
-                    parentObj.price += selfObj.price;
-                    parentsObj.price += selfObj.price;
+                    parentObj.price -= selfObj.price;
+                    parentsObj.price -= selfObj.price;
                 }
             }
             return selfObj;
@@ -149,7 +148,7 @@
             }
             if(selfObj[childName]){
                 var child = selfObj[childName];
-                if(!selfObj.isChecked){
+                if(!selfObj.isChecked || selfObj.isDeleted){
                     ctrl = 0;
                 }
                 //  价格
@@ -159,8 +158,10 @@
                     if(child[i][childName]){
                         arguments.callee(selfObj,child[i],childName);
                     }
-                    var childM = child[i].price * child[i].num||1;
-                    selfObj.price += (ctrl * childM);
+                    if(!child[i].isDeleted){
+                        var childM = child[i].price * child[i].num||1;
+                        selfObj.price += (ctrl * childM);
+                    }
                 }
             }else{
                 var childM = selfObj.price * selfObj.num||1;
@@ -171,11 +172,31 @@
         shoppingCart.money.totleMoney = function(obj,childName){
             var totleMoney = 0;
             for(var i = 0,len = obj[childName].length;i < len;i++){
-                totleMoney += (obj[childName][i].price);
+                if(!obj[childName][i].isDeleted){
+                    totleMoney += (obj[childName][i].price);
+                }
             }
             obj.price = totleMoney;
         }
 
+        //  删除
+        shoppingCart.deleteGoods.toshow = function(parent,selfSiblings,self,parents){
+            self.isDeleted = true;
+            if(self.isChecked){
+                parent.price -= (self.price * self.num);
+                parents.price -= (self.price * self.num);
+            }
+            for(var i = 0,len = selfSiblings.length;i < len; i++){
+
+                if(selfSiblings[i].isDeleted){
+                    if(i == len - 1){
+                        parent.isDeleted = true;
+                    }
+                }else{
+                    return false;
+                }
+            }
+        };
 
         return shoppingCart;
     }

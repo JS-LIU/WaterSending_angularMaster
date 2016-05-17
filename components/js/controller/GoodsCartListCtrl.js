@@ -64,9 +64,9 @@
                     }
                 ]
             });
-            ShoppingCartService.deleteGoods.toshow(shopInfo,goodsInfoSiblings,goodsInfo);
-
-
+            ShoppingCartService.deleteGoods.toshow(shopInfo,goodsInfoSiblings,goodsInfo,$scope.goodsListObj);
+            ShoppingCartService.checked.parentChecked(shopInfo,"itemList");
+            ShoppingCartService.checked.parentChecked($scope.goodsListObj,"itemList");
         };
 
 
@@ -74,7 +74,7 @@
         $scope.shoppingCartfooter = {
             height:'49px',
             lineHeight:'49px',
-            background:'#4a5156',
+            background:'#4a5156'
         }
     }
 }());
