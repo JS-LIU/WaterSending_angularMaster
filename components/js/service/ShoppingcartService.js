@@ -29,7 +29,8 @@
             increaseNum:{},
             decreaseNum:{},
             money:{},
-            item:{}
+            item:{},
+            save:{}
         }
 
         shoppingCart.showShoppingCartList = function(obj){
@@ -51,7 +52,6 @@
                 obj
             ).$promise;
         }
-
 
         //  整理数组
         shoppingCart.fixedGoodsList = function(arr){
@@ -198,6 +198,33 @@
             }
         };
 
+
+        shoppingCart.getShopItem = function(shopCartList){
+            var newlist = [];
+            for(var i = 0,len = shopCartList.length;i < len;i++){
+                if(!shopCartList[i].isDeleted){
+                    var productItem = shopCartList[i].itemList;
+                    var productList = [];
+                    for(var j = 0,plen = productItem.length;j < plen;j++){
+                        if(!productItem[j].isDeleted &&productItem[j].isChecked){
+                            delete productItem[j].isChecked;
+                            delete productItem[j].isDeleted;
+                            productList.push(productItem[j]);
+                        }
+                        if(j == plen - 1 && productList.length > 0){
+                            shopCartList[i].itemList = productList;
+                            delete shopCartList[i].isChecked;
+                            delete shopCartList[i].isDeleted;
+                            shopCartList[i].smallMoney = shopCartList[i].price;
+                            delete shopCartList[i].price;
+                            newlist.push(shopCartList[i]);
+                        }
+                    }
+                }
+            }
+            console.log(newlist);
+            return newlist;
+        }
         return shoppingCart;
     }
 }());

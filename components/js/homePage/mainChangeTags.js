@@ -58,6 +58,9 @@
             }).when('/waterTicketsCombo',{
                 templateUrl:'06-03-02-waterTicketsCombo.html',
                 controller:'WaterTicketsDisCountWay'
+            }).when('/confirmOrder',{
+                templateUrl:'06-07-01-confirmOrder.html',
+                controller:'ConfirmOrderCtrl'
             });
         }])
         .config(function(MapProvider){

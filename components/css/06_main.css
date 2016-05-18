@@ -550,3 +550,10 @@ html,body{
     line-height:105px;
     background:#f12f2f;
 }
+.confirm-address{
+    padding-left:35px;
+    background:#fff url("../images/address.png") no-repeat 15px center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+    min-height:65px;
+}

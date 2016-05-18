@@ -32,12 +32,12 @@
         </huipay-movedelete>
         <div class="delBtn po tc cfff" ng-click="deleteGoods(shopInfo,shopInfo.itemList,goodsInfo)">删除</div>
     </li>
-
 </ul>
 <div style="height:50px;"></div>
 
-<div class="comlist-13-single pr slide-mfooter" ng-style="shoppingCartfooter">
+<div class="comlist-13-single pr slide-mfooter clearfix" ng-style="shoppingCartfooter">
     <div class="pr fl shop-goodscheck" ng-click="goodsChecked({},goodsListObj)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[goodsListObj.isChecked]"></div>
     <span class="cfff pl30 f14">合计：￥</span>
     <span class="f16 cfff">{{(goodsListObj.price / 100).toFixed(2)}}</span>
+    <a href="#/confirmOrder" class="f16 cfff fr pr15 pl15 red" ng-click="getUsableData(goodsListObj)">去结算</a>
 </div>

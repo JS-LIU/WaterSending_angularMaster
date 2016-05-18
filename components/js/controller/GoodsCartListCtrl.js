@@ -7,7 +7,8 @@
     function GoodsCartListCtrl($scope,
                                $cookieStore,
                                Login,
-                               ShoppingCartService){
+                               ShoppingCartService,
+                               ConfirmService){
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
 
@@ -69,7 +70,19 @@
             ShoppingCartService.checked.parentChecked($scope.goodsListObj,"itemList");
         };
 
-
+        $scope.getUsableData = function(shopCart){
+            var shopCartList = shopCart.itemList.concat();
+            var cartInfoList = ShoppingCartService.getShopItem(shopCartList);
+            ConfirmService.saveGoodsCart({
+                sign:'',
+                accessInfo:accessInfo,
+                requestPageInfo:'',
+                cartInfoList:cartInfoList
+            }).then(function(data){
+                console.log(data);
+                ConfirmService.setOrderInfo(data);
+            });
+        }
         //  底部样式
         $scope.shoppingCartfooter = {
             height:'49px',
