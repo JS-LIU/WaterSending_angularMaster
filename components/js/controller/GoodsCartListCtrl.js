@@ -81,6 +81,7 @@
             }).then(function(data){
                 console.log(data);
                 ConfirmService.setOrderInfo(data);
+                window.location.href = "#/confirmOrder";
             });
         }
         //  底部样式

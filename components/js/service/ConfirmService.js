@@ -6,10 +6,10 @@
         .service('ConfirmService',ConfirmService);
 
     function ConfirmService($resource){
-        var confim = $resource('confim/order ',{});
+        var getConfirmOrder = $resource('confim/order',{});
 
         this.saveGoodsCart = function(obj){
-            return confim.save({},obj).$promise;
+            return getConfirmOrder.save({},obj).$promise;
         }
         var orderInfo = {};
         this.setOrderInfo = function(data){
@@ -18,11 +18,10 @@
         this.getOrderInfo = function(){
             return orderInfo;
         }
-        this.getNearestShopPosition = function(orderInfo){
+        this.getNearestShopPosition = function(data){
             var shopInfoArr =  data.confimOrderInfos;
-            var lnglat = [shopInfoArr[1][xAxis], shopInfoArr[1][yAxis]];
-            return lnglat;
-
+            var lnglatXY = [shopInfoArr[0].xAxis, shopInfoArr[0].yAxis];
+            return lnglatXY;
         }
     }
 }());

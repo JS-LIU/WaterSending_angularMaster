@@ -39,5 +39,5 @@
     <div class="pr fl shop-goodscheck" ng-click="goodsChecked({},goodsListObj)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[goodsListObj.isChecked]"></div>
     <span class="cfff pl30 f14">合计：￥</span>
     <span class="f16 cfff">{{(goodsListObj.price / 100).toFixed(2)}}</span>
-    <a href="#/confirmOrder" class="f16 cfff fr pr15 pl15 red" ng-click="getUsableData(goodsListObj)">去结算</a>
+    <div class="f16 cfff fr pr15 pl15 red" ng-click="getUsableData(goodsListObj)">去结算</div>
 </div>

@@ -13,20 +13,21 @@
 
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         var orderInfo =  ConfirmService.getOrderInfo();
-        var positionInfo = ConfirmService.getNearestShopPosition(orderInfo);
-        console.log(positionInfo);
+        var lnglatXY = ConfirmService.getNearestShopPosition(orderInfo);
 
         DelieveryAddressService.getAddressList({
             sign:"",
             accessInfo:accessInfo,
             positionInfo:{
-                positionInfo:'',
-                position_x:positionInfo[0],
-                position_x:positionInfo[1],
+                districtId:'',
+                position_x:lnglatXY[0],
+                position_y:lnglatXY[1],
                 addressInfo:'',
                 phoneCode:''
             }
         }).then(function(data){
+            var canDeliverAddress = DelieveryAddressService.canDeliverList(data);
+            $scope.canDeliverAddress = canDeliverAddress[0];
 
         });
     };

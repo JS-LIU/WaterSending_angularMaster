@@ -5,11 +5,36 @@
 <a href="javascript:void(0)" class="pr fff confirm-address mt10">
     <div>
         <p class="common-list-line-1 pr50 pl15 pt10">
-            <span>{{}}</span>
-            <span class="pl15">{{}}</span>
+            <span>{{canDeliverAddress.recieve_name}}</span>
+            <span class="pl15">{{canDeliverAddress.phone_num}}</span>
         </p>
         <p class="common-list-line-2 pr50 pl15 pb10">
-            <span>地址：{{}}</span>
+            <span>地址：{{canDeliverAddress.fullAddress}}</span>
         </p>
     </div>
 </a>
+<ul class="common-list-21 mt10">
+    <li>
+        <span class="ml15 fl">预约配送时间</span>
+        <span class="input-box mr15 fr f14 selectTime">
+            <select name="select-time" ng-model="initH" ng-options="hour.opt for hour in initHours">
+            </select>
+            <span>:</span>
+            <select name="select-time" ng-model="initM" ng-options="min.opt for min in initMins">
+            </select>
+            <span class="ml15 mr15">-</span>
+            <select name="select-time" ng-model="endH" ng-options="min.opt for min in endHours">
+            </select>
+            <span>:</span>
+            <select name="select-time" ng-model="endM" ng-options="min.opt for min in endMins">
+            </select>
+        </span>
+    </li>
+    <li>
+        <span class="ml15 fl">选择付款方式</span>
+        <span class="mr15 fr input-box">
+            <select name="select-pay" ng-model="initPayWay" ng-options="payWay.opt for payWay in payWays">
+            </select>
+        </span>
+    </li>
+</ul>
