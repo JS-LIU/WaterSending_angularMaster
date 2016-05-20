@@ -17,11 +17,11 @@
         };
         this.getOrderInfo = function(){
             return orderInfo;
-        }
-        this.getNearestShopPosition = function(data){
+        };
+        this.getFirstShopPosition = function(data){
             var shopInfoArr =  data.confimOrderInfos;
             var lnglatXY = [shopInfoArr[0].xAxis, shopInfoArr[0].yAxis];
             return lnglatXY;
-        }
-    }
+        };
+    };
 }());

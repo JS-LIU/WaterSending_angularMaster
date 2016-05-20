@@ -9,11 +9,14 @@
                               $cookieStore,
                               Login,
                               DelieveryAddressService,
-                              ConfirmService){
+                              ConfirmService,
+                              SendTimeService){
+        //  订单信息
+        $scope.orderInfo =  ConfirmService.getOrderInfo();
 
+
+        var lnglatXY = ConfirmService.getFirstShopPosition($scope.orderInfo);
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
-        var orderInfo =  ConfirmService.getOrderInfo();
-        var lnglatXY = ConfirmService.getNearestShopPosition(orderInfo);
 
         DelieveryAddressService.getAddressList({
             sign:"",
@@ -28,7 +31,25 @@
         }).then(function(data){
             var canDeliverAddress = DelieveryAddressService.canDeliverList(data);
             $scope.canDeliverAddress = canDeliverAddress[0];
-
         });
+
+        //  选择配送时间
+        $scope.initHours = SendTimeService.getInitHoursArr();
+        $scope.initMins = SendTimeService.getMinArr();
+        $scope.initH = $scope.initHours[0];
+
+        $scope.$watch('initH',function(){
+            $scope.endH = SendTimeService.getEndHours($scope.initH.opt);
+        },true);
+        $scope.$watch('initMins',function(){
+            $scope.initM = $scope.initMins[0];
+        },true);
+
+        $scope.createOrder = function(confimOrderInfos){
+
+        }
+
+
+
     };
 }());

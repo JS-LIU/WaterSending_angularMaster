@@ -4,51 +4,56 @@
 
 (function(){
     angular.module('myApp')
-        .service('SendTime',SendTime);
-    function SendTime(){
+        .service('SendTimeService',SendTimeService);
+        //.service('PayWayService',PayWayService);
+
+
+    function SendTimeService(){
         this.data = new Date();
 
+        this.setTimeArr = function(arr,init,end){
+            for(var i = init;i < end;i++){
+                arr.push({
+                    opt:i,
+                    id:""
+                });
+            }
+        }
     };
-
-    SendTime.prototype.getTimeArr = function(){
+    SendTimeService.prototype.getInitHoursArr = function(){
+        var hours = [];
         var initH = this.data.getHours();
         var endH = 24;
+        this.setTimeArr(hours,initH,endH);
+        return hours;
+    };
+    SendTimeService.prototype.getEndHours = function(hour){
+        hour += 2;
+        if(hour > 23){
+            hour -= 23;
+        }
+        return hour;
+    }
+    SendTimeService.prototype.getMinArr = function(){
+        var mins = [];
         var initM = this.data.getMinutes();
         var endM = 60;
-        var timeObj = {
-            honrArr:[],
-            minArr:[]
-        };
-        for(var prop in timeObj){
-
-        }
-        for(var i = initH;i < endH;i++){
-            timeArr.push(i);
-        }
-        return timeArr;
+        this.setTimeArr(mins,initM,endM);
+        return mins;
     };
 
+    //function PayWayService(){
+    //    this.paywayArr = ['在线付款','货到付款'];
+    //}
+    //PayWayService.prototype.SetPayWay = function(){
+    //    var optionArr = [];
+    //    for(var i = 0;i < this.paywayArr.length;i++){
+    //        optionArr.push({
+    //            opt: this.paywayArr[i],
+    //            id: i
+    //        });
+    //    }
+    //    return optionArr;
+    //}
 
 }());
-purchase.service('TimePayWay',TimePayWay);
-function TimePayWay(){};
-TimePayWay.prototype.option = function(arr,id){
-    var optionArr = [];
-
-    for(var i = 0;i < arr.length;i++){
-        var obj = {
-            opt: arr[i],
-            id: id[i]
-        }
-
-        optionArr.push(obj);
-    }
-    return optionArr;
-}
-TimePayWay.prototype.setTimeArr = function(init,end){
-    var timeArr = [];
-    for(var i = init;i <= end;i++){
-        timeArr.push(i);
-    }
-    return timeArr;
-}

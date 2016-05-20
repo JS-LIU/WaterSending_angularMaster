@@ -22,6 +22,7 @@
         }
         ShoppingCartService.showShoppingCartList(postGoodsCart)
             .then(function(data){
+                console.log(data);
                 //  array
                 var goodsListObj = ShoppingCartService.fixedGoodsList(data.cartInfos);
                 $scope.goodsListObj = goodsListObj;
@@ -84,6 +85,15 @@
                 window.location.href = "#/confirmOrder";
             });
         }
+
+        $scope.fixedPreferentialId = function(cartInfo){
+
+
+        }
+
+
+
+
         //  底部样式
         $scope.shoppingCartfooter = {
             height:'49px',

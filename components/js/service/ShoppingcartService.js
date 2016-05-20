@@ -209,6 +209,7 @@
                         if(!productItem[j].isDeleted &&productItem[j].isChecked){
                             delete productItem[j].isChecked;
                             delete productItem[j].isDeleted;
+                            productItem[j].num += (productItem[j].giveCount||0);
                             productList.push(productItem[j]);
                         }
                         if(j == plen - 1 && productList.length > 0){
