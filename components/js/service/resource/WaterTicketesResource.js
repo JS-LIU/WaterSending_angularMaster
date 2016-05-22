@@ -88,7 +88,7 @@
                     return arr[i];
                 }
             }
-        }
+        };
 
         return waterTickets;
     };

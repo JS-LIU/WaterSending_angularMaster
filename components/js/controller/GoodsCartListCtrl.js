@@ -8,7 +8,8 @@
                                $cookieStore,
                                Login,
                                ShoppingCartService,
-                               ConfirmService){
+                               ConfirmService,
+                               WaterTicketsService){
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
 
@@ -20,13 +21,24 @@
                 pageNo: 10
             }
         }
-        ShoppingCartService.showShoppingCartList(postGoodsCart)
-            .then(function(data){
-                console.log(data);
-                //  array
-                var goodsListObj = ShoppingCartService.fixedGoodsList(data.cartInfos);
-                $scope.goodsListObj = goodsListObj;
-            });
+        var goodsListObj = ShoppingCartService.getShoppingCart();
+        if(goodsListObj.itemList){
+            // var goodsListObj = ShoppingCartService.fixedGoodsList(data.cartInfos);
+            var waterTicketInfo = WaterTicketsService.getWaterTicketInfo();
+            if(waterTicketInfo.preferentialStrategyModels){
+                ShoppingCartService.getWaterTicket(goodsListObj,waterTicketInfo);
+            }
+            $scope.goodsListObj = goodsListObj;
+        }else{
+            ShoppingCartService.showShoppingCartList(postGoodsCart)
+                .then(function(data){
+                    // console.log(data);
+                    //  array
+                    var goodsListObj = ShoppingCartService.fixedGoodsList(data.cartInfos);
+                    $scope.goodsListObj = goodsListObj;
+                });
+        }
+
 
         $scope.goodsChecked = function(parentObj,selfObj){
             var parentObj = parentObj;
@@ -86,10 +98,11 @@
             });
         }
 
-        $scope.fixedPreferentialId = function(cartInfo){
-
-
-        }
+        $scope.fixedPreferentialId = function(shoppingCart,waterTicketInfo){
+            waterTicketInfo.isChange = true;
+            WaterTicketsService.setWaterTicketInfo(waterTicketInfo);
+            ShoppingCartService.setShoppingCart(shoppingCart);
+        };
 
 
 

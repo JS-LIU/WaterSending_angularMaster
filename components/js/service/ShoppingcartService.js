@@ -12,7 +12,7 @@
     }
 
 
-    function ShoppingCartService(ShoppingCartResource){
+    function ShoppingCartService(ShoppingCartResource,WaterTicketsService){
         var shoppingCart = {
             putInShoppingCart:{},
             showShoppingCartList:{},
@@ -26,32 +26,36 @@
                 childrenChecked:{},
                 parentChecked:{}
             },
+            setWaterTicket:{},
+            getWaterTicket:{},
             increaseNum:{},
             decreaseNum:{},
             money:{},
             item:{},
-            save:{}
-        }
+            save:{},
+            getShoppingCart:{},
+            setShoppingCart:{}
+        };
 
         shoppingCart.showShoppingCartList = function(obj){
             return ShoppingCartResource.save(
                 {operate:'list'},
                 obj
             ).$promise;
-        }
+        };
         shoppingCart.putInShoppingCart = function(obj){
             return ShoppingCartResource.save(
                 {operate:'new'},
                 obj
             ).$promise;
-        }
+        };
 
         shoppingCart.deleteGoods.topost = function(obj){
             return ShoppingCartResource.save(
                 {operate:'delete'},
                 obj
             ).$promise;
-        }
+        };
 
         //  整理数组
         shoppingCart.fixedGoodsList = function(arr){
@@ -59,7 +63,7 @@
                 itemList:arr,
                 isChecked:false,
                 price:0
-            }
+            };
 
             for(var i = 0,len = arr.length;i < len;i++){
                 arr[i].isChecked = false;
@@ -70,12 +74,12 @@
                 }
             }
             return obj;
-        }
+        };
         //  自己选择状态
         shoppingCart.checked.selfChecked = function(obj){
             obj.isChecked = !obj.isChecked;
             return obj;
-        }
+        };
 
         //  子孙状态(随父状态)
         shoppingCart.checked.childrenChecked = function(obj,childName){
@@ -88,7 +92,7 @@
                 }
             }
             return obj;
-        }
+        };
         //  父选择状态
         shoppingCart.checked.parentChecked = function(parentObj,childName){
 
@@ -107,7 +111,7 @@
                     }
                 }
             }
-        }
+        };
         function getNoDeletedArr(arr){
             var newArr = [];
             for(var i = 0,len = arr.length;i < len;i++){
@@ -126,7 +130,7 @@
                 parentsObj.price += selfObj.price;
             }
             return selfObj;
-        }
+        };
 
         //  减少
         shoppingCart.decreaseNum = function(parentsObj,parentObj,selfObj,key){
@@ -138,7 +142,7 @@
                 }
             }
             return selfObj;
-        }
+        };
 
         //  计算
         shoppingCart.money.calc = function(parentObj,selfObj,childName){
@@ -177,7 +181,7 @@
                 }
             }
             obj.price = totleMoney;
-        }
+        };
 
         //  删除
         shoppingCart.deleteGoods.toshow = function(parent,selfSiblings,self,parents){
@@ -225,7 +229,44 @@
             }
             console.log(newlist);
             return newlist;
-        }
+        };
+
+        var waterTicketInfo = {};
+        shoppingCart.setWaterTicket = function(data){
+            data.isChange = true;
+            waterTicketInfo = data;
+            return waterTicketInfo;
+        };
+        shoppingCart.getWaterTicket = function(shopCartList,waterTicketInfo){
+            var waterTicketInfo = waterTicketInfo;
+            var waterTicketInfoPreferential = WaterTicketsService.getSpeDiscontWay(waterTicketInfo.preferentialStrategyModels);
+            if(waterTicketInfoPreferential){
+                for(var i = 0;i < shopCartList.itemList.length;i++){
+                    for(var j = 0;j < shopCartList.itemList[i].itemList.length;j++){
+                        if(shopCartList.itemList[i].itemList[j].isChange){
+                            delete shopCartList.itemList[i].itemList[j].isChange;
+                            var dif = waterTicketInfoPreferential.requireCount - shopCartList.itemList[i].itemList[j].num;
+                            shopCartList.itemList[i].itemList[j].num = waterTicketInfoPreferential.requireCount;
+                            shopCartList.itemList[i].itemList[j].giveCount = waterTicketInfoPreferential.giveCount;
+                            shopCartList.itemList[i].itemList[j].preferentialId = waterTicketInfoPreferential.id;
+                            if(shopCartList.itemList[i].itemList[j].isChecked){
+                                shopCartList.itemList[i].price += (dif*shopCartList.itemList[i].itemList[j].price);
+                                shopCartList.price += (dif*shopCartList.itemList[i].itemList[j].price);
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        var shoppingCartObj = {};
+        shoppingCart.getShoppingCart = function(){
+            return shoppingCartObj;
+        };
+
+        shoppingCart.setShoppingCart = function(data){
+            shoppingCartObj = data;
+        };
+
         return shoppingCart;
     }
 }());

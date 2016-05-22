@@ -32,7 +32,7 @@
                     <div class="fl add tc"ng-click="increaseNum(goodsListObj,shopInfo,goodsInfo)">+</div>
                 </div>
                 <div class="po clearfix goodsCtrl" ng-show="goodsInfo.giveCount">
-                    <div class="w tc" ng-click="fixedPreferentialId(goodsInfo)">修改套餐</div>
+                    <a href="#/waterTicketsCombo" class="w tc" ng-click="fixedPreferentialId(goodsListObj,goodsInfo)">修改套餐</a>
                 </div>
             </huipay-movedelete>
             <div class="delBtn po tc cfff" ng-click="deleteGoods(shopInfo,shopInfo.itemList,goodsInfo)">删除</div>
