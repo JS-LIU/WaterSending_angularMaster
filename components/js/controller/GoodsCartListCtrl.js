@@ -106,7 +106,6 @@
 
 
 
-
         //  底部样式
         $scope.shoppingCartfooter = {
             height:'49px',

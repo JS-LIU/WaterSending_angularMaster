@@ -10,14 +10,15 @@
                               Login,
                               DelieveryAddressService,
                               ConfirmService,
-                              SendTimeService){
+                              SendTimeService,
+                              OrderService){
         //  订单信息
-        $scope.orderInfo =  ConfirmService.getOrderInfo();
+        $scope.orderInfo = ConfirmService.getOrderInfo();
 
 
         var lnglatXY = ConfirmService.getFirstShopPosition($scope.orderInfo);
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
-
+        accessInfo.phone_num = '';
         DelieveryAddressService.getAddressList({
             sign:"",
             accessInfo:accessInfo,
@@ -45,9 +46,23 @@
             $scope.initM = $scope.initMins[0];
         },true);
 
-        $scope.createOrder = function(confimOrderInfos){
-
-        }
+        $scope.createOrder = function(){
+            var orderItems = ConfirmService.fixedOrderInfo();
+            OrderService.new({
+                accessInfo:accessInfo,
+                orderItems:orderItems,
+                total_fee:$scope.orderInfo.totalFee,
+                comment:$scope.initH.opt+':'+$scope.initM.opt +'~'+$scope.endH+':'+$scope.initM.opt,
+                isCod:'0',
+                addressId:$scope.canDeliverAddress.addressId,
+                sign:'',
+                description:'',
+                homeTime:''
+            }).then(function(data){
+                console.log(data);
+                OrderService.setOrderNum(data);
+            });
+        };
 
 
 
