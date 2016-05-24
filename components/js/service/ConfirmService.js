@@ -27,11 +27,6 @@
             var orderItems = [];
             for(var i = 0;i < orderInfo.confimOrderInfos.length;i++){
                 for(var j = 0;j < orderInfo.confimOrderInfos[i].orderItems.length;j++){
-                    //for(var prop in orderInfo.confimOrderInfos[i].orderItems[j]){
-                    //    if(orderInfo.confimOrderInfos[i].orderItems[j][prop] == null){
-                    //        orderInfo.confimOrderInfos[i].orderItems[j][prop] = "";
-                    //    }
-                    //}
                     orderItems.push(orderInfo.confimOrderInfos[i].orderItems[j]);
                 }
             };

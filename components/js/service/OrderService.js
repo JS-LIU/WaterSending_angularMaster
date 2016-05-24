@@ -13,7 +13,8 @@
 
     function OrderService(OrderResource){
         var order = {
-            new:{}
+            new:{},
+            setOrderNum:{}
         };
 
         order.new = function(obj){
@@ -21,8 +22,11 @@
                 {operate:'new'},
                 obj
             ).$promise;
-        }
-
+        };
+        var orderNum = {};
+        order.setOrderNum = function(data){
+            orderNum = data;
+        };
         return order;
     };
 

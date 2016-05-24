@@ -26,7 +26,7 @@
                 {operate:'showDefaultAddress'},
                 obj
             ).$promise;
-        }
+        };
 
         //  获取收获地址列表
         this.getAddressList = function(obj){
@@ -72,7 +72,7 @@
                 {operate:'new'},
                 obj
             ).$promise;
-        }
+        };
 
         //  编辑收货地址
         this.editAddress = function(obj){
@@ -80,7 +80,7 @@
                 {operate:'edit'},
                 obj
             ).$promise;
-        }
+        };
 
         //  得到【家庭地址/公司地址】
         this.getSpeAddress = function(arr,condition){
@@ -91,7 +91,7 @@
                     return speAddress;
                 }
             }
-        }
+        };
 
         //  得到可以配送的地址
         this.canDeliverList = function(arr){

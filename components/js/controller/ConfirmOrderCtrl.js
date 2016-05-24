@@ -19,6 +19,7 @@
         var lnglatXY = ConfirmService.getFirstShopPosition($scope.orderInfo);
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = '';
+        //  送货地址
         DelieveryAddressService.getAddressList({
             sign:"",
             accessInfo:accessInfo,
@@ -32,6 +33,7 @@
         }).then(function(data){
             var canDeliverAddress = DelieveryAddressService.canDeliverList(data);
             $scope.canDeliverAddress = canDeliverAddress[0];
+
         });
 
         //  选择配送时间
@@ -57,7 +59,8 @@
                 addressId:$scope.canDeliverAddress.addressId,
                 sign:'',
                 description:'',
-                homeTime:''
+                homeTime:'',
+                shopId:'420'
             }).then(function(data){
                 console.log(data);
                 OrderService.setOrderNum(data);

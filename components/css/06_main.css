@@ -557,3 +557,33 @@ html,body{
     background-size: 18px;
     min-height:65px;
 }
+.spe-footer-dialog{
+    position:fixed;
+    bottom:0px;
+    height:50%;
+    background:#FFF;
+
+}
+.spe-footer-dialog-title{
+    line-height:35px;
+}
+.spe-footer-dialog-title2{
+    height:20px;
+    line-height:15px;
+    border-bottom:1px solid #E2E2E2;
+}
+.close-spedialog-btn{
+    right:5px;
+    top:5px;
+}
+.spe-footer-dialog-detaillist{
+    margin-top:56px;
+    overflow-y: auto;
+}
+.spe-footer-dialog-detaillist li{
+    line-height:30px;
+}
+.spe-footer-dialog-header{
+    position:fixed;
+    height:56px;
+}

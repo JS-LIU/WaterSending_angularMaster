@@ -33,7 +33,7 @@
         noLogaccessInfo.phone_num = "";
 
         //  监听【重新选择/移动】地址
-        $scope.$watch('addressInfo',function(newValue,oldValue){
+        $scope.$watch('addressInfo',function(){
             AddressListener.updataLocation($scope.addressInfo);
 
             //  控制台 打印当前地址

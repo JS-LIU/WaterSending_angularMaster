@@ -1,8 +1,8 @@
 <div class="L-header w pr blue">
     <div class="L-header w pr slide-header">
-        <a href="#/" class="L-header-back h po"></a>
+        <a href="javascript:history.go(-1);" class="L-header-back h po"></a>
         <p class="tc L-header-title cfff f16">{{operateAddress.operate.title}}{{operateAddress.addressType.name}}</p>
-        <a ng-href="{{backHistory}}" class="po L-header-cancelBtn pr10 cfff" ng-click="saveAddress(operateAddress.addressListTitles)">保存</a>
+        <a href="javascript:history.go(-1);" class="po L-header-cancelBtn pr10 cfff" ng-click="saveAddress(operateAddress.addressListTitles)">保存</a>
     </div>
 </div>
 <div class="L-center">
@@ -10,7 +10,7 @@
         <li class="clearfix pr">
             <p class="fl pl15">联系人：</p>
             <P class="po common-list-input-1">
-                <input type="text" class="w h" ng-model="userName"/>
+                <input type="text" class="w h" ng-model="recieve_name"/>
             </P>
         </li>
         <li class="clearfix pr">
@@ -19,12 +19,13 @@
                 <input type="text" class="w h" ng-model="phone_num"/>
             </P>
         </li>
-        <li class="clearfix pr" ng-click="saveAddressInfo()">
+        <li class="clearfix pr" ng-click="getbigLocation()">
             <p class="fl pl15">所在区域：</p>
-            <a href="#/deliverMap" class="po common-list-input-1">{{districtAddress}}</a>
+            <p class="po common-list-input-1">{{districtAddress}}</p>
         </li>
         <li class="clearfix pr">
             <p class="fl pl15">详细地址：</p>
+            <div class="fl"></div>
             <P class="po common-list-input-1">
                 <input type="text" class="w h" ng-model="address"/>
             </P>
@@ -33,6 +34,27 @@
             <p class="fl pl15">设为默认地址</p>
             <on-off></on-off>
         </div>
+    </ul>
+</div>
+<div class="spe-footer-dialog w">
+    <div class="spe-footer-dialog-header w">
+        <p class="tc spe-footer-dialog-title">所在地区</p>
+        <ul class="spe-footer-dialog-title2">
+            <li class="fl pl15">{{nowProvince.label||'请选择'}}</li>
+            <li class="fl pl15" ng-show="hasCity">{{nowCity.label||'请选择'}}</li>
+            <li class="fl pl15" ng-show="hasArea">{{nowAreas.label||'请选择'}}</li>
+        </ul>
+        <div class="po close-spedialog-btn">x</div>
+    </div>
+
+    <ul class="pl15 spe-footer-dialog-detaillist h" ng-show="isprovinces">
+        <li ng-repeat="province in allProvinces.provinces" ng-click="getNowProvince(province)">{{province.label}}</li>
+    </ul>
+    <ul class="pl15 spe-footer-dialog-detaillist h" ng-show="iscity">
+        <li ng-repeat="city in cities.cities" ng-click="getNowCity(city)">{{city.label}}</li>
+    </ul>
+    <ul class="pl15 spe-footer-dialog-detaillist h" ng-show="isarea">
+        <li ng-repeat="area in areas.cities" ng-click="getNowArea(area)">{{area.label}}</li>
     </ul>
 </div>
 

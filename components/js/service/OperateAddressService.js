@@ -51,18 +51,6 @@
                 for(var prop in obj){
                     titleMsg[prop] = obj[prop];
                 }
-            },
-            getFullAddress:function(str1,str2){
-                var j = 0;
-                for(var i = 0;i < str1.length;i++){
-                    if(str1[i] == str2[i]){
-                        j++;
-                    }else{
-                        break;
-                    }
-                }
-                var str = str2.substring(j);
-                return str1+str;
             }
         };
     }
