@@ -19,6 +19,11 @@
         var lnglatXY = ConfirmService.getFirstShopPosition($scope.orderInfo);
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = '';
+
+        //  送货地址
+
+
+
         //  送货地址
         DelieveryAddressService.getAddressList({
             sign:"",
@@ -66,8 +71,5 @@
                 OrderService.setOrderNum(data);
             });
         };
-
-
-
     };
 }());

@@ -587,3 +587,22 @@ html,body{
     position:fixed;
     height:56px;
 }
+.spe-locationlist{
+
+}
+.setDeforUn{
+    right:15px;
+    top: 10px;
+    width: 45px;
+    height: 25px;
+}
+.setDef{
+    background:url("../images/btn_default-address_blue@2x.png") no-repeat center center;
+    -webkit-background-size:contain;
+    background-size:contain;
+}
+.setUndef{
+    background:url("../images/btn_default-address_gray@2x.png") no-repeat center center;
+    -webkit-background-size:contain;
+    background-size:contain;
+}

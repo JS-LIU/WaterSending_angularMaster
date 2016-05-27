@@ -68,7 +68,7 @@
         }
         //  新增收货地址
         this.newAddress = function(obj){
-            return DelieveryAddressResource.post(
+            return DelieveryAddressResource.save(
                 {operate:'new'},
                 obj
             ).$promise;
