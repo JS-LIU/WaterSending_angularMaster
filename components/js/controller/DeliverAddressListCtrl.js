@@ -9,16 +9,29 @@
                                     $localStorage,
                                     Login,
                                     DelieveryAddressService,
-                                    OperateAddressService){
+                                    OperateAddressService,
+                                    SaveUrlService,
+                                    ConfirmService){
         //  请求地址列表参数
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
+        $scope.backTocome = SaveUrlService.getUrl();
+        console.log($localStorage.addressInfo);
+        var lnglatXY = $localStorage.addressInfo.lnglatXY;
+        var isOrder = ($scope.backTocome == '#/confirmOrder');
+        //  是否从订单进来
+        if(isOrder){
+            //  订单信息
+            var orderInfo = ConfirmService.getOrderInfo();
+            lnglatXY = ConfirmService.getFirstShopPosition(orderInfo);
+        };
+
         var postAddressListData = {
             sign:"",
             accessInfo:accessInfo,
             positionInfo:{
-                position_x:$localStorage.addressInfo.lnglatXY[0],
-                position_y:$localStorage.addressInfo.lnglatXY[1],
+                position_x:lnglatXY[0],
+                position_y:lnglatXY[1],
                 districtId:$localStorage.addressInfo.cityId,
                 addressInfo:$localStorage.addressInfo.name,
                 phoneCode:""
@@ -29,6 +42,25 @@
         DelieveryAddressService.getAddressList(postAddressListData)
             .then(function success(data){
                 $scope.addressList = DelieveryAddressService.trimAddressList(data);
+
+                console.log($scope.addressList);
+                console.log($scope.backTocome);
+
+                //  是否添加【不可配送】标签
+                if(!isOrder){                               //  从【'#/my'】过来不添加
+                    $scope.isOrder = false;
+                }else{                                      //  添加【不可配送】标签
+                    $scope.isOrder = true;
+                    //  选中地址
+                    $scope.chooseAddress = function(addressInfo){
+
+                        //  是否可配送
+                        if(addressInfo.canDeliever){
+                            DelieveryAddressService.setAddressInfo(addressInfo);
+                            window.location.href = '#/confirmOrder';
+                        };
+                    };
+                };
             });
 
         //  【编辑/新增】按钮
@@ -46,7 +78,7 @@
                 OperateAddressService.setOperateAddress(title);
 
                 window.location.href = "#/editAddress";
-            }
-        }
-    }
+            };
+        };
+    };
 }());

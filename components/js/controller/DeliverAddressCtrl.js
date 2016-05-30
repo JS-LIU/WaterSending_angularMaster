@@ -18,7 +18,7 @@
         $scope.operateAddress.addressInfo.isDefault = Boolean($scope.operateAddress.addressInfo.isDefault);
 
         //  是否设为默认
-        $scope.cutSelect = function(){
+        $scope.setDefn = function(){
             $scope.operateAddress.addressInfo.isDefault = !$scope.operateAddress.addressInfo.isDefault;
         };
 

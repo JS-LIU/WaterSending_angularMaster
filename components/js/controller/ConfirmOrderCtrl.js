@@ -11,7 +11,8 @@
                               DelieveryAddressService,
                               ConfirmService,
                               SendTimeService,
-                              OrderService){
+                              OrderService,
+                              SaveUrlService){
         //  订单信息
         $scope.orderInfo = ConfirmService.getOrderInfo();
 
@@ -19,27 +20,27 @@
         var lnglatXY = ConfirmService.getFirstShopPosition($scope.orderInfo);
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = '';
+        var canDeliverAddress = DelieveryAddressService.getAddressInfo();
+        if(canDeliverAddress.addressId){
+            $scope.canDeliverAddress = canDeliverAddress;
+        }else{
+            //  送货地址
+            DelieveryAddressService.getAddressList({
+                sign:"",
+                accessInfo:accessInfo,
+                positionInfo:{
+                    districtId:'',
+                    position_x:lnglatXY[0],
+                    position_y:lnglatXY[1],
+                    addressInfo:'',
+                    phoneCode:''
+                }
+            }).then(function(data){
+                var canDeliverAddress = DelieveryAddressService.canDeliverList(data);
+                $scope.canDeliverAddress = canDeliverAddress[0];
+            });
+        }
 
-        //  送货地址
-
-
-
-        //  送货地址
-        DelieveryAddressService.getAddressList({
-            sign:"",
-            accessInfo:accessInfo,
-            positionInfo:{
-                districtId:'',
-                position_x:lnglatXY[0],
-                position_y:lnglatXY[1],
-                addressInfo:'',
-                phoneCode:''
-            }
-        }).then(function(data){
-            var canDeliverAddress = DelieveryAddressService.canDeliverList(data);
-            $scope.canDeliverAddress = canDeliverAddress[0];
-
-        });
 
         //  选择配送时间
         $scope.initHours = SendTimeService.getInitHoursArr();
@@ -70,6 +71,10 @@
                 console.log(data);
                 OrderService.setOrderNum(data);
             });
+        };
+
+        $scope.saveurl = function(){
+            SaveUrlService.setUrl('#/confirmOrder');
         };
     };
 }());

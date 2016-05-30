@@ -102,5 +102,14 @@
             }
             return newArr;
         }
+
+        //  选定地址
+        var myAddress = {};
+        this.getAddressInfo = function(){
+            return myAddress;
+        };
+        this.setAddressInfo = function(data){
+            myAddress = data;
+        };
     }
 }());

@@ -179,7 +179,6 @@
             }).then(function(data){
                 ShopInfoService.setSpeShopInfo(data);
                 window.location.href = "#/goodsList";
-
             });
         }
 

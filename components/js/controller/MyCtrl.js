@@ -4,7 +4,7 @@
 (function(){
     angular.module('myApp')
         .controller('MyCtrl',MyCtrl);
-    function MyCtrl($scope,Login){
+    function MyCtrl($scope,Login,SaveUrlService){
         $scope.isLog = Login.isLogIn();
         //  判断是否登录
         if($scope.isLog){    //  登录
@@ -16,5 +16,9 @@
             $scope.nextPage = "07-log.html";
             $scope.myHeader = "components/images/tempHeader.png";
         }
+
+        $scope.saveUrl = function(){
+            SaveUrlService.setUrl('#/my');
+        };
     }
 }());

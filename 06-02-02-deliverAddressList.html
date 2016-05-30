@@ -1,6 +1,6 @@
 <div class="L-header w pr blue">
     <div class="L-header w pr slide-header">
-        <a href="#/my" class="L-header-back h po"></a>
+        <a ng-href="{{backTocome}}" class="L-header-back h po"></a>
         <p class="tc L-header-title cfff f16">我的收货地址</p>
         <a class="po L-header-cancelBtn pr10 cfff" ng-click="edit()">+新增</a>
     </div>
@@ -9,12 +9,15 @@
 <ul class="common-list-23">
     <li class="mt10" ng-repeat="addressInfo in addressList">
         <div class="common-list-23-title" ng-class="{'homeaddress':addressInfo.isHome,'companyaddress':addressInfo.isCompany,'commonaddress':addressInfo.isCommon}">{{addressInfo.title}}</div>
-        <div class="common-list-23-center">
+        <div class="common-list-23-center pr" ng-click="chooseAddress(addressInfo)">
             <p class="mt5 pl15 addressListInfo">
                 <span>{{addressInfo.recieve_name || "姓名"}}</span>
                 <span class="ml15">{{addressInfo.phone_num || "手机号"}}</span>
             </p>
             <p class="pl15 addressListInfo">{{addressInfo.fullAddress||"收货地址"}}</p>
+            <div ng-if="isOrder" class="candeliverPic po">
+                <img class="w" ng-hide="addressInfo.canDeliever"  src="components/images/cantDeliver.png" alt="">
+            </div>
         </div>
         <div class="common-list-23-footer">
             <span class="fl pl15" ng-class="{true: 'defnAddress', false: 'unDefnAddress'}[addressInfo.isDefault]">设为默认</span>
