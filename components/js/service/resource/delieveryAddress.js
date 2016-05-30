@@ -47,8 +47,8 @@
                     isCompany:true,
                     title:"公司地址"
                 }];
+            var commonAddress = [];
             for(var i = 0,len = data.length;i < len; i++){
-                var commonAddress = [];
                 //  家庭地址使用家庭地址图标 并显示家庭地址文字
                 if(data[i].addressType == 1){
                     data[i].isHome = true;
@@ -63,8 +63,7 @@
                     commonAddress.push(data[i]);
                 }
             }
-            var newdata = speAddress.concat(commonAddress);
-            return newdata;
+            return speAddress.concat(commonAddress);
         }
         //  新增收货地址
         this.newAddress = function(obj){

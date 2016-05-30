@@ -27,7 +27,7 @@
             bottom:'160px'
         }
         $scope.addressInfo = $localStorage.addressInfo;     //  是否重新选择过地址
-
+        var defndata;
         //  未登录的accessInfo;
         var noLogaccessInfo = Login.getAccessInfo($cookieStore,false);
         noLogaccessInfo.phone_num = "";
@@ -38,7 +38,6 @@
 
             //  控制台 打印当前地址
             console.log($scope.addressInfo);
-
             //  减少请求发起次数
             if($scope.addressInfo.city){
                 var positionInfo = {
@@ -46,7 +45,7 @@
                     position_y:$scope.addressInfo.lnglatXY[1],
                     districtId:$scope.addressInfo.cityId,
                     addressInfo:$scope.addressInfo.name
-                }
+                };
                 var postshopList = {
                     accessInfo:noLogaccessInfo,
                     requestPageInfo: {
@@ -56,7 +55,7 @@
                     sign:'',
                     x_dpi:'640',
                     positionInfo:positionInfo
-                }
+                };
                 //  获取附近店铺位置
                 GetNearShopService.getShopList(postshopList)
                     .then(function(data){
@@ -85,11 +84,12 @@
             var postdefnAddressData = {
                 sign:"",
                 accessInfo:accessInfo
-            }
+            };
             DelieveryAddressService.getDefnAddress(postdefnAddressData)
                 .then(function success(data){
                     //  是否有默认地址
                     if(data.isDefault){
+                        defndata = data;
                         //  显示默认地址
                         var lnglatXY = [data.position_x,data.position_y];
                         $scope.addressInfo.lnglatXY = lnglatXY;
@@ -101,6 +101,7 @@
                             //  获取城市列表
                             ChangeLocation.setAllCities();
                         });
+                        Map.setMapCenter($scope.addressInfo.lnglatXY);
                     }else{
                         //  浏览器定位
                         return Map.browserLocation($q);
@@ -134,13 +135,20 @@
 
         //  获取移动后位置
         Map.moveendLocation(function(lnglatXY){
-            //  获得当前地址名字
-            Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
-                $scope.locationName = locationNameObj.locationName;
+            if(lnglatXY[0] != defndata.position_x || lnglatXY[1] != defndata.position_y){
 
-                $scope.addressInfo.lnglatXY = lnglatXY;
-                $scope.addressInfo.name = locationNameObj.locationName
-            });
+                //  获得当前地址名字
+                Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
+                    $scope.locationName = locationNameObj.locationName;
+
+                    $scope.addressInfo.lnglatXY = lnglatXY;
+                    $scope.addressInfo.name = locationNameObj.locationName
+                });
+            }else{
+                $scope.locationName = defndata.fullAddress;
+                $scope.addressInfo.lnglatXY = [defndata.position_x,defndata.position_y];
+                $scope.addressInfo.name = defndata.fullAddress;
+            }
         });
 
         //  点击【我要定水】按钮

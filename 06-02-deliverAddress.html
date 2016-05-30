@@ -10,31 +10,31 @@
         <li class="clearfix pr">
             <p class="fl pl15">联系人：</p>
             <P class="po common-list-input-1">
-                <input type="text" class="w h" ng-model="recieve_name"/>
+                <input type="text" class="w h" ng-model="operateAddress.addressInfo.recieve_name"/>
             </P>
         </li>
         <li class="clearfix pr">
             <p class="fl pl15">联系方式：</p>
             <P class="po common-list-input-1">
-                <input type="text" class="w h" ng-model="phone_num"/>
+                <input type="text" class="w h" ng-model="operateAddress.addressInfo.phone_num"/>
             </P>
         </li>
         <li class="clearfix pr" ng-click="saveAddressInfo()">
             <p class="fl pl15">所在区域：</p>
             <a href="#/deliverMap" class="po common-list-input-1">
-                {{districtAddress}}
+                {{operateAddress.addressInfo.districtAddress}}
             </a>
         </li>
         <li class="clearfix pr">
             <p class="fl pl15">详细地址：</p>
             <div class="fl"></div>
             <P class="po common-list-input-1">
-                <input type="text" class="w h" ng-model="keywords"/>
+                <input type="text" class="w h" ng-model="operateAddress.addressInfo.address"/>
             </P>
         </li>
         <li class="common-list-15 pr">
             <p class="fl pl15">设为默认地址</p>
-            <div class="po setDeforUn" ng-class="{true:'setDef',false:'setUndef'}[isDefault]" ng-click="cutSelect()"></div>
+            <div class="po setDeforUn" ng-class="{true:'setDef',false:'setUndef'}[operateAddress.addressInfo.isDefault]" ng-click="cutSelect()"></div>
         </li>
     </ul>
 </div>

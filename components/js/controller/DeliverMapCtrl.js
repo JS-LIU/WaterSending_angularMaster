@@ -71,9 +71,9 @@
             addressInfo.districtAddress = location.district;
             addressInfo.address = location.name;
 
-
+            console.log(titleMsg);
             //  保存选择的地址信息
-            OperateAddressService.setOperateAddress();
+            OperateAddressService.setOperateAddress(titleMsg);
         };
 
 

@@ -28,9 +28,7 @@
         //  【家庭地址/公司地址】名字
         DelieveryAddressService.getAddressList(postAddressListData)
             .then(function success(data){
-                console.log(data);
                 $scope.addressList = DelieveryAddressService.trimAddressList(data);
-                console.log($scope.addressList);
             });
 
         //  【编辑/新增】按钮

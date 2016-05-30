@@ -15,60 +15,40 @@
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
         $scope.operateAddress = OperateAddressService.getOperateAddress();
-        var deliverInfo = $scope.operateAddress.addressInfo;
+        $scope.operateAddress.addressInfo.isDefault = Boolean($scope.operateAddress.addressInfo.isDefault);
 
-
-        $scope.recieve_name = deliverInfo.recieve_name||"";
-        $scope.phone_num = deliverInfo.phone_num||"";
-        $scope.keywords = deliverInfo.address||"";
-        $scope.isDefault = Boolean(deliverInfo.isDefault);
-        $scope.districtAddress = deliverInfo.districtAddress;
-        $scope.position_x =  deliverInfo.position_x;
-        $scope.position_y =  deliverInfo.position_y;
-        $scope.provinceId = deliverInfo.provinceId;
-        $scope.cityId = deliverInfo.cityId;
         //  是否设为默认
         $scope.cutSelect = function(){
-            $scope.isDefault = !$scope.isDefault;
+            $scope.operateAddress.addressInfo.isDefault = !$scope.operateAddress.addressInfo.isDefault;
         };
 
         $scope.saveAddressInfo = function(){
-            deliverInfo = {
-                phone_num:$scope.phone_num,
-                recieve_name:$scope.recieve_name,
-                isDefault:$scope.isDefault,
-                position_x:$scope.position_x,
-                position_y:$scope.position_y,
-                provinceId:$scope.provinceId,
-                cityId:$scope.cityId,
-                districtAddress:$scope.districtAddress,
-                address:$scope.keywords
-            }
-            OperateAddressService.setOperateAddress();
+            OperateAddressService.setOperateAddress($scope.operateAddress);
         };
 
-
+        console.log($scope.operateAddress);
         //  监听【被保存】地址变化
         $scope.saveAddress = function(){
+            var addressInfo = $scope.operateAddress.addressInfo;
             var addressItem = {
-                addressId:deliverInfo.addressId||"10",
-                phone_num:$scope.phone_num,
-                recieve_name: $scope.recieve_name,
-                position_x: $scope.position_x,
-                position_y: $scope.position_y,
-                provinceId: $scope.provinceId,
-                cityId: $scope.cityId,
-                districtAddress:$scope.districtAddress,
-                address:$scope.keywords,
-                houseNumber:"",
+                addressId:addressInfo.addressId||"10",
+                phone_num:addressInfo.phone_num,
+                recieve_name: addressInfo.recieve_name,
+                position_x: addressInfo.position_x,
+                position_y: addressInfo.position_y,
+                provinceId: addressInfo.provinceId||"010",
+                cityId: addressInfo.cityId||"010",
+                districtAddress:addressInfo.districtAddress,
+                address:addressInfo.address,
                 addressType: $scope.operateAddress.addressType.addressType,
-                isDefault: Number($scope.isDefault)
+                isDefault: Number(addressInfo.isDefault)
             };
             var postNewAddressData = {
                 sign:"",
                 accessInfo:accessInfo,
                 addressItem:addressItem
             };
+            console.log(postNewAddressData);
             //  新增还是编辑
             if($scope.operateAddress.operate.state == 0){
                 DelieveryAddressService.newAddress(postNewAddressData)
