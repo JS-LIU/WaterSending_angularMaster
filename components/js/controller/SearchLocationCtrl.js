@@ -33,10 +33,12 @@
         //  选择地址
         $scope.setNewLnglat = function(location){
             var nowLocation = {};
+            console.log(location);
             if(location.location.lng){
                 nowLocation = {
                     lnglatXY:[location.location.lng,location.location.lat],
-                    name:location.name
+                    name:location.district + location.name,
+                    addressId:location.addressId
                 }
                 AddressListener.updataLocation(nowLocation);
             }else{
@@ -74,7 +76,7 @@
                 //  获取家庭地址
                 var homeAddress = DelieveryAddressService
                     .getSpeAddress(data,1);
-
+                console.log(homeAddress);
                 //  获取公司地址
                 var companyAddress = DelieveryAddressService
                     .getSpeAddress(data,2);
@@ -84,7 +86,8 @@
                         var nowLocation = {
                             lnglatXY:[homeAddress.position_x,
                                 homeAddress.position_y],
-                            name:homeAddress.fullAddress
+                            name:homeAddress.fullAddress,
+                            addressId:homeAddress.addressId
                         }
                         AddressListener.updataLocation(nowLocation);
                         window.location.href = "#/"
@@ -92,7 +95,8 @@
                         var nowLocation = {
                             lnglatXY:[companyAddress.position_x,
                                 companyAddress.position_y],
-                            name:companyAddress.fullAddress
+                            name:companyAddress.fullAddress,
+                            addressId:companyAddress.addressId
                         }
                         AddressListener.updataLocation(nowLocation);
                         window.location.href = "#/"

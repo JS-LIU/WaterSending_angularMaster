@@ -7,6 +7,7 @@
 
     function ConfirmOrderCtrl($scope,
                               $cookieStore,
+                              $localStorage,
                               Login,
                               DelieveryAddressService,
                               ConfirmService,
@@ -36,8 +37,8 @@
                     phoneCode:''
                 }
             }).then(function(data){
-                var canDeliverAddress = DelieveryAddressService.canDeliverList(data);
-                $scope.canDeliverAddress = canDeliverAddress[0];
+                var canDeliverAddress = DelieveryAddressService.getDefnCanDeliver(data,$localStorage.addressInfo.addressId);
+                $scope.canDeliverAddress = canDeliverAddress;
             });
         }
 

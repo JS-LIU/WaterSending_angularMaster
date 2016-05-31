@@ -5,7 +5,7 @@
     angular.module('myApp')
         .factory('OperateAddressService',OperateAddressService);
 
-    function OperateAddressService(){
+    function OperateAddressService($localStorage){
         var operateAddress = {
             creatPage:{}
         }
@@ -18,6 +18,14 @@
         var addressTypeArr = [{name:'普通地址',addressType:0},
             {name:'家庭地址',addressType:1},
             {name:'公司地址',addressType:2}];
+
+        function findAddress(districtAddress,fullAddress){
+            var disAL = districtAddress.length;
+            var fullAL = fullAddress.length;
+            var address = fullAddress.substr(disAL,fullAL);
+
+            return address;
+        };
         operateAddress.creatPage = function(addressType,addressInfo){
 
             for(var i = 0; i < addressTypeArr.length;i++){
@@ -30,6 +38,17 @@
                     state:'0',
                     title:'新建'
                 };
+                var districtAddress = $localStorage.addressInfo.city + $localStorage.addressInfo.district;
+                var fullAddress = $localStorage.addressInfo.name;
+
+                var address = findAddress(districtAddress,fullAddress);
+                titleMsg.addressInfo = {
+                    districtAddress:districtAddress,
+                    address:address,
+                    position_x:$localStorage.addressInfo.lnglatXY[0],
+                    position_x:$localStorage.addressInfo.lnglatXY[1]
+                };
+                console.log(titleMsg);
             }else{
                 titleMsg.operate = {
                     state:'1',

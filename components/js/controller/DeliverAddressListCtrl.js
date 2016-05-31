@@ -17,6 +17,7 @@
         accessInfo.phone_num = "";
         $scope.backTocome = SaveUrlService.getUrl();
         console.log($localStorage.addressInfo);
+
         var lnglatXY = $localStorage.addressInfo.lnglatXY;
         var isOrder = ($scope.backTocome == '#/confirmOrder');
         //  是否从订单进来

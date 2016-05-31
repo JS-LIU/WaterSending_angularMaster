@@ -101,8 +101,17 @@
                 }
             }
             return newArr;
-        }
-
+        };
+        this.getDefnCanDeliver = function(arr,addressId){
+            var candeliverArr = this.canDeliverList(arr);
+            for(var i = 0,len = candeliverArr.length;i < len;i++){
+                if(candeliverArr[i].addressId == addressId){
+                    return candeliverArr[i];
+                }else{
+                    return candeliverArr[0];
+                }
+            }
+        };
         //  选定地址
         var myAddress = {};
         this.getAddressInfo = function(){

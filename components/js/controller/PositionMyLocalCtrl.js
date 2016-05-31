@@ -1,9 +1,6 @@
 /**
  * Created by liudq on 16/4/7.
  */
-/**
- * Created by 殿麒 on 2016/3/3.
- */
 (function(){
     //  首页【定位】
     angular.module('myApp')
@@ -34,17 +31,28 @@
 
         //  监听【重新选择/移动】地址
         $scope.$watch('addressInfo',function(){
-            AddressListener.updataLocation($scope.addressInfo);
-
+            var addressInfo = $scope.addressInfo;
+            var lnglatXY = $scope.addressInfo.lnglatXY;
+            //  城市
+            Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
+                $scope.city = locationNameObj.city;
+                addressInfo.district = locationNameObj.district;
+                return  ChangeLocation.setAllCities();
+            }).then(function(data){
+                var cities = data.cities;
+                var city = ChangeLocation.getThisCity(cities,$scope.city);
+                addressInfo.city = $scope.city;
+                addressInfo.cityId = city.id;
+            });
             //  控制台 打印当前地址
-            console.log($scope.addressInfo);
+            console.log(addressInfo);
             //  减少请求发起次数
             if($scope.addressInfo.city){
                 var positionInfo = {
-                    position_x:$scope.addressInfo.lnglatXY[0],
-                    position_y:$scope.addressInfo.lnglatXY[1],
-                    districtId:$scope.addressInfo.cityId,
-                    addressInfo:$scope.addressInfo.name
+                    position_x:addressInfo.lnglatXY[0],
+                    position_y:addressInfo.lnglatXY[1],
+                    districtId:addressInfo.cityId,
+                    addressInfo:addressInfo.name
                 };
                 var postshopList = {
                     accessInfo:noLogaccessInfo,
@@ -65,6 +73,7 @@
                             "components/images/icon_location_blue@2x.png");
                 });
             }
+            AddressListener.updataLocation(addressInfo);
         },true);
         //  展示地图
         Map.show();
@@ -90,11 +99,13 @@
                     //  是否有默认地址
                     if(data.isDefault){
                         defndata = data;
+                        console.log(data);
                         //  显示默认地址
                         var lnglatXY = [data.position_x,data.position_y];
                         $scope.addressInfo.lnglatXY = lnglatXY;
                         $scope.addressInfo.name = data.fullAddress;
                         $scope.addressInfo.cityId = data.cityId;
+                        $scope.addressInfo.addressId = data.addressId;
                         //  当前地址名字
                         Map.getLocationName($q,lnglatXY).then(function(data){
                             $scope.addressInfo.city = data.city;
@@ -131,23 +142,23 @@
                 $scope.addressInfo.city = city.label;
                 $scope.addressInfo.cityId = city.id;
             });
-        }
+        };
 
         //  获取移动后位置
         Map.moveendLocation(function(lnglatXY){
-            if(lnglatXY[0] != defndata.position_x || lnglatXY[1] != defndata.position_y){
-
-                //  获得当前地址名字
-                Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
-                    $scope.locationName = locationNameObj.locationName;
-
-                    $scope.addressInfo.lnglatXY = lnglatXY;
-                    $scope.addressInfo.name = locationNameObj.locationName
-                });
-            }else{
+            if(defndata &&(lnglatXY[0] == defndata.position_x || lnglatXY[1] == defndata.position_y)){
                 $scope.locationName = defndata.fullAddress;
                 $scope.addressInfo.lnglatXY = [defndata.position_x,defndata.position_y];
                 $scope.addressInfo.name = defndata.fullAddress;
+            }else{
+                //  获得当前地址名字
+                Map.getLocationName($q,lnglatXY).then(function(locationNameObj){
+                    $scope.locationName = locationNameObj.locationName;
+                    $scope.addressInfo.lnglatXY = lnglatXY;
+                    $scope.addressInfo.name = locationNameObj.locationName;
+                    $scope.addressInfo.addressId = locationNameObj.addressId;
+                    $scope.addressInfo.district = locationNameObj.district;
+                });
             }
         });
 

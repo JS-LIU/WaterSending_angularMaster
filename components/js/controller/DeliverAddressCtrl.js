@@ -7,6 +7,7 @@
 
     function DeliverAddressCtrl($scope,
                                 $cookieStore,
+                                $localStorage,
                                 Login,
                                 OperateAddressService,
                                 DelieveryAddressService){
@@ -25,6 +26,8 @@
         $scope.saveAddressInfo = function(){
             OperateAddressService.setOperateAddress($scope.operateAddress);
         };
+        console.log($localStorage.addressInfo);
+
 
         console.log($scope.operateAddress);
         //  监听【被保存】地址变化
@@ -41,14 +44,14 @@
                 districtAddress:addressInfo.districtAddress,
                 address:addressInfo.address,
                 addressType: $scope.operateAddress.addressType.addressType,
-                isDefault: Number(addressInfo.isDefault)
+                isDefault: Number(addressInfo.isDefault),
+                houseNumber:''
             };
             var postNewAddressData = {
                 sign:"",
                 accessInfo:accessInfo,
                 addressItem:addressItem
             };
-            console.log(postNewAddressData);
             //  新增还是编辑
             if($scope.operateAddress.operate.state == 0){
                 DelieveryAddressService.newAddress(postNewAddressData)

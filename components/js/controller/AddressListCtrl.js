@@ -19,7 +19,8 @@
                     city:address.label,
                     cityId:address.id,
                     lnglatXY:lnglatXY,
-                    name: address.label
+                    name: address.label,
+                    addressId:address.addressId
                 }
                 AddressListener.updataLocation(city);
                 window.location.href = "javascript:history.go(-1);";

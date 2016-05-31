@@ -27,7 +27,6 @@
         //  地址信息
         var addressInfo = titleMsg.addressInfo;
 
-
         //  是否存在地址信息（如果有信息则为修改地址）
         if(addressInfo.districtAddress){                //  修改地址
             //  搜索当前名字所在地点并给出提示（跳转到searchAfterEnterPrompt方法）

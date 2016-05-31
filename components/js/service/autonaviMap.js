@@ -115,9 +115,11 @@ AutonaviMap.prototype.regeocoder = function($q,lnglatXY){
             if(city == ''){
                 city = result.regeocode.addressComponent.province;
             }
+            console.log(result);
             var locationNameObj = {
                 locationName:result.regeocode.formattedAddress,         //  返回地址描述
-                city:city                                               //  返回城市
+                city:city,                                              //  返回城市
+                district:result.regeocode.addressComponent.district     //  区
             }
             defer.resolve(locationNameObj);
         }
