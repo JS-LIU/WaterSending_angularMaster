@@ -14,8 +14,7 @@
                                  ChangeLocation,
                                  AddressListener,
                                  DelieveryAddressService,
-                                 GetNearShopService,
-                                 ShopInfoService){
+                                 GetNearShopService){
         $scope.showMap = true;                              //  是否显示地图
         $scope.showCarousel = !$scope.showMap;              //  是否显示轮播图
         $scope.mapStyle = {                                 //  地图大小
@@ -161,38 +160,6 @@
                 });
             }
         });
-
-        //  点击【我要定水】按钮
-        $scope.getNearestShopInfo = function(){
-
-            var positionInfo = {
-                districtId:$scope.addressInfo.cityId,
-                position_x:$scope.addressInfo.lnglatXY[0],
-                position_y:$scope.addressInfo.lnglatXY[1],
-                addressInfo:$scope.addressInfo.name,
-                phoneCode:'',
-                addressType:""
-            };
-            console.log(positionInfo);
-
-            //  最近的一家商店信息
-            ShopInfoService.nearestShopInfo({
-                sign:"",
-                accessInfo:noLogaccessInfo,
-                positionInfo:positionInfo,
-                requestPageInfo:{
-                    pageSize: 1,
-                    pageNo: 1
-                },
-                keyWord:"",
-                x_dpi:"",
-                productId:""
-            }).then(function(data){
-                ShopInfoService.setSpeShopInfo(data);
-                window.location.href = "#/goodsList";
-            });
-        }
-
 
         //  地图中心的标记(地图高度 = 地图距离底部160px + 头部44px)
         $scope.mapCenterMarker = {

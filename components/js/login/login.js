@@ -6,7 +6,7 @@ logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,ge
     $scope.showDialog = true;
 
     //  读取过来时的url
-    var url = $cookieStore.get('myUrl');
+    var url = $cookieStore.get('lastPage');
     //  绑定后退按钮url
     $scope.lastUrl = url;
 

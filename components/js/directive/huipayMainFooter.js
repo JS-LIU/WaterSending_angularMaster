@@ -9,10 +9,19 @@
                 priority:1000,
                 templateUrl:'appTemplate/mainFooter.html',
                 replace:'true',
-                link:footer
+                link:footer,
+                controller:skip
             }
             return footerObj;
-
+            function skip($scope,$cookieStore, Login){
+                console.log(Login.isLogIn());
+                $scope.$watch('tags',function(){
+                    if(!Login.isLogIn()){
+                        $scope.tags[2].url = '07-log.html#/';
+                        $cookieStore.put('lastPage','06-main.html#/');
+                    }
+                });
+            }
             function footer(scope){
                 var title = [
                     {name:'订水',pic:'components/images/tab_icon_dingshui_nor@2x.png',url:'#/'},

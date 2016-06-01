@@ -28,7 +28,13 @@
 
     <div class="voucher-box mt10 pr" ng-repeat="voucher in voucherList">
         <img src="components/images/voucher-background.png" class="voucher-background pr" alt="代金券">
-
+        <p class="po cfff voucher-icon">￥</p>
+        <p class="po cfff voucher-money">{{voucher.value/100}}</p>
+        <div class="po cfff voucher-title">
+            <p class="f16">{{voucher.title}}</p>
+            <p class="f20">代金券</p>
+        </div>
+        <div class="po pr15 cred f16 voucher-get" ng-click="getVoucher(voucher)">领取</div>
     </div>
 
     <huipay-classify></huipay-classify>

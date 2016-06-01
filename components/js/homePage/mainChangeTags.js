@@ -40,7 +40,7 @@
             }).when('/deliverAddressList',{
                 templateUrl:'06-02-02-deliverAddressList.html',
                 controller:'DeliverAddressListCtrl'
-            }).when('/goodsList',{
+            }).when('/goodsList?:id',{
                 templateUrl:'06-05-goodsList.html',
                 controller:'GoodsListCtrl'
             }).when('/shopList',{
