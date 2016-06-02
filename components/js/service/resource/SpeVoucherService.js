@@ -6,12 +6,15 @@
         .service('VouchermarketingResource',VouchermarketingResource);
 
     function VouchermarketingResource($resource,$cookieStore,Login){
-        var voucher = $resource('vouchermarketing/list',{});
+        var voucherMarket = $resource('vouchermarketing/:operate',{operate:'@operate'});
+        var voucher = $resource('voucher/:operate',{operate:'@operate'})
+
+        var accessInfo = Login.getAccessInfo($cookieStore,false);
+        var accessInfoLogin = Login.getAccessInfo($cookieStore,Login.isLogIn());
+        accessInfo.phone_num = "";
 
         this.getVoucherMarket = function(shopId){
-            var accessInfo = Login.getAccessInfo($cookieStore,false);
-            accessInfo.phone_num = "";
-            return voucher.save({},{
+            return voucherMarket.save({operate:'list'},{
                 sign:"",
                 accessInfo:accessInfo,
                 requestPageInfo:{
@@ -19,6 +22,13 @@
                     pageNo:"1"
                 },
                 shopId:shopId
+            }).$promise;
+        };
+        this.getVoucher = function(activityId){
+            return voucher.save({operate:'new'},{
+                sign:"",
+                accessInfo:accessInfoLogin,
+                activityId:activityId
             }).$promise;
         }
     };

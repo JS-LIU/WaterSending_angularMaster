@@ -655,3 +655,26 @@ body{
 .huipay-movedelete{
     z-index:1;
 }
+.simple-dialog{
+    position:fixed;
+    left:50%;
+    margin-left:-75px;
+    bottom:55px;
+    width:150px;
+    height:40px;
+    background:#000;
+    opacity: 0;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    z-index:1000;
+    animation: showSimpleDialog 1s;
+    -webkit-animation: showSimpleDialog 1s; /* Safari and Chrome */
+}
+@-webkit-keyframes showSimpleDialog /* Safari and Chrome */
+{
+    0%   {opacity: 0}
+    1%  {opacity: 0.8}
+    50%  {opacity: 0.6}
+    100% {opacity: 0}
+}

@@ -9,11 +9,12 @@
                            $cookieStore,
                            $localStorage,
                            $location,
+                           $timeout,
                            Login,
                            ShopInfoService,
                            VouchermarketingResource,
                            ShoppingCartService){
-
+        $scope.isShowSimpleDialog = false;
         var accessInfo = Login.getAccessInfo($cookieStore,false);
         var loginAccessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
@@ -108,7 +109,26 @@
         });
 
         $scope.getVoucher = function(voucher){
-
+            VouchermarketingResource.getVoucher(voucher.activityId)
+                .then(function success(){
+                    $scope.showSimpleDialog = true;
+                    $scope.alertText = 'success';
+                    $timeout(function(){
+                        $scope.showSimpleDialog = false;
+                    },1000);
+                },function error(data){
+                    if(data.data){
+                        $scope.showSimpleDialog = true;
+                        $scope.alertText = data.data.errorInfo;
+                        console.log(data.data.errorInfo);
+                        $timeout(function(){
+                            $scope.showSimpleDialog = false;
+                        },1000);
+                    }else{
+                        $cookieStore.put('lastPage','06-main.html#/goodsList');
+                        window.location.href='07-log.html#/';
+                    }
+                });
         }
 
 
@@ -128,11 +148,21 @@
                     preferentialId: ""
                 }
             }).then(function success(){
-                console.log('putSuccess');
+                $scope.showSimpleDialog = true;
+                $scope.alertText = 'success';
+                $timeout(function(){
+                    $scope.showSimpleDialog = false;
+                },1000);
             },function error(data){
                 if(!Login.isLogIn()){
                     $cookieStore.put('lastPage','06-main.html#/goodsList');
                     window.location.href='07-log.html#/';
+                }else{
+                    $scope.showSimpleDialog = true;
+                    $scope.alertText = data.data.errorInfo;
+                    $timeout(function(){
+                        $scope.showSimpleDialog = false;
+                    },1000);
                 }
             });
         }
