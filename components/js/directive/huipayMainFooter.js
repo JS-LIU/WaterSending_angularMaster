@@ -45,9 +45,6 @@
                     return arr;
                 }
                 scope.tags = footerStyle(title);
-
-                //  底部操作
-
             }
         })
 }());

@@ -106,11 +106,26 @@
 
 
 
-        //  底部样式
-        $scope.shoppingCartfooter = {
-            height:'49px',
-            lineHeight:'49px',
-            background:'#4a5156'
+        $scope.hasback = true;
+        var lastPage = $cookieStore.get('lastPage');
+        if(lastPage == '#/'){
+            //  底部样式
+            $scope.shoppingCartfooter = {
+                height:'49px',
+                lineHeight:'49px',
+                background:'#4a5156',
+                bottom:'44px'
+            };
+            $scope.hasback = false;
+        }else{
+            $scope.hasback = true;
+            //  底部样式
+            $scope.shoppingCartfooter = {
+                height:'49px',
+                lineHeight:'49px',
+                background:'#4a5156'
+            }
         }
+
     }
 }());

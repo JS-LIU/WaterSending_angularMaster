@@ -1,5 +1,5 @@
 <div class="L-header w pr blue">
-    <a class="L-header-back h po" href="javascript:history.go(-1);"></a>
+    <a class="L-header-back h po" ng-show="hasback" ng-href="javascript:history.go(-1);"></a>
     <p class="tc L-header-title cfff f16">购物车</p>
 </div>
 
@@ -46,3 +46,4 @@
     <span class="f16 cfff">{{((goodsListObj.price||0.00) / 100).toFixed(2)}}</span>
     <div class="f16 cfff fr pr15 pl15 red" ng-click="getUsableData(goodsListObj)">去结算</div>
 </div>
+<huipay-main-footer ng-show="!hasback"></huipay-main-footer>

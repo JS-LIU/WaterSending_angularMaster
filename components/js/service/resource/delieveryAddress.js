@@ -35,17 +35,24 @@
                 obj
             ).$promise;
         }
+
+
+
         //  整理收货地址列表为可用数据
         this.trimAddressList = function(data){
             var speAddress = [
                 {
                     addressType:1,
                     isHome:true,
-                    title:"家庭地址"
+                    title:"家庭地址",
+                    isNotDeleted:true,
+                    isCanDelete:false
                 },{
                     addressType:2,
                     isCompany:true,
-                    title:"公司地址"
+                    title:"公司地址",
+                    isNotDeleted:true,
+                    isCanDelete:false
                 }];
             var commonAddress = [];
             for(var i = 0,len = data.length;i < len; i++){
@@ -53,13 +60,19 @@
                 if(data[i].addressType == 1){
                     data[i].isHome = true;
                     data[i].title = "家庭地址";
+                    data[i].isNotDeleted = true;
+                    data[i].isCanDelete = false;
                     speAddress[0] = data[i];
                 }else if(data[i].addressType == 2){
                     data[i].isCompany = true;
                     data[i].title = "公司地址";
+                    data[i].isNotDeleted = true;
+                    data[i].isCanDelete = false;
                     speAddress[1] = data[i];
                 }else{
                     data[i].isCommon = true;
+                    data[i].isNotDeleted = true;
+                    data[i].isCanDelete = true;
                     commonAddress.push(data[i]);
                 }
             }
@@ -72,7 +85,13 @@
                 obj
             ).$promise;
         };
-
+        //  删除地址
+        this.deleteAddress = function(obj){
+            return DelieveryAddressResource.post(
+                {operate:'delete'},
+                obj
+            ).$promise;
+        }
         //  编辑收货地址
         this.editAddress = function(obj){
             return DelieveryAddressResource.post(

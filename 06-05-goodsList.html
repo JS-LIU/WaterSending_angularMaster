@@ -1,4 +1,6 @@
-<div class="simple-dialog cfff" ng-class="{true:'showDialogAnimate',false:'hideDialogAnimate'}[isShowSimpleDialog]">{{alertText}}</div>
+<huipay-simple-dialog ng-show="isShowSimpleDialog">
+    <span>{{alertText}}</span>
+</huipay-simple-dialog>
 <div class="L-header w pr blue">
     <a class="L-header-back h po" href="#/"></a>
     <p class="tc L-header-title cfff f16">{{shopInfo.merchantName}}</p>

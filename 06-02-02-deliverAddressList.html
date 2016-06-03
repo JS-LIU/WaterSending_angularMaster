@@ -7,7 +7,7 @@
 </div>
 
 <ul class="common-list-23">
-    <li class="mt10" ng-repeat="addressInfo in addressList">
+    <li class="mt10" ng-repeat="addressInfo in addressList" ng-if="addressInfo.isNotDeleted">
         <div class="common-list-23-title" ng-class="{'homeaddress':addressInfo.isHome,'companyaddress':addressInfo.isCompany,'commonaddress':addressInfo.isCommon}">{{addressInfo.title}}</div>
         <div class="common-list-23-center pr" ng-click="chooseAddress(addressInfo)">
             <p class="mt5 pl15 addressListInfo">
@@ -19,10 +19,12 @@
                 <img class="w" ng-hide="addressInfo.canDeliever"  src="components/images/cantDeliver.png" alt="">
             </div>
         </div>
-        <div class="common-list-23-footer">
+        <div class="common-list-23-footer clearfix">
             <span class="fl pl15" ng-class="{true: 'defnAddress', false: 'unDefnAddress'}[addressInfo.isDefault]">设为默认</span>
-            <span ng-click="edit(addressInfo)">编辑</span>
-            <span>删除</span>
+            <div class="fr pr15">
+                <span class="mr15" ng-click="edit(addressInfo)">编辑</span>
+                <span ng-show="addressInfo.isCanDelete" ng-click="deleteAddress(addressInfo)">删除</span>
+            </div>
         </div>
     </li>
 </ul>

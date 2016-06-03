@@ -81,5 +81,16 @@
                 window.location.href = "#/editAddress";
             };
         };
+
+        $scope.deleteAddress = function(addressInfo){
+            var addressId = addressInfo.addressId;
+            DelieveryAddressService.deleteAddress({
+                addressId:addressId,
+                sign:'',
+                accessInfo:accessInfo
+            }).then(function success(){
+                addressInfo.isNotDeleted = false;
+            });
+        };
     };
 }());

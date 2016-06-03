@@ -160,6 +160,8 @@
                 });
             }
         });
+        $cookieStore.put('lastPage','#/');
+
 
         //  地图中心的标记(地图高度 = 地图距离底部160px + 头部44px)
         $scope.mapCenterMarker = {
