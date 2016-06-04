@@ -16,11 +16,11 @@
                                 AddressListener,
                                 OperateAddressService){
 
+        $cookieStore.put('lastPage','#/inputLocation');
         //  【家庭地址/公司地址】地址样子
         $scope.speAddressArr = DelieveryAddressService.speAddressArr;
         $scope.addressInfo = $localStorage.addressInfo;
         $scope.keywords = $localStorage.addressInfo.name;
-
 
         var city = $localStorage.addressInfo.city;
         $scope.$watch("keywords",function(){
@@ -99,7 +99,7 @@
                             addressId:companyAddress.addressId
                         }
                         AddressListener.updataLocation(nowLocation);
-                        window.location.href = "#/"
+                        window.location.href = "#/";
                     }else{
                         //  保存修改信息
                         var title = OperateAddressService.operateAddress

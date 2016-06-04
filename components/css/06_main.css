@@ -48,27 +48,6 @@
 }
 
 
-.my-myMoney{
-    height:100px;
-    background:#5e656f;
-}
-.my-myRMB,
-.my-myHB{
-    width: 50%;
-    height:100px;
-    line-height: 140px;
-    overflow: hidden;
-}
-.my-myRMB{
-    background: #5e656f url("../images/payway-01.png") no-repeat center 20px;
-    -webkit-background-size: 35px;
-    background-size: 35px;
-}
-.my-myHB{
-    background: #5e656f url("../images/payway-01.png") no-repeat center 20px;
-    -webkit-background-size: 35px;
-    background-size: 35px;
-}
 .piao,
 .quan,
 .hui{
@@ -630,4 +609,66 @@ html,body{
     bottom:28%;
     right:0%;
     font-size:30px;
+}
+.goodscartstyle,
+.speGoodscartstyle{
+    height:49px;
+    line-height:49px;
+    background:#4a5156;
+}
+.speGoodscartstyle{
+    bottom:44px;
+}
+
+.me-wallet{
+    padding: 5px 45px;
+    background:#FFF url("../images/me_icon_wallet@2x.png") no-repeat 15px center;
+    background-size: 20px;
+}
+.me-shuipiao{
+    padding: 5px 45px;
+    background:#FFF url("../images/me_icon_shuipiao@2x.png") no-repeat 15px center;
+    background-size: 20px;
+}
+.me-voucher{
+    padding: 5px 45px;
+    background:#FFF url("../images/me_icon_voucher@2x.png") no-repeat 15px center;
+    background-size: 20px;
+}
+.me-collect{
+    padding: 5px 45px;
+    background:#FFF url("../images/me_icon_collect@2x.png") no-repeat 15px center;
+    background-size: 20px;
+}
+.me-tongyopng{
+    padding: 5px 45px;
+    background:#FFF url("../images/me_icon_tongyong@2x.png") no-repeat 15px center;
+    background-size: 20px;
+}
+.me-order{
+    padding-left:45px;
+    line-height:44px;
+    background:#FFF url("../images/me_icon_order@2x.png") no-repeat 15px center;
+    background-size: 20px;
+    border-bottom:1px solid #E2E2E2;
+}
+.me-nopay{
+    background:#FFF url("../images/me_icon_daifukuan@2x.png") no-repeat center top;
+    background-size: 20px;
+}
+.me-nodelivery{
+    background:#FFF url("../images/me_icon_daishouhuo@2x.png") no-repeat center top;
+    background-size: 20px;
+}
+.me-noevaluate{
+    background:#FFF url("../images/me_icon_daipngjia@2x.png") no-repeat center top;
+    background-size: 20px;
+}
+.me-exchange{
+    background:#FFF url("../images/me_icon_tuihuan@2x.png") no-repeat center top;
+    background-size: 20px;
+}
+.me-orderList li{
+    height:63px;
+    line-height:85px;
 }

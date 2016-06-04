@@ -17,12 +17,60 @@
             </a>
         </li>
     </ul>
-    <ul class="common-list-03">
-        <li>
-            <a href="#/deliverAddressList" ng-click="saveUrl()">
-                <span class="common-list-03-title pl15">收货地址</span>
-            </a>
-        </li>
-    </ul>
+    <div ng-show="isLog">
+        <ul class="common-list-03">
+            <li>
+                <a href="#/deliverAddressList">
+                    <span class="common-list-03-title pl15">收货地址</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="mt10">
+            <p class="me-order">订单</p>
+            <ul class="common-list-18 clearfix me-orderList">
+                <li class="fl tc">
+                    <a href="#/">
+                        <span class="me-nopay pt20">待付款</span>
+                    </a>
+                </li>
+                <li class="fl tc">
+                    <a href="#/">
+                        <span class="me-nodelivery pt20">待收货</span>
+                    </a>
+                </li>
+                <li class="fl tc">
+                    <a href="#/">
+                        <span class="me-noevaluate pt20">待评价</span>
+                    </a>
+                </li>
+                <li class="fl tc">
+                    <a href="#/">
+                        <span class="me-exchange pt20">退换</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="common-list-03 mt10">
+            <li>
+                <span class="common-list-03-title pl15 me-wallet">钱包</span>
+            </li>
+            <li>
+                <span class="common-list-03-title pl15 me-shuipiao">水票</span>
+            </li>
+            <li>
+                <span class="common-list-03-title pl15 me-voucher">代金券</span>
+            </li>
+        </ul>
+        <ul class="common-list-03 mt10">
+            <li>
+                <span class="common-list-03-title pl15 me-collect">收藏</span>
+            </li>
+            <li>
+                <span class="common-list-03-title pl15 me-tongyopng">通用</span>
+            </li>
+        </ul>
+    </div>
 </div>
 <huipay-main-footer></huipay-main-footer>

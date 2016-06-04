@@ -4,21 +4,22 @@
 (function(){
     angular.module('myApp')
         .controller('MyCtrl',MyCtrl);
-    function MyCtrl($scope,Login,SaveUrlService){
+    function MyCtrl(
+        $scope,
+        $cookieStore,
+        Login){
+
         $scope.isLog = Login.isLogIn();
         //  判断是否登录
         if($scope.isLog){    //  登录
             //  编辑头像
-            $scope.nextPage = "";
+            $scope.nextPage = "#/myDetails";
             $scope.myHeader = "";
         }else{                  //  未登录
             //  登录页
             $scope.nextPage = "07-log.html";
             $scope.myHeader = "components/images/tempHeader.png";
         }
-
-        $scope.saveUrl = function(){
-            SaveUrlService.setUrl('#/my');
-        };
+        $cookieStore.put('lastPage','#/my');
     }
 }());

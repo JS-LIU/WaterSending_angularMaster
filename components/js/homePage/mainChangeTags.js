@@ -31,6 +31,9 @@
             }).when('/my',{
                 templateUrl:'06-04-my.html',
                 controller:'MyCtrl'
+            }).when('/myDetails',{
+                templateUrl:'06-04-01-myDetails.html',
+                controller:'MyDetailsCtrl'
             }).when('/editAddress',{
                 templateUrl:'06-02-deliverAddress.html',
                 controller:'DeliverAddressCtrl'

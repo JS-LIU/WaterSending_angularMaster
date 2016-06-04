@@ -26,10 +26,10 @@
         $scope.saveAddressInfo = function(){
             OperateAddressService.setOperateAddress($scope.operateAddress);
         };
+
         console.log($localStorage.addressInfo);
-
-
         console.log($scope.operateAddress);
+
         //  监听【被保存】地址变化
         $scope.saveAddress = function(){
             var addressInfo = $scope.operateAddress.addressInfo;
@@ -65,6 +65,13 @@
                         console.log('editsuccess');
                 });
             };
+        };
+        var backPage = $cookieStore.get('lastPage');
+
+        if(backPage == '#/inputLocation'){
+            $scope.backPage = backPage;
+        }else{
+            $scope.backPage = '#/deliverAddressList';
         }
     }
 }());
