@@ -16,7 +16,8 @@
             'huipayLogIn',
             'delieveryAddress',
             'shoppingCartModule',
-            'WaterTickets'
+            'WaterTickets',
+            'OrderModule'
         ])
         .config(['$routeProvider', function($routeProvider) {
             $routeProvider.when('/',{
@@ -67,6 +68,9 @@
             }).when('/confirmOrder',{
                 templateUrl:'06-07-01-confirmOrder.html',
                 controller:'ConfirmOrderCtrl'
+            }).when('/pay',{
+                templateURL:'06-07-02-pay.html',
+                controller:'PayCtrl'
             });
         }])
         .config(function(MapProvider){

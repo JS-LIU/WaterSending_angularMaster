@@ -2,7 +2,7 @@
  * Created by 殿麒 on 2016/5/23.
  */
 (function(){
-    angular.module('myApp')
+    angular.module('OrderModule',['ngResource'])
         .service('OrderResource',OrderResource)
         .factory('OrderService',OrderService);
 
@@ -25,7 +25,7 @@
             ).$promise;
         };
 
-        order.tradeList = function(){
+        order.tradeList = function(obj){
             return OrderResource.save(
                 {operate:'tradelist'},
                 obj

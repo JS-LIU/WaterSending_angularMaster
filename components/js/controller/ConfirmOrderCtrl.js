@@ -70,12 +70,13 @@
                 shopId:'420'
             }).then(function(data){
                 console.log(data);
-                OrderService.setOrderNum(data);
+                $cookieStore.put('orderId',data);
+                window.location.href = '09-payPage.html';
             });
         };
 
         $scope.saveurl = function(){
-            SaveUrlService.setUrl('#/confirmOrder');
+            $cookieStore.put('lastPage','#/confirmOrder');
         };
     };
 }());
