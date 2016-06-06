@@ -10,6 +10,7 @@
                                ShoppingCartService,
                                ConfirmService,
                                WaterTicketsService){
+
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
 
@@ -106,10 +107,10 @@
 
         $scope.hasback = true;
         var lastPage = $cookieStore.get('lastPage');
-        if(lastPage == '#/'){
-            $scope.hasback = false;
-        }else{
+        if(lastPage == '#/goodsList'){
             $scope.hasback = true;
+        }else{
+            $scope.hasback = false;
         }
 
     }

@@ -13,8 +13,9 @@
                            ShopInfoService,
                            VouchermarketingResource,
                            ShoppingCartService){
-        $scope.isShowSimpleDialog = false;
+        $cookieStore.put('lastPage','#/goodsList');
 
+        $scope.isShowSimpleDialog = false;
         var accessInfo = Login.getAccessInfo($cookieStore,false);
         var loginAccessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";

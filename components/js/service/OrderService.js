@@ -14,6 +14,7 @@
     function OrderService(OrderResource){
         var order = {
             new:{},
+            tradeList:{},
             setOrderNum:{}
         };
 
@@ -23,6 +24,14 @@
                 obj
             ).$promise;
         };
+
+        order.tradeList = function(){
+            return OrderResource.save(
+                {operate:'tradelist'},
+                obj
+            ).$promise;
+        };
+
         var orderNum = {};
         order.setOrderNum = function(data){
             orderNum = data;

@@ -10,12 +10,11 @@
                                     Login,
                                     DelieveryAddressService,
                                     OperateAddressService,
-                                    SaveUrlService,
                                     ConfirmService){
         //  请求地址列表参数
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
-        $scope.backTocome = SaveUrlService.getUrl();
+        $scope.backTocome = $cookieStore.get('lastPage');
         console.log($localStorage.addressInfo);
 
         var lnglatXY = $localStorage.addressInfo.lnglatXY;
