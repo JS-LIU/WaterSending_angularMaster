@@ -15,7 +15,7 @@
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
         $scope.backTocome = $cookieStore.get('lastPage');
-        console.log($localStorage.addressInfo);
+        console.log($cookieStore.get('lastPage'));
 
         var lnglatXY = $localStorage.addressInfo.lnglatXY;
         var isOrder = ($scope.backTocome == '#/confirmOrder');

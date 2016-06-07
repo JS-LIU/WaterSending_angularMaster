@@ -87,16 +87,20 @@
         $scope.getUsableData = function(shopCart){
             var shopCartList = shopCart.itemList.concat();
             var cartInfoList = ShoppingCartService.getShopItem(shopCartList);
-            ConfirmService.saveGoodsCart({
-                sign:'',
-                accessInfo:accessInfo,
-                requestPageInfo:'',
-                cartInfoList:cartInfoList
-            }).then(function(data){
-                console.log(data);
-                ConfirmService.setOrderInfo(data);
-                window.location.href = "#/confirmOrder";
-            });
+            if(cartInfoList.length > 0){
+                ConfirmService.saveGoodsCart({
+                    sign:'',
+                    accessInfo:accessInfo,
+                    requestPageInfo:'',
+                    cartInfoList:cartInfoList
+                }).then(function success(data){
+                    console.log(data);
+                    ConfirmService.setOrderInfo(data);
+                    window.location.href = "#/confirmOrder";
+                });
+            }else{
+                console.log('你他妈傻逼吧什么都没选就去结算啊');
+            }
         }
 
         $scope.fixedPreferentialId = function(shoppingCart,waterTicketInfo){
@@ -111,7 +115,6 @@
             $scope.hasback = true;
         }else{
             $scope.hasback = false;
-        }
-
+        };
     }
 }());

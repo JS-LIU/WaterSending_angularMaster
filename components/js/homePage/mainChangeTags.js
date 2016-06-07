@@ -19,7 +19,7 @@
             'WaterTickets',
             'OrderModule'
         ])
-        .config(['$routeProvider', function($routeProvider) {
+        .config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
             $routeProvider.when('/',{
                 templateUrl:'06-01-map.html',
                 controller:'PositionMyLocalCtrl',
@@ -72,6 +72,7 @@
                 templateURL:'06-07-02-pay.html',
                 controller:'PayCtrl'
             });
+            //$locationProvider.html5Mode(true);
         }])
         .config(function(MapProvider){
             MapProvider.setMap(AutonaviMap);

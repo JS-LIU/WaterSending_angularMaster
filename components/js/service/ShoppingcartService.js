@@ -18,7 +18,8 @@
             showShoppingCartList:{},
             deleteGoods:{
                 topost:{},
-                toshow:{}
+                toshow:{},
+                trimArr:{}
             },
             fixedGoodsList:{},
             checked:{
@@ -56,6 +57,18 @@
                 obj
             ).$promise;
         };
+        shoppingCart.deleteGoods.trimArr = function(arr){
+            var newarr = [];
+            for(var i = 0;i < arr.length;i++){
+                var obj = {shoppingCartId:'',itemIds:[]};
+                obj.shoppingCartId = arr[i].shopId;
+                for(var j = 0;j < arr[i].orderItems.length;j++){
+                    obj.itemIds.push(arr[i].orderItems[j].productId);
+                }
+                newarr.push(obj);
+            }
+            return newarr;
+        }
 
         //  整理数组
         shoppingCart.fixedGoodsList = function(arr){

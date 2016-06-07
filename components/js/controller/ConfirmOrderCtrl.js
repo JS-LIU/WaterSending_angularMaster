@@ -13,10 +13,11 @@
                               ConfirmService,
                               SendTimeService,
                               OrderService,
-                              SaveUrlService){
+                              ShoppingCartService){
         //  订单信息
         $scope.orderInfo = ConfirmService.getOrderInfo();
-
+        $cookieStore.put('lastPage','#/confirmOrder');
+        console.log($cookieStore.get('lastPage'));
 
         var lnglatXY = ConfirmService.getFirstShopPosition($scope.orderInfo);
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
@@ -57,7 +58,8 @@
 
         $scope.createOrder = function(){
             var orderItems = ConfirmService.fixedOrderInfo();
-            OrderService.new({
+            var deleteModels = ShoppingCartService.deleteGoods.trimArr($scope.orderInfo.confimOrderInfos);
+            var postOrderData = {
                 accessInfo:accessInfo,
                 orderItems:orderItems,
                 total_fee:$scope.orderInfo.totalFee,
@@ -68,15 +70,24 @@
                 description:'',
                 homeTime:'',
                 shopId:'420'
-            }).then(function(data){
-                console.log(data);
-                $cookieStore.put('orderId',data);
-                window.location.href = '09-payPage.html';
+            }
+            ShoppingCartService.deleteGoods.topost({
+                accessInfo:accessInfo,
+                sign:'',
+                deleteModels:deleteModels
+            }).then(function success(){
+                OrderService.new(postOrderData).then(function(data){
+                    console.log(data);
+                    $cookieStore.put('orderId',data);
+                    window.location.href = '09-payPage.html';
+                });
+            },function error(){
+                OrderService.new(postOrderData).then(function(data){
+                    console.log(data);
+                    $cookieStore.put('orderId',data);
+                    window.location.href = '09-payPage.html';
+                });
             });
-        };
-
-        $scope.saveurl = function(){
-            $cookieStore.put('lastPage','#/confirmOrder');
         };
     };
 }());

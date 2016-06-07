@@ -3,7 +3,7 @@
     <p class="tc L-header-title cfff f16">购物车</p>
 </div>
 
-<div class="pb50">
+<div class="pb100">
     <ul class="common-list-13 mt10" ng-repeat="shopInfo in goodsListObj.itemList" ng-hide="shopInfo.isDeleted">
         <li class="comlist-13-single pr pl15 confirmOrder-shop">
             <div class="po shop-goodscheck" ng-click="goodsChecked(goodsListObj,shopInfo)" ng-class="{true:'shop-checked',false:'shop-unchecked'}[shopInfo.isChecked]"></div>
