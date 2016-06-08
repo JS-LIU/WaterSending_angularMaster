@@ -2,7 +2,7 @@
     <a class="L-header-back h po" href="#/goodsList"></a>
     <p class="tc L-header-title cfff f16" ng-show="isSearch">附近水站</p>
     <div class="L-header-searchbox pr ml50 mr50 pl30" ng-show="!isSearch">
-        <input class="w h" type="text" placeholder="搜您想要的水站"/>
+        <input class="w h" type="text" ng-model="shopName" ng-keypress="myKeyup($event,shopName)" />
     </div>
     <div class="po L-header-searchbox-01-btn cfff" ng-click="searchNearShopBtn()">{{rightText}}</div>
 </div>
