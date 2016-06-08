@@ -18,6 +18,8 @@
         $scope.orderInfo = ConfirmService.getOrderInfo();
         $cookieStore.put('lastPage','#/confirmOrder');
         console.log($cookieStore.get('lastPage'));
+        var shoppingcartDeleteList = ShoppingCartService.getDeleteList();
+
 
         var lnglatXY = ConfirmService.getFirstShopPosition($scope.orderInfo);
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
@@ -58,7 +60,7 @@
 
         $scope.createOrder = function(){
             var orderItems = ConfirmService.fixedOrderInfo();
-            var deleteModels = ShoppingCartService.deleteGoods.trimArr($scope.orderInfo.confimOrderInfos);
+            var deleteModels = ShoppingCartService.deleteGoods.trimArr(shoppingcartDeleteList);
             var postOrderData = {
                 accessInfo:accessInfo,
                 orderItems:orderItems,

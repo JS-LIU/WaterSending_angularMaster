@@ -15,7 +15,8 @@
         var order = {
             new:{},
             tradeList:{},
-            setOrderNum:{}
+            setOrderNum:{},
+            getOrderState:{}
         };
 
         order.new = function(obj){
@@ -32,6 +33,19 @@
             ).$promise;
         };
 
+        //  订单状态
+        var tradeState = [
+            {state:1,name:'待付款'},
+            {state:2,name:'待收获'},
+            {state:3,name:'待评价'},
+            {state:5,name:'退货'}
+        ];
+        order.getOrderState = function(){
+            return tradeState;
+        }
+
+
+        //  为用上因为付款需要页面跳转 非同一个root;以后可以优化
         var orderNum = {};
         order.setOrderNum = function(data){
             orderNum = data;

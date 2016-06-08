@@ -87,6 +87,7 @@
         $scope.getUsableData = function(shopCart){
             var shopCartList = shopCart.itemList.concat();
             var cartInfoList = ShoppingCartService.getShopItem(shopCartList);
+            ShoppingCartService.setDeleteList(cartInfoList);
             if(cartInfoList.length > 0){
                 ConfirmService.saveGoodsCart({
                     sign:'',
@@ -94,7 +95,6 @@
                     requestPageInfo:'',
                     cartInfoList:cartInfoList
                 }).then(function success(data){
-                    console.log(data);
                     ConfirmService.setOrderInfo(data);
                     window.location.href = "#/confirmOrder";
                 });

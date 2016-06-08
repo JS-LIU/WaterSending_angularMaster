@@ -35,7 +35,9 @@
             item:{},
             save:{},
             getShoppingCart:{},
-            setShoppingCart:{}
+            setShoppingCart:{},
+            setDeleteList:{},
+            getDeleteList:{}
         };
 
         shoppingCart.showShoppingCartList = function(obj){
@@ -61,9 +63,9 @@
             var newarr = [];
             for(var i = 0;i < arr.length;i++){
                 var obj = {shoppingCartId:'',itemIds:[]};
-                obj.shoppingCartId = arr[i].shopId;
-                for(var j = 0;j < arr[i].orderItems.length;j++){
-                    obj.itemIds.push(arr[i].orderItems[j].productId);
+                obj.shoppingCartId = arr[i].shoppingCartId;
+                for(var j = 0;j < arr[i].itemList.length;j++){
+                    obj.itemIds.push(arr[i].itemList[j].itemId);
                 }
                 newarr.push(obj);
             }
@@ -240,7 +242,6 @@
                     }
                 }
             }
-            console.log(newlist);
             return newlist;
         };
 
@@ -279,7 +280,13 @@
         shoppingCart.setShoppingCart = function(data){
             shoppingCartObj = data;
         };
-
+        var deleteList = {};
+        shoppingCart.setDeleteList = function(data){
+            deleteList = data;
+        }
+        shoppingCart.getDeleteList = function(){
+            return deleteList;
+        }
         return shoppingCart;
     }
 }());

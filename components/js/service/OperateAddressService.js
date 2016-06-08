@@ -46,7 +46,7 @@
                     districtAddress:districtAddress,
                     address:address,
                     position_x:$localStorage.addressInfo.lnglatXY[0],
-                    position_x:$localStorage.addressInfo.lnglatXY[1]
+                    position_y:$localStorage.addressInfo.lnglatXY[1]
                 };
                 console.log(titleMsg);
             }else{

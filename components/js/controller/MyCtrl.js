@@ -7,7 +7,8 @@
     function MyCtrl(
         $scope,
         $cookieStore,
-        Login){
+        Login,
+        OrderService){
 
         $scope.isLog = Login.isLogIn();
         //  判断是否登录
@@ -19,7 +20,11 @@
             //  登录页
             $scope.nextPage = "07-log.html";
             $scope.myHeader = "components/images/tempHeader.png";
-        }
+        };
+
+        $scope.orderStates = OrderService.getOrderState();
+        console.log($scope.orderStates);
+
         $cookieStore.put('lastPage','#/my');
     }
 }());

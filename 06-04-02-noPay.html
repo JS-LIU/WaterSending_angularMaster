@@ -2,34 +2,32 @@
     <a class="L-header-back h po" href="#/my"></a>
     <p class="tc L-header-title cfff f16">待付款</p>
 </div>
-<ul class="common-list-13 mt10" ng-repeat="shopInfo in orderInfo.confimOrderInfos">
-    <li class="comlist-13-single pr pl15 confirmOrder-shop">
-        <span class="pl30">{{shopInfo.shopName || "一家没有起名字的水站"}}</span>
-    </li>
-    <li ng-repeat="goodsInfo in shopInfo.orderItems" class="pr w">
-        <div class="w h pr fff">
-            <div class="common-picproduct-02 pr tc ">
-                <img src={{goodsInfo.image}} class="h" alt=""/>
+<div ng-repeat="tradeOrder in tradeOrderList">
+    <ul class="common-list-13 mt10" ng-repeat="shopInfo in tradeOrder.shopOrderList">
+        <li class="comlist-13-single pr pl15 confirmOrder-shop">
+            <span class="pl30">{{shopInfo.merchantName || "一家没有起名字的水站"}}</span>
+        </li>
+        <li ng-repeat="goodsInfo in shopInfo.orderItems" class="pr w">
+            <div class="w h pr fff">
+                <div class="common-picproduct-02 pr tc ">
+                    <img src={{goodsInfo.image}} class="h" alt=""/>
+                </div>
+                <div class="po po common-detailbox-02">
+                    <p class="f16 comlist-02-floor-01 gL-goodsList">
+                        <span>{{goodsInfo.itemName}}</span>
+                    </p>
+                    <p class="comlist-02-floor-01 pt5 gL-goodsList">
+                        <span>￥</span>
+                        <span class="cred f16">{{(goodsInfo.itemPrice / 100).toFixed(2)}}</span>
+                        <span>*{{goodsInfo.itemNum}}</span>
+                    </p>
+                </div>
             </div>
-            <div class="po po common-detailbox-02">
-                <p class="f16 comlist-02-floor-01 gL-goodsList">
-                    <span>{{goodsInfo.itemName}}</span>
-                </p>
-                <p class="comlist-02-floor-01 pt5 gL-goodsList">
-                    <span>￥</span>
-                    <span class="cred f16">{{(goodsInfo.itemPrice / 100).toFixed(2)}}</span>
-                    <span>*{{goodsInfo.itemNum}}</span>
-                </p>
-            </div>
-        </div>
-    </li>
-    <li class="comlist-13-single pr pl15 confirmOrder-shop">
-        <span>实付款：</span>
-        <span>￥{{}}</span>
-        <span class="fr pr15">去付款</span>
-    </li>
-    <li class="comlist-13-single pr pl15 confirmOrder-shop">
-        <span>下单时间：</span>
-        <span>{{}}</span>
-    </li>
-</ul>
+        </li>
+        <li class="comlist-13-single pr pl15 confirmOrder-shop">
+            <span>实付款：</span>
+            <span>￥{{(tradeOrder.realFee / 100).toFixed(2)}}</span>
+            <span class="fr pr15">去付款</span>
+        </li>
+    </ul>
+</div>

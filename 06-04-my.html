@@ -29,26 +29,26 @@
         <div class="mt10">
             <p class="me-order">订单</p>
             <ul class="common-list-18 clearfix me-orderList">
-                <li class="fl tc">
+                <li class="fl tc" ng-repeat="state in orderStates">
                     <a href="#/noPay">
-                        <span class="me-nopay pt20">待付款</span>
+                        <span class="me-nopay pt20">{{state.name}}</span>
                     </a>
                 </li>
-                <li class="fl tc">
-                    <a href="#/">
-                        <span class="me-nodelivery pt20">待收货</span>
-                    </a>
-                </li>
-                <li class="fl tc">
-                    <a href="#/">
-                        <span class="me-noevaluate pt20">待评价</span>
-                    </a>
-                </li>
-                <li class="fl tc">
-                    <a href="#/">
-                        <span class="me-exchange pt20">退换</span>
-                    </a>
-                </li>
+                <!--<li class="fl tc">-->
+                    <!--<a href="#/">-->
+                        <!--<span class="me-nodelivery pt20">待收货</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li class="fl tc">-->
+                    <!--<a href="#/">-->
+                        <!--<span class="me-noevaluate pt20">待评价</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li class="fl tc">-->
+                    <!--<a href="#/">-->
+                        <!--<span class="me-exchange pt20">退换</span>-->
+                    <!--</a>-->
+                <!--</li>-->
             </ul>
         </div>
 

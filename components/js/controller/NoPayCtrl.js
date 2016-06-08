@@ -15,12 +15,13 @@
             sign:'',
             accessInfo:accessInfo,
             requestPageInfo:{
-                pageSize:1,
-                pageNo:50
+                pageSize:50,
+                pageNo:1
             },
             clientOrderState:1
         }).then(function(data){
             console.log(data);
+            $scope.tradeOrderList = data.tradeOrderList;
         });
     };
 }());
