@@ -23,7 +23,10 @@
         };
 
         $scope.orderStates = OrderService.getOrderState();
-        console.log($scope.orderStates);
+
+        $scope.getCurrentState = function(state){
+            OrderService.setCurrentState(state);
+        };
 
         $cookieStore.put('lastPage','#/my');
     }

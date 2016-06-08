@@ -25,7 +25,7 @@
             function footer(scope){
                 var title = [
                     {name:'订水',pic:'components/images/tab_icon_dingshui_nor@2x.png',url:'#/'},
-                    {name:'水票',pic:'components/images/tab_icon_shuipiao_nor@2x.png',url:'#/waterTickets'},
+                    //{name:'水票',pic:'components/images/tab_icon_shuipiao_nor@2x.png',url:'#/waterTickets'},
                     {name:'购物车',pic:'components/images/tab_icon_gouwuche_nor@2x.png',url:'#/goodsCartList'},
                     {name:'我的',pic:'components/images/tab_icon_me_nor@2x.png',url:'#/my'}
                 ];
