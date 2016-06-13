@@ -22,6 +22,7 @@
                 $scope.rightText = "取消";
             }
         }
+        $scope.shopName = '搜您想要的水站';
         var addressInfo = $localStorage.addressInfo;
         var accessInfo = Login.getAccessInfo($cookieStore,false);
         accessInfo.phone_num = "";
@@ -53,6 +54,24 @@
                 $scope.pageSize = data.responsePageInfo.pageSize;
                 $scope.currentPage = data.responsePageInfo.pageNo;
         });
+        $scope.myKeyup = function(e,shopName){
+            var keycode = window.event?e.keyCode:e.which;
+            postshopList.keyword = shopName;
+            if(keycode==13){
+                GetNearShopService.getShopList(postshopList)
+                    .then(function(data){
+                        console.log(data);
+                        $scope.shopList = data.shopList;
+
+                        $scope.changeSpeShop = function(shopListItem){
+                            ShopInfoService.setSpeShopInfo(shopListItem);
+                        }
+                        $scope.totalCount = data.responsePageInfo.totalCount;
+                        $scope.pageSize = data.responsePageInfo.pageSize;
+                        $scope.currentPage = data.responsePageInfo.pageNo;
+                    });
+            }
+        };
         //  下啦加载
         $scope.loadMore = function(){
             var currentSize = $scope.pageSize * $scope.currentPage;
@@ -68,10 +87,6 @@
                     });
             }
 
-        }
-
-
-
-
-    }
+        };
+    };
 }());
