@@ -43,9 +43,6 @@
             .then(function success(data){
                 $scope.addressList = DelieveryAddressService.trimAddressList(data);
 
-                console.log($scope.addressList);
-                console.log($scope.backTocome);
-
                 //  是否添加【不可配送】标签
                 if(!isOrder){                               //  从【'#/my'】过来不添加
                     $scope.isOrder = false;

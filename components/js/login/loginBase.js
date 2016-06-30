@@ -3,19 +3,19 @@
  */
 logIn.service('getAccessInfo',function(){
     //  正式环境
-    var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
-    var appKey = "cf385992c3fc46cbaebae2c1dae08653";
-    this.accessInfo = {
-        app_key:appKey,
-        signature:app_secret
-    }
-    //  测试环境
-    //var app_secret = hex_md5("165416");
-    //var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    //var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
+    //var appKey = "cf385992c3fc46cbaebae2c1dae08653";
     //this.accessInfo = {
     //    app_key:appKey,
     //    signature:app_secret
     //}
+    //  测试环境
+    var app_secret = hex_md5("165416");
+    var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    this.accessInfo = {
+        app_key:appKey,
+        signature:app_secret
+    }
 });
 //  生成md5key
 logIn.service('regesteData',function(){
@@ -88,9 +88,9 @@ logIn.service('getSign',function(){
         var signLen = sign.length;
         sign = sign.slice(0,signLen-1);
         //  正式环境
-        var appSecret = "5e5cd8e3ccca45c2a5a3b00a5a90cdd5";
+        //var appSecret = "5e5cd8e3ccca45c2a5a3b00a5a90cdd5";
         //  测试环境
-        //var appSecret = "e330ce4aa98546b3b99329d20e17450b";
+        var appSecret = "e330ce4aa98546b3b99329d20e17450b";
         var md5_sign = hex_md5(sign+appSecret);
         return md5_sign;
     }

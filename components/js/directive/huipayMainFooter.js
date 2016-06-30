@@ -12,12 +12,12 @@
                 link:footer,
                 controller:skip
             }
-            return footerObj;
+
             function skip($scope,$cookieStore, Login){
-                console.log(Login.isLogIn());
+
                 $scope.$watch('tags',function(){
                     if(!Login.isLogIn()){
-                        $scope.tags[2].url = '07-log.html#/';
+                        $scope.tags[1].url = '07-log.html#/';
                         $cookieStore.put('lastPage','06-main.html#/');
                     }
                 });
@@ -46,5 +46,7 @@
                 }
                 scope.tags = footerStyle(title);
             }
-        })
+
+            return footerObj;
+        });
 }());
