@@ -15,7 +15,6 @@
         var accessInfo = Login.getAccessInfo($cookieStore,Login.isLogIn());
         accessInfo.phone_num = "";
         $scope.backTocome = $cookieStore.get('lastPage');
-        console.log($cookieStore.get('lastPage'));
 
         var lnglatXY = $localStorage.addressInfo.lnglatXY;
         var isOrder = ($scope.backTocome == '#/confirmOrder');
@@ -41,6 +40,8 @@
         //  【家庭地址/公司地址】名字
         DelieveryAddressService.getAddressList(postAddressListData)
             .then(function success(data){
+                console.log(data);
+
                 $scope.addressList = DelieveryAddressService.trimAddressList(data);
 
                 //  是否添加【不可配送】标签
