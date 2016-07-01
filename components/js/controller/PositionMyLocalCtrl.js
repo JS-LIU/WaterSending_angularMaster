@@ -167,5 +167,15 @@
         $scope.mapCenterMarker = {
             top:parseFloat(document.body.clientHeight - 204) / 2 - 30 + 'px'
         }
+
+
+        //  切换地图
+        $scope.showMap = true;
+
+        $scope.cutMap = function(){
+
+            $scope.showMap = !$scope.showMap;
+
+        };
     }
 }());

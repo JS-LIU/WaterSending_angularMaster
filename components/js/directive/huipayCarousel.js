@@ -15,16 +15,8 @@
             function carousel(scope){
                 //var screenW = document.body.clientWidth;
                 GetMainCarouselImgs.then(function(data){
-
-                    var addsImgs = [{image:'components/images/wb.png',title:'fuckyou'}],
+                    var addsImgs = [{image:'components/images/home_banner_empty_bg@2x.png',title:'全国' + data.waterStationCount + '水站'}];
                         //addsImgs = data.activitys,    //    活动图片
-                        //  默认图片
-                        definedImg = {
-                            image:'components/images/xuanchuan.png',
-                            title:'全国' + data.waterStationCount + '水站',
-                        };
-                    //  加入默认图片
-                    addsImgs.unshift(definedImg);
                     scope.num = 0;
                     $interval(function() {
                         scope.num++;
@@ -34,8 +26,10 @@
                     }, 7000);
                     scope.adsImgs = addsImgs;
                     scope.carouselStyle = {
-                        height:document.body.clientWidth * 17 / 18 + 'px',
-                        overflow:'hidden'
+                        position: "absolute",
+                        top: '44px',
+                        bottom: '160px',
+                        zIndex:1
                     }
                 });
             }

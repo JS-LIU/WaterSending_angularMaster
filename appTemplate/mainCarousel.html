@@ -2,6 +2,7 @@
     <!--<li ng-repeat="adsImg in adsImgs track by $index" class="fl" ng-style="imgStyle">-->
         <!--<img ng-src="{{adsImg.image}}" class="w"/>-->
     <!--</li>-->
-    <img ng-animate-swap="num" class="carousel-img w po swap-animation" ng-src="{{adsImgs[num].image}}" />
+    <img ng-animate-swap="num" class="carousel-img h w po swap-animation" ng-src="{{adsImgs[num].image}}" />
+    <i class="po waterStationNum f20">{{adsImgs[num].title}}</i>
     <!--<div ng-animate-swap="num" class="carousel-img swap-animation tc">{{num}}</div>-->
 </div>

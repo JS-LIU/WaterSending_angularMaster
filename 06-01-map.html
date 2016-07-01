@@ -1,11 +1,11 @@
 <div class="L-header w pr blue slide-header">
     <a href="#/addressList" class="cfff po my-city pl15">{{addressInfo.city||'城市'}}</a>
     <p class="tc L-header-title cfff f16">海豹送水</p>
-    <div class="po my-cutMap"></div>
+    <div class="po my-cutMap" ng-click="cutMap()"></div>
 </div>
 <div class="L-slide-center">
     <!--轮播页面-->
-    <huipay-carousel ng-show="showCarousel"></huipay-carousel>
+    <huipay-carousel ng-show="!showMap"></huipay-carousel>
     <!--地图页面-->
     <div class="huipayMap w" ng-style="mapStyle" ng-show="showMap">
         <div id="container"></div>
