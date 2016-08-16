@@ -57,7 +57,9 @@
         $scope.myKeyup = function(e,shopName){
             var keycode = window.event?e.keyCode:e.which;
             postshopList.keyWord = shopName;
+
             if(keycode==13){
+                console.log('myKeyup---',postshopList);
                 GetNearShopService.getShopList(postshopList)
                     .then(function(data){
                         console.log(data);
