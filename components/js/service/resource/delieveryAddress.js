@@ -34,7 +34,7 @@
                 {operate:'show'},
                 obj
             ).$promise;
-        }
+        };
 
 
 
@@ -91,7 +91,7 @@
                 {operate:'delete'},
                 obj
             ).$promise;
-        }
+        };
         //  编辑收货地址
         this.editAddress = function(obj){
             return DelieveryAddressResource.post(
@@ -123,6 +123,7 @@
         };
         this.getDefnCanDeliver = function(arr,addressId){
             var candeliverArr = this.canDeliverList(arr);
+            console.log('canDeliverAddress---',candeliverArr);
             for(var i = 0,len = candeliverArr.length;i < len;i++){
                 if(candeliverArr[i].addressId == addressId){
                     return candeliverArr[i];

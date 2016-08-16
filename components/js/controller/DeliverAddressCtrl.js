@@ -64,7 +64,7 @@
                     .then(function(){
                         console.log('editsuccess');
                 });
-            };
+            }
         };
         var backPage = $cookieStore.get('lastPage');
 

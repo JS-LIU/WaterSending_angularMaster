@@ -22,7 +22,7 @@
                 $scope.rightText = "取消";
             }
         }
-        $scope.shopName = '搜您想要的水站';
+        $scope.shopName = '水站名称';
         var addressInfo = $localStorage.addressInfo;
         var accessInfo = Login.getAccessInfo($cookieStore,false);
         accessInfo.phone_num = "";
@@ -56,7 +56,7 @@
         });
         $scope.myKeyup = function(e,shopName){
             var keycode = window.event?e.keyCode:e.which;
-            postshopList.keyword = shopName;
+            postshopList.keyWord = shopName;
             if(keycode==13){
                 GetNearShopService.getShopList(postshopList)
                     .then(function(data){

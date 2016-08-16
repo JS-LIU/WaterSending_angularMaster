@@ -33,14 +33,15 @@
                 sign:"",
                 accessInfo:accessInfo,
                 positionInfo:{
-                    districtId:'',
+                    districtId:'1',
                     position_x:lnglatXY[0],
                     position_y:lnglatXY[1],
-                    addressInfo:'',
-                    phoneCode:''
+                    addressInfo:'1',
+                    phoneCode:'1'
                 }
             }).then(function(data){
                 var canDeliverAddress = DelieveryAddressService.getDefnCanDeliver(data,$localStorage.addressInfo.addressId);
+                console.log(canDeliverAddress);
                 $scope.canDeliverAddress = canDeliverAddress;
             });
         }

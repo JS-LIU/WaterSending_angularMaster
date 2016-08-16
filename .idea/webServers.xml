@@ -7,6 +7,7 @@
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
+          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
       <webServer id="e826f20c-a96c-4029-b32e-415da9647fc8" name="TESThuipayWater (project level)" url="http://114.251.53.22">
@@ -14,6 +15,7 @@
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
+          <option name="port" value="55002" />
         </fileTransfer>
       </webServer>
     </option>

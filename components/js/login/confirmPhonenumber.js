@@ -13,8 +13,8 @@ logIn.controller('inputPhonenum',function($rootScope,$scope){
 logIn.controller('confirmPhonenum',function($rootScope,$scope){
     $scope.cancel = function(){
         $rootScope.ISSHOW = false;
-    }
+    };
     $scope.ok = function(){
         $rootScope.ISSHOW = false;
     }
-})
+});

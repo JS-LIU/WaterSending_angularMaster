@@ -13,7 +13,7 @@
             }
             function shoppingfooter(scope){
                 var title = [
-                    {name:'分类',pic:'components/images/icon_call@2x.png',background:'#4a5156',isPic:'true'},
+                    {name:'电话',pic:'components/images/icon_call@2x.png',background:'#4a5156',isPic:'true'},
                     {name:'收藏',pic:'components/images/btn_collect@2x.png',background:'#4a5156',isPic:'true'},
                     {name:'购物车',pic:'components/images/tab_icon_gouwuche_nor@2x.png',url:'#/goodsCartList',background:'#4a5156',isPic:'true'},
                     {name:'去结算',url:'#/goodsCartList',background:'#f12f2f',isPic:'false',lineHeight:'49px',fontSize:'20px'}

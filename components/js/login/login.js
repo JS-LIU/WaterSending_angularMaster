@@ -21,33 +21,33 @@ logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,ge
             accessInfo:accessInfo,
             phone_num:phoneNum,
             sign:'sign'
-        }
+        };
 
         //  请求MD5
         logService.postData(md5_data,md5_path).success(function(data){
             var md5_key = data["md5_keyStr"];
             var md5_user_pwd = hex_md5(phoneNum +　pwd + md5_key);
             //  正式环境
-            //var signature = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5" + md5_user_pwd).toUpperCase();
+            var signature = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5" + md5_user_pwd).toUpperCase();
             //  测试环境
-            var signature = hex_md5("165416" + md5_user_pwd).toUpperCase();
+            // var signature = hex_md5("165416" + md5_user_pwd).toUpperCase();
             var path = 'account/login';
             //  正式环境
-            //var accessInfo = {
-            //    app_key:"cf385992c3fc46cbaebae2c1dae08653",
-            //    signature:signature,
-            //    phone_num:phoneNum
-            //}
-            //  测试环境
             var accessInfo = {
-                app_key:"e330ce4aa98546b3b99329d20e17450b",
-                signature:signature,
-                phone_num:phoneNum
-            }
+               app_key:"cf385992c3fc46cbaebae2c1dae08653",
+               signature:signature,
+               phone_num:phoneNum
+            };
+            //  测试环境
+            // var accessInfo = {
+            //     app_key:"e330ce4aa98546b3b99329d20e17450b",
+            //     signature:signature,
+            //     phone_num:phoneNum
+            // }
             var logData = {
                 accessInfo:accessInfo,
                 signature:accessInfo.signature
-            }
+            };
 
             var sign = getSign.mySign(logData);
             logData.sign = sign;
