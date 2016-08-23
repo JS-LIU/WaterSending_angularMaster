@@ -8,16 +8,22 @@
         $scope,
         $cookieStore,
         Login,
-        OrderService){
+        OrderService,
+        UserInfoService){
 
         $scope.isLog = Login.isLogIn();
         //  判断是否登录
         if($scope.isLog){    //  登录
             //  编辑头像
             $scope.nextPage = "#/myDetails";
-            $scope.myHeader = "";
-            $scope.myName = "您好尊敬的海豹用户";
-            $scope.myCode = "001";
+            $scope.myHeader = "components/images/head.png";
+            var userInfo = UserInfoService.getInfo().then(function(data){
+                console.log('userInfo---',data);
+                $scope.myName = data.userInfo.name;
+                $scope.myCode = data.userInfo.userId;
+            });
+
+
             $scope.nextPage = 'javascript:void(0)';
         }else{                  //  未登录
             //  登录页

@@ -56,13 +56,20 @@
             if($scope.operateAddress.operate.state == 0){
                 DelieveryAddressService.newAddress(postNewAddressData)
                     .then(function(data){
-                        console.log(data);
-                        console.log('newsuccess');
+                        if(backPage == '#/inputLocation'){
+                            window.location.href = backPage;
+                        }else{
+                            window.location.href = '#/deliverAddressList';
+                        }
                 });
             }else{
                 DelieveryAddressService.editAddress(postNewAddressData)
                     .then(function(){
-                        console.log('editsuccess');
+                        if(backPage == '#/inputLocation'){
+                            window.location.href = backPage;
+                        }else{
+                            window.location.href = '#/deliverAddressList';
+                        }
                 });
             }
         };
@@ -73,5 +80,6 @@
         }else{
             $scope.backPage = '#/deliverAddressList';
         }
+
     }
 }());
